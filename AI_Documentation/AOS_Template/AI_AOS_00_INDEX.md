@@ -1,6 +1,6 @@
 ﻿# AOS Template Index
 
-AOS oznacza Analityczny Opis Systemu. Ten szablon opisuje ekran, pozycję menu, proces użytkownika albo konkretna funkcje biznesowa aplikacji tak, aby analityk mógł kontrolować zgodność z wymaganiami, tester mógł przygotować testy, a developer lub agent AI mógł szybko dojść od UI do kodu i bazy danych.
+AOS oznacza Analityczny Opis Systemu. Ten szablon opisuje ekran, pozycję menu, proces użytkownika albo konkretną funkcję biznesową aplikacji tak, aby analityk mógł kontrolować zgodność z wymaganiami, tester mógł przygotować testy, a developer lub agent AI mógł szybko dojść od UI do kodu i bazy danych.
 
 ## Cel AOS
 
@@ -9,6 +9,10 @@ Dobry AOS nie opisuje tylko "co widać na ekranie". Ma pokazać pełny łańcuch
 `ekran -> pole/przycisk -> akcja -> frontend -> API -> proces -> walidacje -> encja/model -> tabela SQL -> kolumna SQL -> odczyt/zapis danych -> testy -> kod`
 
 Każda informacja techniczna powinna mieć źródło w kodzie albo oznaczony status: `potwierdzone`, `do potwierdzenia`, `brak w kodzie`, `wniosek z analizy`.
+
+## Granica Pracy AOS
+
+AOS jest dokumentacją kodu, a nie zadaniem implementacyjnym. Agent tworzący AOS może czytać kod, uruchamiać skrypty raportujące i aktualizować dokumentację, ale nie może zmieniać kodu aplikacji. Jeżeli analiza pokaże błąd, brak testu, niespójność kontraktu, brak walidacji albo ryzyko danych, agent ma opisać to w sekcji luk, ryzyk, rekomendacji albo pytań otwartych. Nie wolno mu poprawiać komponentów frontendu, backendu, testów, migracji, konfiguracji ani kontraktów API w ramach pracy AOS.
 
 ## Rekomendowana struktura dla jednego ekranu/funkcji
 
@@ -78,7 +82,7 @@ Przy zmianie ekranu aktualizuj dokumenty w tej kolejności:
 1. `01_UI_FIELDS_AND_LAYOUT.md` - co widać i co może zrobić użytkownik.
 2. `02_ACTIONS_AND_PROCESS_TRACE.md` - co uruchamia akcja.
 3. `03_API_AND_CONTRACTS.md` - co zmieniło się w kontrakcie.
-4. `04_DATA_LINEAGE.md` - co zmieniło się w odcżycie/zapisię.
+4. `04_DATA_LINEAGE.md` - co zmieniło się w odczycie/zapisie.
 5. `05_RULES_VALIDATIONS_ERRORS.md` - co zmieniło się w regułach.
 6. `06_TEST_MATRIX.md` - jakie testy trzeba dodać albo poprawić.
 7. `08_REQUIREMENTS_TRACEABILITY.md` - czy wymagania nadal mają pokrycie.

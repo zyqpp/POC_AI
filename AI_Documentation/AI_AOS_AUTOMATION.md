@@ -2,6 +2,10 @@
 
 Ten dokument opisuje narzędzia dodane po pierwszej iteracji AOS dla procesu `Checkout -> Create Order`.
 
+## Zasada Bezpieczeństwa
+
+Automatyzacja AOS służy wyłącznie dokumentowaniu i walidacji dokumentacji. Skrypty mogą czytać kod i generować raporty, ale nie mogą zmieniać kodu aplikacji, testów, migracji, konfiguracji runtime ani kontraktów API. Wykryte błędy i luki należy zapisywać jako fakty, ryzyka albo rekomendacje w dokumentacji.
+
 ## Skrypty
 
 | Skrypt | Cel | Przykład |
@@ -46,3 +50,4 @@ Ten dokument opisuje narzędzia dodane po pierwszej iteracji AOS dla procesu `Ch
 3. Wygeneruj szkielet przez `New-AosScaffold.ps1`.
 4. Wypełnij AOS ręcznie, potwierdzając każdy ważny fakt w kodzie.
 5. Uruchom raport ponownie po większych zmianach w API, DTO albo `DbContext`.
+6. Jeżeli raport pokaże problem w kodzie, dopisz lukę lub rekomendację do AOS; nie poprawiaj kodu aplikacji w tym trybie pracy.

@@ -4,6 +4,14 @@
 
 Ten plik jest instrukcja dla przyszlych agentow AI: jak ustalac fakty w projekcie bez zgadywania i jak przejść od ekranu/przycisku do backendu, logiki biznesowej oraz bazy danych.
 
+## Granica Pracy Agenta
+
+- Agent używa tego przewodnika do dokumentowania aplikacji, nie do zmieniania aplikacji.
+- Kod w `supply-chain-frontend/**`, `services/**`, `src/**`, `gateway/**`, testy, migracje i konfiguracje runtime traktuj jako źródła prawdy do odczytu.
+- Nie edytuj kodu aplikacji, nawet jeżeli znajdziesz błąd albo brak testu. Zapisz odkrycie w AOS jako lukę, ryzyko, pytanie otwarte albo rekomendację.
+- Dozwolone zmiany dotyczą tylko dokumentacji i narzędzi dokumentacyjnych: `AI_Documentation/**`, `AI_Agent_scripts/**`, `AGENTS.md`.
+- Jeżeli użytkownik nie poda wprost, że przełącza zadanie na implementację, pozostajesz w trybie dokumentalisty.
+
 ## Zasada źródeł prawdy
 
 - Nie ufaj nazwie ekranu jako jedynemu źródłu. Zawsze potwierdzaj ścieżkę w kodzie.
