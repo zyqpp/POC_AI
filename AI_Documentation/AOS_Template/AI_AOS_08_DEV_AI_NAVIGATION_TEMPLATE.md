@@ -17,7 +17,7 @@ Ten plik jest mapa dla developera i agenta AI. Pokazuje gdzie zaczac analize, ja
 | Command/Query | `<Application/Features/...>` | `<wejscie do use case>` |
 | Service | `<Application/Services/...>` | `<logika procesu>` |
 | Domain | `<Domain/Entities/...>` | `<reguly biznesowe>` |
-| Repository/DbContext | `<Infrastructure/...>` | `<dane, tabele, relacje>` |
+| Repository/DbContext | `<Infrastructure/...>` | `<dane, tabele SQL, kolumny SQL, relacje>` |
 
 ## Sciezka Analizy Dla Nowej Zmiany
 
@@ -66,7 +66,7 @@ Kazda techniczna teza powinna miec dowod:
 | Ekran ma route | `app.routes.ts` + komponent |
 | Akcja wywoluje endpoint | metoda w komponencie + API service |
 | Endpoint wymaga roli | `[Authorize]` w kontrolerze albo policy |
-| Pole pochodzi z tabeli | DTO mapper + DbContext/encja |
+| Pole pochodzi z tabeli i kolumny SQL | DTO mapper + DbContext/encja/config/migration |
 | Regula blokuje operacje | validator/domain/service |
 | Blad pokazuje sie w UI | error interceptor / component |
 

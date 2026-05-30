@@ -1,12 +1,12 @@
 # AOS Template Index
 
-AOS oznacza Analityczny Opis Systemu. Ten szablon opisuje ekran, pozycje menu albo mala funkcje aplikacji tak, aby analityk mogl kontrolowac zgodnosc z wymaganiami, tester mogl przygotowac testy, a developer lub agent AI mogl szybko dojsc od UI do kodu i bazy danych.
+AOS oznacza Analityczny Opis Systemu. Ten szablon opisuje ekran, pozycje menu, proces uzytkownika albo konkretna funkcje biznesowa aplikacji tak, aby analityk mogl kontrolowac zgodnosc z wymaganiami, tester mogl przygotowac testy, a developer lub agent AI mogl szybko dojsc od UI do kodu i bazy danych.
 
 ## Cel AOS
 
 Dobry AOS nie opisuje tylko "co widac na ekranie". Ma pokazac pelny lancuch faktow:
 
-`ekran -> pole/przycisk -> akcja -> frontend -> API -> proces -> walidacje -> zapis/odczyt danych -> testy -> kod`
+`ekran -> pole/przycisk -> akcja -> frontend -> API -> proces -> walidacje -> encja/model -> tabela SQL -> kolumna SQL -> odczyt/zapis danych -> testy -> kod`
 
 Kazda informacja techniczna powinna miec zrodlo w kodzie albo oznaczony status: `potwierdzone`, `do potwierdzenia`, `brak w kodzie`, `wniosek z analizy`.
 
@@ -36,7 +36,7 @@ Dla prostego ekranu mozna scalic pliki `03-05`, ale nie wolno tracic mapowania U
 - `AI_AOS_02_UI_FIELDS_AND_LAYOUT_TEMPLATE.md` - pola, filtry, kolumny, stany UI, uprawnienia.
 - `AI_AOS_03_ACTIONS_AND_PROCESS_TRACE_TEMPLATE.md` - akcje uzytkownika i procesy od klikniecia do skutku.
 - `AI_AOS_04_API_AND_CONTRACTS_TEMPLATE.md` - endpointy, DTO, request/response, statusy HTTP.
-- `AI_AOS_05_DATA_LINEAGE_TEMPLATE.md` - zrodla danych, tabele, pola, odczyt/zapis.
+- `AI_AOS_05_DATA_LINEAGE_TEMPLATE.md` - zrodla danych, tabele SQL, kolumny SQL, odczyt/zapis.
 - `AI_AOS_06_RULES_VALIDATIONS_ERRORS_TEMPLATE.md` - reguly, walidacje, bledy i komunikaty.
 - `AI_AOS_07_TEST_MATRIX_TEMPLATE.md` - testy manualne, API, E2E, automaty i dane testowe.
 - `AI_AOS_08_DEV_AI_NAVIGATION_TEMPLATE.md` - sciezki kodu i instrukcja dla dev/AI.
@@ -64,7 +64,7 @@ AOS jest gotowy dopiero gdy:
 - kazde pole UI ma opis zrodla danych albo sposobu zapisu;
 - kazdy przycisk/akcja ma opis procesu i endpointu;
 - walidacje i bledy sa opisane z dowodem z kodu;
-- dane sa zmapowane do DTO, encji, tabel i pol;
+- dane sa zmapowane do DTO, encji, tabel SQL i kolumn SQL;
 - istnieje macierz testow manualnych, API i automatycznych;
 - developer ma podane pliki startowe i sciezke dalszej analizy;
 - wymagania maja pokrycie w UI, API, danych, regulach i testach;

@@ -46,7 +46,7 @@ Ten plik kontroluje zycie dokumentu AOS: kto go zmienial, co zostalo zweryfikowa
 |---|---|---|
 | Czy kazde twierdzenie techniczne ma zrodlo w kodzie? | `<OK/luka>` | `<pliki>` |
 | Czy endpointy i DTO zgadzaja sie z implementacja? | `<OK/luka>` | `<API/DTO>` |
-| Czy mapowanie danych wskazuje encje, tabele i pola? | `<OK/luka>` | `<DATA>` |
+| Czy mapowanie danych wskazuje encje, tabele SQL i kolumny SQL? | `<OK/luka>` | `<DATA>` |
 | Czy opis reguly wskazuje warstwe, ktora ja egzekwuje? | `<OK/luka>` | `<RULE>` |
 | Czy opis uwzglednia efekty uboczne, eventy i integracje? | `<OK/luka>` | `<ACT>` |
 

@@ -26,7 +26,7 @@ Ten plik laczy opis ekranu z wymaganiami biznesowymi, kryteriami akceptacji i te
 |---|---|---|---|---|
 | `AOS-<MOD>-<SCREEN>-NFR-001` | Performance | `<np. lista laduje sie ponizej X s dla Y rekordow>` | `<metryka>` | `<test/monitoring>` |
 | `AOS-<MOD>-<SCREEN>-NFR-002` | Security | `<np. Dealer widzi tylko swoje dane>` | `<test roli>` | `<AUTH/TC>` |
-| `AOS-<MOD>-<SCREEN>-NFR-003` | Audit | `<np. zmiana statusu jest odtwarzalna>` | `<tabela/event/log>` | `<DATA/TC>` |
+| `AOS-<MOD>-<SCREEN>-NFR-003` | Audit | `<np. zmiana statusu jest odtwarzalna>` | `<tabela SQL / event / log>` | `<DATA/TC>` |
 
 ## Kryteria Akceptacji
 

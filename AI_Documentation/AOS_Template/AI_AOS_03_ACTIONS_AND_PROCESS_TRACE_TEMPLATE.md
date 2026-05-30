@@ -8,7 +8,7 @@ Ten plik mapuje akcje uzytkownika na rzeczywisty proces systemowy. Dla kazdego p
 
 | ID akcji | Nazwa UI | Trigger | Metoda front | API | Proces backend | Skutek danych | Testy |
 |---|---|---|---|---|---|---|---|
-| `AOS-<MOD>-<SCREEN>-ACT-001` | `<np. Approve>` | `<klik>` | `<component.method>` | `<endpoint>` | `<command/service>` | `<tabela/pola/event>` | `<TC IDs>` |
+| `AOS-<MOD>-<SCREEN>-ACT-001` | `<np. Approve>` | `<klik>` | `<component.method>` | `<endpoint>` | `<command/service>` | `<tabela SQL / kolumny SQL / event>` | `<TC IDs>` |
 
 ## Szablon Opisu Akcji
 
@@ -55,7 +55,7 @@ sequenceDiagram
 | 1 | UI | `<walidacja formularza / potwierdzenie>` | `<plik>` | `<dane>` | `<dane>` |
 | 2 | API | `<request>` | `<api service>` | `<DTO>` | `<response>` |
 | 3 | Backend | `<komenda / serwis>` | `<handler/service>` | `<DTO>` | `<entity/result>` |
-| 4 | Persistence | `<zapis/odczyt>` | `<repo/DbContext>` | `<entity>` | `<tabela>` |
+| 4 | Persistence | `<zapis/odczyt>` | `<repo/DbContext>` | `<entity>` | `<tabela SQL / kolumny SQL>` |
 
 #### Reguly Biznesowe W Procesie
 
@@ -88,7 +88,7 @@ Jesli akcja uruchamia algorytm, opisz go pseudokodem:
 2. Sprawdz warunek A.
 3. Jezeli A nie przechodzi, zwroc blad B.
 4. Dla kazdej pozycji wykonaj C.
-5. Zapisz wynik w tabeli D.
+5. Zapisz wynik w tabeli SQL D i wskazanych kolumnach.
 6. Opublikuj event E.
 ```
 

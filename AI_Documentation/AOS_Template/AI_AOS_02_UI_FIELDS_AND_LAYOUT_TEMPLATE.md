@@ -20,7 +20,7 @@ Ten plik opisuje wszystko, co uzytkownik widzi albo moze wprowadzic na ekranie: 
 
 | ID pola | Nazwa formularza | Etykieta | Typ | Wymagane | Domyslna wartosc | Walidacja front | Walidacja backend | Zapis do |
 |---|---|---|---|---|---|---|---|---|
-| `AOS-<MOD>-<SCREEN>-FORM-001` | `<formControlName>` | `<label>` | `<input/select>` | `<tak/nie>` | `<wartosc>` | `<regula>` | `<validator / domain>` | `<DTO -> tabela.pole>` |
+| `AOS-<MOD>-<SCREEN>-FORM-001` | `<formControlName>` | `<label>` | `<input/select>` | `<tak/nie>` | `<wartosc>` | `<regula>` | `<validator / domain>` | `<DTO -> tabela_sql.kolumna_sql>` |
 
 ## Kolumny Tabeli / Listy
 

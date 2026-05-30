@@ -2,23 +2,23 @@
 
 ## Cel Pliku
 
-Ten plik pokazuje skad ekran bierze dane, jak sa transformowane i gdzie sa zapisywane. To jest kluczowy dokument dla analityka, testera danych i developera.
+Ten plik pokazuje skad ekran bierze dane, jak sa transformowane i gdzie sa zapisywane. Dla kazdego istotnego pola trzeba wskazac encje/model, tabele SQL i konkretne kolumny SQL. To jest kluczowy dokument dla analityka, testera danych i developera.
 
 ## Kontekst Danych
 
 | Obszar | Opis |
 |---|---|
 | Glowne encje | `<np. Order, OrderLine, Shipment>` |
-| Glowne tabele | `<np. Orders, OrderLines>` |
+| Glowne tabele SQL | `<np. Orders, OrderLines>` |
 | Glowne DTO | `<np. OrderDto>` |
 | Glowne API odczytu | `<endpointy>` |
 | Glowne API zapisu | `<endpointy>` |
 
 ## Mapowanie Pol UI Do Danych
 
-| ID pola UI | Etykieta UI | Pole DTO front | Pole DTO backend | Encja | Tabela | Kolumna | Odczyt/Zapis | Transformacja | Zrodlo w kodzie |
+| ID pola UI | Etykieta UI | Pole DTO front | Pole DTO backend | Encja/model | Tabela SQL | Kolumna SQL | Odczyt/Zapis | Transformacja | Zrodlo w kodzie |
 |---|---|---|---|---|---|---|---|---|---|
-| `AOS-<MOD>-<SCREEN>-DATA-001` | `<label>` | `<model.field>` | `<Dto.Field>` | `<Entity.Property>` | `<Table>` | `<Column>` | `<R/W/RW>` | `<format/enum/computed>` | `<component/service/DbContext>` |
+| `AOS-<MOD>-<SCREEN>-DATA-001` | `<label>` | `<model.field>` | `<Dto.Field>` | `<Entity.Property>` | `<TableName>` | `<ColumnName>` | `<R/W/RW>` | `<format/enum/computed>` | `<component/service/DbContext/migration>` |
 
 ## Odczyt Danych
 
@@ -29,9 +29,19 @@ Ten plik pokazuje skad ekran bierze dane, jak sa transformowane i gdzie sa zapis
 
 ## Zapis Danych
 
-| Akcja | API | DTO wejscia | Encja/tabela | Pola zapisywane | Transakcja | Efekty uboczne |
-|---|---|---|---|---|---|---|
-| `<ACT ID>` | `<endpoint>` | `<request DTO>` | `<table>` | `<columns>` | `<tak/nie>` | `<event/cache/integracja>` |
+| Akcja | API | DTO wejscia | Encja/model | Tabela SQL | Kolumny SQL zapisywane | Transakcja | Efekty uboczne |
+|---|---|---|---|---|---|---|---|
+| `<ACT ID>` | `<endpoint>` | `<request DTO>` | `<Entity>` | `<TableName>` | `<ColumnName, ColumnName>` | `<tak/nie>` | `<event/cache/integracja>` |
+
+## Minimalny Dowod Dla Tabel I Kolumn SQL
+
+| Twierdzenie | Minimalny dowod |
+|---|---|
+| Pole jest odczytywane z tabeli SQL | `<DTO mapper/query/repository>` + `<DbContext/entity config/migration>` |
+| Pole jest zapisywane do kolumny SQL | `<command/service/repository>` + `<encja>` + `<DbContext/entity config/migration>` |
+| Pole jest wyliczane, a nie zapisane | `<mapper/service/domain method>` + potwierdzenie braku kolumny SQL |
+| Zapis dotyka wielu tabel | `<transakcja/unit of work>` + lista tabel i kolumn |
+| Zmiana jest historyzowana | `<history table/audit/outbox/event>` + kolumny zapisujace stan |
 
 ## Dane Wyliczane
 

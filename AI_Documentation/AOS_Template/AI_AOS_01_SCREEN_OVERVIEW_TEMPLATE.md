@@ -51,7 +51,7 @@ Opisz po co istnieje ekran:
 | Parametry route | `<np. id>` | `<app.routes.ts>` |
 | Query params | `<np. page, status>` | `<komponent / API service>` |
 | Dane wejsciowe z poprzedniego ekranu | `<np. wybrany order>` | `<link albo store>` |
-| Wynik operacji | `<np. zmiana statusu, utworzenie rekordu>` | `<API / tabela / event>` |
+| Wynik operacji | `<np. zmiana statusu, utworzenie rekordu>` | `<API / tabela SQL / event>` |
 
 ## Glowne Scenariusze Uzycia
 
