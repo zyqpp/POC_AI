@@ -7,7 +7,7 @@ Aplikacja to lokalny POC platformy B2B supply chain. Frontend Angular komunikuje
 - IdentityAuth: konta, role, JWT, refresh tokeny, dealerzy i agenci.
 - CatalogInventory: katalog produktów, kategorie, stany magazynowe, soft-lock i hard-deduct stocku.
 - Order: zamówienia, statusy, returny, saga zamówienia, integracje z kredytem i magazynem.
-- LogisticsTracking: przesylki, agenci, pojazdy, statusy dostaw, ops-state i chatbot logistyczny.
+- LogisticsTracking: przesyłki, agenci, pojazdy, statusy dostaw, ops-state i chatbot logistyczny.
 - PaymentInvoice: limity kredytowe dealerow, outstanding, płatności Razorpay, faktury i workflow faktur.
 - Notification: notyfikacje manualne i z eventów integracyjnych, kanał InApp/Email, wysylka e-mail.
 

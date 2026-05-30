@@ -6,9 +6,11 @@ AOS oznacza Analityczny Opis Systemu. Ten szablon opisuje ekran, pozycję menu, 
 
 Dobry AOS nie opisuje tylko "co widać na ekranie". Ma pokazać pełny łańcuch faktów:
 
-`ekran -> pole/przycisk -> akcja -> frontend -> API -> proces -> walidacje -> encja/model -> tabela SQL -> kolumna SQL -> odczyt/zapis danych -> testy -> kod`
+`ekran -> pole/przycisk -> akcja -> frontend -> API -> proces -> walidacje -> encja/model -> baza danych -> schemat -> tabela SQL -> kolumna SQL -> odczyt/zapis danych -> relacje -> testy -> kod`
 
 Każda informacja techniczna powinna mieć źródło w kodzie albo oznaczony status: `potwierdzone`, `do potwierdzenia`, `brak w kodzie`, `wniosek z analizy`.
+
+Przed opisem danych sprawdź `../AI_DATABASE_STRUCTURE.md`. Jeżeli ekran albo proces używa kilku mikroserwisów, mapuj tabele osobno per baza danych i oznacz, czy relacje są fizycznymi FK, czy relacjami logicznymi przez identyfikatory `Guid`.
 
 ## Granica Pracy AOS
 
@@ -68,7 +70,7 @@ AOS jest gotowy dopiero gdy:
 - każde pole UI ma opis źródła danych albo sposobu zapisu;
 - każdy przycisk/akcja ma opis procesu i endpointu;
 - walidacje i błędy są opisane z dowodem z kodu;
-- dane są zmapowane do DTO, encji, tabel SQL i kolumn SQL;
+- dane są zmapowane do DTO, encji, bazy danych, schematu, tabel SQL, kolumn SQL i relacji;
 - istnieje macierz testów manualnych, API i automatycznych;
 - developer ma podane pliki startowe i ścieżkę dalszej analizy;
 - wymagania mają pokrycie w UI, API, danych, regułach i testach;

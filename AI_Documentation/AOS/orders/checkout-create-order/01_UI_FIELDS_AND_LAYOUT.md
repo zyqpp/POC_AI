@@ -57,7 +57,7 @@ Brak filtrow i wyszukiwania na ekranie checkout.
 
 ## Stany Ekranu
 
-| Stan | Kiedy wystepuje | Zachowanie UI | Komunikat | Źródło |
+| Stan | Kiedy występuje | Zachowanie UI | Komunikat | Źródło |
 |---|---|---|---|---|
 | Empty cart | `cartStore.items().length === 0` w `ngOnInit` | Przekierowanie do `/cart` | Brak komunikatu | `checkout.component.ts` |
 | Loading | Po kliknięciu `Place Order`, w trakcie walidacji stocku, bramki płatniczej albo POST order | Disąbled button + spinner | Brak stalego tekstu poza buttonem | `loading` signal |

@@ -18,7 +18,7 @@ Ten plik opisuje kontrakty API używane przez ekran/funkcje. Ma być źródłem 
 
 `<Po co endpoint istnieje i jaka operacje wspiera.>`
 
-#### Zrodla W Kodzie
+#### Źródła W Kodzie
 
 | Warstwa | Plik / symbol |
 |---|---|
@@ -76,7 +76,7 @@ Ten plik opisuje kontrakty API używane przez ekran/funkcje. Ma być źródłem 
 
 ## Kontrakty Bledow
 
-| Kod błędu | HTTP | Kiedy wystepuje | Źródło | Komunikat UI |
+| Kod błędu | HTTP | Kiedy występuje | Źródło | Komunikat UI |
 |---|---|---|---|---|
 | `<code>` | `<status>` | `<warunek>` | `<middleware/controller>` | `<tekst>` |
 

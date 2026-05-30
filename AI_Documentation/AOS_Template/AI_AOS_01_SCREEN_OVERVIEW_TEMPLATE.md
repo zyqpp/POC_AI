@@ -20,7 +20,7 @@
 Opisz po co istnieje ekran:
 
 - jaki problem użytkownika rozwiązuje;
-- w jakim procesię biznesowym wystepuje;
+- w jakim procesie biznesowym występuje;
 - jaka decyzje albo operacje wspiera;
 - czego użytkownik ma się dowiedziec albo co ma wykonać.
 

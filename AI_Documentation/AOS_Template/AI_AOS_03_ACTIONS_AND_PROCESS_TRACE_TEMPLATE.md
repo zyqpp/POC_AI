@@ -52,7 +52,7 @@ sequenceDiagram
 
 | Krok | Warstwa | Co się dzieje | Źródło w kodzie | Dane wejścia | Dane wyjścia |
 |---|---|---|---|---|---|
-| 1 | UI | `<walidacja formularza / potwierdźenie>` | `<plik>` | `<dane>` | `<dane>` |
+| 1 | UI | `<walidacja formularza / potwierdzenie>` | `<plik>` | `<dane>` | `<dane>` |
 | 2 | API | `<request>` | `<api service>` | `<DTO>` | `<response>` |
 | 3 | Backend | `<komenda / serwis>` | `<handler/service>` | `<DTO>` | `<entity/result>` |
 | 4 | Persistence | `<zapis/odczyt>` | `<repo/DbContext>` | `<entity>` | `<tabela SQL / kolumny SQL>` |

@@ -42,7 +42,7 @@ Ten plik opisuje wszystko, co użytkownik widzi albo może wprowadzic na ekranie
 
 ## Stany Ekranu
 
-| Stan | Kiedy wystepuje | Zachowanie UI | Komunikat | Źródło |
+| Stan | Kiedy występuje | Zachowanie UI | Komunikat | Źródło |
 |---|---|---|---|---|
 | Loading | `<kiedy>` | `<spinner/skeleton>` | `<tekst>` | `<store/interceptor/component>` |
 | Empty | `<brak danych>` | `<pusty stan>` | `<tekst>` | `<component>` |

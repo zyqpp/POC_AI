@@ -19,10 +19,18 @@
 ## Standard AOS
 
 - AOS opisuje konkretny ekran, pozycję menu, proces użytkownika albo funkcję biznesową end-to-end.
-- Minimalny ślad faktów to: `ekran -> pole/przycisk -> akcja -> frontend -> API -> proces -> walidacje -> encja/model -> tabela SQL -> kolumna SQL -> odczyt/zapis danych -> testy -> kod`.
+- Minimalny ślad faktów to: `ekran -> pole/przycisk -> akcja -> frontend -> API -> proces -> walidacje -> encja/model -> baza danych -> schemat -> tabela SQL -> kolumna SQL -> odczyt/zapis danych -> relacje -> testy -> kod`.
 - Każda teza techniczna musi mieć źródło w kodzie albo status: `potwierdzone`, `do potwierdzenia`, `brak w kodzie`, `wniosek z analizy`.
 - Dla pól widocznych na ekranie zawsze próbuj ustalić konkretną tabelę SQL i kolumnę SQL. Jeżeli pole jest wyliczane albo nie jest zapisywane, zapisz to jawnie.
 - Luki, ryzyka i niespójności zapisuj w dokumentacji. Nie poprawiaj kodu aplikacji w ramach pracy dokumentacyjnej.
+
+## Dokumentacja Bazy Danych
+
+- Przy analizie ekranów, procesów i API zawsze sprawdzaj `AI_Documentation/AI_DATABASE_STRUCTURE.md`.
+- Każdy AOS musi wskazywać tabele uczestniczące w procesie, konkretne kolumny SQL odczytywane i zapisywane oraz relacje między tabelami.
+- Jeżeli proces przechodzi przez kilka mikroserwisów, rozpisz dane osobno per baza danych i oznacz, które relacje są fizycznymi FK, a które są tylko logiczne przez identyfikatory `Guid`.
+- Skrypty SQL w `scripts/migrations/*.sql` uwzględniaj jako artefakty wdrożeniowe, ale aktualność modelu potwierdzaj w EF `DbContext` i encjach.
+- Jeżeli znajdziesz rozbieżność między EF, skryptem SQL i dokumentacją, nie poprawiaj kodu ani migracji. Zapisz rozbieżność jako lukę, ryzyko albo rekomendację.
 
 ## Automatyzacja pracy AOS
 

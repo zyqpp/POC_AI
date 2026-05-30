@@ -31,6 +31,7 @@ Automatyzacja AOS służy wyłącznie dokumentowaniu i walidacji dokumentacji. S
 - parser DTO TypeScript i rekordów DTO C#;
 - porównanie nazw pól DTO TypeScript / C#;
 - parser EF `DbContext`, tabel SQL, kolumn/właściwości oraz pól ignorowanych;
+- porównanie ustaleń z dokumentem `AI_DATABASE_STRUCTURE.md`, jeżeli agent przygotowuje konkretny AOS;
 - macierz kandydacka `frontend -> HTTP -> controller -> command/query -> handler -> service -> entity -> SQL`;
 - raport potencjalnych luk: pole UI bez oczywistego zapisu/lineage, DTO bez oczywistej tabeli SQL, API bez oczywistego testu, route bez jawnej roli, API bez dopasowanego kontrolera, różnice DTO, kontrakty wymagające przeglądu lineage.
 
@@ -47,7 +48,8 @@ Automatyzacja AOS służy wyłącznie dokumentowaniu i walidacji dokumentacji. S
 
 1. Uruchom `Export-AosTraceFacts.ps1`.
 2. Wybierz proces/ekran i odszukaj go w `AI_AOS_TRACE_REPORT.md`.
-3. Wygeneruj szkielet przez `New-AosScaffold.ps1`.
-4. Wypełnij AOS ręcznie, potwierdzając każdy ważny fakt w kodzie.
-5. Uruchom raport ponownie po większych zmianach w API, DTO albo `DbContext`.
-6. Jeżeli raport pokaże problem w kodzie, dopisz lukę lub rekomendację do AOS; nie poprawiaj kodu aplikacji w tym trybie pracy.
+3. Sprawdź `AI_DATABASE_STRUCTURE.md`, żeby ustalić bazy, schematy, tabele, kolumny i relacje dla procesu.
+4. Wygeneruj szkielet przez `New-AosScaffold.ps1`.
+5. Wypełnij AOS ręcznie, potwierdzając każdy ważny fakt w kodzie.
+6. Uruchom raport ponownie po większych zmianach w API, DTO albo `DbContext`.
+7. Jeżeli raport pokaże problem w kodzie, dopisz lukę lub rekomendację do AOS; nie poprawiaj kodu aplikacji w tym trybie pracy.

@@ -2,7 +2,9 @@
 
 ## Zasada czytania modelu
 
-Zrodlem prawdy dla bazy są DbContexty w `services/*/*.Infrastructure/Persistence/*DbContext.cs` oraz migracje EF. Encje domenowe są w `services/*/*.Domain/Entities`.
+Źródłem prawdy dla bazy są DbContexty w `services/*/*.Infrastructure/Persistence/*DbContext.cs` oraz encje domenowe w `services/*/*.Domain/Entities`.
+
+Ten plik opisuje model domenowy skrótowo. Pełny podział na bazy danych, schematy, tabele, kolumny, relacje, skrypty SQL i mapowanie ekranów/procesów do tabel jest w `AI_DATABASE_STRUCTURE.md`.
 
 ## IdentityAuth
 
@@ -44,7 +46,7 @@ Statusy przejść są w `OrderAggregate.cs`; okno returnu wynosi 48 godzin od do
 DbContext: `services/LogisticsTracking/LogisticsTracking.Infrastructure/Persistence/LogisticsTrackingDbContext.cs`.
 
 - `Shipments`: `ShipmentId`, `OrderId`, `DealerId`, unique `ShipmentNumber`, adres, `AssignedAgentId`, `VehicleNumber`, decyzja assignmentu, rating agenta, `Status`.
-- `ShipmentEvents`: historia statusów przesylki.
+- `ShipmentEvents`: historia statusów przesyłki.
 - `ShipmentOpsStates`: stan operacyjny handover/retry 1:1 z shipmentem.
 - `OutboxMessages`.
 
@@ -58,8 +60,8 @@ DbContext: `services/PaymentInvoice/PaymentInvoice.Infrastructure/Persistence/Pa
 - `Invoices`: unique `InvoiceNumber`, unique `IdempotencyKey`, `OrderId`, `DealerId`, GST, subtotal/tax/grand total, PDF path.
 - `InvoiceLines`: pozycję faktury.
 - `InvoiceWorkflowStates`: status, due date, promise-to-pay, follow-up, note, reminders.
-- `InvoiceWorkflowActivities`: aktywnośći workflow faktury.
-- `PaymentRecords`: tryb płatności, kwotą, referencja.
+- `InvoiceWorkflowActivities`: aktywności workflow faktury.
+- `PaymentRecords`: tryb płatności, kwota, referencja.
 - `OutboxMessages`.
 
 ## Notification

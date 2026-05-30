@@ -69,7 +69,7 @@ rg "CheckoutComponent|CreateOrderRequest|CreateOrderAsync" tests supply-chain-fr
 
 ## Standard Dowodu W AOS
 
-| Twierdzenie | Minimalny dowod |
+| Twierdzenie | Minimalny dowód |
 |---|---|
 | Checkout jest tylko dla Dealer | `app.routes.ts` + `OrdersController.Create [Authorize(Roles="Dealer")]` |
 | Przycisk tworzy order | `checkout.component.html` click + `CheckoutComponent.placeOrder()` |

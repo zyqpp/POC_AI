@@ -8,7 +8,7 @@ Ten plik laczy opis ekranu z wymaganiami biznesowymi, kryteriami akceptacji i te
 
 | Obszar | Opis |
 |---|---|
-| Proces biznesowy | `<np. obsluga zamówienia, przyjecie dostawy, sledzenie przesylki>` |
+| Proces biznesowy | `<np. obsługa zamówienia, przyjęcie dostawy, śledzenie przesyłki>` |
 | Krok procesu | `<konkretny krok, który wspiera ekran>` |
 | Decyzje użytkownika | `<jakie decyzje podejmuje użytkownik na ekranie>` |
 | Wynik biznesowy | `<co ma być prawdą po zakończeniu operacji>` |

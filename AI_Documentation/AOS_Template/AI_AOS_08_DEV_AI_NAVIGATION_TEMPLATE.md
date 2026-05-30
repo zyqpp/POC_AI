@@ -59,9 +59,9 @@ powershell -ExecutionPolicy Bypass -File AI_Agent_scripts\Generate-ProjectTree.p
 
 ## Standard Dowodu W AOS
 
-Każda techniczna teza powinna mieć dowod:
+Każda techniczna teza powinna mieć dowód:
 
-| Twierdzenie | Minimalny dowod |
+| Twierdzenie | Minimalny dowód |
 |---|---|
 | Ekran ma route | `app.routes.ts` + komponent |
 | Akcja wywołuje endpoint | metoda w komponencie + API service |

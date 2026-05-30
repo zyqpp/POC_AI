@@ -25,7 +25,7 @@ Ten plik opisuje kontrakty API używane przez ekran checkout i proces utworzenia
 
 Twórzy zamówienie z koszyka dealera. DealerId nie pochodzi z body, tylko z tokenu JWT.
 
-#### Zrodla W Kodzie
+#### Źródła W Kodzie
 
 | Warstwa | Plik / symbol |
 |---|---|
@@ -118,7 +118,7 @@ Twórzy zamówienie z koszyka dealera. DealerId nie pochodzi z body, tylko z tok
 
 ## Kontrakty Bledow
 
-| Kod błędu | HTTP | Kiedy wystepuje | Źródło | Komunikat UI |
+| Kod błędu | HTTP | Kiedy występuje | Źródło | Komunikat UI |
 |---|---|---|---|---|
 | `INVALID_TOKEN` | 401 | Brak GUID w claim `sub`/`NameIdentifier` | `OrdersController.Create()` | `Invalid token.` |
 | `ROLE_FORBIDDEN` | 403 | Rola inna niż Dealer | ASP.NET Authorization | fallback `Failed to place order. Please try again.` jesli body brak |
