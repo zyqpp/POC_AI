@@ -1,0 +1,96 @@
+# AOS Checkout Create Order - Data Lineage
+
+## Cel Pliku
+
+Ten plik pokazuje skad ekran checkout bierze dane, jak je transformuje oraz gdzie proces utworzenia zamowienia czyta i zapisuje dane w SQL.
+
+## Kontekst Danych
+
+| Obszar | Opis |
+|---|---|
+| Glowne encje | `OrderAggregate`, `OrderLine`, `OrderStatusHistory`, `OrderSagaStateEntity` |
+| Glowne tabele SQL | `Orders`, `OrderLines`, `OrderStatusHistory`, `OrderSagaStates`, `OutboxMessages` |
+| Zalezne tabele SQL | `Products`, `StockTransactions`, `DealerCreditAccounts`, `PaymentRecords` |
+| Glowne DTO | TS/C# `CreateOrderRequest`, `OrderDto`, `ProductDto`, `CreditCheckResponse` |
+| Glowne API odczytu | `GET /catalog/api/products/{id}`, `GET /payments/api/payment/dealers/{dealerId}/credit-check` |
+| Glowne API zapisu | `POST /orders/api/orders`, internal `soft-lock`, internal `outstanding`, payment gateway verify |
+
+## Mapowanie Pol UI Do Danych
+
+| ID pola UI | Etykieta UI | Pole DTO front | Pole DTO backend | Encja/model | Tabela SQL | Kolumna SQL | Odczyt/Zapis | Transformacja | Zrodlo w kodzie |
+|---|---|---|---|---|---|---|---|---|---|
+| `AOS-ORD-CHECKOUT-DATA-001` | Product name | `CartItem.productName` | `CreateOrderLineRequest.ProductName` | `OrderLine.ProductName` | `OrderLines` | `ProductName` | R/W | Front odswieza z `ProductDto.name`; backend trim | `CartStore`, `CheckoutComponent`, `OrderLine.Create`, `OrderDbContext` |
+| `AOS-ORD-CHECKOUT-DATA-002` | SKU | `CartItem.sku` | `CreateOrderLineRequest.Sku` | `OrderLine.Sku` | `OrderLines` | `Sku` | R/W | Backend trim + uppercase | `OrderLine.Create`, `OrderDbContext` |
+| `AOS-ORD-CHECKOUT-DATA-003` | Quantity | `CartItem.quantity` | `CreateOrderLineRequest.Quantity` | `OrderLine.Quantity` | `OrderLines` | `Quantity` | R/W | Front normalizuje do MOQ/stock; backend sprawdza >0 i >= MOQ | `CartStore.normalizeQuantity`, `OrderLine.Create` |
+| `AOS-ORD-CHECKOUT-DATA-004` | Unit price | `CartItem.unitPrice` | `CreateOrderLineRequest.UnitPrice` | `OrderLine.UnitPrice` | `OrderLines` | `UnitPrice` | R/W | Front odswieza z Catalog; backend wymaga >0 | `CheckoutComponent`, `OrderLine.Create` |
+| `AOS-ORD-CHECKOUT-DATA-005` | Line total | `CartItem.lineTotal` | `OrderLineDto.LineTotal` | `OrderLine.LineTotal` | Brak kolumny | Brak kolumny | Computed | `UnitPrice * Quantity`; EF `Ignore(x => x.LineTotal)` | `CartStore`, `OrderLine`, `OrderDbContext` |
+| `AOS-ORD-CHECKOUT-DATA-006` | Total | `cartStore.total()` | `OrderDto.TotalAmount` | `OrderAggregate.TotalAmount` | `Orders` | `TotalAmount` | R/W | Backend liczy z linii po `AddLine` | `CartStore`, `OrderAggregate.AddLine` |
+| `AOS-ORD-CHECKOUT-DATA-007` | Payment method | `paymentMode` | `CreateOrderRequest.PaymentMode` | `OrderAggregate.PaymentMode` | `Orders` | `PaymentMode` | R/W | Enum jako string w DB | `CheckoutComponent`, `OrderDbContext` |
+| `AOS-ORD-CHECKOUT-DATA-008` | Credit info | `CreditCheckResponse.*` | `CreditCheckResponse.*` | `DealerCreditAccount` | `DealerCreditAccounts` | `CreditLimit`, `CurrentOutstanding` | R/W | `AvailableCredit` computed, brak kolumny | `PaymentInvoiceService.CheckCreditAsync`, `PaymentInvoiceDbContext` |
+| `AOS-ORD-CHECKOUT-DATA-009` | Order status after create | n/a | `OrderDto.Status` | `OrderAggregate.Status` | `Orders` | `Status` | W | `Processing` gdy credit approved, `OnHold` gdy failed | `OrderService.CreateOrderAsync` |
+| `AOS-ORD-CHECKOUT-DATA-010` | Product availability | `ProductDto.availableStock` | n/a | `Product.AvailableStock` | Brak kolumny | Brak kolumny | Computed | `TotalStock - ReservedStock` | `Product`, `CatalogInventoryDbContext` |
+| `AOS-ORD-CHECKOUT-DATA-011` | Reserved stock | n/a | `SoftLockStockRequest.Quantity` | `Product.ReservedStock` | `Products` | `ReservedStock` | W | `ReservedStock += quantity` | `CatalogInventoryService.SoftLockStockAsync` |
+
+## Odczyt Danych
+
+| Krok | Zrodlo | Operacja | Filtry | Sortowanie | Paginacja | Wynik |
+|---|---|---|---|---|---|---|
+| 1 | `localStorage sc_cart` | Read | Brak | Brak | Brak | `CartItem[]` |
+| 2 | Catalog API | `GET /catalog/api/products/{id}` | `ProductId` | Brak | Brak | `ProductDto` |
+| 3 | Payment API UI | `GET /payments/api/payment/dealers/{dealerId}/credit-check?amount=...` | `DealerId`, `amount` | Brak | Brak | `CreditCheckResponse` |
+| 4 | Payment internal | `GET /api/payment/internal/dealers/{dealerId}/credit-check?amount=...` | `DealerId`, `amount` | Brak | Brak | `CreditCheckResult` |
+
+## Zapis Danych
+
+| Akcja | API | DTO wejscia | Encja/model | Tabela SQL | Kolumny SQL zapisywane | Transakcja | Efekty uboczne |
+|---|---|---|---|---|---|---|---|
+| `AOS-ORD-CHECKOUT-ACT-003` | `POST /orders/api/orders` | `CreateOrderRequest` | `OrderAggregate` | `Orders` | `OrderId`, `OrderNumber`, `DealerId`, `Status`, `TotalAmount`, `CreditHoldStatus`, `PaymentMode`, `PlacedAtUtc`, `CancellationReason` | `SaveChangesAsync` w Order DB | outbox, saga |
+| `AOS-ORD-CHECKOUT-ACT-003` | `POST /orders/api/orders` | `CreateOrderRequest.Lines[]` | `OrderLine` | `OrderLines` | `OrderLineId`, `OrderId`, `ProductId`, `ProductName`, `Sku`, `Quantity`, `UnitPrice` | razem z order | `LineTotal` nie jest kolumna |
+| `AOS-ORD-CHECKOUT-ACT-003` | `POST /orders/api/orders` | status transition | `OrderStatusHistory` | `OrderStatusHistory` | `HistoryId`, `OrderId`, `FromStatus`, `ToStatus`, `ChangedByUserId`, `ChangedByRole`, `ChangedAtUtc` | razem z order | Dla credit approved powstaje `Placed -> Processing`; dla `MarkCreditHold` brak historii |
+| `AOS-ORD-CHECKOUT-ACT-003` | internal soft-lock | `SoftLockStockRequest` | `Product` | `Products` | `ReservedStock`, `UpdatedAtUtc` | osobne `SaveChangesAsync` w Catalog DB | cache + outbox |
+| `AOS-ORD-CHECKOUT-ACT-003` | internal soft-lock | `SoftLockStockRequest` | `StockTransaction` | `StockTransactions` | `TxId`, `ProductId`, `TransactionType`, `Quantity`, `ReferenceId`, `CreatedAtUtc` | razem z Product | `TransactionType=SoftLock`, `ReferenceId=orderId:N` |
+| `AOS-ORD-CHECKOUT-ACT-003` | Order outbox | object payload | `OutboxMessage` | `OutboxMessages` w Order DB | `MessageId`, `EventType`, `Payload`, `Status`, `CreatedAtUtc`, `PublishedAtUtc`, `RetryCount`, `Error` | razem z order | `OrderPlaced` albo `AdminApprovalRequired` |
+| `AOS-ORD-CHECKOUT-ACT-003` | Saga | n/a | `OrderSagaStateEntity` | `OrderSagaStates` | `OrderId`, `OrderNumber`, `DealerId`, `CurrentState`, `StartedAtUtc`, `UpdatedAtUtc`, `CompletedAtUtc`, `LastMessage` | osobne save w saga coordinator | Stan finalny approved/awaiting manual |
+| `AOS-ORD-CHECKOUT-ACT-003` | internal add outstanding | `AddOutstandingRequest` | `DealerCreditAccount` | `DealerCreditAccounts` | `CurrentOutstanding`; ewentualnie nowy `AccountId`, `DealerId`, `CreditLimit` | Payment DB | tylko gdy credit approved |
+| `AOS-ORD-CHECKOUT-ACT-003` | internal add outstanding | `AddOutstandingRequest` | `PaymentRecord` | `PaymentRecords` | `PaymentRecordId`, `OrderId`, `DealerId`, `PaymentMode`, `Amount`, `ReferenceNo`, `CreatedAtUtc` | Payment DB | idempotencja po `OrderId` w repository/service |
+
+## Dane Wyliczane
+
+| Pole | Formula / logika | Gdzie liczona | Czy zapisywana w DB | Testy |
+|---|---|---|---|---|
+| `CartItem.lineTotal` | `quantity * unitPrice` | `CartStore` | Nie | UI/unit suggested |
+| `OrderLine.LineTotal` | `UnitPrice * Quantity` | Domain getter | Nie, EF ignore | backend unit suggested |
+| `OrderAggregate.TotalAmount` | suma `Lines.LineTotal` po dodaniu linii | `OrderAggregate.AddLine()` | Tak, `Orders.TotalAmount` | backend unit/integration suggested |
+| `Product.AvailableStock` | `TotalStock - ReservedStock` | Domain getter | Nie, EF ignore | Catalog unit suggested |
+| `DealerCreditAccount.AvailableCredit` | `CreditLimit - CurrentOutstanding` | Domain getter | Nie, EF ignore | Payment unit/API suggested |
+
+## Slowniki I Enumy
+
+| Nazwa | Wartosc | Znaczenie biznesowe | Backend enum | Frontend enum | Wplyw na UI |
+|---|---|---|---|---|---|
+| `PaymentMode` | `0/COD` | Platnosc przy odbiorze | `Order.Domain.Enums.PaymentMode`, `PaymentInvoice.Domain.Enums.PaymentMode` | `PaymentMode.COD` | Radio `Cash on Delivery` |
+| `PaymentMode` | `1/PrePaid` | PrePaid/credit/gateway flow | j.w. | `PaymentMode.PrePaid` | Radio `Credit (PrePaid)`, credit info i Razorpay |
+| `OrderStatus` | `Placed` | Status startowy agregatu | `OrderStatus.Placed` | `OrderStatus.Placed` | Nie widoczny po sukcesie checkout, bo zwykle zmienia sie dalej |
+| `OrderStatus` | `Processing` | Credit approved | `OrderStatus.Processing` | `OrderStatus.Processing` | Szczegoly zamowienia/lista |
+| `OrderStatus` | `OnHold` | Credit failed/manual approval | `OrderStatus.OnHold` | `OrderStatus.OnHold` | Szczegoly zamowienia/lista |
+| `CreditHoldStatus` | `Approved` | Credit approved | `CreditHoldStatus.Approved` | `CreditHoldStatus.Approved` | Szczegoly zamowienia |
+| `CreditHoldStatus` | `PendingApproval` | Wymaga decyzji admina | `CreditHoldStatus.PendingApproval` | `CreditHoldStatus.PendingApproval` | Szczegoly/lista/admin |
+
+## Retencja, Historia I Audyt
+
+| Dane | Czy jest historia | Gdzie | Co pozwala odtworzyc |
+|---|---|---|---|
+| Status orderu | Czescowo | `OrderStatusHistory` | Zmiany przez `TransitionTo`; brak wpisu dla `MarkCreditHold()` |
+| Eventy orderu | Tak | `OutboxMessages` w Order DB | Event `OrderPlaced` albo `AdminApprovalRequired` z payload JSON |
+| Rezerwacja stocku | Tak | `StockTransactions`, `OutboxMessages` w Catalog DB | Soft-lock per product/order |
+| Saga | Tak, stan aktualny | `OrderSagaStates` | Ostatni stan i komunikat, nie pelna historia |
+| Payment/gateway verify | Tak | `PaymentRecords`, `OutboxMessages` w Payment DB | Payment captured/failed; przy verify `OrderId` w PaymentRecord = `Guid.Empty` |
+
+## Luki Danych
+
+| Luka | Objaw | Wplyw | Rekomendacja |
+|---|---|---|---|
+| Backend ufa `ProductName`, `Sku`, `UnitPrice` z requestu. | Brak backendowego pobrania produktu przed zapisem `OrderLine`. | Ryzyko manipulacji wartoscia zamowienia. | Backend powinien pobierac cene/SKU z Catalog albo miec podpisany koszyk. |
+| `idempotencyKey` nie jest uzywany w Order create. | Request ma pole, ale brak widocznej idempotencji. | Ryzyko duplikatow. | Wlaczyc `IIdempotentRequest`/store albo unikalny klucz w DB. |
+| `CartItem.note` nie jest zapisywane. | Notatka widoczna w UI, brak pola w DTO/DB. | Utrata danych z koszyka. | Dodac pole do `CreateOrderLineRequest`, `OrderLine`, migracji i UI. |
+| Brak historii dla `Placed -> OnHold`. | `MarkCreditHold()` ustawia status bez `OrderStatusHistory`. | Niepelny audyt procesu credit hold. | Rozwazyc transition z historia albo osobny event history. |

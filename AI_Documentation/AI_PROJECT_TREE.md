@@ -1,6 +1,6 @@
 ﻿# AI Project Tree
 
-Wygenerowano: 2026-05-30 17:33:39 UTC
+Wygenerowano: 2026-05-30 21:20:28 UTC
 
 Tryb: bez zaleznosci i artefaktow build/cache; uzyj -IncludeDependencies, gdy potrzebny jest pelny vendor tree.
 
@@ -17,6 +17,19 @@ B2B-supply-chain/
 |   |-- Collect-CodeFacts.ps1
 |   +-- Generate-ProjectTree.ps1
 |-- AI_Documentation/
+|   |-- AOS/
+|   |   +-- orders/
+|   |       +-- checkout-create-order/
+|   |           |-- 00_SCREEN_OVERVIEW.md
+|   |           |-- 01_UI_FIELDS_AND_LAYOUT.md
+|   |           |-- 02_ACTIONS_AND_PROCESS_TRACE.md
+|   |           |-- 03_API_AND_CONTRACTS.md
+|   |           |-- 04_DATA_LINEAGE.md
+|   |           |-- 05_RULES_VALIDATIONS_ERRORS.md
+|   |           |-- 06_TEST_MATRIX.md
+|   |           |-- 07_DEV_AI_NAVIGATION.md
+|   |           |-- 08_REQUIREMENTS_TRACEABILITY.md
+|   |           +-- 09_CHANGELOG_REVIEW_GATE.md
 |   |-- AOS_Template/
 |   |   |-- AI_AOS_00_INDEX.md
 |   |   |-- AI_AOS_01_SCREEN_OVERVIEW_TEMPLATE.md
