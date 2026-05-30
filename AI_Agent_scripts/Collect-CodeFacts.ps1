@@ -1,6 +1,6 @@
 param(
     [string]$Root = (Resolve-Path -LiteralPath "$PSScriptRoot\..").Path,
-    [string]$OutputPath = (Join-Path (Resolve-Path -LiteralPath "$PSScriptRoot\..").Path "AI_CODE_FACTS.json")
+    [string]$OutputPath = (Join-Path (Resolve-Path -LiteralPath "$PSScriptRoot\..\AI_Documentation").Path "AI_CODE_FACTS.json")
 )
 
 $ErrorActionPreference = "Stop"

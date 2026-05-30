@@ -1,6 +1,6 @@
 param(
     [string]$Root = (Resolve-Path -LiteralPath "$PSScriptRoot\..").Path,
-    [string]$OutputPath = (Join-Path (Resolve-Path -LiteralPath "$PSScriptRoot\..").Path "AI_PROJECT_TREE.md"),
+    [string]$OutputPath = (Join-Path (Resolve-Path -LiteralPath "$PSScriptRoot\..\AI_Documentation").Path "AI_PROJECT_TREE.md"),
     [switch]$IncludeDependencies,
     [int]$MaxDepth = 0
 )

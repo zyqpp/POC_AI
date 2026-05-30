@@ -1,6 +1,6 @@
 ﻿# AI Project Tree
 
-Wygenerowano: 2026-05-30 16:24:51 UTC
+Wygenerowano: 2026-05-30 17:10:44 UTC
 
 Tryb: bez zaleznosci i artefaktow build/cache; uzyj -IncludeDependencies, gdy potrzebny jest pelny vendor tree.
 
@@ -16,6 +16,17 @@ B2B-supply-chain/
 |-- AI_Agent_scripts/
 |   |-- Collect-CodeFacts.ps1
 |   +-- Generate-ProjectTree.ps1
+|-- AI_Documentation/
+|   |-- AI_API_INVENTORY.md
+|   |-- AI_ARCHITECTURE_HLD.md
+|   |-- AI_CODE_FACTS.json
+|   |-- AI_CODE_NAVIGATION_GUIDE.md
+|   |-- AI_DATA_MODEL.md
+|   |-- AI_DOCUMENTATION_INDEX.md
+|   |-- AI_DOCUMENTATION_RECOMMENDATIONS.md
+|   |-- AI_DTO_MODELS.md
+|   |-- AI_PROJECT_TREE.md
+|   +-- AI_TECH_STACK.md
 |-- gateway/
 |   +-- OcelotGateway/
 |       |-- Properties/
@@ -676,15 +687,6 @@ B2B-supply-chain/
 |-- .editorconfig
 |-- .env.example
 |-- .gitignore
-|-- AI_API_INVENTORY.md
-|-- AI_ARCHITECTURE_HLD.md
-|-- AI_CODE_FACTS.json
-|-- AI_CODE_NAVIGATION_GUIDE.md
-|-- AI_DATA_MODEL.md
-|-- AI_DOCUMENTATION_RECOMMENDATIONS.md
-|-- AI_DTO_MODELS.md
-|-- AI_PROJECT_TREE.md
-|-- AI_TECH_STACK.md
 |-- docker-compose.override.yml
 |-- docker-compose.yml
 |-- global.json

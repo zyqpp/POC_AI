@@ -1,5 +1,5 @@
 ﻿{
-    "generatedAtUtc":  "2026-05-30T16:24:53.7075290Z",
+    "generatedAtUtc":  "2026-05-30T17:10:47.5333278Z",
     "controllers":  [
                         {
                             "file":  "services/CatalogInventory/CatalogInventory.API/Controllers/InternalInventoryController.cs",
