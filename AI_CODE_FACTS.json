@@ -1,0 +1,827 @@
+﻿{
+    "generatedAtUtc":  "2026-05-30T16:24:53.7075290Z",
+    "controllers":  [
+                        {
+                            "file":  "services/CatalogInventory/CatalogInventory.API/Controllers/InternalInventoryController.cs",
+                            "route":  "api/internal/inventory",
+                            "methods":  [
+                                            {
+                                                "method":  "POST",
+                                                "path":  "soft-lock"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "hard-deduct"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "release-soft-lock"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "restock"
+                                            }
+                                        ]
+                        },
+                        {
+                            "file":  "services/CatalogInventory/CatalogInventory.API/Controllers/InventoryController.cs",
+                            "route":  "api/inventory",
+                            "methods":  [
+                                            {
+                                                "method":  "POST",
+                                                "path":  "soft-lock"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "hard-deduct"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "release-soft-lock"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "subscriptions"
+                                            },
+                                            {
+                                                "method":  "DELETE",
+                                                "path":  "subscriptions"
+                                            }
+                                        ]
+                        },
+                        {
+                            "file":  "services/CatalogInventory/CatalogInventory.API/Controllers/ProductsController.cs",
+                            "route":  "api/products",
+                            "methods":  [
+                                            {
+                                                "method":  "POST",
+                                                "path":  ""
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{id:guid}"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{id:guid}/deactivate"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "{id:guid}/restock"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  ""
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "categories"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "{id:guid}"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "search"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "{id:guid}/stock"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "{id:guid}/reviews"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "{id:guid}/reviews"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "reviews/{reviewId:guid}/approve"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "reviews/{reviewId:guid}/reject"
+                                            }
+                                        ]
+                        },
+                        {
+                            "file":  "services/IdentityAuth/IdentityAuth.API/Controllers/AdminDealersController.cs",
+                            "route":  "api/admin/dealers",
+                            "methods":  [
+                                            {
+                                                "method":  "GET",
+                                                "path":  ""
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "{id:guid}"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{id:guid}/approve"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{id:guid}/reject"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{id:guid}/credit-limit"
+                                            }
+                                        ]
+                        },
+                        {
+                            "file":  "services/IdentityAuth/IdentityAuth.API/Controllers/AdminUsersController.cs",
+                            "route":  "api/admin/users",
+                            "methods":  [
+                                            {
+                                                "method":  "GET",
+                                                "path":  "agents"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "agents"
+                                            }
+                                        ]
+                        },
+                        {
+                            "file":  "services/IdentityAuth/IdentityAuth.API/Controllers/AuthController.cs",
+                            "route":  "api/auth",
+                            "methods":  [
+                                            {
+                                                "method":  "POST",
+                                                "path":  "register"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "login"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "refresh"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "forgot-password"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "reset-password"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "change-password"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "logout"
+                                            }
+                                        ]
+                        },
+                        {
+                            "file":  "services/IdentityAuth/IdentityAuth.API/Controllers/InternalUsersController.cs",
+                            "route":  "api/internal/users",
+                            "methods":  {
+                                            "method":  "GET",
+                                            "path":  "{id:guid}/contact"
+                                        }
+                        },
+                        {
+                            "file":  "services/IdentityAuth/IdentityAuth.API/Controllers/UsersController.cs",
+                            "route":  "api/users",
+                            "methods":  {
+                                            "method":  "GET",
+                                            "path":  "profile"
+                                        }
+                        },
+                        {
+                            "file":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs",
+                            "route":  "api/logistics/shipments",
+                            "methods":  [
+                                            {
+                                                "method":  "POST",
+                                                "path":  ""
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "{shipmentId:guid}"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "my"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  ""
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "assigned"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{shipmentId:guid}/assign-agent"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{shipmentId:guid}/assignment/accept"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{shipmentId:guid}/assignment/reject"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{shipmentId:guid}/agent-rating"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{shipmentId:guid}/assign-vehicle"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{shipmentId:guid}/status"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "{shipmentId:guid}/ops-state"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "ops-states/batch"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{shipmentId:guid}/ops-state"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "chatbot/ask"
+                                            }
+                                        ]
+                        },
+                        {
+                            "file":  "services/Notification/Notification.API/Controllers/NotificationsController.cs",
+                            "route":  "api/notifications",
+                            "methods":  [
+                                            {
+                                                "method":  "POST",
+                                                "path":  "manual"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "ingest"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "my"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  ""
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "{notificationId:guid}"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{notificationId:guid}/sent"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{notificationId:guid}/failed"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{notificationId:guid}/read"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{notificationId:guid}/unread"
+                                            }
+                                        ]
+                        },
+                        {
+                            "file":  "services/Order/Order.API/Controllers/AdminOrdersController.cs",
+                            "route":  "api/admin/orders",
+                            "methods":  [
+                                            {
+                                                "method":  "GET",
+                                                "path":  ""
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "analytics"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "bulk-status"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{id:guid}/approve-hold"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{id:guid}/reject-hold"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{id:guid}/approve-return"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{id:guid}/reject-return"
+                                            }
+                                        ]
+                        },
+                        {
+                            "file":  "services/Order/Order.API/Controllers/OrdersController.cs",
+                            "route":  "api/orders",
+                            "methods":  [
+                                            {
+                                                "method":  "POST",
+                                                "path":  ""
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "my"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "{id:guid}"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "{id:guid}/saga"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "{id:guid}/status"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "{id:guid}/cancel"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "{id:guid}/returns"
+                                            }
+                                        ]
+                        },
+                        {
+                            "file":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs",
+                            "route":  "api/payment",
+                            "methods":  [
+                                            {
+                                                "method":  "POST",
+                                                "path":  "gateway/orders"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "gateway/verify"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "dealers/{dealerId:guid}/account"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "dealers/{dealerId:guid}/credit-check"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "internal/dealers/{dealerId:guid}/credit-check"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "dealers/{dealerId:guid}/credit-limit"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "internal/dealers/{dealerId:guid}/credit-limit"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "dealers/{dealerId:guid}/settlements"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "internal/dealers/{dealerId:guid}/settlements"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "internal/dealers/{dealerId:guid}/outstanding"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "invoices"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "invoices/{invoiceId:guid}"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "dealers/{dealerId:guid}/invoices"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "invoices/{invoiceId:guid}/workflow"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "dealers/{dealerId:guid}/invoice-workflows"
+                                            },
+                                            {
+                                                "method":  "PUT",
+                                                "path":  "invoices/{invoiceId:guid}/workflow"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "invoices/{invoiceId:guid}/workflow-activities"
+                                            },
+                                            {
+                                                "method":  "POST",
+                                                "path":  "invoices/{invoiceId:guid}/workflow-activities"
+                                            },
+                                            {
+                                                "method":  "GET",
+                                                "path":  "invoices/{invoiceId:guid}/download"
+                                            }
+                                        ]
+                        }
+                    ],
+    "dtos":  [
+                 {
+                     "file":  "services/CatalogInventory/CatalogInventory.Application/DTOs/CatalogDtos.cs",
+                     "records":  [
+                                     "CreateProductRequest",
+                                     "UpdateProductRequest",
+                                     "RestockProductRequest",
+                                     "SoftLockStockRequest",
+                                     "HardDeductStockRequest",
+                                     "ReleaseSoftLockRequest",
+                                     "StockSubscriptionRequest",
+                                     "ProductDto",
+                                     "CreateProductReviewRequest",
+                                     "ModerateProductReviewRequest",
+                                     "ProductReviewDto",
+                                     "ProductListItemDto",
+                                     "CategoryDto",
+                                     "StockLevelDto",
+                                     "PagedResult"
+                                 ]
+                 },
+                 {
+                     "file":  "services/IdentityAuth/IdentityAuth.Application/DTOs/AuthDtos.cs",
+                     "records":  [
+                                     "RegisterDealerRequest",
+                                     "RegisterDealerResponse",
+                                     "LoginRequest",
+                                     "AuthResponse",
+                                     "CreateAgentRequest",
+                                     "CreateAgentResponse",
+                                     "AgentSummaryDto",
+                                     "ForgotPasswordRequest",
+                                     "ResetPasswordRequest",
+                                     "ChangePasswordRequest",
+                                     "LogoutRequest",
+                                     "RejectDealerRequest",
+                                     "UpdateCreditLimitRequest",
+                                     "DealerSummaryDto",
+                                     "DealerDetailDto",
+                                     "UserProfileDto",
+                                     "InternalUserContactDto",
+                                     "PagedResult",
+                                     "CreditLimitUpdateResult"
+                                 ]
+                 },
+                 {
+                     "file":  "services/LogisticsTracking/LogisticsTracking.Application/DTOs/LogisticsDtos.cs",
+                     "records":  [
+                                     "CreateShipmentRequest",
+                                     "AssignAgentRequest",
+                                     "AssignVehicleRequest",
+                                     "RejectAssignmentRequest",
+                                     "RateDeliveryAgentRequest",
+                                     "UpdateShipmentStatusRequest",
+                                     "ShipmentEventDto",
+                                     "ShipmentDto",
+                                     "GetShipmentOpsStatesRequest",
+                                     "UpsertShipmentOpsStateRequest",
+                                     "ShipmentOpsStateDto",
+                                     "LogisticsChatbotRequest",
+                                     "LogisticsChatbotSourceDto",
+                                     "LogisticsChatbotResponseDto"
+                                 ]
+                 },
+                 {
+                     "file":  "services/Notification/Notification.Application/DTOs/NotificationDtos.cs",
+                     "records":  [
+                                     "CreateManualNotificationRequest",
+                                     "IngestIntegrationEventRequest",
+                                     "MarkNotificationFailedRequest",
+                                     "NotificationDto"
+                                 ]
+                 },
+                 {
+                     "file":  "services/Order/Order.Application/DTOs/OrderDtos.cs",
+                     "records":  [
+                                     "CreateOrderLineRequest",
+                                     "CreateOrderRequest",
+                                     "CancelOrderRequest",
+                                     "UpdateOrderStatusRequest",
+                                     "BulkUpdateOrderStatusRequest",
+                                     "BulkOrderStatusItemResultDto",
+                                     "BulkUpdateOrderStatusResultDto",
+                                     "ReturnRequestDto",
+                                     "AdminDecisionRequest",
+                                     "CreditCheckResult",
+                                     "OrderSagaDto",
+                                     "OrderLineDto",
+                                     "OrderStatusHistoryDto",
+                                     "ReturnInfoDto",
+                                     "OrderDto",
+                                     "OrderListItemDto",
+                                     "DealerPurchaseStatDto",
+                                     "ProductPurchaseStatDto",
+                                     "DailyRevenuePointDto",
+                                     "OrderAnalyticsDto",
+                                     "PagedResult"
+                                 ]
+                 },
+                 {
+                     "file":  "services/PaymentInvoice/PaymentInvoice.Application/DTOs/PaymentDtos.cs",
+                     "records":  [
+                                     "CreditCheckResponse",
+                                     "UpdateCreditLimitRequest",
+                                     "SeedDealerAccountRequest",
+                                     "SettleOutstandingRequest",
+                                     "AddOutstandingRequest",
+                                     "InvoiceLineInput",
+                                     "GenerateInvoiceRequest",
+                                     "InvoiceLineDto",
+                                     "InvoiceDto",
+                                     "DealerCreditAccountDto",
+                                     "CreateGatewayOrderRequest",
+                                     "GatewayOrderDto",
+                                     "VerifyGatewayPaymentRequest",
+                                     "GatewayPaymentVerificationDto",
+                                     "UpsertInvoiceWorkflowRequest",
+                                     "InvoiceWorkflowStateDto",
+                                     "AddInvoiceWorkflowActivityRequest",
+                                     "InvoiceWorkflowActivityDto"
+                                 ]
+                 }
+             ],
+    "dbContexts":  [
+                       {
+                           "file":  "services/CatalogInventory/CatalogInventory.Infrastructure/Persistence/CatalogInventoryDbContext.cs",
+                           "dbSets":  [
+                                          {
+                                              "entity":  "Product",
+                                              "property":  "Products"
+                                          },
+                                          {
+                                              "entity":  "Category",
+                                              "property":  "Categories"
+                                          },
+                                          {
+                                              "entity":  "StockTransaction",
+                                              "property":  "StockTransactions"
+                                          },
+                                          {
+                                              "entity":  "StockSubscription",
+                                              "property":  "StockSubscriptions"
+                                          },
+                                          {
+                                              "entity":  "OutboxMessage",
+                                              "property":  "OutboxMessages"
+                                          }
+                                      ],
+                           "tables":  [
+                                          "Categories",
+                                          "OutboxMessages",
+                                          "Products",
+                                          "StockSubscriptions",
+                                          "StockTransactions"
+                                      ]
+                       },
+                       {
+                           "file":  "services/IdentityAuth/IdentityAuth.Infrastructure/Persistence/IdentityAuthDbContext.cs",
+                           "dbSets":  [
+                                          {
+                                              "entity":  "User",
+                                              "property":  "Users"
+                                          },
+                                          {
+                                              "entity":  "DealerProfile",
+                                              "property":  "DealerProfiles"
+                                          },
+                                          {
+                                              "entity":  "RefreshToken",
+                                              "property":  "RefreshTokens"
+                                          },
+                                          {
+                                              "entity":  "OtpRecord",
+                                              "property":  "OtpRecords"
+                                          },
+                                          {
+                                              "entity":  "OutboxMessage",
+                                              "property":  "OutboxMessages"
+                                          }
+                                      ],
+                           "tables":  [
+                                          "DealerProfiles",
+                                          "OtpRecords",
+                                          "OutboxMessages",
+                                          "RefreshTokens",
+                                          "Users"
+                                      ]
+                       },
+                       {
+                           "file":  "services/LogisticsTracking/LogisticsTracking.Infrastructure/Persistence/LogisticsTrackingDbContext.cs",
+                           "dbSets":  [
+                                          {
+                                              "entity":  "Shipment",
+                                              "property":  "Shipments"
+                                          },
+                                          {
+                                              "entity":  "ShipmentEvent",
+                                              "property":  "ShipmentEvents"
+                                          },
+                                          {
+                                              "entity":  "ShipmentOpsState",
+                                              "property":  "ShipmentOpsStates"
+                                          },
+                                          {
+                                              "entity":  "OutboxMessage",
+                                              "property":  "OutboxMessages"
+                                          }
+                                      ],
+                           "tables":  [
+                                          "OutboxMessages",
+                                          "ShipmentEvents",
+                                          "ShipmentOpsStates",
+                                          "Shipments"
+                                      ]
+                       },
+                       {
+                           "file":  "services/Notification/Notification.Infrastructure/Persistence/NotificationDbContext.cs",
+                           "dbSets":  [
+                                          {
+                                              "entity":  "NotificationMessage",
+                                              "property":  "Notifications"
+                                          },
+                                          {
+                                              "entity":  "OutboxMessage",
+                                              "property":  "OutboxMessages"
+                                          }
+                                      ],
+                           "tables":  [
+                                          "Notifications",
+                                          "OutboxMessages"
+                                      ]
+                       },
+                       {
+                           "file":  "services/Order/Order.Infrastructure/Persistence/OrderDbContext.cs",
+                           "dbSets":  [
+                                          {
+                                              "entity":  "OrderAggregate",
+                                              "property":  "Orders"
+                                          },
+                                          {
+                                              "entity":  "OrderLine",
+                                              "property":  "OrderLines"
+                                          },
+                                          {
+                                              "entity":  "OrderStatusHistory",
+                                              "property":  "OrderStatusHistories"
+                                          },
+                                          {
+                                              "entity":  "ReturnRequest",
+                                              "property":  "ReturnRequests"
+                                          },
+                                          {
+                                              "entity":  "OrderSagaStateEntity",
+                                              "property":  "OrderSagaStates"
+                                          },
+                                          {
+                                              "entity":  "OutboxMessage",
+                                              "property":  "OutboxMessages"
+                                          }
+                                      ],
+                           "tables":  [
+                                          "OrderLines",
+                                          "Orders",
+                                          "OrderSagaStates",
+                                          "OrderStatusHistory",
+                                          "OutboxMessages",
+                                          "ReturnRequests"
+                                      ]
+                       },
+                       {
+                           "file":  "services/PaymentInvoice/PaymentInvoice.Infrastructure/Persistence/PaymentInvoiceDbContext.cs",
+                           "dbSets":  [
+                                          {
+                                              "entity":  "DealerCreditAccount",
+                                              "property":  "DealerCreditAccounts"
+                                          },
+                                          {
+                                              "entity":  "Invoice",
+                                              "property":  "Invoices"
+                                          },
+                                          {
+                                              "entity":  "InvoiceLine",
+                                              "property":  "InvoiceLines"
+                                          },
+                                          {
+                                              "entity":  "InvoiceWorkflowState",
+                                              "property":  "InvoiceWorkflowStates"
+                                          },
+                                          {
+                                              "entity":  "InvoiceWorkflowActivity",
+                                              "property":  "InvoiceWorkflowActivities"
+                                          },
+                                          {
+                                              "entity":  "PaymentRecord",
+                                              "property":  "PaymentRecords"
+                                          },
+                                          {
+                                              "entity":  "OutboxMessage",
+                                              "property":  "OutboxMessages"
+                                          }
+                                      ],
+                           "tables":  [
+                                          "DealerCreditAccounts",
+                                          "InvoiceLines",
+                                          "Invoices",
+                                          "InvoiceWorkflowActivities",
+                                          "InvoiceWorkflowStates",
+                                          "OutboxMessages",
+                                          "PaymentRecords"
+                                      ]
+                       },
+                       {
+                           "file":  "src/BuildingBlocks/Persistence/IApplicationDbContext.cs",
+                           "dbSets":  [
+
+                                      ],
+                           "tables":  [
+
+                                      ]
+                       }
+                   ],
+    "frontendApis":  [
+                         {
+                             "file":  "supply-chain-frontend/src/app/core/api/admin-api.service.ts",
+                             "paths":  [
+                                           "/identity/api/admin"
+                                       ]
+                         },
+                         {
+                             "file":  "supply-chain-frontend/src/app/core/api/auth-api.service.ts",
+                             "paths":  [
+                                           "/identity/api/auth",
+                                           "/identity/api/users/profile"
+                                       ]
+                         },
+                         {
+                             "file":  "supply-chain-frontend/src/app/core/api/catalog-api.service.ts",
+                             "paths":  [
+                                           "/catalog/api/inventory",
+                                           "/catalog/api/products"
+                                       ]
+                         },
+                         {
+                             "file":  "supply-chain-frontend/src/app/core/api/logistics-api.service.ts",
+                             "paths":  [
+                                           "/logistics/api/logistics/shipments"
+                                       ]
+                         },
+                         {
+                             "file":  "supply-chain-frontend/src/app/core/api/notification-api.service.ts",
+                             "paths":  [
+                                           "/notifications/api/notifications"
+                                       ]
+                         },
+                         {
+                             "file":  "supply-chain-frontend/src/app/core/api/order-api.service.ts",
+                             "paths":  [
+                                           "/orders/api/admin/orders",
+                                           "/orders/api/orders"
+                                       ]
+                         },
+                         {
+                             "file":  "supply-chain-frontend/src/app/core/api/payment-api.service.ts",
+                             "paths":  [
+                                           "/payments/api/payment"
+                                       ]
+                         }
+                     ]
+}

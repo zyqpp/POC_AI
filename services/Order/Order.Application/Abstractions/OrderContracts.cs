@@ -1,0 +1,60 @@
+using Order.Application.DTOs;
+using Order.Domain.Entities;
+using Order.Domain.Enums;
+
+namespace Order.Application.Abstractions;
+
+public interface IOrderService
+{
+    Task<OrderDto> CreateOrderAsync(Guid dealerId, CreateOrderRequest request, CancellationToken cancellationToken);
+    Task<OrderDto?> GetOrderAsync(Guid orderId, Guid requesterUserId, string requesterRole, CancellationToken cancellationToken);
+    Task<PagedResult<OrderListItemDto>> GetDealerOrdersAsync(Guid dealerId, int page, int pageSize, CancellationToken cancellationToken);
+    Task<PagedResult<OrderListItemDto>> GetAllOrdersAsync(int page, int pageSize, int? status, CancellationToken cancellationToken);
+    Task<OrderAnalyticsDto> GetOrderAnalyticsAsync(int days, int top, CancellationToken cancellationToken);
+    Task<bool> UpdateOrderStatusAsync(Guid orderId, OrderStatus newStatus, Guid changedByUserId, string changedByRole, CancellationToken cancellationToken);
+    Task<BulkUpdateOrderStatusResultDto> BulkUpdateOrderStatusAsync(BulkUpdateOrderStatusRequest request, Guid changedByUserId, string changedByRole, CancellationToken cancellationToken);
+    Task<bool> CancelOrderAsync(Guid orderId, string reason, Guid changedByUserId, string changedByRole, CancellationToken cancellationToken);
+    Task<bool> ApproveOnHoldAsync(Guid orderId, Guid adminUserId, CancellationToken cancellationToken);
+    Task<bool> RejectOnHoldAsync(Guid orderId, string reason, Guid adminUserId, CancellationToken cancellationToken);
+    Task<bool> RequestReturnAsync(Guid orderId, Guid dealerId, string reason, CancellationToken cancellationToken);
+    Task<bool> ApproveReturnAsync(Guid orderId, Guid adminUserId, CancellationToken cancellationToken);
+    Task<bool> RejectReturnAsync(Guid orderId, string reason, Guid adminUserId, CancellationToken cancellationToken);
+}
+
+public interface IOrderRepository
+{
+    Task AddOrderAsync(OrderAggregate order, CancellationToken cancellationToken);
+    Task<OrderAggregate?> GetOrderByIdAsync(Guid orderId, CancellationToken cancellationToken);
+    Task<IReadOnlyList<OrderAggregate>> GetOrdersByIdsAsync(IReadOnlyCollection<Guid> orderIds, CancellationToken cancellationToken);
+    Task<(IReadOnlyList<OrderAggregate> Items, int TotalCount)> GetDealerOrdersAsync(Guid dealerId, int page, int pageSize, CancellationToken cancellationToken);
+    Task<(IReadOnlyList<OrderAggregate> Items, int TotalCount)> GetAllOrdersAsync(int page, int pageSize, int? status, CancellationToken cancellationToken);
+    Task<OrderAnalyticsDto> GetOrderAnalyticsAsync(DateTime fromUtc, int top, CancellationToken cancellationToken);
+    Task AddOutboxMessageAsync(string eventType, object payload, CancellationToken cancellationToken);
+    Task SaveChangesAsync(CancellationToken cancellationToken);
+}
+
+public interface ICreditCheckGateway
+{
+    Task<CreditCheckResult> CheckCreditAsync(Guid dealerId, decimal amount, CancellationToken cancellationToken);
+    Task<bool> AddOutstandingAsync(Guid dealerId, Guid orderId, decimal amount, PaymentMode paymentMode, string? referenceNo, CancellationToken cancellationToken);
+    Task<bool> SettleOutstandingAsync(Guid dealerId, decimal amount, string referenceNo, CancellationToken cancellationToken);
+}
+
+public interface IInventoryGateway
+{
+    Task<bool> SoftLockStockAsync(Guid orderId, Guid productId, int quantity, CancellationToken cancellationToken);
+    Task<bool> HardDeductStockAsync(Guid orderId, Guid productId, int quantity, CancellationToken cancellationToken);
+    Task<bool> ReleaseSoftLockAsync(Guid orderId, Guid productId, CancellationToken cancellationToken);
+    Task<bool> RestockStockAsync(Guid orderId, Guid productId, int quantity, string referenceId, CancellationToken cancellationToken);
+}
+
+public interface IOrderSagaCoordinator
+{
+    Task StartAsync(Guid orderId, string orderNumber, Guid dealerId, CancellationToken cancellationToken = default);
+    Task MarkCreditCheckInProgressAsync(Guid orderId, CancellationToken cancellationToken = default);
+    Task MarkAwaitingManualApprovalAsync(Guid orderId, string? message, CancellationToken cancellationToken = default);
+    Task MarkCompletedApprovedAsync(Guid orderId, string? message, CancellationToken cancellationToken = default);
+    Task MarkCompletedRejectedAsync(Guid orderId, string? message, CancellationToken cancellationToken = default);
+    Task MarkCompletedCancelledAsync(Guid orderId, string? message, CancellationToken cancellationToken = default);
+    Task<OrderSagaDto?> GetAsync(Guid orderId, CancellationToken cancellationToken = default);
+}
