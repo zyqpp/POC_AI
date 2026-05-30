@@ -1,8 +1,8 @@
-# AOS Test Matrix Template
+﻿# AOS Test Matrix Template
 
 ## Cel Pliku
 
-Ten plik przeklada AOS na testy: manualne, automaty frontendu, testy API/backend i testy regresji. Kazdy test powinien wskazywac wymaganie, akcje, dane i oczekiwany rezultat.
+Ten plik przeklada AOS na testy: manualne, automaty frontendu, testy API/backend i testy regresji. Każdy test powinien wskazywac wymaganie, akcje, dane i oczekiwany rezultat.
 
 ## Zakres Testow
 
@@ -17,13 +17,13 @@ Ten plik przeklada AOS na testy: manualne, automaty frontendu, testy API/backend
 
 ## Dane Testowe
 
-| ID danych | Rola | Stan poczatkowy | Jak przygotowac | Jak posprzatac |
+| ID danych | Rola | Stan poczatkowy | Jak przygotować | Jak posprzatac |
 |---|---|---|---|---|
 | `AOS-<MOD>-<SCREEN>-DATASET-001` | `<rola>` | `<rekordy/statusy>` | `<seed/API/SQL>` | `<rollback/API>` |
 
 ## Scenariusze Manualne
 
-| ID testu | Priorytet | Rola | Warunek poczatkowy | Kroki | Oczekiwany wynik | Powiazane ID |
+| ID testu | Priorytet | Rola | Warunek poczatkowy | Kroki | Oczekiwany wynik | Powiązane ID |
 |---|---|---|---|---|---|---|
 | `AOS-<MOD>-<SCREEN>-TC-001` | `P1/P2/P3` | `<rola>` | `<stan>` | `<kroki>` | `<wynik>` | `<UC/ACT/RULE/API>` |
 
@@ -31,7 +31,7 @@ Ten plik przeklada AOS na testy: manualne, automaty frontendu, testy API/backend
 
 | ID testu | Selektor / cel UI | Akcja | Mock/API live | Asercje | Ryzyka stabilnosci |
 |---|---|---|---|---|---|
-| `AOS-<MOD>-<SCREEN>-E2E-001` | `<selector>` | `<klik/wpisz>` | `<mock/live>` | `<co sprawdzic>` | `<brak selectorow/data-testid>` |
+| `AOS-<MOD>-<SCREEN>-E2E-001` | `<selector>` | `<klik/wpisz>` | `<mock/live>` | `<co sprawdzić>` | `<brak selektorów/data-testid>` |
 
 ## Testy API
 
@@ -41,7 +41,7 @@ Ten plik przeklada AOS na testy: manualne, automaty frontendu, testy API/backend
 
 ## Testy Backend / Domenowe
 
-| ID testu | Klasa/metoda | Warunek | Asercja | Typ testu |
+| ID testu | Klasą/metoda | Warunek | Asercja | Typ testu |
 |---|---|---|---|---|
 | `AOS-<MOD>-<SCREEN>-DOM-TC-001` | `<Entity/Service>` | `<input>` | `<expected>` | `<unit/integration>` |
 
@@ -49,13 +49,13 @@ Ten plik przeklada AOS na testy: manualne, automaty frontendu, testy API/backend
 
 | Zmiana | Minimalna regresja | Dlaczego |
 |---|---|---|
-| DTO/API | `<testy API + UI>` | `<kontrakt moze peknac>` |
-| Regula statusu | `<testy domenowe + E2E>` | `<proces moze zmienic wynik>` |
+| DTO/API | `<testy API + UI>` | `<kontrakt może peknac>` |
+| Regula statusu | `<testy domenowe + E2E>` | `<proces może zmienić wynik>` |
 | Pole UI | `<test UI + data lineage>` | `<ryzyko zlego mapowania>` |
 
 ## Macierz Pokrycia
 
-| Wymaganie / akcja / regula | Test manualny | Test UI auto | Test API | Test backend |
+| Wymaganie / akcja / reguła | Test manualny | Test UI auto | Test API | Test backend |
 |---|---|---|---|---|
 | `<ACT/RULE/API ID>` | `<TC>` | `<E2E>` | `<API-TC>` | `<DOM-TC>` |
 
@@ -63,4 +63,4 @@ Ten plik przeklada AOS na testy: manualne, automaty frontendu, testy API/backend
 
 | Luka | Ryzyko | Rekomendowany test |
 |---|---|---|
-| `<brak testu>` | `<co moze sie popsuc>` | `<jaki test dodac>` |
+| `<brak testu>` | `<co może się popsuc>` | `<jaki test dodać>` |

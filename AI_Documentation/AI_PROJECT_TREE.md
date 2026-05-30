@@ -1,8 +1,8 @@
-﻿# AI Project Tree
+# AI Project Tree
 
-Wygenerowano: 2026-05-30 21:20:28 UTC
+Wygenerowano: 2026-05-30 22:00:46 UTC
 
-Tryb: bez zaleznosci i artefaktow build/cache; uzyj -IncludeDependencies, gdy potrzebny jest pelny vendor tree.
+Tryb: bez zależności i artefaktów build/cache; użyj -IncludeDependencies, gdy potrzebny jest pełny vendor tree.
 
 ~~~text
 B2B-supply-chain/
@@ -15,7 +15,9 @@ B2B-supply-chain/
 |   +-- tasks.json
 |-- AI_Agent_scripts/
 |   |-- Collect-CodeFacts.ps1
-|   +-- Generate-ProjectTree.ps1
+|   |-- Export-AosTraceFacts.ps1
+|   |-- Generate-ProjectTree.ps1
+|   +-- New-AosScaffold.ps1
 |-- AI_Documentation/
 |   |-- AOS/
 |   |   +-- orders/
@@ -42,6 +44,9 @@ B2B-supply-chain/
 |   |   |-- AI_AOS_08_DEV_AI_NAVIGATION_TEMPLATE.md
 |   |   |-- AI_AOS_09_REQUIREMENTS_TRACEABILITY_TEMPLATE.md
 |   |   +-- AI_AOS_10_CHANGELOG_REVIEW_GATE_TEMPLATE.md
+|   |-- AI_AOS_AUTOMATION.md
+|   |-- AI_AOS_TRACE_FACTS.json
+|   |-- AI_AOS_TRACE_REPORT.md
 |   |-- AI_API_INVENTORY.md
 |   |-- AI_ARCHITECTURE_HLD.md
 |   |-- AI_CODE_FACTS.json
@@ -712,6 +717,7 @@ B2B-supply-chain/
 |-- .editorconfig
 |-- .env.example
 |-- .gitignore
+|-- AGENTS.md
 |-- docker-compose.override.yml
 |-- docker-compose.yml
 |-- global.json
@@ -720,4 +726,3 @@ B2B-supply-chain/
 |-- start-backend.ps1
 +-- SupplyChainPlatform.slnx
 ~~~
-

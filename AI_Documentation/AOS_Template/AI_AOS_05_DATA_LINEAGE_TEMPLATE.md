@@ -1,35 +1,35 @@
-# AOS Data Lineage Template
+﻿# AOS Data Lineage Template
 
 ## Cel Pliku
 
-Ten plik pokazuje skad ekran bierze dane, jak sa transformowane i gdzie sa zapisywane. Dla kazdego istotnego pola trzeba wskazac encje/model, tabele SQL i konkretne kolumny SQL. To jest kluczowy dokument dla analityka, testera danych i developera.
+Ten plik pokazuje skąd ekran bierze dane, jak są transformowane i gdzie są zapisywane. Dla każdego istotnego pola trzeba wskazac encje/model, tabele SQL i konkretne kolumny SQL. To jest kluczowy dokument dla analityka, testera danych i developera.
 
 ## Kontekst Danych
 
 | Obszar | Opis |
 |---|---|
-| Glowne encje | `<np. Order, OrderLine, Shipment>` |
-| Glowne tabele SQL | `<np. Orders, OrderLines>` |
-| Glowne DTO | `<np. OrderDto>` |
-| Glowne API odczytu | `<endpointy>` |
-| Glowne API zapisu | `<endpointy>` |
+| Główne encje | `<np. Order, OrderLine, Shipment>` |
+| Główne tabele SQL | `<np. Orders, OrderLines>` |
+| Główne DTO | `<np. OrderDto>` |
+| Główne API odczytu | `<endpointy>` |
+| Główne API zapisu | `<endpointy>` |
 
-## Mapowanie Pol UI Do Danych
+## Mapowanie Pól UI Do Danych
 
-| ID pola UI | Etykieta UI | Pole DTO front | Pole DTO backend | Encja/model | Tabela SQL | Kolumna SQL | Odczyt/Zapis | Transformacja | Zrodlo w kodzie |
+| ID pola UI | Etykieta UI | Pole DTO front | Pole DTO backend | Encja/model | Tabela SQL | Kolumna SQL | Odczyt/Zapis | Transformacja | Źródło w kodzie |
 |---|---|---|---|---|---|---|---|---|---|
 | `AOS-<MOD>-<SCREEN>-DATA-001` | `<label>` | `<model.field>` | `<Dto.Field>` | `<Entity.Property>` | `<TableName>` | `<ColumnName>` | `<R/W/RW>` | `<format/enum/computed>` | `<component/service/DbContext/migration>` |
 
 ## Odczyt Danych
 
-| Krok | Zrodlo | Operacja | Filtry | Sortowanie | Paginacja | Wynik |
+| Krok | Źródło | Operacja | Filtry | Sortowanie | Paginacja | Wynik |
 |---|---|---|---|---|---|---|
 | 1 | `<API>` | `<GET>` | `<query/role>` | `<field>` | `<page/pageSize>` | `<DTO>` |
 | 2 | `<Repository>` | `<LINQ/query>` | `<where>` | `<order>` | `<skip/take>` | `<entity list>` |
 
 ## Zapis Danych
 
-| Akcja | API | DTO wejscia | Encja/model | Tabela SQL | Kolumny SQL zapisywane | Transakcja | Efekty uboczne |
+| Akcja | API | DTO wejścia | Encja/model | Tabela SQL | Kolumny SQL zapisywane | Transakcja | Efekty uboczne |
 |---|---|---|---|---|---|---|---|
 | `<ACT ID>` | `<endpoint>` | `<request DTO>` | `<Entity>` | `<TableName>` | `<ColumnName, ColumnName>` | `<tak/nie>` | `<event/cache/integracja>` |
 
@@ -39,8 +39,8 @@ Ten plik pokazuje skad ekran bierze dane, jak sa transformowane i gdzie sa zapis
 |---|---|
 | Pole jest odczytywane z tabeli SQL | `<DTO mapper/query/repository>` + `<DbContext/entity config/migration>` |
 | Pole jest zapisywane do kolumny SQL | `<command/service/repository>` + `<encja>` + `<DbContext/entity config/migration>` |
-| Pole jest wyliczane, a nie zapisane | `<mapper/service/domain method>` + potwierdzenie braku kolumny SQL |
-| Zapis dotyka wielu tabel | `<transakcja/unit of work>` + lista tabel i kolumn |
+| Pole jest wyliczane, a nie zapisane | `<mapper/service/domain method>` + potwierdźenie braku kolumny SQL |
+| Zapis dotyka wielu tabel | `<transąkcja/unit of work>` + lista tabel i kolumn |
 | Zmiana jest historyzowana | `<history table/audit/outbox/event>` + kolumny zapisujace stan |
 
 ## Dane Wyliczane
@@ -49,20 +49,20 @@ Ten plik pokazuje skad ekran bierze dane, jak sa transformowane i gdzie sa zapis
 |---|---|---|---|---|
 | `<np. AvailableStock>` | `<TotalStock - ReservedStock>` | `<Entity/DTO mapper>` | `<nie>` | `<TC>` |
 
-## Slowniki I Enumy
+## Słowniki I Enumy
 
-| Nazwa | Wartosc | Znaczenie biznesowe | Backend enum | Frontend enum | Wplyw na UI |
+| Nazwa | Wartość | Znaczenie biznesowe | Backend enum | Frontend enum | Wpływ na UI |
 |---|---|---|---|---|---|
 | `<Status>` | `<value>` | `<opis>` | `<plik>` | `<plik>` | `<badge/akcje>` |
 
 ## Retencja, Historia I Audyt
 
-| Dane | Czy jest historia | Gdzie | Co pozwala odtworzyc |
+| Dane | Czy jest historia | Gdzie | Co pozwala odtworzyć |
 |---|---|---|---|
 | `<np. status orderu>` | `<tak/nie>` | `<OrderStatusHistory>` | `<zmiany statusu>` |
 
 ## Luki Danych
 
-| Luka | Objaw | Wplyw | Rekomendacja |
+| Luka | Objaw | Wpływ | Rekomendacja |
 |---|---|---|---|
-| `<brak pola / brak historii>` | `<co widac>` | `<ryzyko>` | `<co dodac>` |
+| `<brak pola / brak historii>` | `<co widać>` | `<ryzyko>` | `<co dodać>` |

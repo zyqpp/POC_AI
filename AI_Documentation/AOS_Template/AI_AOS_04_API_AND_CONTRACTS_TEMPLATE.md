@@ -1,16 +1,16 @@
-# AOS API And Contracts Template
+﻿# AOS API And Contracts Template
 
 ## Cel Pliku
 
-Ten plik opisuje kontrakty API uzywane przez ekran/funkcje. Ma byc zrodlem dla testerow API, automatyzacji, analityka kontrolujacego dane oraz developera zmieniajacego kontrakt.
+Ten plik opisuje kontrakty API używane przez ekran/funkcje. Ma być źródłem dla testerów API, automatyzacji, analityka kontrolującego dane oraz developera zmieniającego kontrakt.
 
-## Lista Endpointow
+## Lista Endpointów
 
 | ID API | Cel | Front URL | Gateway route | Downstream endpoint | Metoda | Auth/role | Request DTO | Response DTO |
 |---|---|---|---|---|---|---|---|---|
 | `AOS-<MOD>-<SCREEN>-API-001` | `<cel>` | `<np. /orders/api/orders>` | `<ocelot route>` | `<api/orders>` | `<GET/POST>` | `<role>` | `<DTO>` | `<DTO>` |
 
-## Szczegoly Endpointu
+## Szczegóły Endpointu
 
 ### `AOS-<MOD>-<SCREEN>-API-001` - `<METHOD path>`
 
@@ -32,11 +32,11 @@ Ten plik opisuje kontrakty API uzywane przez ekran/funkcje. Ma byc zrodlem dla t
 
 #### Request
 
-| Element | Typ | Wymagane | Zrodlo | Walidacja |
+| Element | Typ | Wymagane | Źródło | Walidacja |
 |---|---|---|---|---|
-| Path param | `<name:type>` | `<tak/nie>` | `<route>` | `<regula>` |
-| Query param | `<name:type>` | `<tak/nie>` | `<controller>` | `<regula>` |
-| Header | `<name>` | `<tak/nie>` | `<gateway/controller>` | `<regula>` |
+| Path param | `<name:type>` | `<tak/nie>` | `<route>` | `<reguła>` |
+| Query param | `<name:type>` | `<tak/nie>` | `<controller>` | `<reguła>` |
+| Header | `<name>` | `<tak/nie>` | `<gateway/controller>` | `<reguła>` |
 | Body | `<DTO>` | `<tak/nie>` | `<DTO file>` | `<validator>` |
 
 #### Request Body Shape
@@ -53,12 +53,12 @@ Ten plik opisuje kontrakty API uzywane przez ekran/funkcje. Ma byc zrodlem dla t
 |---|---|---|---|---|
 | 200 | `<sukces>` | `<DTO>` | `false` | `<uwagi>` |
 | 201 | `<utworzono>` | `<DTO>` | `false` | `<uwagi>` |
-| 400 | `<walidacja>` | `{ code, message, details }` | `false` | `<uwagi>` |
-| 401 | `<brak/niepoprawny token>` | `{ message/code }` | `false` | `<uwagi>` |
+| 400 | `<walidacja>` | `{ code, messąge, details }` | `false` | `<uwagi>` |
+| 401 | `<brak/niepoprawny token>` | `{ messąge/code }` | `false` | `<uwagi>` |
 | 403 | `<brak roli>` | `<body>` | `false` | `<uwagi>` |
 | 404 | `<brak rekordu>` | `<body>` | `false` | `<uwagi>` |
-| 409 | `<konflikt biznesowy>` | `{ code, message }` | `false` | `<uwagi>` |
-| 503/504 | `<zaleznosc niedostepna>` | `{ code, retryable }` | `true` | `<uwagi>` |
+| 409 | `<konflikt biznesowy>` | `{ code, messąge }` | `false` | `<uwagi>` |
+| 503/504 | `<zależność niedostępna>` | `{ code, retryable }` | `true` | `<uwagi>` |
 
 #### Response Body Shape
 
@@ -70,19 +70,19 @@ Ten plik opisuje kontrakty API uzywane przez ekran/funkcje. Ma byc zrodlem dla t
 
 ## Mapowanie DTO Frontend-Backend
 
-| Pole biznesowe | Model TS | DTO backend | Typ TS | Typ C# | Uwagi zgodnosci |
+| Pole biznesowe | Model TS | DTO backend | Typ TS | Typ C# | Uwagi zgodnośći |
 |---|---|---|---|---|---|
-| `<pole>` | `<model.field>` | `<Dto.Field>` | `<typ>` | `<typ>` | `<OK/roznica>` |
+| `<pole>` | `<model.field>` | `<Dto.Field>` | `<typ>` | `<typ>` | `<OK/różnica>` |
 
 ## Kontrakty Bledow
 
-| Kod bledu | HTTP | Kiedy wystepuje | Zrodlo | Komunikat UI |
+| Kod błędu | HTTP | Kiedy wystepuje | Źródło | Komunikat UI |
 |---|---|---|---|---|
 | `<code>` | `<status>` | `<warunek>` | `<middleware/controller>` | `<tekst>` |
 
 ## Kompatybilnosc
 
 - Czy zmiana endpointu jest breaking change: `<tak/nie>`.
-- Wplyw na frontend: `<opis>`.
-- Wplyw na testy automatyczne: `<opis>`.
-- Wplyw na integracje wewnetrzne: `<opis>`.
+- Wpływ na frontend: `<opis>`.
+- Wpływ na testy automatyczne: `<opis>`.
+- Wpływ na integracje wewnętrzne: `<opis>`.

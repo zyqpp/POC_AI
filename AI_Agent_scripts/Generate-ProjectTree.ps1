@@ -1,4 +1,4 @@
-param(
+﻿param(
     [string]$Root = (Resolve-Path -LiteralPath "$PSScriptRoot\..").Path,
     [string]$OutputPath = (Join-Path (Resolve-Path -LiteralPath "$PSScriptRoot\..\AI_Documentation").Path "AI_PROJECT_TREE.md"),
     [switch]$IncludeDependencies,
@@ -57,9 +57,9 @@ $rootInfo = Get-Item -LiteralPath $Root
 $treeLines = @("$($rootInfo.Name)/") + (Write-Tree -Path $rootInfo.FullName)
 $generatedAt = (Get-Date).ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss 'UTC'")
 $dependencyNote = if ($IncludeDependencies) {
-    "Tryb: z zaleznosciami."
+    "Tryb: z zależnościami."
 } else {
-    "Tryb: bez zaleznosci i artefaktow build/cache; uzyj -IncludeDependencies, gdy potrzebny jest pelny vendor tree."
+    "Tryb: bez zależności i artefaktów build/cache; użyj -IncludeDependencies, gdy potrzebny jest pełny vendor tree."
 }
 
 $content = @"
@@ -75,5 +75,6 @@ $($treeLines -join "`r`n")
 
 "@
 
-Set-Content -LiteralPath $OutputPath -Value $content -Encoding UTF8
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllText($OutputPath, $content, $utf8NoBom)
 Write-Host "Wrote $OutputPath"

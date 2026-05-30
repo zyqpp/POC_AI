@@ -1,4 +1,4 @@
-# AI Tech Stack
+﻿# AI Tech Stack
 
 Ten dokument opisuje stos technologiczny ustalony z kodu po usunieciu starej dokumentacji.
 
@@ -6,7 +6,7 @@ Ten dokument opisuje stos technologiczny ustalony z kodu po usunieciu starej dok
 
 - Backend: .NET `net10.0`, C#, ASP.NET Core Web API.
 - SDK wymagany przez `global.json`: `.NET SDK 10.0.104`.
-- Lokalnie w tej maszynie dostepne sa SDK `7.0.400` i `9.0.102`, dlatego backend nie zbuduje sie bez instalacji SDK 10 albo zmiany `global.json` i target frameworkow.
+- Lokalnie w tej maszynie dostępne są SDK `7.0.400` i `9.0.102`, dlatego backend nie zbuduje się bez instalacji SDK 10 albo zmiany `global.json` i target frameworkow.
 - Frontend: Angular `21.2.x`, TypeScript `~5.9.2`, RxJS `~7.8.0`, SSR przez `@angular/ssr` i Express.
 - Node: projekt frontendowy deklaruje `npm@11.5.0`; lokalnie `npm.cmd --version` zwraca `11.6.2`.
 
@@ -27,8 +27,8 @@ Ten dokument opisuje stos technologiczny ustalony z kodu po usunieciu starej dok
 ## Frontend
 
 - Angular standalone routes w `supply-chain-frontend/src/app/app.routes.ts`.
-- Klienci API sa w `supply-chain-frontend/src/app/core/api`.
-- Modele frontendowe sa w `supply-chain-frontend/src/app/core/models`.
+- Klienci API są w `supply-chain-frontend/src/app/core/api`.
+- Modele frontendowe są w `supply-chain-frontend/src/app/core/models`.
 - Globalne interceptory:
   - `auth.interceptor.ts`: dodaje Bearer token poza wybranymi publicznymi URL.
   - `correlation-id.interceptor.ts`: dodaje `X-Correlation-Id` i `Oc-Client` dla gatewaya.
@@ -46,7 +46,7 @@ Ten dokument opisuje stos technologiczny ustalony z kodu po usunieciu starej dok
   - PaymentInvoice: `http://localhost:8005`.
   - Notification: `http://localhost:8006`.
 - Docker Compose uruchamia tylko infrastrukturę pomocniczą: RabbitMQ, Redis, Mailpit.
-- SQL Server nie jest w `docker-compose.yml`; connection stringi sa w `appsettings.json` poszczegolnych serwisow.
+- SQL Server nie jest w `docker-compose.yml`; connection stringi są w `appsettings.json` poszczegolnych serwisow.
 - Payment: Razorpay client w `PaymentInvoice.Infrastructure/PaymentGateway`.
 - E-mail: MailKit/SmtpClient w `Notification.Infrastructure/Email`; appsettings wskazuja SMTP, a compose zapewnia Mailpit.
 - LLM: `LogisticsTracking.Infrastructure/Llm/OpenAiLogisticsChatLlmClient.cs` z fallbackiem na odpowiedz wewnetrzna.
@@ -56,4 +56,4 @@ Ten dokument opisuje stos technologiczny ustalony z kodu po usunieciu starej dok
 - Backend: `dotnet test SupplyChainPlatform.slnx` po zainstalowaniu SDK 10.0.104.
 - Infrastruktura: `docker compose up -d`.
 - Backend lokalnie: `.\start-backend.ps1`.
-- Frontend: w `supply-chain-frontend` uruchomic `npm.cmd ci`, potem `npm.cmd run build` albo `npm.cmd test`.
+- Frontend: w `supply-chain-frontend` uruchomić `npm.cmd ci`, potem `npm.cmd run build` albo `npm.cmd test`.

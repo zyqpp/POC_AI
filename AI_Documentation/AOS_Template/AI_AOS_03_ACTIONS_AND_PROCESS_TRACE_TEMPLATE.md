@@ -1,8 +1,8 @@
-# AOS Actions And Process Trace Template
+﻿# AOS Actions And Process Trace Template
 
 ## Cel Pliku
 
-Ten plik mapuje akcje uzytkownika na rzeczywisty proces systemowy. Dla kazdego przycisku albo operacji trzeba pokazac: co uruchamia frontend, jakie API jest wolane, jaka logika biznesowa dziala, jakie walidacje moga zatrzymac proces i jaki jest finalny skutek w danych.
+Ten plik mapuje akcje użytkownika na rzeczywisty proces systemowy. Dla każdego przycisku albo operacji trzeba pokazać: co uruchamia frontend, jakie API jest wolane, jaka logika biznesowa dziala, jakie walidacje mogą zatrzymac proces i jaki jest finalny skutek w danych.
 
 ## Macierz Akcji
 
@@ -18,9 +18,9 @@ Ten plik mapuje akcje uzytkownika na rzeczywisty proces systemowy. Dla kazdego p
 
 `<Co ta akcja ma osiagnac z perspektywy procesu biznesowego.>`
 
-#### Warunki Dostepnosci W UI
+#### Warunki Dostępnosci W UI
 
-| Warunek | Zrodlo | Co jesli niespelniony |
+| Warunek | Źródło | Co jesli niespelniony |
 |---|---|---|
 | `<rola/status/flaga>` | `<component/store>` | `<ukryty/disabled/error>` |
 
@@ -28,7 +28,7 @@ Ten plik mapuje akcje uzytkownika na rzeczywisty proces systemowy. Dla kazdego p
 
 ```mermaid
 sequenceDiagram
-    participant User as Uzytkownik
+    participant User as Użytkownik
     participant UI as Angular Component
     participant Api as Angular API Service
     participant GW as Ocelot Gateway
@@ -43,29 +43,29 @@ sequenceDiagram
     Ctrl->>App: `<Command/Query>`
     App->>Db: `<odczyt/zapis>`
     Db-->>App: wynik
-    App-->>Ctrl: DTO / blad
+    App-->>Ctrl: DTO / błąd
     Ctrl-->>UI: status HTTP
     UI-->>User: komunikat / zmiana widoku
 ```
 
 #### Kroki Procesu
 
-| Krok | Warstwa | Co sie dzieje | Zrodlo w kodzie | Dane wejscia | Dane wyjscia |
+| Krok | Warstwa | Co się dzieje | Źródło w kodzie | Dane wejścia | Dane wyjścia |
 |---|---|---|---|---|---|
-| 1 | UI | `<walidacja formularza / potwierdzenie>` | `<plik>` | `<dane>` | `<dane>` |
+| 1 | UI | `<walidacja formularza / potwierdźenie>` | `<plik>` | `<dane>` | `<dane>` |
 | 2 | API | `<request>` | `<api service>` | `<DTO>` | `<response>` |
 | 3 | Backend | `<komenda / serwis>` | `<handler/service>` | `<DTO>` | `<entity/result>` |
 | 4 | Persistence | `<zapis/odczyt>` | `<repo/DbContext>` | `<entity>` | `<tabela SQL / kolumny SQL>` |
 
-#### Reguly Biznesowe W Procesie
+#### Reguły Biznesowe W Procesię
 
-| ID reguly | Opis | Gdzie egzekwowana | Blad gdy naruszona |
+| ID reguły | Opis | Gdzie egzekwowana | Blad gdy naruszona |
 |---|---|---|---|
-| `AOS-<MOD>-<SCREEN>-RULE-001` | `<regula>` | `<validator/domain/service>` | `<kod/komunikat>` |
+| `AOS-<MOD>-<SCREEN>-RULE-001` | `<reguła>` | `<validator/domain/service>` | `<kod/komunikat>` |
 
 #### Efekty Uboczne
 
-| Typ | Opis | Zrodlo |
+| Typ | Opis | Źródło |
 |---|---|---|
 | Event/outbox | `<event>` | `<AddOutboxMessage / dispatcher>` |
 | Integracja HTTP | `<serwis docelowy>` | `<IntegrationGateway>` |
@@ -73,7 +73,7 @@ sequenceDiagram
 | Background job | `<Hangfire/consumer>` | `<job/hosted service>` |
 | UI refresh | `<reload listy / update store>` | `<component/store>` |
 
-#### Scenariusze Bledu
+#### Scenariusze Błędu
 
 | Sytuacja | Warstwa | Status / komunikat | Zachowanie UI | Test |
 |---|---|---|---|---|
@@ -81,15 +81,15 @@ sequenceDiagram
 
 ## Algorytmy I Decyzje
 
-Jesli akcja uruchamia algorytm, opisz go pseudokodem:
+Jeśli akcja uruchamia algorytm, opisz go pseudokodem:
 
 ```text
 1. Pobierz rekord X.
 2. Sprawdz warunek A.
-3. Jezeli A nie przechodzi, zwroc blad B.
-4. Dla kazdej pozycji wykonaj C.
+3. Jeżeli A nie przechodzi, zwroc błąd B.
+4. Dla każdej pozycji wykonaj C.
 5. Zapisz wynik w tabeli SQL D i wskazanych kolumnach.
 6. Opublikuj event E.
 ```
 
-Do pseudokodu dodaj zrodlo: metoda, plik, encja domenowa, serwis aplikacyjny.
+Do pseudokodu dodaj źródło: metoda, plik, encja domenowa, serwis aplikacyjny.

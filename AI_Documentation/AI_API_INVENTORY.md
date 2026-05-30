@@ -1,8 +1,8 @@
-# AI API Inventory
+﻿# AI API Inventory
 
 ## Gateway
 
-Frontend uzywa sciezek przez Ocelot Gateway:
+Frontend używa ścieżek przez Ocelot Gateway:
 
 - `/identity/*` -> IdentityAuth `:8001`.
 - `/catalog/*` -> CatalogInventory `:8002`.
@@ -11,7 +11,7 @@ Frontend uzywa sciezek przez Ocelot Gateway:
 - `/payments/*` -> PaymentInvoice `:8005`.
 - `/notifications/*` -> Notification `:8006`.
 
-Publiczne wyjatki w gatewayu i frontendzie obejmuja logowanie/rejestracje, publiczne listowanie katalogu, wybrane credit-check i ingest notyfikacji. Szczegoly zawsze weryfikuj w `gateway/OcelotGateway/ocelot.json` oraz w atrybutach kontrolerow.
+Publiczne wyjatki w gatewayu i frontendzie obejmuja logowanie/rejestracje, publiczne listowanie katalogu, wybrane credit-check i ingest notyfikacji. Szczegóły zawsze weryfikuj w `gateway/OcelotGateway/ocelot.json` oraz w atrybutach kontrolerow.
 
 ## IdentityAuth
 
@@ -63,7 +63,7 @@ Base downstream: `/api`.
 
 - `POST /api/orders` Dealer, body `CreateOrderRequest`.
 - `GET /api/orders/my` Dealer.
-- `GET /api/orders/{id}` auth; dealer widzi tylko swoje, role wewnetrzne widza wiecej.
+- `GET /api/orders/{id}` auth; dealer widzi tylko swoje, role wewnętrzne widza więcej.
 - `GET /api/orders/{id}/saga` auth.
 - `PUT /api/orders/{id}/status` Admin/Logistics przez logike roli w kontrolerze/serwisie.
 - `POST /api/orders/{id}/cancel` Dealer/Admin.
