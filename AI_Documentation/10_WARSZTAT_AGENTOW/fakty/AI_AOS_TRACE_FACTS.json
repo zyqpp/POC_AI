@@ -1,8 +1,8 @@
 {
-    "generatedAtUtc":  "2026-05-31T08:14:34.7115253Z",
+    "generatedAtUtc":  "2026-05-31T08:42:50.1235054Z",
     "scriptName":  "Export-AosTraceFacts.ps1",
     "scriptVersion":  "podejscie_2_trace_v2",
-    "gitHead":  "fff45c6",
+    "gitHead":  "9f7b5b4",
     "generatorLimitations":  [
                                  "Parser statyczny używa heurystyk i wyrażeń regularnych.",
                                  "Wyniki trace są punktem startowym i wymagają potwierdzenia w kodzie.",

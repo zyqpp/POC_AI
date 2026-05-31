@@ -28,8 +28,15 @@ foreach ($dir in $requiredDirs) {
 $requiredFiles = @(
     'AI_DATABASE_STRUCTURE.md',
     '00_START\CHECKLISTA_JAKOSCI_AOS.md',
+    '00_START\PLAN_POPRAWY_DOKUMENTACJI.md',
+    '03_MODEL_DANYCH\MODEL_DANYCH_ORDER_DETAIL.md',
+    '04_API\API_ORDER_DETAIL.md',
     '05_UI_AOS\AOS_CHECKOUT.md',
+    '05_UI_AOS\AOS_ORDER_DETAIL.md',
     '06_PROCESY\CHECKOUT_E2E.md',
+    '06_PROCESY\ORDER_DETAIL_LIFECYCLE.md',
+    '07_ROLE_I_UPRAWNIENIA\ROLE_ORDER_DETAIL.md',
+    '08_TESTY\MACIERZ_TESTOW_ORDER_DETAIL.md',
     '10_WARSZTAT_AGENTOW\fakty\AI_AOS_TRACE_FACTS.json',
     '10_WARSZTAT_AGENTOW\fakty\AI_AOS_TRACE_REPORT.md'
 )
@@ -68,6 +75,10 @@ foreach ($file in $activeDocs) {
 
     if ($text -match '(?i)(source|zrodlo).{0,80}_archive') {
         $errors.Add("Archive used near source wording in $relative") | Out-Null
+    }
+
+    if ($relative -notmatch '^AI_Documentation/AOS_Template/' -and $text -match '<[^>\r\n]+>') {
+        $errors.Add("Placeholder-like token in $relative") | Out-Null
     }
 }
 
@@ -111,9 +122,11 @@ if (Test-Path -LiteralPath $traceReport) {
     }
 }
 
-$checkoutAos = Join-Path $docRoot '05_UI_AOS\AOS_CHECKOUT.md'
-if (Test-Path -LiteralPath $checkoutAos) {
-    $aosText = Get-Content -LiteralPath $checkoutAos -Raw -Encoding UTF8
+$aosRoot = Join-Path $docRoot '05_UI_AOS'
+$aosFiles = Get-ChildItem -LiteralPath $aosRoot -File -Filter 'AOS_*.md'
+if ($aosFiles.Count -eq 0) {
+    $errors.Add("No active AOS files found in 05_UI_AOS") | Out-Null
+} else {
     $requiredAosSections = @(
         'End-To-End',
         'Model Danych',
@@ -121,9 +134,14 @@ if (Test-Path -LiteralPath $checkoutAos) {
         'Testy I Luki',
         'Ryzyka'
     )
-    foreach ($section in $requiredAosSections) {
-        if ($aosText -notmatch [regex]::Escape($section)) {
-            $errors.Add("Checkout AOS missing section: $section") | Out-Null
+
+    foreach ($aosFile in $aosFiles) {
+        $aosText = Get-Content -LiteralPath $aosFile.FullName -Raw -Encoding UTF8
+        $relative = $aosFile.FullName.Substring($ProjectRoot.Length + 1).Replace('\', '/')
+        foreach ($section in $requiredAosSections) {
+            if ($aosText -notmatch [regex]::Escape($section)) {
+                $errors.Add("AOS missing section '$section': $relative") | Out-Null
+            }
         }
     }
 }

@@ -36,11 +36,17 @@ Każda istotna teza techniczna powinna mieć jeden ze statusów:
 
 ## Pierwszy Wzorzec Jakości
 
-Pierwszym pełnym pionem AOS jest `/checkout`:
+Pierwszym pełnym pionem AOS jest `/checkout`, a drugim rozpoczętym i opisanym pionem jest `/orders/:id`:
 
 - `05_UI_AOS/AOS_CHECKOUT.md`
+- `05_UI_AOS/AOS_ORDER_DETAIL.md`
 - `06_PROCESY/CHECKOUT_E2E.md`
+- `06_PROCESY/ORDER_DETAIL_LIFECYCLE.md`
 - `03_MODEL_DANYCH/MODEL_DANYCH_CHECKOUT.md`
+- `03_MODEL_DANYCH/MODEL_DANYCH_ORDER_DETAIL.md`
 - `04_API/API_CHECKOUT.md`
+- `04_API/API_ORDER_DETAIL.md`
 - `07_ROLE_I_UPRAWNIENIA/ROLE_CHECKOUT.md`
+- `07_ROLE_I_UPRAWNIENIA/ROLE_ORDER_DETAIL.md`
 - `08_TESTY/MACIERZ_TESTOW_CHECKOUT.md`
+- `08_TESTY/MACIERZ_TESTOW_ORDER_DETAIL.md`

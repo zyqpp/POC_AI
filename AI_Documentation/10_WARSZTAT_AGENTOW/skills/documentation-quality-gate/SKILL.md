@@ -7,7 +7,7 @@ description: "Sprawdza jakość dokumentacji projektowej tworzonej od zera: źr�
 
 ## Workflow
 
-1. Uruchom `AI_Agent_scripts/Test-Podejscie2DocumentationQuality.ps1`.
+1. Uruchom `powershell -ExecutionPolicy Bypass -File AI_Agent_scripts\Test-Podejscie2DocumentationQuality.ps1`.
 2. Sprawdź `git diff --name-status`, czy zmiany są tylko w dozwolonych obszarach.
 3. Użyj `rg "_archive|do potwierdzenia|brak w kodzie" AI_Documentation` do szybkiego przeglądu ryzyk.
 4. Zweryfikuj, czy każdy ważny fakt ma źródło kodowe lub jawny status.

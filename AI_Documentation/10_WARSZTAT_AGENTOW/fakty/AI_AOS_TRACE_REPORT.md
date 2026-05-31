@@ -1,7 +1,7 @@
 # AI AOS Trace Report
 
-Wygenerowano: 2026-05-31 08:14:34 UTC
-Git HEAD: fff45c6
+Wygenerowano: 2026-05-31 08:42:50 UTC
+Git HEAD: 9f7b5b4
 Generator: Export-AosTraceFacts.ps1 (podejscie_2_trace_v2)
 
 Raport jest materiałem pomocniczym dla AOS. Wyniki automatyczne trzeba potwierdzić w kodzie przed wpisaniem ich jako fakt.

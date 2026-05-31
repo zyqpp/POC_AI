@@ -11,7 +11,7 @@ Zasada: wyniki skryptów są punktem startowym. Każdy ważny fakt wpisany do do
 | `AI_Agent_scripts/Export-Podejscie2DotnetApi.ps1` | wyciąga kontrolery, base route, metody HTTP i role | `AI_Documentation/10_WARSZTAT_AGENTOW/fakty/dotnet-api.json` | role i statusy wymagają potwierdzenia w kontrolerach | aktywny |
 | `AI_Agent_scripts/Export-Podejscie2EfModel.ps1` | wyciąga `DbContext`, `DbSet`, `ToTable` i indeksy | `AI_Documentation/10_WARSZTAT_AGENTOW/fakty/ef-model.json` | nie zastępuje pełnej analizy encji i migracji | aktywny |
 | `AI_Agent_scripts/Export-AosTraceFacts.ps1` | buduje szeroki trace UI -> API -> handler -> EF i raport luk | `AI_Documentation/10_WARSZTAT_AGENTOW/fakty/AI_AOS_TRACE_FACTS.json`, `AI_AOS_TRACE_REPORT.md` | heurystyczne dopasowania, relacje kandydackie wymagają review | aktywny |
-| `AI_Agent_scripts/Test-Podejscie2DocumentationQuality.ps1` | bramka jakości dokumentacji | raport w konsoli | kontroluje minimum struktury, trace facts, AOS checkout i template'y; nie zastępuje review | aktywny |
+| `AI_Agent_scripts/Test-Podejscie2DocumentationQuality.ps1` | bramka jakości dokumentacji | raport w konsoli | kontroluje strukturę, trace facts, template'y, wszystkie aktywne `05_UI_AOS/AOS_*.md` i placeholdery poza template'ami; nie zastępuje review | aktywny |
 
 ## Skrypty Ograniczone
 
@@ -28,6 +28,14 @@ Zasada: wyniki skryptów są punktem startowym. Każdy ważny fakt wpisany do do
 3. Potwierdź route, komponent, endpoint, DTO, handler, usługę, encje i tabele w kodzie.
 4. Dopiero wtedy wpisz fakt do AOS ze statusem.
 5. Luki wpisuj jako `brak w kodzie`, `do potwierdzenia` albo ryzyko.
+
+## Komenda Walidacji
+
+Na Windows uruchamiaj bramkę jakości tak, aby ominąć lokalną politykę podpisu skryptów tylko dla tego procesu:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File AI_Agent_scripts\Test-Podejscie2DocumentationQuality.ps1
+```
 
 ## Artefakty Faktów
 

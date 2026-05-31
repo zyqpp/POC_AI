@@ -1,7 +1,7 @@
 ﻿# Aktywna Struktura Bazy Danych
 
 Status: `potwierdzone` jako aktywny indeks dokumentacji bazy.
-Zakres pierwszego pełnego pionu: checkout i utworzenie zamówienia.
+Zakres pełnych pionów: checkout, utworzenie zamówienia i szczegół zamówienia `/orders/:id`.
 Źródła główne: `services/**/Infrastructure/Persistence/*DbContext.cs`, encje domenowe, migracje EF, `AI_Documentation/10_WARSZTAT_AGENTOW/fakty/AI_AOS_TRACE_REPORT.md`.
 
 ## Zasada Użycia
@@ -33,6 +33,18 @@ Ten plik jest aktywnym punktem wejścia wymaganym przez `AGENTS.md`. Szczegóło
 | Konto kredytowe | `DealerCreditAccounts` | `AccountId`, `DealerId`, `CreditLimit`, `CurrentOutstanding` | odczyt credit check, zapis outstanding po zatwierdzeniu kredytu | potwierdzone |
 | Płatność gateway | `PaymentRecords` | `PaymentRecordId`, `OrderId`, `DealerId`, `PaymentMode`, `Amount`, `ReferenceNo`, `CreatedAtUtc` | zapis po pozytywnej weryfikacji Razorpay; `OrderId = Guid.Empty` w obecnym kodzie | potwierdzone |
 
+## Model Danych Szczegółu Zamówienia
+
+| Obszar | Tabela | Kolumny krytyczne | R/W w `/orders/:id` | Status |
+|---|---|---|---|---|
+| Nagłówek zamówienia | `Orders` | `OrderId`, `OrderNumber`, `DealerId`, `Status`, `CreditHoldStatus`, `PaymentMode`, `TotalAmount`, `PlacedAtUtc`, `CancellationReason` | odczyt szczegółu; zapis statusu, credit hold i anulowania | potwierdzone |
+| Linie zamówienia | `OrderLines` | `OrderLineId`, `OrderId`, `ProductId`, `ProductName`, `Sku`, `Quantity`, `UnitPrice` | odczyt szczegółu i reorder; `LineTotal` wyliczane bez kolumny | potwierdzone |
+| Historia statusu | `OrderStatusHistory` | `HistoryId`, `OrderId`, `FromStatus`, `ToStatus`, `ChangedByUserId`, `ChangedByRole`, `ChangedAtUtc` | odczyt i zapis przy transition/cancel/return | potwierdzone |
+| Zwrot | `ReturnRequests` | `ReturnRequestId`, `OrderId`, `RequestedByDealerId`, `Reason`, `RequestedAtUtc`, `IsApproved`, `IsRejected`, `ReviewedAtUtc` | odczyt i zapis request/approve/reject return | potwierdzone |
+| Saga orderu | `OrderSagaStates` | `OrderId`, `OrderNumber`, `DealerId`, `CurrentState`, `StartedAtUtc`, `UpdatedAtUtc`, `CompletedAtUtc`, `LastMessage` | odczyt w backendowym `OrderDto.Saga`, zapis lifecycle | potwierdzone |
+| Outbox order | `OutboxMessages` w Order DB | `MessageId`, `EventType`, `Payload`, `Status`, `Error` | zapis `Order{Status}`, `OrderCancelled`, `ReturnRequested`, `ReturnApproved`, `ReturnRejected` | potwierdzone |
+| Notatki operacyjne | brak tabeli | brak kolumn SQL | localStorage `scp.order-ops-notes.v1` | potwierdzone |
+
 ## Relacje
 
 | Relacja | Typ | Status | Źródło |
@@ -44,3 +56,10 @@ Ten plik jest aktywnym punktem wejścia wymaganym przez `AGENTS.md`. Szczegóło
 | `OrderLines.ProductId -> CatalogInventory.Products.ProductId` | logiczna między bazami | wniosek z analizy | brak fizycznego FK między mikroserwisami |
 | `DealerCreditAccounts.DealerId -> IdentityAuth.Users.UserId` | logiczna między bazami | wniosek z analizy | brak fizycznego FK między mikroserwisami |
 | `PaymentRecords.OrderId -> Orders.OrderId` | logiczna między bazami; dla gateway verify obecnie `Guid.Empty` | potwierdzone jako ryzyko | `PaymentInvoiceService` |
+
+## Rozbieżności Do Kontroli
+
+| Priorytet | Rozbieżność | Dowód | Status |
+|---|---|---|---|
+| P1 | Skrypt wdrożeniowy `scripts/migrations/Order.sql` tworzy tabele order, outbox, lines, status history i return, ale nie zawiera `OrderSagaStates`; EF migracja `AddOrderSagaState` tę tabelę tworzy. | `scripts/migrations/Order.sql:17`, `scripts/migrations/Order.sql:54`, `scripts/migrations/Order.sql:90`, `20260403105135_AddOrderSagaState.cs:14` | potwierdzone |
+| P1 | Backendowy `OrderDto` zawiera `Saga`, ale TypeScript `OrderDto` jej nie deklaruje. | `OrderDtos.cs:93-106`, `order.models.ts:85-98` | potwierdzone |
