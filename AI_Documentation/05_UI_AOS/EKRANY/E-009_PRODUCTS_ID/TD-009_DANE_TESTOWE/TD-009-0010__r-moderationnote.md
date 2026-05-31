@@ -1,28 +1,12 @@
-# TD-009-0010 Dane Testowe Dla P-009-0010
+# TD-009-0010 Moderation Note
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie walidacji i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID danych testowych | `TD-009-0010` |
-| Pole | [P-009-0010](../P-009_POLA/P-009-0010__r-moderationnote.md) |
-| Ekran | [E-009](../E-009__README.md) |
-| Status faktu | `do uzupełnienia` |
-
-## Dane Poprawne
-
-| Przypadek | Wartość | Cel |
+| Typ | Dane | Oczekiwany rezultat |
 |---|---|---|
-| poprawny minimalny | do uzupełnienia | test walidacji minimalnej |
-| poprawny typowy | do uzupełnienia | test ścieżki użytkownika |
-| poprawny graniczny | do uzupełnienia | test wartości brzegowej |
+| brak | `null` | sekcja noty niewidoczna |
+| poprawne | `Verified purchase.` | nota widoczna, jeśli backend ją zwróci |
+| graniczne | 500 znaków | backend akceptuje |
+| za długie | 501 znaków | backend odrzuca |
 
-## Dane Niepoprawne
-
-| Przypadek | Wartość | Oczekiwany błąd |
-|---|---|---|
-| puste | do uzupełnienia | do uzupełnienia |
-| zły format | do uzupełnienia | do uzupełnienia |
-| poza zakresem | do uzupełnienia | do uzupełnienia |
+Luka: ekran E-009 nie ma pola do wpisania noty; `Approve` i `Reject` wysyłają pusty obiekt.

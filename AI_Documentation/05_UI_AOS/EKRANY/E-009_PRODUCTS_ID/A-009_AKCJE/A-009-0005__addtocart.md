@@ -1,42 +1,14 @@
-# A-009-0005 addToCart
+# A-009-0005 Add To Cart
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
+| Warstwa | Fakt |
 |---|---|
-| ID akcji | `A-009-0005` |
-| Ekran | [E-009](../E-009__README.md) |
-| Nazwa wykryta | `addToCart` |
-| Typ detekcji | `click` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-detail/product-detail.component.html` |
-| Status faktu | `do uzupełnienia` |
+| UI | przycisk `Add to Cart`, widoczny dla `Dealer`, disabled gdy `!canPurchase()` |
+| Frontend | `addToCart()` normalizuje `qty`, waliduje min i available stock |
+| Store | `CartStore.addItem({ productId, productName, sku, quantity, unitPrice, minOrderQty, availableStock })` |
+| API | brak wywołania API |
+| DB | brak zapisu; koszyk jest stanem frontendowym do czasu checkout |
+| Testy | `TC-009-0004` |
 
-## Opis Akcji
-
-Do uzupełnienia.
-
-## Ślad Techniczny
-
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Element UI | do uzupełnienia | `do uzupełnienia` |
-| Metoda komponentu | do uzupełnienia | `do uzupełnienia` |
-| Serwis frontend | do uzupełnienia | `do uzupełnienia` |
-| Endpoint API | do uzupełnienia | `do uzupełnienia` |
-| Komenda/zapytanie | do uzupełnienia | `do uzupełnienia` |
-| Walidacje | do uzupełnienia | `do uzupełnienia` |
-| Skutek w bazie | do uzupełnienia | `do uzupełnienia` |
-
-## Testy
-
-- [Macierz testów ekranu](../TC-009_TESTY/TC-009__INDEX.md)
-- Dane wejściowe: do uzupełnienia.
-- Oczekiwany rezultat: do uzupełnienia.
-
-## Linki
-
-- [Indeks akcji](A-009__INDEX.md)
-- [Pola ekranu](../P-009_POLA/P-009__INDEX.md)
-- [Ślad ekranu](../E-009__LINKI.md)
+Komunikaty błędów: [ERR-009-0001](../ERR-009_BLEDY/ERR-009-0001__this-product-is-currently-unavailable-for-purchase.md), [ERR-009-0002](../ERR-009_BLEDY/ERR-009-0002__minimum-order-quantity-is-p-minorderqty.md), [ERR-009-0003](../ERR-009_BLEDY/ERR-009-0003__only-p-availablestock-units-available.md).

@@ -1,6 +1,6 @@
-# E-009 ProductDetailComponent
+# E-009 Szczegół Produktu
 
-Status: `szkielet`; źródło startowe: routing i komponent Angular.
+Status: `potwierdzone` dla śladu `UI -> API -> proces -> DB -> testy`.
 
 ## Identyfikacja
 
@@ -9,12 +9,17 @@ Status: `szkielet`; źródło startowe: routing i komponent Angular.
 | ID ekranu | `E-009` |
 | Route | `/products/:id` |
 | Komponent | `ProductDetailComponent` |
-| Guardy | `brak guardów w route` |
-| Role frontendu | `brak ról w route` |
+| Guardy | `authGuard` na shell route; brak osobnego `roleGuard` na route produktu |
+| Role w UI | `Admin`, `Dealer`, `Warehouse` przez `AuthStore.hasRole(...)` |
 | Źródło route | `supply-chain-frontend/src/app/app.routes.ts` |
 | Źródło komponentu | `supply-chain-frontend/src/app/features/catalog/product-detail/product-detail.component.ts` |
 | Źródło template | `supply-chain-frontend/src/app/features/catalog/product-detail/product-detail.component.html` |
-| Status faktów | `do uzupełnienia` |
+| Backend | `ProductsController`, `CatalogInventoryService` |
+| Model danych | `Products`, `StockTransactions`, `OutboxMessages`; recenzje: `brak tabeli SQL` |
+
+## Cel Ekranu
+
+Ekran pokazuje szczegół produktu, dostępny stock i recenzje. Dealer może dobrać ilość i dodać produkt do lokalnego koszyka, Admin może dezaktywować produkt i moderować recenzje, a Admin lub Warehouse mogą wykonać restock.
 
 ## Dokumenty Atomowe
 
@@ -25,6 +30,25 @@ Status: `szkielet`; źródło startowe: routing i komponent Angular.
 - [Testy](TC-009_TESTY/TC-009__INDEX.md)
 - [Linki śladu](E-009__LINKI.md)
 
-## Zasada Uzupełniania
+## Ślad End-To-End
 
-Każde pole `P-009-....` musi docelowo mieć opis wymagalności, walidacji, źródła danych, mapowania do API/DTO, encji, tabeli SQL, kolumny SQL oraz danych do automatycznych testów. Brak informacji należy oznaczać jako `do uzupełnienia`, `brak w kodzie` albo `wniosek z analizy`.
+| Krok | Fakt | Źródło | Status |
+|---|---|---|---|
+| Load product | `ngOnInit()` wywołuje `GET /catalog/api/products/{id}`. | `ProductDetailComponent`, `CatalogApiService` | `potwierdzone` |
+| Product DB | `ProductDto` mapuje się na `Products`; `AvailableStock` jest wyliczone. | `Product.cs`, `CatalogInventoryService` | `potwierdzone` |
+| Load reviews | Po załadowaniu produktu ekran pobiera reviews z `includePending=isAdmin()`. | `loadReviews()` | `potwierdzone` |
+| Reviews storage | Reviews są w statycznym `ConcurrentDictionary`, bez tabeli SQL. | `CatalogInventoryService` | `potwierdzone` |
+| Add to cart | Dealer zapisuje produkt do `CartStore`, bez API i bez DB. | `CartStore` | `potwierdzone` |
+| Restock | Admin/Warehouse zapisuje `Products.TotalStock`, `StockTransactions`, `OutboxMessages`. | `RestockProductAsync` | `potwierdzone` |
+| Deactivate | Admin ustawia `Products.IsActive=false` i outbox `ProductDeactivated`. | `DeactivateProductAsync` | `potwierdzone` |
+| Review moderation | Admin approve/reject zmienia status review w pamięci procesu. | `ApproveProductReviewAsync`, `RejectProductReviewAsync` | `potwierdzone` |
+
+## Luki I Ryzyka
+
+| ID | Luka | Wpływ | Status |
+|---|---|---|---|
+| `GAP-E-009-001` | Recenzje produktu nie mają trwałości w SQL. | Utrata/niespójność review po restarcie lub wielu instancjach API. | `brak w kodzie` |
+| `GAP-E-009-002` | Ekran nie ma pola noty moderacyjnej, choć backend przyjmuje `Note`. | Admin nie może podać powodu approve/reject z tego ekranu. | `brak w kodzie` |
+| `GAP-E-009-003` | Po dodaniu review przez Dealera pending review znika po reload, bo `includePending=false`. | Użytkownik może uznać, że recenzja nie została zapisana. | `potwierdzone` |
+| `GAP-E-009-004` | Błędy restock/deactivate mają puste handlery w UI. | Brak informacji o niepowodzeniu. | `brak w kodzie` |
+| `GAP-E-009-005` | Brak testów komponentu, API, ról, walidatorów i cache invalidation. | Regresje E-009 mogą przejść niezauważone. | `brak w kodzie` |

@@ -1,6 +1,6 @@
 # MACIERZ_TESTOW_CATALOG
 
-Status: `potwierdzone` jako wymagania testowe dla `E-007` i `E-008`; będzie rozszerzana przy `E-009`-`E-010`.
+Status: `potwierdzone` jako wymagania testowe dla `E-007`, `E-008`, `E-009`; będzie rozszerzana przy `E-010`.
 
 | ID | Scenariusz | Typ testu | Dane | Obecny status | Kryterium zamknięcia |
 |---|---|---|---|---|---|
@@ -16,10 +16,20 @@ Status: `potwierdzone` jako wymagania testowe dla `E-007` i `E-008`; będzie roz
 | `TC-008-0004` | Backend odrzuca duplikat SKU i nieistniejącą kategorię. | API integration | `TD-008-0001`, `TD-008-0006` | `brak w kodzie` | Brak insertu `Products`; błąd walidacji/biznesowy widoczny w odpowiedzi. |
 | `TC-008-0005` | Użytkownik bez Admin nie ma dostępu do create. | e2e/API auth | `TD-008-0009` | `brak w kodzie` | Frontend blokuje route; backend blokuje POST. |
 | `TC-008-0006` | Cancel opuszcza formularz bez zapisu. | component/e2e | rozpoczęty formularz | `brak w kodzie` | Route `/products`, brak `POST /catalog/api/products`. |
+| `TC-009-0001` | Ekran ładuje produkt i podstawowe pola. | component/API integration | `TD-009-0011`, `TD-009-0013` | `brak w kodzie` | Widoczne name, SKU, cena, stock, min order, updated, image/fallback. |
+| `TC-009-0002` | Produkt nie istnieje oraz akcje Admina są widoczne tylko dla Admina. | e2e/component | `TD-009-0011`, `TD-009-0012` | `brak w kodzie` | Empty state dla 404; Admin widzi edit/deactivate, inni nie. |
+| `TC-009-0003` | Kontrola ilości normalizuje min/max/krok. | component | `TD-009-0001`, `TD-009-0013` | `brak w kodzie` | `qty` jest wielokrotnością `MinOrderQty` i nie przekracza `maxPurchasable`. |
+| `TC-009-0004` | Dealer dodaje produkt do koszyka albo dostaje błędy stock. | component/store | `TD-009-0001`, `TD-009-0013` | `brak w kodzie` | `CartStore` zawiera pozycję albo pokazany jest `ERR-009-0001/2/3`. |
+| `TC-009-0005` | Admin/Warehouse wykonuje restock. | API integration | `TD-009-0005`, `TD-009-0006` | `brak w kodzie` | `Products.TotalStock` wzrasta, `StockTransactions` i `OutboxMessages` zapisane. |
+| `TC-009-0006` | Restock/deactivate obsługują błędy. | component/API | `TD-009-0005`, `TD-009-0006`, `TD-009-0011` | `brak w kodzie` | Obecnie luka: brak toastu błędu dla error handlerów. |
+| `TC-009-0007` | Dealer wysyła review do moderacji. | API integration/component | `TD-009-0002`, `TD-009-0003`, `TD-009-0004` | `brak w kodzie` | Request `POST`, toast sukcesu, pola wyczyszczone; pending znika u Dealera po reload. |
+| `TC-009-0008` | Lista reviews pokazuje approved dla Dealer i pending dla Admin. | API/component | `TD-009-0007`, `TD-009-0008`, `TD-009-0009`, `TD-009-0012` | `brak w kodzie` | `includePending=true` tylko dla Admina. |
+| `TC-009-0009` | Walidacje review odrzucają rating/title/comment poza zakresem. | API validation | `TD-009-0002`, `TD-009-0003`, `TD-009-0004` | `brak w kodzie` | Walidator zwraca błąd, brak review w `ReviewsById`. |
+| `TC-009-0010` | Admin zatwierdza i odrzuca review. | API/component | `TD-009-0007`, `TD-009-0010`, `TD-009-0012` | `brak w kodzie` | Badge zmienia się na `Approved` albo `Rejected`; brak SQL opisany jako ryzyko. |
 
 ## Testy Istniejące
 
 | Test | Pokrycie | Luka |
 |---|---|---|
-| `tests/CatalogInventory.Domain.Tests/UnitTest1.cs` | domena produktu: create, restock, hard deduct, deactivate | brak API, walidatorów, autoryzacji i UI katalogu |
+| `tests/CatalogInventory.Domain.Tests/UnitTest1.cs` | domena produktu: create, restock, hard deduct, deactivate | brak API, walidatorów, autoryzacji, review i UI katalogu |
 | `supply-chain-frontend/src/app/smoke.spec.ts` | smoke frontendu | nie pokrywa katalogu |

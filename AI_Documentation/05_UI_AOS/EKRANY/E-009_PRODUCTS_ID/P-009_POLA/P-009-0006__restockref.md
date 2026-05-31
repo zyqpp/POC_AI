@@ -1,54 +1,14 @@
-# P-009-0006 restockRef
+# P-009-0006 Restock Reference ID
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
+| Obszar | Opis |
 |---|---|
-| ID pola | `P-009-0006` |
-| Ekran | [E-009](../E-009__README.md) |
-| Nazwa wykryta | `restockRef` |
-| Typ detekcji | `[(ngModel)]` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-detail/product-detail.component.html` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Pola
-
-Do uzupełnienia.
-
-## Wymagalność I Walidacje
-
-| Właściwość | Wartość | Źródło |
-|---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/catalog/product-detail/product-detail.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-009](../ERR-009_BLEDY/ERR-009__INDEX.md) | do uzupełnienia |
-
-## Mapowanie Danych
-
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
-
-## Dane Do Testów
-
-- [TD dla pola](../TD-009_DANE_TESTOWE/TD-009-0006__restockref.md)
-- Zakres danych poprawnych: do uzupełnienia.
-- Zakres danych błędnych: do uzupełnienia.
-
-## Linki
-
-- [Indeks pól](P-009__INDEX.md)
-- [Akcje ekranu](../A-009_AKCJE/A-009__INDEX.md)
-- [Ślad ekranu](../E-009__LINKI.md)
+| Typ UI | input text `[(ngModel)]="restockRef"`, placeholder `PO-12345` |
+| Wymagalność | wymagane; przycisk restock disabled, gdy `!restockRef` |
+| Walidacje | backend `ReferenceId` required i max 120 |
+| API/DTO | `RestockProductRequest.ReferenceId` |
+| Tabela SQL | `StockTransactions` |
+| Kolumna SQL | `StockTransactions.ReferenceId` W, max 120, `NOT NULL` |
+| Dane Do Test | `TD-009-0006`: `PO-12345`, pusty, 120 znaków, 121 znaków |
+| Testy | `TC-009-0005`, `TC-009-0006` |

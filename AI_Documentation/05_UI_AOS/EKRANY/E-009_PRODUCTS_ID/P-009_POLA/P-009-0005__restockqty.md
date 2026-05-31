@@ -1,54 +1,14 @@
-# P-009-0005 restockQty
+# P-009-0005 Restock Quantity
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
+| Obszar | Opis |
 |---|---|
-| ID pola | `P-009-0005` |
-| Ekran | [E-009](../E-009__README.md) |
-| Nazwa wykryta | `restockQty` |
-| Typ detekcji | `[(ngModel)]` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-detail/product-detail.component.html` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Pola
-
-Do uzupełnienia.
-
-## Wymagalność I Walidacje
-
-| Właściwość | Wartość | Źródło |
-|---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/catalog/product-detail/product-detail.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-009](../ERR-009_BLEDY/ERR-009__INDEX.md) | do uzupełnienia |
-
-## Mapowanie Danych
-
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
-
-## Dane Do Testów
-
-- [TD dla pola](../TD-009_DANE_TESTOWE/TD-009-0005__restockqty.md)
-- Zakres danych poprawnych: do uzupełnienia.
-- Zakres danych błędnych: do uzupełnienia.
-
-## Linki
-
-- [Indeks pól](P-009__INDEX.md)
-- [Akcje ekranu](../A-009_AKCJE/A-009__INDEX.md)
-- [Ślad ekranu](../E-009__LINKI.md)
+| Typ UI | input number `[(ngModel)]="restockQty"`, `min="1"` w modalu restock |
+| Wymagalność | wymagane dla `Admin` i `Warehouse` przy [A-009-0011](../A-009_AKCJE/A-009-0011__restock.md) |
+| Walidacje | UI blokuje przy wartości mniejszej niż `1`; backend wymaga wartości większej od `0`; domena `Product.Restock` wymaga dodatniej ilości |
+| API/DTO | `RestockProductRequest.Quantity` |
+| Tabela SQL | `Products`, `StockTransactions`, `OutboxMessages` |
+| Kolumna SQL | `Products.TotalStock` W, `StockTransactions.Quantity` W, outbox `Payload` W |
+| Dane Do Test | `TD-009-0005`: 1, 25, 0, -1 |
+| Testy | `TC-009-0005`, `TC-009-0006` |

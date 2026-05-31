@@ -1,28 +1,8 @@
-# TD-009-0008 Dane Testowe Dla P-009-0008
+# TD-009-0008 Review Created At
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie walidacji i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID danych testowych | `TD-009-0008` |
-| Pole | [P-009-0008](../P-009_POLA/P-009-0008__r-createdatutc.md) |
-| Ekran | [E-009](../E-009__README.md) |
-| Status faktu | `do uzupełnienia` |
-
-## Dane Poprawne
-
-| Przypadek | Wartość | Cel |
+| Typ | Dane | Oczekiwany rezultat |
 |---|---|---|
-| poprawny minimalny | do uzupełnienia | test walidacji minimalnej |
-| poprawny typowy | do uzupełnienia | test ścieżki użytkownika |
-| poprawny graniczny | do uzupełnienia | test wartości brzegowej |
-
-## Dane Niepoprawne
-
-| Przypadek | Wartość | Oczekiwany błąd |
-|---|---|---|
-| puste | do uzupełnienia | do uzupełnienia |
-| zły format | do uzupełnienia | do uzupełnienia |
-| poza zakresem | do uzupełnienia | do uzupełnienia |
+| bieżąca | `DateTime.UtcNow` | data widoczna przez Angular date pipe |
+| starsza | data dzień wcześniej | sortowanie listy reviews malejąco po `CreatedAtUtc` |

@@ -1,39 +1,12 @@
-# ERR-009-0001 This product is currently unavailable for purchase
+# ERR-009-0001 Product Unavailable For Purchase
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i obsługi błędów.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
+| Obszar | Opis |
 |---|---|
-| ID błędu | `ERR-009-0001` |
-| Ekran | [E-009](../E-009__README.md) |
-| Nazwa wykryta | `This product is currently unavailable for purchase` |
-| Typ detekcji | `toast.warning` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-detail/product-detail.component.ts` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Błędu
-
-Do uzupełnienia.
-
-## Warunki Wystąpienia
-
-| Warstwa | Warunek | Status |
-|---|---|---|
-| UI | do uzupełnienia | `do uzupełnienia` |
-| Walidacja frontend | do uzupełnienia | `do uzupełnienia` |
-| API/backend | do uzupełnienia | `do uzupełnienia` |
-| Baza/integracja | do uzupełnienia | `do uzupełnienia` |
-
-## Testy
-
-- [Macierz testów ekranu](../TC-009_TESTY/TC-009__INDEX.md)
-- Dane wywołujące błąd: do uzupełnienia.
-- Oczekiwany komunikat: do uzupełnienia.
-
-## Linki
-
-- [Indeks błędów](ERR-009__INDEX.md)
-- [Pola ekranu](../P-009_POLA/P-009__INDEX.md)
-- [Akcje ekranu](../A-009_AKCJE/A-009__INDEX.md)
+| Warunek | `canPurchase()` zwraca false: produkt inactive, `AvailableStock <= 0` albo `maxPurchasable() == 0` |
+| Komunikat UI | `This product is currently unavailable for purchase` |
+| API | brak; błąd lokalny przed zapisem do `CartStore` |
+| DB | odczyt `Products.IsActive`, `Products.TotalStock`, `Products.ReservedStock`, `Products.MinOrderQty` |
+| Dane testowe | `TD-009-0013`: inactive, out of stock, stock poniżej min |
+| Test | `TC-009-0004` |

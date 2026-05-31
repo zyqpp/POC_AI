@@ -1,42 +1,16 @@
-# A-009-0011 restock
+# A-009-0011 Restock Product
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
+| Warstwa | Fakt |
 |---|---|
-| ID akcji | `A-009-0011` |
-| Ekran | [E-009](../E-009__README.md) |
-| Nazwa wykryta | `restock` |
-| Typ detekcji | `click` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-detail/product-detail.component.html` |
-| Status faktu | `do uzupełnienia` |
+| UI | przycisk `Restock` w modalu, disabled gdy `restockQty < 1` albo `!restockRef` |
+| Frontend | `ProductDetailComponent.restock()` |
+| API | `POST /catalog/api/products/{id}/restock` |
+| Backend | `ProductsController.Restock`, `[Authorize(Roles = "Admin,Warehouse")]`, `RestockProductCommand` |
+| Walidacje | `Quantity > 0`, `ReferenceId` required max 120 |
+| Domena | `Product.Restock(quantity)` zwiększa `TotalStock` i `UpdatedAtUtc` |
+| DB | `Products.TotalStock` W, `StockTransactions` W z typem `Restock`, `OutboxMessages.EventType=StockRestored` |
+| Testy | `TC-009-0005`, `TC-009-0006`; istnieje domenowy test `Restock_IncreasesTotalStock` |
 
-## Opis Akcji
-
-Do uzupełnienia.
-
-## Ślad Techniczny
-
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Element UI | do uzupełnienia | `do uzupełnienia` |
-| Metoda komponentu | do uzupełnienia | `do uzupełnienia` |
-| Serwis frontend | do uzupełnienia | `do uzupełnienia` |
-| Endpoint API | do uzupełnienia | `do uzupełnienia` |
-| Komenda/zapytanie | do uzupełnienia | `do uzupełnienia` |
-| Walidacje | do uzupełnienia | `do uzupełnienia` |
-| Skutek w bazie | do uzupełnienia | `do uzupełnienia` |
-
-## Testy
-
-- [Macierz testów ekranu](../TC-009_TESTY/TC-009__INDEX.md)
-- Dane wejściowe: do uzupełnienia.
-- Oczekiwany rezultat: do uzupełnienia.
-
-## Linki
-
-- [Indeks akcji](A-009__INDEX.md)
-- [Pola ekranu](../P-009_POLA/P-009__INDEX.md)
-- [Ślad ekranu](../E-009__LINKI.md)
+Po sukcesie UI pokazuje toast `Product restocked`, zamyka modal i ponownie pobiera szczegół produktu.

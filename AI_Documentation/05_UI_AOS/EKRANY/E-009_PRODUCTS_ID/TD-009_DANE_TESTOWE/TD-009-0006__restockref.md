@@ -1,28 +1,10 @@
-# TD-009-0006 Dane Testowe Dla P-009-0006
+# TD-009-0006 Restock Reference ID
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie walidacji i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID danych testowych | `TD-009-0006` |
-| Pole | [P-009-0006](../P-009_POLA/P-009-0006__restockref.md) |
-| Ekran | [E-009](../E-009__README.md) |
-| Status faktu | `do uzupełnienia` |
-
-## Dane Poprawne
-
-| Przypadek | Wartość | Cel |
+| Typ | Dane | Oczekiwany rezultat |
 |---|---|---|
-| poprawny minimalny | do uzupełnienia | test walidacji minimalnej |
-| poprawny typowy | do uzupełnienia | test ścieżki użytkownika |
-| poprawny graniczny | do uzupełnienia | test wartości brzegowej |
-
-## Dane Niepoprawne
-
-| Przypadek | Wartość | Oczekiwany błąd |
-|---|---|---|
-| puste | do uzupełnienia | do uzupełnienia |
-| zły format | do uzupełnienia | do uzupełnienia |
-| poza zakresem | do uzupełnienia | do uzupełnienia |
+| poprawne | `PO-12345` | zapis `StockTransactions.ReferenceId=PO-12345` |
+| graniczne | 120 znaków | backend akceptuje |
+| puste | pusty string | UI disabled i backend odrzuca |
+| za długie | 121 znaków | backend odrzuca |

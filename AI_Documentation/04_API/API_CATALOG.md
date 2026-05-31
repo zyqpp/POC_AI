@@ -1,51 +1,43 @@
 # API_CATALOG
 
-Status: `potwierdzone` dla `E-007_PRODUCTS` i `E-008_PRODUCTS_NEW`; dokument będzie rozszerzany przy `E-009`-`E-010`.
+Status: `potwierdzone` dla `E-007_PRODUCTS`, `E-008_PRODUCTS_NEW`, `E-009_PRODUCTS_ID`; dokument będzie rozszerzany przy `E-010`.
 
 | ID | Metoda | Ścieżka frontend gateway | Kontroler backend | Role | Request | Response | Statusy | Użycie |
 |---|---|---|---|---|---|---|---|---|
-| `API-007-0001` | `GET` | `/catalog/api/products` | `ProductsController.GetPage` | `[AllowAnonymous]`, ale ekran wymaga `authGuard` | query: `page`, `size`, `includeInactive` | `PagedResult` of `ProductListItemDto` | `200` | lista i paginacja |
-| `API-007-0002` | `GET` | `/catalog/api/products/categories` | `ProductsController.GetCategories` | `[AllowAnonymous]`, ale ekran wymaga `authGuard` | brak | lista `CategoryDto` | `200` | filtry i formularz create |
-| `API-007-0003` | `GET` | `/catalog/api/products/search` | `ProductsController.Search` | `[AllowAnonymous]`, ale ekran wymaga `authGuard` | query: `q`, `includeInactive` | lista `ProductListItemDto` | `200` | search |
-| `API-007-0004` | `GET` | `/catalog/api/products/{id}` | `ProductsController.GetById` | `[AllowAnonymous]`, ale ekran wymaga `authGuard` | route `id:guid` | `ProductDto` | `200`, `404` | quick add i szczegół |
+| `API-007-0001` | `GET` | `/catalog/api/products` | `ProductsController.GetPage` | `[AllowAnonymous]`, ekran wymaga `authGuard` | query: `page`, `size`, `includeInactive` | `PagedResult` of `ProductListItemDto` | `200` | lista i paginacja |
+| `API-007-0002` | `GET` | `/catalog/api/products/categories` | `ProductsController.GetCategories` | `[AllowAnonymous]`, ekran wymaga `authGuard` | brak | lista `CategoryDto` | `200` | filtry i formularz create |
+| `API-007-0003` | `GET` | `/catalog/api/products/search` | `ProductsController.Search` | `[AllowAnonymous]`, ekran wymaga `authGuard` | query: `q`, `includeInactive` | lista `ProductListItemDto` | `200` | search |
+| `API-007-0004` | `GET` | `/catalog/api/products/{id}` | `ProductsController.GetById` | `[AllowAnonymous]`, ekran wymaga `authGuard` | route `id:guid` | `ProductDto` | `200`, `404` | quick add i szczegół E-009 |
 | `API-008-0001` | `POST` | `/catalog/api/products` | `ProductsController.Create` | `[Authorize(Roles = "Admin")]` | `CreateProductRequest` | `ProductDto` | `201`; błędy walidacji/biznesowe zależne od middleware | tworzenie produktu |
+| `API-009-0001` | `PUT` | `/catalog/api/products/{id}/deactivate` | `ProductsController.Deactivate` | `[Authorize(Roles = "Admin")]` | route `id:guid` | `{ message }` | `200`, `404` | dezaktywacja |
+| `API-009-0002` | `POST` | `/catalog/api/products/{id}/restock` | `ProductsController.Restock` | `[Authorize(Roles = "Admin,Warehouse")]` | `RestockProductRequest` | `{ message }` | `200`, `404` | restock |
+| `API-009-0003` | `GET` | `/catalog/api/products/{id}/reviews` | `ProductsController.GetReviews` | `[AllowAnonymous]`; pending tylko `Admin` | query `includePending` | lista `ProductReviewDto` | `200` | lista reviews |
+| `API-009-0004` | `POST` | `/catalog/api/products/{id}/reviews` | `ProductsController.AddReview` | `[Authorize(Roles = "Dealer")]` | `CreateProductReviewRequest` | `ProductReviewDto` | `201`, `401`, `404` | dodanie review |
+| `API-009-0005` | `PUT` | `/catalog/api/products/reviews/{reviewId}/approve` | `ProductsController.ApproveReview` | `[Authorize(Roles = "Admin")]` | `ModerateProductReviewRequest` | `ProductReviewDto` | `200`, `401`, `404` | zatwierdzenie review |
+| `API-009-0006` | `PUT` | `/catalog/api/products/reviews/{reviewId}/reject` | `ProductsController.RejectReview` | `[Authorize(Roles = "Admin")]` | `ModerateProductReviewRequest` | `ProductReviewDto` | `200`, `401`, `404` | odrzucenie review |
 
 ## Kontrakty Danych
 
 | DTO | Pole | DB/Źródło | Ekrany |
 |---|---|---|---|
-| `ProductListItemDto` | `productId` | `Products.ProductId` | `E-007` |
-| `ProductListItemDto` | `sku` | `Products.Sku` | `E-007` |
-| `ProductListItemDto` | `name` | `Products.Name` | `E-007` |
-| `ProductListItemDto` | `categoryId` | `Products.CategoryId` | `E-007` |
-| `ProductListItemDto` | `unitPrice` | `Products.UnitPrice` | `E-007` |
-| `ProductListItemDto` | `availableStock` | `Product.AvailableStock` wyliczone z `TotalStock - ReservedStock` | `E-007` |
-| `ProductListItemDto` | `isActive` | `Products.IsActive` | `E-007` |
-| `ProductListItemDto` | `imageUrl` | `Products.ImageUrl` | `E-007` |
+| `ProductListItemDto` | `productId`, `sku`, `name`, `categoryId`, `unitPrice`, `availableStock`, `isActive`, `imageUrl` | `Products`; `availableStock` wyliczone | `E-007` |
 | `CategoryDto` | `categoryId`, `name`, `parentCategoryId` | `Categories` | `E-007`, `E-008` |
-| `CreateProductRequest` | `Sku` | zapis `Products.Sku` | `E-008` |
-| `CreateProductRequest` | `Name` | zapis `Products.Name` | `E-008` |
-| `CreateProductRequest` | `Description` | zapis `Products.Description` | `E-008` |
-| `CreateProductRequest` | `CategoryId` | zapis `Products.CategoryId`, walidacja w `Categories.CategoryId` | `E-008` |
-| `CreateProductRequest` | `UnitPrice` | zapis `Products.UnitPrice` | `E-008` |
-| `CreateProductRequest` | `MinOrderQty` | zapis `Products.MinOrderQty` | `E-008` |
-| `CreateProductRequest` | `OpeningStock` | zapis `Products.TotalStock` | `E-008` |
-| `CreateProductRequest` | `ImageUrl` | zapis `Products.ImageUrl` lub `NULL` | `E-008` |
-| `ProductDto` | `productId`, `sku`, `name`, `description`, `categoryId`, `unitPrice`, `minOrderQty`, `totalStock`, `reservedStock`, `availableStock`, `isActive`, `imageUrl`, `updatedAtUtc` | `Products` i właściwość domenowa `AvailableStock` | `E-008`, później `E-009`, `E-010` |
+| `CreateProductRequest` | `Sku`, `Name`, `Description`, `CategoryId`, `UnitPrice`, `MinOrderQty`, `OpeningStock`, `ImageUrl` | zapis `Products`, walidacja `Categories` | `E-008` |
+| `ProductDto` | `productId`, `sku`, `name`, `description`, `categoryId`, `unitPrice`, `minOrderQty`, `totalStock`, `reservedStock`, `availableStock`, `isActive`, `imageUrl`, `updatedAtUtc` | `Products` i właściwość domenowa `AvailableStock` | `E-008`, `E-009`, `E-010` |
+| `RestockProductRequest` | `Quantity`, `ReferenceId` | zapis `Products.TotalStock`, `StockTransactions`, `OutboxMessages` | `E-009` |
+| `CreateProductReviewRequest` | `Rating`, `Title`, `Comment` | `CatalogInventoryService.ReviewsById`, brak SQL | `E-009` |
+| `ModerateProductReviewRequest` | `Note` | `CatalogInventoryService.ReviewsById`, brak SQL | `E-009` |
+| `ProductReviewDto` | `ReviewId`, `ProductId`, `DealerId`, `Rating`, `Title`, `Comment`, `IsApproved`, `IsRejected`, `ModerationNote`, `CreatedAtUtc`, `ModeratedAtUtc`, `ModeratedByUserId` | `CatalogInventoryService.ReviewsById`, brak SQL | `E-009` |
 
-## Walidacje `API-008-0001`
+## Walidacje
 
-| Pole | Walidacja backend | Pole UI |
-|---|---|---|
-| `Sku` | required, max 60, regex liter/cyfr/myślnika/underscore, unikalność SKU | [P-008-0001](../05_UI_AOS/EKRANY/E-008_PRODUCTS_NEW/P-008_POLA/P-008-0001__sku.md) |
-| `Name` | required, max 200 | [P-008-0002](../05_UI_AOS/EKRANY/E-008_PRODUCTS_NEW/P-008_POLA/P-008-0002__name.md) |
-| `Description` | required, max 2000 | [P-008-0007](../05_UI_AOS/EKRANY/E-008_PRODUCTS_NEW/P-008_POLA/P-008-0007__description.md) |
-| `CategoryId` | required, musi istnieć w `Categories` | [P-008-0006](../05_UI_AOS/EKRANY/E-008_PRODUCTS_NEW/P-008_POLA/P-008-0006__categoryid.md) |
-| `UnitPrice` | większe od 0 | [P-008-0003](../05_UI_AOS/EKRANY/E-008_PRODUCTS_NEW/P-008_POLA/P-008-0003__unitprice.md) |
-| `MinOrderQty` | większe od 0 | [P-008-0004](../05_UI_AOS/EKRANY/E-008_PRODUCTS_NEW/P-008_POLA/P-008-0004__minorderqty.md) |
-| `OpeningStock` | większe lub równe 0 | [P-008-0005](../05_UI_AOS/EKRANY/E-008_PRODUCTS_NEW/P-008_POLA/P-008-0005__openingstock.md) |
-| `ImageUrl` | max 500 i absolutny URL `http` lub `https`, jeśli podany | [P-008-0008](../05_UI_AOS/EKRANY/E-008_PRODUCTS_NEW/P-008_POLA/P-008-0008__imageurl.md) |
+| Endpoint | Walidacje |
+|---|---|
+| `API-008-0001` | create product: SKU, name, description, category, price, min qty, opening stock, image URL |
+| `API-009-0002` | restock: `Quantity > 0`, `ReferenceId` required max 120 |
+| `API-009-0004` | review: rating 1-5, title required max 120, comment required max 1500 |
+| `API-009-0005` / `API-009-0006` | moderation note max 500, gdy podany |
 
 ## Uwagi Autoryzacyjne
 
-Endpointy listy i szczegółu są `[AllowAnonymous]`, ale route frontendu jest pod `authGuard`. `includeInactive` jest dodatkowo ograniczane w kontrolerze do użytkownika z rolą `Admin` albo `Warehouse`. Tworzenie produktu jest chronione podwójnie: route `/products/new` ma `roleGuard Admin`, a `ProductsController.Create` ma `[Authorize(Roles = "Admin")]`.
+Route frontendu katalogu jest pod `authGuard`. Backend dla listy, kategorii, search, detail i get reviews ma `[AllowAnonymous]`, ale gateway i frontend ograniczają dostęp do zalogowanego użytkownika. Operacje zapisu mają role backendowe: create/deactivate `Admin`, restock `Admin,Warehouse`, create review `Dealer`, moderation `Admin`.

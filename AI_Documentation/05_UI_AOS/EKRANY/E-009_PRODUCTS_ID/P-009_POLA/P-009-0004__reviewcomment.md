@@ -1,54 +1,14 @@
-# P-009-0004 reviewComment
+# P-009-0004 Review Comment
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
+| Obszar | Opis |
 |---|---|
-| ID pola | `P-009-0004` |
-| Ekran | [E-009](../E-009__README.md) |
-| Nazwa wykryta | `reviewComment` |
-| Typ detekcji | `[(ngModel)]` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-detail/product-detail.component.html` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Pola
-
-Do uzupełnienia.
-
-## Wymagalność I Walidacje
-
-| Właściwość | Wartość | Źródło |
-|---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/catalog/product-detail/product-detail.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-009](../ERR-009_BLEDY/ERR-009__INDEX.md) | do uzupełnienia |
-
-## Mapowanie Danych
-
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
-
-## Dane Do Testów
-
-- [TD dla pola](../TD-009_DANE_TESTOWE/TD-009-0004__reviewcomment.md)
-- Zakres danych poprawnych: do uzupełnienia.
-- Zakres danych błędnych: do uzupełnienia.
-
-## Linki
-
-- [Indeks pól](P-009__INDEX.md)
-- [Akcje ekranu](../A-009_AKCJE/A-009__INDEX.md)
-- [Ślad ekranu](../E-009__LINKI.md)
+| Typ UI | textarea `[(ngModel)]="reviewComment"`, `maxlength="1500"` |
+| Wymagalność | wymagane dla Dealera; submit disabled, gdy `!reviewComment.trim()` |
+| Walidacje | backend `Comment` required i max 1500 |
+| API/DTO | `CreateProductReviewRequest.Comment`, `ProductReviewDto.Comment` |
+| Tabela SQL | brak tabeli SQL dla review |
+| Kolumna SQL | `brak kolumny SQL`; review jest przechowywane w pamięci procesu |
+| Dane Do Test | `TD-009-0004`: pusty, typowy, 1500 znaków, 1501 znaków |
+| Testy | `TC-009-0007`, `TC-009-0009` |

@@ -1,28 +1,9 @@
-# TD-009-0007 Dane Testowe Dla P-009-0007
+# TD-009-0007 Review Title Display
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie walidacji i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID danych testowych | `TD-009-0007` |
-| Pole | [P-009-0007](../P-009_POLA/P-009-0007__r-title.md) |
-| Ekran | [E-009](../E-009__README.md) |
-| Status faktu | `do uzupełnienia` |
-
-## Dane Poprawne
-
-| Przypadek | Wartość | Cel |
+| Typ | Dane | Oczekiwany rezultat |
 |---|---|---|
-| poprawny minimalny | do uzupełnienia | test walidacji minimalnej |
-| poprawny typowy | do uzupełnienia | test ścieżki użytkownika |
-| poprawny graniczny | do uzupełnienia | test wartości brzegowej |
-
-## Dane Niepoprawne
-
-| Przypadek | Wartość | Oczekiwany błąd |
-|---|---|---|
-| puste | do uzupełnienia | do uzupełnienia |
-| zły format | do uzupełnienia | do uzupełnienia |
-| poza zakresem | do uzupełnienia | do uzupełnienia |
+| approved | `Reliable pump`, `isApproved=true` | widoczny tytuł i badge `Approved` |
+| pending | `Needs review`, `isApproved=false`, `isRejected=false` | Admin widzi pending; Dealer bez pending po reload |
+| rejected | `Bad batch`, `isRejected=true` | widoczny badge `Rejected` dla Admina, jeśli pobiera pending/rejected |

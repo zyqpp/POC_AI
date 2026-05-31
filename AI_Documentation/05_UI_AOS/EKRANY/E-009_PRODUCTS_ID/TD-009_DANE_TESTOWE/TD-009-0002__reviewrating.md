@@ -1,28 +1,10 @@
-# TD-009-0002 Dane Testowe Dla P-009-0002
+# TD-009-0002 Review Rating
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie walidacji i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID danych testowych | `TD-009-0002` |
-| Pole | [P-009-0002](../P-009_POLA/P-009-0002__reviewrating.md) |
-| Ekran | [E-009](../E-009__README.md) |
-| Status faktu | `do uzupełnienia` |
-
-## Dane Poprawne
-
-| Przypadek | Wartość | Cel |
+| Typ | Dane | Oczekiwany rezultat |
 |---|---|---|
-| poprawny minimalny | do uzupełnienia | test walidacji minimalnej |
-| poprawny typowy | do uzupełnienia | test ścieżki użytkownika |
-| poprawny graniczny | do uzupełnienia | test wartości brzegowej |
-
-## Dane Niepoprawne
-
-| Przypadek | Wartość | Oczekiwany błąd |
-|---|---|---|
-| puste | do uzupełnienia | do uzupełnienia |
-| zły format | do uzupełnienia | do uzupełnienia |
-| poza zakresem | do uzupełnienia | do uzupełnienia |
+| poprawne minimum | `1` | backend akceptuje |
+| poprawne maksimum | `5` | backend akceptuje |
+| poniżej zakresu | `0` | walidator backendu odrzuca |
+| powyżej zakresu | `6` | walidator backendu odrzuca |

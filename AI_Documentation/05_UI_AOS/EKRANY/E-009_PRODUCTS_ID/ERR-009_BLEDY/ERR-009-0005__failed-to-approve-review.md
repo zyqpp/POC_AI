@@ -1,39 +1,12 @@
-# ERR-009-0005 Failed to approve review
+# ERR-009-0005 Failed To Approve Review
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i obsługi błędów.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
+| Obszar | Opis |
 |---|---|
-| ID błędu | `ERR-009-0005` |
-| Ekran | [E-009](../E-009__README.md) |
-| Nazwa wykryta | `Failed to approve review` |
-| Typ detekcji | `toast.error` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-detail/product-detail.component.ts` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Błędu
-
-Do uzupełnienia.
-
-## Warunki Wystąpienia
-
-| Warstwa | Warunek | Status |
-|---|---|---|
-| UI | do uzupełnienia | `do uzupełnienia` |
-| Walidacja frontend | do uzupełnienia | `do uzupełnienia` |
-| API/backend | do uzupełnienia | `do uzupełnienia` |
-| Baza/integracja | do uzupełnienia | `do uzupełnienia` |
-
-## Testy
-
-- [Macierz testów ekranu](../TC-009_TESTY/TC-009__INDEX.md)
-- Dane wywołujące błąd: do uzupełnienia.
-- Oczekiwany komunikat: do uzupełnienia.
-
-## Linki
-
-- [Indeks błędów](ERR-009__INDEX.md)
-- [Pola ekranu](../P-009_POLA/P-009__INDEX.md)
-- [Akcje ekranu](../A-009_AKCJE/A-009__INDEX.md)
+| Warunek | błąd `PUT /catalog/api/products/reviews/{reviewId}/approve` |
+| Komunikat UI | `Failed to approve review` |
+| Backend | brak review zwraca `404`; brak poprawnego tokena `Unauthorized`; rola wymagana `Admin` |
+| DB | review nie ma tabeli SQL; status zmieniany w `ReviewsById` |
+| Dane testowe | `TD-009-0007`, `TD-009-0012` |
+| Test | `TC-009-0010` |

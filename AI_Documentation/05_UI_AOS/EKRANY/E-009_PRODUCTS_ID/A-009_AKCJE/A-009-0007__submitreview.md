@@ -1,42 +1,15 @@
-# A-009-0007 submitReview
+# A-009-0007 Submit Review
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
+| Warstwa | Fakt |
 |---|---|
-| ID akcji | `A-009-0007` |
-| Ekran | [E-009](../E-009__README.md) |
-| Nazwa wykryta | `submitReview` |
-| Typ detekcji | `click` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-detail/product-detail.component.html` |
-| Status faktu | `do uzupełnienia` |
+| UI | formularz review widoczny dla `Dealer`; submit disabled bez tytułu lub komentarza |
+| Frontend | `submitReview()` wysyła rating, title, comment i ustawia `actionLoading` |
+| API | `POST /catalog/api/products/{id}/reviews` |
+| Backend | `ProductsController.AddReview`, `[Authorize(Roles = "Dealer")]`, `CreateProductReviewCommand` |
+| Walidacje | rating 1-5, title required max 120, comment required max 1500 |
+| DB | `brak kolumny SQL`; review trafia do statycznego `ReviewsById` w pamięci procesu |
+| Testy | `TC-009-0007`, `TC-009-0009` |
 
-## Opis Akcji
-
-Do uzupełnienia.
-
-## Ślad Techniczny
-
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Element UI | do uzupełnienia | `do uzupełnienia` |
-| Metoda komponentu | do uzupełnienia | `do uzupełnienia` |
-| Serwis frontend | do uzupełnienia | `do uzupełnienia` |
-| Endpoint API | do uzupełnienia | `do uzupełnienia` |
-| Komenda/zapytanie | do uzupełnienia | `do uzupełnienia` |
-| Walidacje | do uzupełnienia | `do uzupełnienia` |
-| Skutek w bazie | do uzupełnienia | `do uzupełnienia` |
-
-## Testy
-
-- [Macierz testów ekranu](../TC-009_TESTY/TC-009__INDEX.md)
-- Dane wejściowe: do uzupełnienia.
-- Oczekiwany rezultat: do uzupełnienia.
-
-## Linki
-
-- [Indeks akcji](A-009__INDEX.md)
-- [Pola ekranu](../P-009_POLA/P-009__INDEX.md)
-- [Ślad ekranu](../E-009__LINKI.md)
+Po sukcesie UI pokazuje `Review submitted for moderation`, czyści pola i odświeża listę reviews.
