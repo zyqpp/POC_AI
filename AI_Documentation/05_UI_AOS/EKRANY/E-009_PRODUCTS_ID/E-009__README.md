@@ -21,6 +21,34 @@ Status: `potwierdzone` dla śladu `UI -> API -> proces -> DB -> testy`.
 
 Ekran pokazuje szczegół produktu, dostępny stock i recenzje. Dealer może dobrać ilość i dodać produkt do lokalnego koszyka, Admin może dezaktywować produkt i moderować recenzje, a Admin lub Warehouse mogą wykonać restock.
 
+## Widok
+
+```text
++----------------------------------------------------------------------------+
+| Product Detail                                      [Edit]* [Deactivate]*   |
++----------------------------------------------------------------------------+
+| +---------------------------+ +------------------------------------------+ |
+| | image / fallback          | | Name                                      | |
+| | badges: active/stock      | | SKU                                       | |
+| |                           | | Description                               | |
+| |                           | | Price, Available, Reserved, Total         | |
+| |                           | | Min order, Updated                        | |
+| +---------------------------+ +------------------------------------------+ |
+|                                                                            |
+| Dealer: Qty [-] [____] [+] [Add to Cart]                                   |
+| Admin/Warehouse: Restock Qty [____] Reference [________] [Restock]         |
+|                                                                            |
+| Reviews                                                                    |
+| +------------------------------------------------------------------------+ |
+| | Dealer form: rating/title/comment [Submit Review]                       | |
+| | Review list: rating, title, comment, status, moderation actions*        | |
+| +------------------------------------------------------------------------+ |
+| [loading] [not found] [empty reviews] [silent action error gaps]           |
++----------------------------------------------------------------------------+
+```
+
+`Edit`, `Deactivate` i moderacja są akcjami Admin. `Restock` jest dla Admin/Warehouse. `Add to Cart` i submit review są dla Dealer.
+
 ## Dokumenty Atomowe
 
 - [Pola UI](P-009_POLA/P-009__INDEX.md)

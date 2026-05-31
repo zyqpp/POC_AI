@@ -27,6 +27,32 @@ Status: `potwierdzone` dla śladu front -> API -> IdentityAuth DB -> testy.
 
 Ekran pokazuje dane aktualnie zalogowanego użytkownika pobrane z tokenu i bazy `IdentityAuth`. Dla roli `Dealer` pokazuje dodatkowo dane dealera: limit kredytowy, nazwę firmy, GST i flagę interstate.
 
+## Widok
+
+```text
++----------------------------------------------------------------------------+
+| Profile                                                                    |
++----------------------------------------------------------------------------+
+| +------------------------------------------------------------------------+ |
+| | User                                                                    | |
+| | Full name        [P-006: fullName]                                      | |
+| | Email            [P-006: email]                                         | |
+| | Role             [P-006: role]                                          | |
+| | Status           [P-006: status / active flag]                          | |
+| +------------------------------------------------------------------------+ |
+|                                                                            |
+| +------------------------------------------------------------------------+ |
+| | Dealer details (visible when profile has Dealer data)                    | |
+| | Company          [P-006: companyName]                                   | |
+| | GST              [P-006: gstNumber]                                     | |
+| | Interstate       [P-006: isInterstate]                                  | |
+| | Credit limit     [P-006: creditLimit]                                   | |
+| +------------------------------------------------------------------------+ |
+|                                                                            |
+| [loading state] [error state if profile API fails]                         |
++----------------------------------------------------------------------------+
+```
+
 ## Dokumenty Atomowe
 
 - [Pola UI](P-006_POLA/P-006__INDEX.md)

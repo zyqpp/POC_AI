@@ -1,28 +1,10 @@
-# TD-010-0007 Dane Testowe Dla P-010-0007
-
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie walidacji i bazy.
-
-## Identyfikacja
+# TD-010-0007 Description
 
 | Atrybut | Wartość |
 |---|---|
-| ID danych testowych | `TD-010-0007` |
 | Pole | [P-010-0007](../P-010_POLA/P-010-0007__description.md) |
-| Ekran | [E-010](../E-010__README.md) |
-| Status faktu | `do uzupełnienia` |
-
-## Dane Poprawne
-
-| Przypadek | Wartość | Cel |
-|---|---|---|
-| poprawny minimalny | do uzupełnienia | test walidacji minimalnej |
-| poprawny typowy | do uzupełnienia | test ścieżki użytkownika |
-| poprawny graniczny | do uzupełnienia | test wartości brzegowej |
-
-## Dane Niepoprawne
-
-| Przypadek | Wartość | Oczekiwany błąd |
-|---|---|---|
-| puste | do uzupełnienia | do uzupełnienia |
-| zły format | do uzupełnienia | do uzupełnienia |
-| poza zakresem | do uzupełnienia | do uzupełnienia |
+| Poprawne | `Updated product description for admin edit flow.` |
+| Graniczne | 2000 znaków |
+| Błędne | pusty string, 2001 znaków |
+| Oczekiwane | poprawna wartość zapisuje `Products.Description`; błędna blokuje submit lub API |
+| Status testu | `brak w kodzie` |

@@ -1,6 +1,6 @@
-# P-010-0011 child.name
+# P-010-0011 Child Category Label
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `potwierdzone`.
 
 ## Identyfikacja
 
@@ -8,47 +8,38 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 |---|---|
 | ID pola | `P-010-0011` |
 | Ekran | [E-010](../E-010__README.md) |
-| Nazwa wykryta | `child.name` |
-| Typ detekcji | `interpolation` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Nazwa UI | etykieta opcji kategorii podrzędnej |
+| Typ UI | `option` |
+| Źródło | `product-form.component.html:46`, `product-form.component.ts:59` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Nazwa kategorii podrzędnej w select. Kliknięcie opcji ustawia wartość `categoryId`, ale sama nazwa jest tylko etykietą czytaną z `Categories.Name`.
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-010](../ERR-010_BLEDY/ERR-010__INDEX.md) | do uzupełnienia |
+| Wymagalność | display only | template |
+| UI validator | walidowany jest wybrany `categoryId`, nie tekst etykiety | `P-010-0006` |
+| Backend validator | sprawdzane jest istnienie `CategoryId` | `CatalogInventoryService.cs:108` |
+| Komunikat | błędy kategorii są w [ERR-010-0006](../ERR-010_BLEDY/ERR-010-0006__could-not-load-categories-try-refreshing.md), [ERR-010-0007](../ERR-010_BLEDY/ERR-010-0007__no-categories-available.md), [ERR-010-0008](../ERR-010_BLEDY/ERR-010-0008__category-is-required.md) | `potwierdzone` |
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `group.children[].name` | `potwierdzone` |
+| Serwis API | `getCategories()` | `potwierdzone` |
+| Endpoint | `GET /catalog/api/products/categories` | `potwierdzone` |
+| DTO/kontrakt | `CategoryDto.Name` | `potwierdzone` |
+| Encja/model | `Category.Name` | `potwierdzone` |
+| DbContext | `Categories.Name` max 140 | `potwierdzone` |
+| Tabela SQL | `Categories` | `potwierdzone` |
+| Kolumna SQL | `Name` | `potwierdzone` |
+| Odczyt/zapis | `R` | `potwierdzone` |
 
 ## Dane Do Testów
 
-- [TD dla pola](../TD-010_DANE_TESTOWE/TD-010-0011__child-name.md)
-- Zakres danych poprawnych: do uzupełnienia.
-- Zakres danych błędnych: do uzupełnienia.
-
-## Linki
-
-- [Indeks pól](P-010__INDEX.md)
-- [Akcje ekranu](../A-010_AKCJE/A-010__INDEX.md)
-- [Ślad ekranu](../E-010__LINKI.md)
+- [TD-010-0011](../TD-010_DANE_TESTOWE/TD-010-0011__child-name.md)
+- Seed: kategoria podrzędna `Pumps`.

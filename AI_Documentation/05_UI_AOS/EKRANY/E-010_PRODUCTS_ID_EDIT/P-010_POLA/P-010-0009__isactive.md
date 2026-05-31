@@ -1,6 +1,6 @@
-# P-010-0009 isActive
+# P-010-0009 Active
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `potwierdzone`.
 
 ## Identyfikacja
 
@@ -8,47 +8,39 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 |---|---|
 | ID pola | `P-010-0009` |
 | Ekran | [E-010](../E-010__README.md) |
-| Nazwa wykryta | `isActive` |
-| Typ detekcji | `formControlName` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Nazwa UI | `Active` |
+| Typ UI | checkbox |
+| Źródło | `product-form.component.html:74`, `product-form.component.ts:76` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Checkbox aktywności produktu. Jest widoczny tylko w trybie edit. Pozwala ustawić `Products.IsActive` na `true` albo `false`, więc jest funkcjonalnie szerszy niż akcja dezaktywacji z E-009.
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-010](../ERR-010_BLEDY/ERR-010__INDEX.md) | do uzupełnienia |
+| Wymagalność | wymagane przez typ bool, domyślnie `true` | `product-form.component.ts:76` |
+| UI validator | brak dodatkowego walidatora | `brak w kodzie` |
+| Backend validator | brak jawnej reguły, bool w DTO jest nie-nullowalny | `UpdateProductRequest` |
+| Komunikat | brak dedykowanego komunikatu | `brak w kodzie` |
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `form.controls.isActive` | `potwierdzone` |
+| Serwis API | `updateProduct(id, req)` | `potwierdzone` |
+| Endpoint | `PUT /catalog/api/products/{id}` | `potwierdzone` |
+| DTO/kontrakt | `UpdateProductRequest.IsActive`, `ProductDto.IsActive` | `potwierdzone` |
+| Encja/model | `Product.IsActive` | `potwierdzone` |
+| DbContext | bool, wymagane przez typ encji | `potwierdzone` |
+| Tabela SQL | `Products` | `potwierdzone` |
+| Kolumna SQL | `IsActive` | `potwierdzone` |
+| Odczyt/zapis | `R/W` | `potwierdzone` |
 
 ## Dane Do Testów
 
-- [TD dla pola](../TD-010_DANE_TESTOWE/TD-010-0009__isactive.md)
-- Zakres danych poprawnych: do uzupełnienia.
-- Zakres danych błędnych: do uzupełnienia.
-
-## Linki
-
-- [Indeks pól](P-010__INDEX.md)
-- [Akcje ekranu](../A-010_AKCJE/A-010__INDEX.md)
-- [Ślad ekranu](../E-010__LINKI.md)
+- [TD-010-0009](../TD-010_DANE_TESTOWE/TD-010-0009__isactive.md)
+- Poprawne: `true`, `false`.
+- Test regresji: odznaczenie checkboxa zapisuje produkt nieaktywny; ponowne zaznaczenie reaktywuje produkt.

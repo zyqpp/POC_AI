@@ -1,6 +1,6 @@
-# P-010-0010 group.parent.name
+# P-010-0010 Parent Category Label
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `potwierdzone`.
 
 ## Identyfikacja
 
@@ -8,47 +8,38 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 |---|---|
 | ID pola | `P-010-0010` |
 | Ekran | [E-010](../E-010__README.md) |
-| Nazwa wykryta | `group.parent.name` |
-| Typ detekcji | `interpolation` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Nazwa UI | etykieta grupy kategorii |
+| Typ UI | `optgroup label` |
+| Źródło | `product-form.component.html:44`, `product-form.component.ts:59` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Etykieta nadrzędnej kategorii w select. Nie jest osobnym polem zapisywanym z formularza; służy tylko do czytelnego grupowania opcji.
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-010](../ERR-010_BLEDY/ERR-010__INDEX.md) | do uzupełnienia |
+| Wymagalność | display only | template |
+| UI validator | brak | `brak w kodzie` |
+| Backend validator | nazwa kategorii pochodzi z danych `CategoryDto` | `GetCategories` |
+| Komunikat | brak dedykowanego komunikatu | `brak w kodzie` |
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `categoryGroups().parent.name` | `potwierdzone` |
+| Serwis API | `getCategories()` | `potwierdzone` |
+| Endpoint | `GET /catalog/api/products/categories` | `potwierdzone` |
+| DTO/kontrakt | `CategoryDto.Name` | `potwierdzone` |
+| Encja/model | `Category.Name` | `potwierdzone` |
+| DbContext | `Property(x => x.Name).HasMaxLength(140).IsRequired()` | `potwierdzone` |
+| Tabela SQL | `Categories` | `potwierdzone` |
+| Kolumna SQL | `Name` | `potwierdzone` |
+| Odczyt/zapis | `R` | `potwierdzone` |
 
 ## Dane Do Testów
 
-- [TD dla pola](../TD-010_DANE_TESTOWE/TD-010-0010__group-parent-name.md)
-- Zakres danych poprawnych: do uzupełnienia.
-- Zakres danych błędnych: do uzupełnienia.
-
-## Linki
-
-- [Indeks pól](P-010__INDEX.md)
-- [Akcje ekranu](../A-010_AKCJE/A-010__INDEX.md)
-- [Ślad ekranu](../E-010__LINKI.md)
+- [TD-010-0010](../TD-010_DANE_TESTOWE/TD-010-0010__group-parent-name.md)
+- Seed: kategoria nadrzędna `Industrial`.

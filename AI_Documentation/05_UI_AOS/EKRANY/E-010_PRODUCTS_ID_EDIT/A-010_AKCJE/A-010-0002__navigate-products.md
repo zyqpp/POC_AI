@@ -1,6 +1,6 @@
-# A-010-0002 navigate /products
+# A-010-0002 Cancel To Products
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu.
+Status: `potwierdzone`.
 
 ## Identyfikacja
 
@@ -8,35 +8,26 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu
 |---|---|
 | ID akcji | `A-010-0002` |
 | Ekran | [E-010](../E-010__README.md) |
-| Nazwa wykryta | `navigate /products` |
-| Typ detekcji | `routerLink` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Element UI | link/button `Cancel` w headerze i stopce formularza |
+| Handler | `routerLink="/products"` |
+| Źródło | `product-form.component.html:5`, `product-form.component.html:79` |
 
 ## Opis Akcji
 
-Do uzupełnienia.
+Akcja opuszcza formularz i wraca na listę produktów. Nie zapisuje danych, nie wywołuje API i nie ostrzega o utracie niezapisanych zmian.
 
 ## Ślad Techniczny
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Element UI | do uzupełnienia | `do uzupełnienia` |
-| Metoda komponentu | do uzupełnienia | `do uzupełnienia` |
-| Serwis frontend | do uzupełnienia | `do uzupełnienia` |
-| Endpoint API | do uzupełnienia | `do uzupełnienia` |
-| Komenda/zapytanie | do uzupełnienia | `do uzupełnienia` |
-| Walidacje | do uzupełnienia | `do uzupełnienia` |
-| Skutek w bazie | do uzupełnienia | `do uzupełnienia` |
+| Element UI | dwa linki `Cancel` | `potwierdzone` |
+| Routing | `/products` | `potwierdzone` |
+| API | brak | `potwierdzone` |
+| DB | brak odczytu/zapisu w tej akcji | `potwierdzone` |
+| Test | [TC-010-0008](../TC-010_TESTY/TC-010__INDEX.md) | `brak w kodzie` |
 
-## Testy
+## Ryzyko
 
-- [Macierz testów ekranu](../TC-010_TESTY/TC-010__INDEX.md)
-- Dane wejściowe: do uzupełnienia.
-- Oczekiwany rezultat: do uzupełnienia.
-
-## Linki
-
-- [Indeks akcji](A-010__INDEX.md)
-- [Pola ekranu](../P-010_POLA/P-010__INDEX.md)
-- [Ślad ekranu](../E-010__LINKI.md)
+| ID | Problem | Status |
+|---|---|---|
+| `GAP-E-010-CANCEL-001` | Brak guardu lub dialogu dla niezapisanych zmian. | `brak w kodzie` |

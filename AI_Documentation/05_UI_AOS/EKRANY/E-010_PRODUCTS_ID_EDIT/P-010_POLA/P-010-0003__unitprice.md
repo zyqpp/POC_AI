@@ -1,6 +1,6 @@
-# P-010-0003 unitPrice
+# P-010-0003 Unit Price
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `potwierdzone`.
 
 ## Identyfikacja
 
@@ -8,47 +8,39 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 |---|---|
 | ID pola | `P-010-0003` |
 | Ekran | [E-010](../E-010__README.md) |
-| Nazwa wykryta | `unitPrice` |
-| Typ detekcji | `formControlName` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Nazwa UI | `Unit Price *` |
+| Typ UI | `input type="number"` |
+| Źródło | `product-form.component.html:21`, `product-form.component.ts:72` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Cena jednostkowa produktu. Frontend pozwala na krok `0.01`, a backend wymaga wartości większej od zera.
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-010](../ERR-010_BLEDY/ERR-010__INDEX.md) | do uzupełnienia |
+| Wymagalność | wymagane | `Validators.required` |
+| UI validator | minimum `0.01` | `product-form.component.ts:72` |
+| Backend validator | `GreaterThan(0m)` | `CatalogValidators.cs:47` |
+| Komunikat | [ERR-010-0003](../ERR-010_BLEDY/ERR-010-0003__positive-price-required.md) | `product-form.component.html:22` |
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `form.controls.unitPrice` | `potwierdzone` |
+| Serwis API | `updateProduct(id, req)` | `potwierdzone` |
+| Endpoint | `PUT /catalog/api/products/{id}` | `potwierdzone` |
+| DTO/kontrakt | `UpdateProductRequest.UnitPrice` | `potwierdzone` |
+| Encja/model | `Product.UnitPrice` | `potwierdzone` |
+| DbContext | `HasPrecision(18, 2)` | `potwierdzone` |
+| Tabela SQL | `Products` | `potwierdzone` |
+| Kolumna SQL | `UnitPrice` | `potwierdzone` |
+| Odczyt/zapis | `R/W` | `potwierdzone` |
 
 ## Dane Do Testów
 
-- [TD dla pola](../TD-010_DANE_TESTOWE/TD-010-0003__unitprice.md)
-- Zakres danych poprawnych: do uzupełnienia.
-- Zakres danych błędnych: do uzupełnienia.
-
-## Linki
-
-- [Indeks pól](P-010__INDEX.md)
-- [Akcje ekranu](../A-010_AKCJE/A-010__INDEX.md)
-- [Ślad ekranu](../E-010__LINKI.md)
+- [TD-010-0003](../TD-010_DANE_TESTOWE/TD-010-0003__unitprice.md)
+- Poprawne: `1250.50`.
+- Błędne: `0`, liczba ujemna, wartość pusta.

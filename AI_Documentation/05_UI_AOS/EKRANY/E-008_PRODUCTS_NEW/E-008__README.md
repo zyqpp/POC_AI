@@ -26,6 +26,27 @@ Status: `potwierdzone` dla śladu UI -> API -> CatalogInventory DB -> testy.
 
 Ekran pozwala administratorowi utworzyć nowy produkt katalogowy. Formularz pobiera kategorie, waliduje pola po stronie Angular i wysyła `CreateProductRequest`. Po sukcesie pokazuje toast `Product created` i przechodzi do `/products/{productId}`.
 
+## Widok
+
+```text
++----------------------------------------------------------------------------+
+| Create Product                                                  [Cancel]    |
++----------------------------------------------------------------------------+
+| +------------------------------------------------------------------------+ |
+| | SKU * [____________________]   Name * [______________________________] | |
+| | Unit Price * [__________]     Min Order Qty * [____]                  | |
+| | Opening Stock * [________]   Category * [Select category v]           | |
+| |   Parent category / child option labels from Categories                | |
+| | Description *                                                         | |
+| | [______________________________________________________________]       | |
+| | Image URL                                                             | |
+| | [https://........................................................]    | |
+| |                                                        [Cancel] [Create Product] |
+| +------------------------------------------------------------------------+ |
+| [category loading] [category empty/error] [field validation errors]        |
++----------------------------------------------------------------------------+
+```
+
 ## Dokumenty Atomowe
 
 - [Pola UI](P-008_POLA/P-008__INDEX.md)

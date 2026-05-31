@@ -1,6 +1,6 @@
-# P-010-0007 description
+# P-010-0007 Description
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `potwierdzone`.
 
 ## Identyfikacja
 
@@ -8,47 +8,39 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 |---|---|
 | ID pola | `P-010-0007` |
 | Ekran | [E-010](../E-010__README.md) |
-| Nazwa wykryta | `description` |
-| Typ detekcji | `formControlName` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Nazwa UI | `Description *` |
+| Typ UI | `textarea` |
+| Źródło | `product-form.component.html:64`, `product-form.component.ts:70` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Opis produktu widoczny później na szczególe produktu. W E-010 jest edytowany i zapisywany do `Products.Description`.
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-010](../ERR-010_BLEDY/ERR-010__INDEX.md) | do uzupełnienia |
+| Wymagalność | wymagane | `Validators.required` |
+| Limit | max 2000 znaków | `product-form.component.ts:70`, `CatalogValidators.cs:45` |
+| Backend validator | `RuleFor(x => x.Description).NotEmpty().MaximumLength(2000)` | `CatalogValidators.cs:45` |
+| Komunikat | [ERR-010-0009](../ERR-010_BLEDY/ERR-010-0009__description-is-required-max-2000-chars.md) | `product-form.component.html:65` |
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `form.controls.description` | `potwierdzone` |
+| Serwis API | `updateProduct(id, req)` | `potwierdzone` |
+| Endpoint | `PUT /catalog/api/products/{id}` | `potwierdzone` |
+| DTO/kontrakt | `UpdateProductRequest.Description`, `ProductDto.Description` | `potwierdzone` |
+| Encja/model | `Product.Description` | `potwierdzone` |
+| DbContext | `Property(x => x.Description).HasMaxLength(2000).IsRequired()` | `potwierdzone` |
+| Tabela SQL | `Products` | `potwierdzone` |
+| Kolumna SQL | `Description` | `potwierdzone` |
+| Odczyt/zapis | `R/W` | `potwierdzone` |
 
 ## Dane Do Testów
 
-- [TD dla pola](../TD-010_DANE_TESTOWE/TD-010-0007__description.md)
-- Zakres danych poprawnych: do uzupełnienia.
-- Zakres danych błędnych: do uzupełnienia.
-
-## Linki
-
-- [Indeks pól](P-010__INDEX.md)
-- [Akcje ekranu](../A-010_AKCJE/A-010__INDEX.md)
-- [Ślad ekranu](../E-010__LINKI.md)
+- [TD-010-0007](../TD-010_DANE_TESTOWE/TD-010-0007__description.md)
+- Poprawne: opis techniczny produktu.
+- Błędne: pusty opis i tekst dłuższy niż 2000 znaków.

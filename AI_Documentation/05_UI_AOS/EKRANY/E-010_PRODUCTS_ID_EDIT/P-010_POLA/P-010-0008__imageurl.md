@@ -1,6 +1,6 @@
-# P-010-0008 imageUrl
+# P-010-0008 Image URL
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `potwierdzone`.
 
 ## Identyfikacja
 
@@ -8,47 +8,39 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 |---|---|
 | ID pola | `P-010-0008` |
 | Ekran | [E-010](../E-010__README.md) |
-| Nazwa wykryta | `imageUrl` |
-| Typ detekcji | `formControlName` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Nazwa UI | `Image URL` |
+| Typ UI | `input type="url"` |
+| Źródło | `product-form.component.html:69`, `product-form.component.ts:75` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Opcjonalny URL obrazu produktu. Pusty string jest zamieniany przed wysłaniem na `undefined`, a domena zapisuje pustą wartość jako `null`.
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-010](../ERR-010_BLEDY/ERR-010__INDEX.md) | do uzupełnienia |
+| Wymagalność | opcjonalne | `UpdateProductRequest.ImageUrl` nullable |
+| UI validator | max 500, pusty albo URL HTTP/HTTPS | `product-form.component.ts:75` |
+| Backend validator | max 500, absolutny URL HTTP/HTTPS gdy podany | `CatalogValidators.cs:49` |
+| Komunikat | [ERR-010-0010](../ERR-010_BLEDY/ERR-010-0010__image-url-must-be-valid-and-max-500-chars.md) | `product-form.component.html:71` |
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `form.controls.imageUrl` | `potwierdzone` |
+| Serwis API | `updateProduct(id, req)` | `potwierdzone` |
+| Endpoint | `PUT /catalog/api/products/{id}` | `potwierdzone` |
+| DTO/kontrakt | `UpdateProductRequest.ImageUrl`, `ProductDto.ImageUrl` | `potwierdzone` |
+| Encja/model | `Product.ImageUrl` | `potwierdzone` |
+| DbContext | `Property(x => x.ImageUrl).HasMaxLength(500)` | `potwierdzone` |
+| Tabela SQL | `Products` | `potwierdzone` |
+| Kolumna SQL | `ImageUrl` | `potwierdzone` |
+| Odczyt/zapis | `R/W`, nullable | `potwierdzone` |
 
 ## Dane Do Testów
 
-- [TD dla pola](../TD-010_DANE_TESTOWE/TD-010-0008__imageurl.md)
-- Zakres danych poprawnych: do uzupełnienia.
-- Zakres danych błędnych: do uzupełnienia.
-
-## Linki
-
-- [Indeks pól](P-010__INDEX.md)
-- [Akcje ekranu](../A-010_AKCJE/A-010__INDEX.md)
-- [Ślad ekranu](../E-010__LINKI.md)
+- [TD-010-0008](../TD-010_DANE_TESTOWE/TD-010-0008__imageurl.md)
+- Poprawne: pusty string, `https://cdn.example.test/pump.png`.
+- Błędne: `ftp://...`, tekst dłuższy niż 500 znaków.

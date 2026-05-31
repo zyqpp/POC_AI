@@ -1,12 +1,15 @@
 # A-010 Akcje UI
 
-Status: `szkielet`; indeks akcji wykrytych automatycznie z template Angular.
+Status: `potwierdzone`.
 
-| ID akcji | Nazwa | Typ detekcji | Źródło | Dokument |
-|---|---|---|---|---|
-| `A-010-0001` | submit | ngSubmit | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` | [A-010-0001__submit.md](A-010-0001__submit.md) |
-| `A-010-0002` | navigate /products | routerLink | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` | [A-010-0002__navigate-products.md](A-010-0002__navigate-products.md) |
+| ID akcji | Nazwa | Element UI | Handler | API | DB | Dokument |
+|---|---|---|---|---|---|---|
+| `A-010-0001` | Update Product | submit button | `ProductFormComponent.submit()` | `PUT /catalog/api/products/{id}` | `Products`, `OutboxMessages` | [A-010-0001__submit](A-010-0001__submit.md) |
+| `A-010-0002` | Cancel | link/button | `routerLink="/products"` | brak | brak zapisu | [A-010-0002__navigate-products](A-010-0002__navigate-products.md) |
+| `A-010-0003` | Load product and categories | inicjalizacja ekranu | `ngOnInit()`, `loadCategories()` | `GET /catalog/api/products/{id}`, `GET /catalog/api/products/categories` | `Products`, `Categories` | [A-010-0003__load-product-and-categories](A-010-0003__load-product-and-categories.md) |
 
-## Reguła Uzupełniania
+## Uwagi
 
-Każda akcja musi docelowo wskazywać element UI, metodę komponentu, serwis frontend, endpoint API, walidacje, skutek biznesowy, skutek w bazie i przypadki testowe.
+- Submit w trybie edit nie wysyła `Sku` ani `OpeningStock`.
+- Cancel działa bez API i nie ma potwierdzenia utraty zmian.
+- Load produktu nie ma widocznego komunikatu błędu 404 w template.

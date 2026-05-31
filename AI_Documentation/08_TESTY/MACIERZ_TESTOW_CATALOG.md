@@ -1,6 +1,6 @@
 # MACIERZ_TESTOW_CATALOG
 
-Status: `potwierdzone` jako wymagania testowe dla `E-007`, `E-008`, `E-009`; będzie rozszerzana przy `E-010`.
+Status: `potwierdzone` jako wymagania testowe dla `E-007`, `E-008`, `E-009`, `E-010`.
 
 | ID | Scenariusz | Typ testu | Dane | Obecny status | Kryterium zamknięcia |
 |---|---|---|---|---|---|
@@ -26,10 +26,18 @@ Status: `potwierdzone` jako wymagania testowe dla `E-007`, `E-008`, `E-009`; bę
 | `TC-009-0008` | Lista reviews pokazuje approved dla Dealer i pending dla Admin. | API/component | `TD-009-0007`, `TD-009-0008`, `TD-009-0009`, `TD-009-0012` | `brak w kodzie` | `includePending=true` tylko dla Admina. |
 | `TC-009-0009` | Walidacje review odrzucają rating/title/comment poza zakresem. | API validation | `TD-009-0002`, `TD-009-0003`, `TD-009-0004` | `brak w kodzie` | Walidator zwraca błąd, brak review w `ReviewsById`. |
 | `TC-009-0010` | Admin zatwierdza i odrzuca review. | API/component | `TD-009-0007`, `TD-009-0010`, `TD-009-0012` | `brak w kodzie` | Badge zmienia się na `Approved` albo `Rejected`; brak SQL opisany jako ryzyko. |
+| `TC-010-0001` | Admin ładuje formularz edit. | component/API integration | `TD-010-0001`, `TD-010-0006`, `TD-010-0010`, `TD-010-0011` | `brak w kodzie` | Formularz ma dane z `ProductDto`, SKU disabled, kategorie pogrupowane. |
+| `TC-010-0002` | Admin zapisuje poprawną edycję. | e2e/API integration | `TD-010-0002` do `TD-010-0009` | `brak w kodzie` | `200`, toast `Product updated`, route `/products/{productId}`, update `Products`, outbox `ProductUpdated`. |
+| `TC-010-0003` | SKU i opening stock nie są zapisywane w edit. | API/component regression | `TD-010-0001`, `TD-010-0005` | `brak w kodzie` | Request nie zawiera `Sku` ani `OpeningStock`; `Products.Sku` i `Products.TotalStock` bez zmian. |
+| `TC-010-0004` | Walidacje blokują niepoprawne pola. | component/API validation | `TD-010-0002` do `TD-010-0008` | `brak w kodzie` | Widoczne `ERR-010-*`, brak requestu PUT dla błędów UI; API odrzuca błędny payload. |
+| `TC-010-0005` | Użytkownik bez Admin nie ma dostępu. | e2e/API auth | konto Dealer/Warehouse | `brak w kodzie` | Frontend blokuje route; backend blokuje `PUT`. |
+| `TC-010-0006` | Produkt nie istnieje albo update zwraca błąd. | component/API | nieistniejący `productId` | `brak w kodzie` | API zwraca `404`; obecna luka UI: brak widocznego komunikatu. |
+| `TC-010-0007` | Kategorie nie ładują się albo są puste. | component/API mock | `TD-010-0006`, `TD-010-0010`, `TD-010-0011` | `brak w kodzie` | Komunikat `ERR-010-0006` albo `ERR-010-0007`, select disabled. |
+| `TC-010-0008` | Cancel wraca do listy bez zapisu. | component/e2e | zmieniony formularz | `brak w kodzie` | Route `/products`, brak `PUT /catalog/api/products/{id}`. |
 
 ## Testy Istniejące
 
 | Test | Pokrycie | Luka |
 |---|---|---|
-| `tests/CatalogInventory.Domain.Tests/UnitTest1.cs` | domena produktu: create, restock, hard deduct, deactivate | brak API, walidatorów, autoryzacji, review i UI katalogu |
+| `tests/CatalogInventory.Domain.Tests/UnitTest1.cs` | domena produktu: create, restock, hard deduct, deactivate | brak API, walidatorów, autoryzacji, review, UI katalogu i update produktu |
 | `supply-chain-frontend/src/app/smoke.spec.ts` | smoke frontendu | nie pokrywa katalogu |

@@ -1,39 +1,12 @@
-# ERR-010-0005 Non-negative integer required
+# ERR-010-0005 Non-Negative Opening Stock
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i obsługi błędów.
-
-## Identyfikacja
+Status: `potwierdzone` jako komunikat formularza create; w E-010 `brak widoczności`.
 
 | Atrybut | Wartość |
 |---|---|
-| ID błędu | `ERR-010-0005` |
-| Ekran | [E-010](../E-010__README.md) |
-| Nazwa wykryta | `Non-negative integer required` |
-| Typ detekcji | `error-css-class` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Błędu
-
-Do uzupełnienia.
-
-## Warunki Wystąpienia
-
-| Warstwa | Warunek | Status |
-|---|---|---|
-| UI | do uzupełnienia | `do uzupełnienia` |
-| Walidacja frontend | do uzupełnienia | `do uzupełnienia` |
-| API/backend | do uzupełnienia | `do uzupełnienia` |
-| Baza/integracja | do uzupełnienia | `do uzupełnienia` |
-
-## Testy
-
-- [Macierz testów ekranu](../TC-010_TESTY/TC-010__INDEX.md)
-- Dane wywołujące błąd: do uzupełnienia.
-- Oczekiwany komunikat: do uzupełnienia.
-
-## Linki
-
-- [Indeks błędów](ERR-010__INDEX.md)
-- [Pola ekranu](../P-010_POLA/P-010__INDEX.md)
-- [Akcje ekranu](../A-010_AKCJE/A-010__INDEX.md)
+| Pole | [P-010-0005](../P-010_POLA/P-010-0005__openingstock.md) |
+| Komunikat UI | `Non-negative integer required` |
+| Warunek | dotyczy `openingStock`, ale pole jest ukryte w edit przez `!isEdit()` |
+| Backend | brak w `UpdateProductRequestValidator` |
+| DB | E-010 nie zapisuje `Products.TotalStock` |
+| Dane testowe | [TD-010-0005](../TD-010_DANE_TESTOWE/TD-010-0005__openingstock.md) |

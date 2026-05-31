@@ -1,39 +1,12 @@
-# ERR-010-0007 No categories available.
+# ERR-010-0007 No Categories Available
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i obsługi błędów.
-
-## Identyfikacja
+Status: `potwierdzone`.
 
 | Atrybut | Wartość |
 |---|---|
-| ID błędu | `ERR-010-0007` |
-| Ekran | [E-010](../E-010__README.md) |
-| Nazwa wykryta | `No categories available.` |
-| Typ detekcji | `error-css-class` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Błędu
-
-Do uzupełnienia.
-
-## Warunki Wystąpienia
-
-| Warstwa | Warunek | Status |
-|---|---|---|
-| UI | do uzupełnienia | `do uzupełnienia` |
-| Walidacja frontend | do uzupełnienia | `do uzupełnienia` |
-| API/backend | do uzupełnienia | `do uzupełnienia` |
-| Baza/integracja | do uzupełnienia | `do uzupełnienia` |
-
-## Testy
-
-- [Macierz testów ekranu](../TC-010_TESTY/TC-010__INDEX.md)
-- Dane wywołujące błąd: do uzupełnienia.
-- Oczekiwany komunikat: do uzupełnienia.
-
-## Linki
-
-- [Indeks błędów](ERR-010__INDEX.md)
-- [Pola ekranu](../P-010_POLA/P-010__INDEX.md)
-- [Akcje ekranu](../A-010_AKCJE/A-010__INDEX.md)
+| Akcja | [A-010-0003](../A-010_AKCJE/A-010-0003__load-product-and-categories.md) |
+| Pole | [P-010-0006](../P-010_POLA/P-010-0006__categoryid.md) |
+| Komunikat UI | `No categories available.` |
+| Warunek | `categoriesLoading=false` i `categories().length === 0` |
+| DB | odczyt `Categories` zwrócił pustą listę |
+| Dane testowe | [TD-010-0006](../TD-010_DANE_TESTOWE/TD-010-0006__categoryid.md) |

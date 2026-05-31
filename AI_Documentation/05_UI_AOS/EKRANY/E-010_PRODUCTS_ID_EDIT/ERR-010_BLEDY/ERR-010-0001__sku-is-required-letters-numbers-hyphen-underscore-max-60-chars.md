@@ -1,39 +1,14 @@
-# ERR-010-0001 SKU is required (letters, numbers, hyphen, underscore; max 60 chars)
+# ERR-010-0001 SKU Validation Message
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i obsługi błędów.
-
-## Identyfikacja
+Status: `potwierdzone`, ale w E-010 typowo nieosiągalne.
 
 | Atrybut | Wartość |
 |---|---|
-| ID błędu | `ERR-010-0001` |
-| Ekran | [E-010](../E-010__README.md) |
-| Nazwa wykryta | `SKU is required (letters, numbers, hyphen, underscore; max 60 chars)` |
-| Typ detekcji | `error-css-class` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Pole | [P-010-0001](../P-010_POLA/P-010-0001__sku.md) |
+| Komunikat UI | `SKU is required (letters, numbers, hyphen, underscore; max 60 chars)` |
+| Warunek | kontrolka `sku` invalid i touched; w edit kontrolka jest wyłączana po load |
+| Warstwa | frontend |
+| API/DB | brak wpływu w E-010, bo `Sku` nie jest w `UpdateProductRequest` |
+| Dane testowe | [TD-010-0001](../TD-010_DANE_TESTOWE/TD-010-0001__sku.md) |
 
-## Opis Błędu
-
-Do uzupełnienia.
-
-## Warunki Wystąpienia
-
-| Warstwa | Warunek | Status |
-|---|---|---|
-| UI | do uzupełnienia | `do uzupełnienia` |
-| Walidacja frontend | do uzupełnienia | `do uzupełnienia` |
-| API/backend | do uzupełnienia | `do uzupełnienia` |
-| Baza/integracja | do uzupełnienia | `do uzupełnienia` |
-
-## Testy
-
-- [Macierz testów ekranu](../TC-010_TESTY/TC-010__INDEX.md)
-- Dane wywołujące błąd: do uzupełnienia.
-- Oczekiwany komunikat: do uzupełnienia.
-
-## Linki
-
-- [Indeks błędów](ERR-010__INDEX.md)
-- [Pola ekranu](../P-010_POLA/P-010__INDEX.md)
-- [Akcje ekranu](../A-010_AKCJE/A-010__INDEX.md)
+Kryterium testu: po załadowaniu edit SKU jest widoczne, ale nieedytowalne i nie trafia do requestu update.

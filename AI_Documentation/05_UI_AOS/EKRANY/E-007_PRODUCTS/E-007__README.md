@@ -24,6 +24,28 @@ Status: `potwierdzone` dla śladu UI -> Catalog API -> CatalogInventory DB -> te
 
 Ekran pozwala przeglądać katalog produktów, filtrować po kategorii i stanie magazynowym, sortować listę, wyszukiwać po nazwie lub SKU oraz przejść do szczegółu produktu. Dla `Admin` pokazuje akcję utworzenia produktu, a dla `Dealer` akcję szybkiego dodania do koszyka.
 
+## Widok
+
+```text
++----------------------------------------------------------------------------+
+| Products                                                    [Add Product]*  |
++----------------------------------------------------------------------------+
+| Search [________________________] Category [select v] Stock [select v]      |
+| Sort [select v]                                                            |
++----------------------------------------------------------------------------+
+| +----------------------+ +----------------------+ +----------------------+ |
+| | image / fallback     | | image / fallback     | | image / fallback     | |
+| | Name / SKU           | | Name / SKU           | | Name / SKU           | |
+| | Price / Available    | | Price / Available    | | Price / Available    | |
+| | [View] [Quick Add]*  | | [View] [Quick Add]*  | | [View] [Quick Add]*  | |
+| +----------------------+ +----------------------+ +----------------------+ |
+|                                                                            |
+| [pagination / result count] [loading] [empty] [error]                      |
++----------------------------------------------------------------------------+
+```
+
+`Add Product` jest akcją Admin. `Quick Add` jest akcją Dealer i zapisuje tylko lokalny koszyk frontendu.
+
 ## Ślad End-To-End
 
 | Krok | Fakt | Źródło | Status |

@@ -16,6 +16,31 @@ Status: `szkielet`; źródło startowe: routing i komponent Angular.
 | Źródło template | `{{TEMPLATE_SOURCE}}` |
 | Status faktów | `do uzupełnienia` |
 
+## Cel Ekranu
+
+Do uzupełnienia na podstawie template Angular, komponentu, serwisów API i procesu biznesowego.
+
+## Widok
+
+Każdy ekran musi mieć widok rozpisany jako prosty wireframe z kresek. Layout ma pokazywać sekcje, główne pola, przyciski, stany warunkowe i miejsca list/tabel/modali.
+
+```text
++----------------------------------------------------------------------------+
+| {{SCREEN_ID}} {{SCREEN_NAME}}                                               |
++----------------------------------------------------------------------------+
+| [sekcja nagłówka / akcje główne]                                            |
+|                                                                            |
+| +------------------------------------------------------------------------+ |
+| | [sekcja danych / formularz / tabela]                                   | |
+| | [P-{{SCREEN_NUMBER}}-0001] [P-{{SCREEN_NUMBER}}-0002]                  | |
+| |                                                                        | |
+| | [A-{{SCREEN_NUMBER}}-0001] [A-{{SCREEN_NUMBER}}-0002]                  | |
+| +------------------------------------------------------------------------+ |
+|                                                                            |
+| [stany: loading / empty / error / modal, jeśli występują]                  |
++----------------------------------------------------------------------------+
+```
+
 ## Dokumenty Atomowe
 
 - [Pola UI](P-{{SCREEN_NUMBER}}_POLA/P-{{SCREEN_NUMBER}}__INDEX.md)
