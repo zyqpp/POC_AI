@@ -25,6 +25,27 @@ foreach ($dir in $requiredDirs) {
     }
 }
 
+$requiredFiles = @(
+    'AI_DATABASE_STRUCTURE.md',
+    '00_START\CHECKLISTA_JAKOSCI_AOS.md',
+    '05_UI_AOS\AOS_CHECKOUT.md',
+    '06_PROCESY\CHECKOUT_E2E.md',
+    '10_WARSZTAT_AGENTOW\fakty\AI_AOS_TRACE_FACTS.json',
+    '10_WARSZTAT_AGENTOW\fakty\AI_AOS_TRACE_REPORT.md'
+)
+
+foreach ($file in $requiredFiles) {
+    $path = Join-Path $docRoot $file
+    if (-not (Test-Path -LiteralPath $path)) {
+        $errors.Add("Missing required documentation file: $file") | Out-Null
+    }
+}
+
+$templateRoot = Join-Path $docRoot 'AOS_Template'
+if (-not (Test-Path -LiteralPath $templateRoot)) {
+    $errors.Add("Missing AOS template directory: AOS_Template") | Out-Null
+}
+
 $activeDocs = Get-ChildItem -LiteralPath $docRoot -Recurse -File -Include '*.md' |
     Where-Object { $_.FullName -notmatch '\\_archive\\' }
 
@@ -67,6 +88,42 @@ foreach ($skill in $expectedSkills) {
         $content = Get-Content -LiteralPath $skillFile -Raw -Encoding UTF8
         if ($content -match '\[TODO:') {
             $errors.Add("TODO placeholder in skill: $skill") | Out-Null
+        }
+    }
+}
+
+$traceFacts = Join-Path $docRoot '10_WARSZTAT_AGENTOW\fakty\AI_AOS_TRACE_FACTS.json'
+if (Test-Path -LiteralPath $traceFacts) {
+    $traceText = Get-Content -LiteralPath $traceFacts -Raw -Encoding UTF8
+    if ($traceText -notmatch '"gitHead"\s*:') {
+        $errors.Add("Trace facts missing gitHead metadata") | Out-Null
+    }
+    if ($traceText -notmatch '"scriptName"\s*:') {
+        $errors.Add("Trace facts missing scriptName metadata") | Out-Null
+    }
+}
+
+$traceReport = Join-Path $docRoot '10_WARSZTAT_AGENTOW\fakty\AI_AOS_TRACE_REPORT.md'
+if (Test-Path -LiteralPath $traceReport) {
+    $reportText = Get-Content -LiteralPath $traceReport -Raw -Encoding UTF8
+    if ($reportText -notmatch 'Git HEAD:') {
+        $errors.Add("Trace report missing Git HEAD line") | Out-Null
+    }
+}
+
+$checkoutAos = Join-Path $docRoot '05_UI_AOS\AOS_CHECKOUT.md'
+if (Test-Path -LiteralPath $checkoutAos) {
+    $aosText = Get-Content -LiteralPath $checkoutAos -Raw -Encoding UTF8
+    $requiredAosSections = @(
+        'End-To-End',
+        'Model Danych',
+        'API I Kontrakty',
+        'Testy I Luki',
+        'Ryzyka'
+    )
+    foreach ($section in $requiredAosSections) {
+        if ($aosText -notmatch [regex]::Escape($section)) {
+            $errors.Add("Checkout AOS missing section: $section") | Out-Null
         }
     }
 }

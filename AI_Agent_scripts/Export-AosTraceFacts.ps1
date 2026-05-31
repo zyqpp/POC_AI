@@ -12,11 +12,21 @@ if ([string]::IsNullOrWhiteSpace($Root)) {
 }
 
 if ([string]::IsNullOrWhiteSpace($OutputJson)) {
-    $OutputJson = Join-Path $Root "AI_Documentation\AI_AOS_TRACE_FACTS.json"
+    $OutputJson = Join-Path $Root "AI_Documentation\10_WARSZTAT_AGENTOW\fakty\AI_AOS_TRACE_FACTS.json"
 }
 
 if ([string]::IsNullOrWhiteSpace($OutputMarkdown)) {
-    $OutputMarkdown = Join-Path $Root "AI_Documentation\AI_AOS_TRACE_REPORT.md"
+    $OutputMarkdown = Join-Path $Root "AI_Documentation\10_WARSZTAT_AGENTOW\fakty\AI_AOS_TRACE_REPORT.md"
+}
+
+$gitHead = "unknown"
+try {
+    $gitHead = (& git -C $Root rev-parse --short HEAD 2>$null).Trim()
+    if ([string]::IsNullOrWhiteSpace($gitHead)) {
+        $gitHead = "unknown"
+    }
+} catch {
+    $gitHead = "unknown"
 }
 
 function Convert-ToRelativePath {
@@ -691,6 +701,14 @@ $matrix = New-TraceMatrix -AngularApis $angularApis -Controllers $controllers -E
 
 $facts = [pscustomobject]@{
     generatedAtUtc = (Get-Date).ToUniversalTime().ToString("o")
+    scriptName = "Export-AosTraceFacts.ps1"
+    scriptVersion = "podejscie_2_trace_v2"
+    gitHead = $gitHead
+    generatorLimitations = @(
+        "Parser statyczny używa heurystyk i wyrażeń regularnych.",
+        "Wyniki trace są punktem startowym i wymagają potwierdzenia w kodzie.",
+        "Relacje między mikroserwisami są oznaczane jako kandydackie, jeśli brak fizycznego FK w tej samej bazie."
+    )
     routes = $routes
     angularApis = $angularApis
     ocelotRoutes = $ocelot
@@ -713,8 +731,12 @@ $report = New-Object System.Collections.Generic.List[string]
 $report.Add("# AI AOS Trace Report")
 $report.Add("")
 $report.Add("Wygenerowano: $((Get-Date).ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss 'UTC'"))")
+$report.Add(("Git HEAD: {0}" -f $gitHead))
+$report.Add("Generator: Export-AosTraceFacts.ps1 (podejscie_2_trace_v2)")
 $report.Add("")
 $report.Add("Raport jest materiałem pomocniczym dla AOS. Wyniki automatyczne trzeba potwierdzić w kodzie przed wpisaniem ich jako fakt.")
+$report.Add("")
+$report.Add("Ograniczenia: parser statyczny używa heurystyk; relacje kandydackie i dopasowania UI/API wymagają potwierdzenia w kodzie.")
 $report.Add("")
 $report.Add("## Podsumowanie")
 $report.Add("")

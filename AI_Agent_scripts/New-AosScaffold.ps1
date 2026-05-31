@@ -91,6 +91,17 @@ $files = @(
     @{ Source = "AI_AOS_10_CHANGELOG_REVIEW_GATE_TEMPLATE.md"; Target = "09_CHANGELOG_REVIEW_GATE.md"; Kind = "Changelog Review Gate" }
 )
 
+if (-not (Test-Path -LiteralPath $TemplateDir)) {
+    throw "Template directory not found: $TemplateDir"
+}
+
+foreach ($file in $files) {
+    $sourcePath = Join-Path $TemplateDir $file.Source
+    if (-not (Test-Path -LiteralPath $sourcePath)) {
+        throw "Template not found: $sourcePath"
+    }
+}
+
 if ($DryRun) {
     Write-Host "AOS scaffold target: $targetDir"
     foreach ($file in $files) {
@@ -103,10 +114,6 @@ New-Item -ItemType Directory -Path $targetDir -Force | Out-Null
 
 foreach ($file in $files) {
     $sourcePath = Join-Path $TemplateDir $file.Source
-    if (-not (Test-Path -LiteralPath $sourcePath)) {
-        throw "Template not found: $sourcePath"
-    }
-
     $targetPath = Join-Path $targetDir $file.Target
     if (Test-Path -LiteralPath $targetPath) {
         throw "Target already exists: $targetPath"

@@ -21,6 +21,9 @@ Dotychczasowe dokumenty zostały przeniesione do `AI_Documentation/_archive/lega
 - `08_TESTY/` - testy istniejące, scenariusze akceptacyjne i luki testowe.
 - `09_RYZYKA_I_REKOMENDACJE/` - ryzyka, braki, niespójności i rekomendacje.
 - `10_WARSZTAT_AGENTOW/` - skille, narzędzia i bramki jakości dla agentów.
+- `99_AUDYT_DOKUMENTACJI/` - audyt jakości i plan naprawczy dokumentacji.
+- `AI_DATABASE_STRUCTURE.md` - aktywny indeks struktury bazy wymagany przy AOS.
+- `AOS_Template/` - szablony używane przez `New-AosScaffold.ps1`.
 
 ## Status faktów
 
@@ -31,3 +34,13 @@ Każda istotna teza techniczna powinna mieć jeden ze statusów:
 - `do potwierdzenia` - wymaga uruchomienia aplikacji, danych runtime lub decyzji biznesowej.
 - `brak w kodzie` - oczekiwany element nie został znaleziony w kodzie.
 
+## Pierwszy Wzorzec Jakości
+
+Pierwszym pełnym pionem AOS jest `/checkout`:
+
+- `05_UI_AOS/AOS_CHECKOUT.md`
+- `06_PROCESY/CHECKOUT_E2E.md`
+- `03_MODEL_DANYCH/MODEL_DANYCH_CHECKOUT.md`
+- `04_API/API_CHECKOUT.md`
+- `07_ROLE_I_UPRAWNIENIA/ROLE_CHECKOUT.md`
+- `08_TESTY/MACIERZ_TESTOW_CHECKOUT.md`
