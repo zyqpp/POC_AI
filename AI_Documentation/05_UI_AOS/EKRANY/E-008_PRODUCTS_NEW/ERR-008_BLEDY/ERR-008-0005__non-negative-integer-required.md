@@ -1,39 +1,23 @@
-# ERR-008-0005 Non-negative integer required
+# ERR-008-0005 Walidacja Stanu Początkowego
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i obsługi błędów.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID błędu | `ERR-008-0005` |
-| Ekran | [E-008](../E-008__README.md) |
-| Nazwa wykryta | `Non-negative integer required` |
-| Typ detekcji | `error-css-class` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Błędu
-
-Do uzupełnienia.
-
-## Warunki Wystąpienia
-
-| Warstwa | Warunek | Status |
+| Warstwa | Warunek | Źródło |
 |---|---|---|
-| UI | do uzupełnienia | `do uzupełnienia` |
-| Walidacja frontend | do uzupełnienia | `do uzupełnienia` |
-| API/backend | do uzupełnienia | `do uzupełnienia` |
-| Baza/integracja | do uzupełnienia | `do uzupełnienia` |
+| UI | `openingStock` mniejsze niż `0` albo brak wymaganej wartości | `product-form.component.ts/html` |
+| Backend | `OpeningStock` większe lub równe `0` | `CreateProductRequestValidator` |
+| Domena | `Product.Create` odrzuca ujemny stock wyjątkiem `Opening stock cannot be negative.` | `Product.cs` |
+| DB | zapis do `Products.TotalStock`, `ReservedStock` pozostaje domyślne `0` | `Product.Create` |
+
+Komunikat UI: `Non-negative integer required`.
 
 ## Testy
 
-- [Macierz testów ekranu](../TC-008_TESTY/TC-008__INDEX.md)
-- Dane wywołujące błąd: do uzupełnienia.
-- Oczekiwany komunikat: do uzupełnienia.
+| Test | Dane | Oczekiwany rezultat |
+|---|---|---|
+| `TC-008-0002` | `TD-008-0005`: `-1`, `0`, `25` | wartości ujemne blokują zapis; `0` i dodatnie przechodzą |
 
 ## Linki
 
-- [Indeks błędów](ERR-008__INDEX.md)
-- [Pola ekranu](../P-008_POLA/P-008__INDEX.md)
-- [Akcje ekranu](../A-008_AKCJE/A-008__INDEX.md)
+- [P-008-0005 Opening Stock](../P-008_POLA/P-008-0005__openingstock.md)
+- [A-008-0001 Submit](../A-008_AKCJE/A-008-0001__submit.md)

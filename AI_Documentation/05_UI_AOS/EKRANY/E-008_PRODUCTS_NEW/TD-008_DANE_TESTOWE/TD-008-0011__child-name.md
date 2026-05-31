@@ -1,28 +1,11 @@
-# TD-008-0011 Dane Testowe Dla P-008-0011
+# TD-008-0011 Dane Testowe Dla Kategorii Dziecko
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie walidacji i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID danych testowych | `TD-008-0011` |
-| Pole | [P-008-0011](../P-008_POLA/P-008-0011__child-name.md) |
-| Ekran | [E-008](../E-008__README.md) |
-| Status faktu | `do uzupełnienia` |
-
-## Dane Poprawne
-
-| Przypadek | Wartość | Cel |
+| Typ | Wartość | Oczekiwany rezultat |
 |---|---|---|
-| poprawny minimalny | do uzupełnienia | test walidacji minimalnej |
-| poprawny typowy | do uzupełnienia | test ścieżki użytkownika |
-| poprawny graniczny | do uzupełnienia | test wartości brzegowej |
+| child typowy | `Pumps` z `ParentCategoryId` wskazującym parent | select pokazuje opcję child w `optgroup` parent |
+| sortowanie | dzieci `Valves`, `Pumps` | `categoryChildrenMap()` sortuje dzieci alfabetycznie |
+| wybór child | `Categories.CategoryId` dziecka | `CreateProductRequest.CategoryId` ma ID dziecka |
 
-## Dane Niepoprawne
-
-| Przypadek | Wartość | Oczekiwany błąd |
-|---|---|---|
-| puste | do uzupełnienia | do uzupełnienia |
-| zły format | do uzupełnienia | do uzupełnienia |
-| poza zakresem | do uzupełnienia | do uzupełnienia |
+Źródło danych: `Categories.CategoryId`, `Categories.Name`, `Categories.ParentCategoryId`. Powiązany test: `TC-008-0003`.

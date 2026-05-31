@@ -1,39 +1,24 @@
-# ERR-008-0008 Category is required
+# ERR-008-0008 Walidacja Kategorii
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i obsługi błędów.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID błędu | `ERR-008-0008` |
-| Ekran | [E-008](../E-008__README.md) |
-| Nazwa wykryta | `Category is required` |
-| Typ detekcji | `error-css-class` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Błędu
-
-Do uzupełnienia.
-
-## Warunki Wystąpienia
-
-| Warstwa | Warunek | Status |
+| Warstwa | Warunek | Źródło |
 |---|---|---|
-| UI | do uzupełnienia | `do uzupełnienia` |
-| Walidacja frontend | do uzupełnienia | `do uzupełnienia` |
-| API/backend | do uzupełnienia | `do uzupełnienia` |
-| Baza/integracja | do uzupełnienia | `do uzupełnienia` |
+| UI | `categoryId` puste albo niezgodne z regex GUID | `product-form.component.ts/html` |
+| Backend | `CategoryId` `NotEmpty` | `CreateProductRequestValidator` |
+| Biznes | `CategoryExistsAsync` zwraca `false` | `CatalogInventoryService.CreateProductAsync` |
+| DB | FK `Products.CategoryId` do `Categories.CategoryId` | `CatalogInventoryDbContext` |
+
+Komunikat UI: `Category is required`. Backend może zwrócić problem `Category does not exist.`
 
 ## Testy
 
-- [Macierz testów ekranu](../TC-008_TESTY/TC-008__INDEX.md)
-- Dane wywołujące błąd: do uzupełnienia.
-- Oczekiwany komunikat: do uzupełnienia.
+| Test | Dane | Oczekiwany rezultat |
+|---|---|---|
+| `TC-008-0002` | pusty `categoryId` | formularz nie wysyła requestu |
+| `TC-008-0004` | GUID kategorii nieistniejącej w `Categories` | backend odrzuca zapis, brak rekordu `Products` |
 
 ## Linki
 
-- [Indeks błędów](ERR-008__INDEX.md)
-- [Pola ekranu](../P-008_POLA/P-008__INDEX.md)
-- [Akcje ekranu](../A-008_AKCJE/A-008__INDEX.md)
+- [P-008-0006 Category](../P-008_POLA/P-008-0006__categoryid.md)
+- [A-008-0001 Submit](../A-008_AKCJE/A-008-0001__submit.md)

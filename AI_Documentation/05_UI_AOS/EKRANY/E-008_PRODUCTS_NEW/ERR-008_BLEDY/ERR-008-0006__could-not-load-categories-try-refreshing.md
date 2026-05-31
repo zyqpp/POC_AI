@@ -1,39 +1,22 @@
-# ERR-008-0006 Could not load categories. Try refreshing.
+# ERR-008-0006 Błąd Ładowania Kategorii
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i obsługi błędów.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID błędu | `ERR-008-0006` |
-| Ekran | [E-008](../E-008__README.md) |
-| Nazwa wykryta | `Could not load categories. Try refreshing.` |
-| Typ detekcji | `error-css-class` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Błędu
-
-Do uzupełnienia.
-
-## Warunki Wystąpienia
-
-| Warstwa | Warunek | Status |
+| Warstwa | Warunek | Źródło |
 |---|---|---|
-| UI | do uzupełnienia | `do uzupełnienia` |
-| Walidacja frontend | do uzupełnienia | `do uzupełnienia` |
-| API/backend | do uzupełnienia | `do uzupełnienia` |
-| Baza/integracja | do uzupełnienia | `do uzupełnienia` |
+| UI/API | `CatalogApiService.getCategories()` zwraca błąd HTTP lub sieciowy | `ProductFormComponent.loadCategories()` |
+| Stan UI | `categories=[]`, `categoryLoadFailed=true`, `categoriesLoading=false` | `product-form.component.ts` |
+| DB | brak odczytanych kategorii z `Categories` po stronie UI | `wniosek z analizy` |
+
+Komunikat UI: `Could not load categories. Try refreshing.`
 
 ## Testy
 
-- [Macierz testów ekranu](../TC-008_TESTY/TC-008__INDEX.md)
-- Dane wywołujące błąd: do uzupełnienia.
-- Oczekiwany komunikat: do uzupełnienia.
+| Test | Dane | Oczekiwany rezultat |
+|---|---|---|
+| `TC-008-0003` | mock błędu dla `GET /catalog/api/products/categories` | widoczny komunikat błędu, select zablokowany, brak submitu |
 
 ## Linki
 
-- [Indeks błędów](ERR-008__INDEX.md)
-- [Pola ekranu](../P-008_POLA/P-008__INDEX.md)
-- [Akcje ekranu](../A-008_AKCJE/A-008__INDEX.md)
+- [A-008-0003 Load Categories](../A-008_AKCJE/A-008-0003__load-categories.md)
+- [P-008-0006 Category](../P-008_POLA/P-008-0006__categoryid.md)

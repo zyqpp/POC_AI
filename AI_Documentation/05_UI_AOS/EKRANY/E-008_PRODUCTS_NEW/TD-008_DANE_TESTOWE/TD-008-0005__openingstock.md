@@ -1,28 +1,11 @@
-# TD-008-0005 Dane Testowe Dla P-008-0005
+# TD-008-0005 Dane Testowe Dla Stanu Początkowego
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie walidacji i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID danych testowych | `TD-008-0005` |
-| Pole | [P-008-0005](../P-008_POLA/P-008-0005__openingstock.md) |
-| Ekran | [E-008](../E-008__README.md) |
-| Status faktu | `do uzupełnienia` |
-
-## Dane Poprawne
-
-| Przypadek | Wartość | Cel |
+| Typ | Wartość | Oczekiwany rezultat |
 |---|---|---|
-| poprawny minimalny | do uzupełnienia | test walidacji minimalnej |
-| poprawny typowy | do uzupełnienia | test ścieżki użytkownika |
-| poprawny graniczny | do uzupełnienia | test wartości brzegowej |
+| poprawne zero | `0` | `Products.TotalStock=0`, `Products.ReservedStock=0`, `AvailableStock=0` |
+| poprawne typowe | `25` | `Products.TotalStock=25`, brak `StockTransactions` |
+| ujemne | `-1` | [ERR-008-0005](../ERR-008_BLEDY/ERR-008-0005__non-negative-integer-required.md) |
 
-## Dane Niepoprawne
-
-| Przypadek | Wartość | Oczekiwany błąd |
-|---|---|---|
-| puste | do uzupełnienia | do uzupełnienia |
-| zły format | do uzupełnienia | do uzupełnienia |
-| poza zakresem | do uzupełnienia | do uzupełnienia |
+Powiązane testy: `TC-008-0001`, `TC-008-0002`. Brak transakcji stock dla create jest luką `GAP-E-008-002`.

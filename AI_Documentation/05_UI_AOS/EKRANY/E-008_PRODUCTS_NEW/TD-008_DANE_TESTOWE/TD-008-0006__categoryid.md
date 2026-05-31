@@ -1,28 +1,13 @@
-# TD-008-0006 Dane Testowe Dla P-008-0006
+# TD-008-0006 Dane Testowe Dla Kategorii
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie walidacji i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID danych testowych | `TD-008-0006` |
-| Pole | [P-008-0006](../P-008_POLA/P-008-0006__categoryid.md) |
-| Ekran | [E-008](../E-008__README.md) |
-| Status faktu | `do uzupełnienia` |
-
-## Dane Poprawne
-
-| Przypadek | Wartość | Cel |
+| Typ | Wartość | Oczekiwany rezultat |
 |---|---|---|
-| poprawny minimalny | do uzupełnienia | test walidacji minimalnej |
-| poprawny typowy | do uzupełnienia | test ścieżki użytkownika |
-| poprawny graniczny | do uzupełnienia | test wartości brzegowej |
+| poprawne | istniejący `Categories.CategoryId` | zapis do `Products.CategoryId` |
+| puste | pusty string | [ERR-008-0008](../ERR-008_BLEDY/ERR-008-0008__category-is-required.md) |
+| zły format | `not-a-guid` | walidacja Angular blokuje submit |
+| nieistniejące | poprawny GUID bez rekordu w `Categories` | backend `Category does not exist.` |
+| pusty katalog | `GET /categories` zwraca pustą listę | [ERR-008-0007](../ERR-008_BLEDY/ERR-008-0007__no-categories-available.md) |
 
-## Dane Niepoprawne
-
-| Przypadek | Wartość | Oczekiwany błąd |
-|---|---|---|
-| puste | do uzupełnienia | do uzupełnienia |
-| zły format | do uzupełnienia | do uzupełnienia |
-| poza zakresem | do uzupełnienia | do uzupełnienia |
+Powiązane testy: `TC-008-0001`, `TC-008-0003`, `TC-008-0004`.

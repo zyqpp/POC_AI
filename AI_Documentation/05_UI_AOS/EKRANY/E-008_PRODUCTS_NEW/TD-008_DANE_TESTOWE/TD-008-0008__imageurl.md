@@ -1,28 +1,13 @@
-# TD-008-0008 Dane Testowe Dla P-008-0008
+# TD-008-0008 Dane Testowe Dla URL Obrazu
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie walidacji i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID danych testowych | `TD-008-0008` |
-| Pole | [P-008-0008](../P-008_POLA/P-008-0008__imageurl.md) |
-| Ekran | [E-008](../E-008__README.md) |
-| Status faktu | `do uzupełnienia` |
-
-## Dane Poprawne
-
-| Przypadek | Wartość | Cel |
+| Typ | Wartość | Oczekiwany rezultat |
 |---|---|---|
-| poprawny minimalny | do uzupełnienia | test walidacji minimalnej |
-| poprawny typowy | do uzupełnienia | test ścieżki użytkownika |
-| poprawny graniczny | do uzupełnienia | test wartości brzegowej |
+| puste | pusty string | wysłane jako `undefined`, zapis `Products.ImageUrl=NULL` |
+| poprawne HTTPS | `https://cdn.example.test/products/pump-x100.png` | zapis do `Products.ImageUrl` |
+| poprawne HTTP | `http://cdn.example.test/products/pump-x100.png` | backend dopuszcza |
+| zły schemat | `ftp://example.test/file.png` | [ERR-008-0010](../ERR-008_BLEDY/ERR-008-0010__image-url-must-be-valid-and-max-500-chars.md) |
+| za długie | 501 znaków | [ERR-008-0010](../ERR-008_BLEDY/ERR-008-0010__image-url-must-be-valid-and-max-500-chars.md) |
 
-## Dane Niepoprawne
-
-| Przypadek | Wartość | Oczekiwany błąd |
-|---|---|---|
-| puste | do uzupełnienia | do uzupełnienia |
-| zły format | do uzupełnienia | do uzupełnienia |
-| poza zakresem | do uzupełnienia | do uzupełnienia |
+Powiązane testy: `TC-008-0001`, `TC-008-0002`.

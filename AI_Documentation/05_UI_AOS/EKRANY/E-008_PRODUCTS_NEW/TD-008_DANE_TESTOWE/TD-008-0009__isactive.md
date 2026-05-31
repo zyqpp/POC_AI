@@ -1,28 +1,11 @@
-# TD-008-0009 Dane Testowe Dla P-008-0009
+# TD-008-0009 Dane Testowe Dla Aktywności
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie walidacji i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID danych testowych | `TD-008-0009` |
-| Pole | [P-008-0009](../P-008_POLA/P-008-0009__isactive.md) |
-| Ekran | [E-008](../E-008__README.md) |
-| Status faktu | `do uzupełnienia` |
-
-## Dane Poprawne
-
-| Przypadek | Wartość | Cel |
+| Typ | Wartość | Oczekiwany rezultat |
 |---|---|---|
-| poprawny minimalny | do uzupełnienia | test walidacji minimalnej |
-| poprawny typowy | do uzupełnienia | test ścieżki użytkownika |
-| poprawny graniczny | do uzupełnienia | test wartości brzegowej |
+| create default | brak pola w `CreateProductRequest` | `Product.IsActive=true` po utworzeniu |
+| użytkownik Dealer | rola `Dealer` | brak dostępu do route `/products/new` |
+| użytkownik Warehouse | rola `Warehouse` | brak dostępu do route `/products/new` |
 
-## Dane Niepoprawne
-
-| Przypadek | Wartość | Oczekiwany błąd |
-|---|---|---|
-| puste | do uzupełnienia | do uzupełnienia |
-| zły format | do uzupełnienia | do uzupełnienia |
-| poza zakresem | do uzupełnienia | do uzupełnienia |
+Pole `isActive` istnieje w `ProductFormComponent.form`, ale w trybie create nie jest widoczne w UI i nie jest wysyłane do `CreateProductRequest`. Powiązane testy: `TC-008-0001`, `TC-008-0005`.

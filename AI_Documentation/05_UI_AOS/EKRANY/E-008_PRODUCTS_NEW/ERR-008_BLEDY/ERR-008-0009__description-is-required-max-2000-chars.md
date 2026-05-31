@@ -1,39 +1,22 @@
-# ERR-008-0009 Description is required (max 2000 chars)
+# ERR-008-0009 Walidacja Opisu
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i obsługi błędów.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID błędu | `ERR-008-0009` |
-| Ekran | [E-008](../E-008__README.md) |
-| Nazwa wykryta | `Description is required (max 2000 chars)` |
-| Typ detekcji | `error-css-class` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Błędu
-
-Do uzupełnienia.
-
-## Warunki Wystąpienia
-
-| Warstwa | Warunek | Status |
+| Warstwa | Warunek | Źródło |
 |---|---|---|
-| UI | do uzupełnienia | `do uzupełnienia` |
-| Walidacja frontend | do uzupełnienia | `do uzupełnienia` |
-| API/backend | do uzupełnienia | `do uzupełnienia` |
-| Baza/integracja | do uzupełnienia | `do uzupełnienia` |
+| UI | `description` puste albo powyżej 2000 znaków | `product-form.component.ts/html` |
+| Backend | `Description` `NotEmpty`, `MaximumLength(2000)` | `CreateProductRequestValidator` |
+| DB | `Products.Description` max 2000, `NOT NULL` | `CatalogInventoryDbContext` |
+
+Komunikat UI: `Description is required (max 2000 chars)`.
 
 ## Testy
 
-- [Macierz testów ekranu](../TC-008_TESTY/TC-008__INDEX.md)
-- Dane wywołujące błąd: do uzupełnienia.
-- Oczekiwany komunikat: do uzupełnienia.
+| Test | Dane | Oczekiwany rezultat |
+|---|---|---|
+| `TC-008-0002` | `TD-008-0007` z pustym opisem i opisem 2001 znaków | formularz blokuje zapis |
 
 ## Linki
 
-- [Indeks błędów](ERR-008__INDEX.md)
-- [Pola ekranu](../P-008_POLA/P-008__INDEX.md)
-- [Akcje ekranu](../A-008_AKCJE/A-008__INDEX.md)
+- [P-008-0007 Description](../P-008_POLA/P-008-0007__description.md)
+- [A-008-0001 Submit](../A-008_AKCJE/A-008-0001__submit.md)

@@ -1,39 +1,22 @@
-# ERR-008-0007 No categories available.
+# ERR-008-0007 Brak Kategorii
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i obsługi błędów.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID błędu | `ERR-008-0007` |
-| Ekran | [E-008](../E-008__README.md) |
-| Nazwa wykryta | `No categories available.` |
-| Typ detekcji | `error-css-class` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Błędu
-
-Do uzupełnienia.
-
-## Warunki Wystąpienia
-
-| Warstwa | Warunek | Status |
+| Warstwa | Warunek | Źródło |
 |---|---|---|
-| UI | do uzupełnienia | `do uzupełnienia` |
-| Walidacja frontend | do uzupełnienia | `do uzupełnienia` |
-| API/backend | do uzupełnienia | `do uzupełnienia` |
-| Baza/integracja | do uzupełnienia | `do uzupełnienia` |
+| UI | `categoriesLoading=false` oraz `categories().length === 0` | `product-form.component.html` |
+| API | `GET /catalog/api/products/categories` zwraca pustą listę | `ProductsController.GetCategories` |
+| DB | brak rekordów w `Categories` albo filtr/repozytorium zwróciło pustą listę | `wniosek z analizy` |
+
+Komunikat UI: `No categories available.`
 
 ## Testy
 
-- [Macierz testów ekranu](../TC-008_TESTY/TC-008__INDEX.md)
-- Dane wywołujące błąd: do uzupełnienia.
-- Oczekiwany komunikat: do uzupełnienia.
+| Test | Dane | Oczekiwany rezultat |
+|---|---|---|
+| `TC-008-0003` | `TD-008-0006` z pustą listą kategorii | komunikat widoczny, select zablokowany, produkt nie może być zapisany |
 
 ## Linki
 
-- [Indeks błędów](ERR-008__INDEX.md)
-- [Pola ekranu](../P-008_POLA/P-008__INDEX.md)
-- [Akcje ekranu](../A-008_AKCJE/A-008__INDEX.md)
+- [A-008-0003 Load Categories](../A-008_AKCJE/A-008-0003__load-categories.md)
+- [P-008-0006 Category](../P-008_POLA/P-008-0006__categoryid.md)

@@ -1,39 +1,22 @@
-# ERR-008-0010 Image URL must be valid and max 500 chars
+# ERR-008-0010 Walidacja URL Obrazu
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i obsługi błędów.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID błędu | `ERR-008-0010` |
-| Ekran | [E-008](../E-008__README.md) |
-| Nazwa wykryta | `Image URL must be valid and max 500 chars` |
-| Typ detekcji | `error-css-class` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Błędu
-
-Do uzupełnienia.
-
-## Warunki Wystąpienia
-
-| Warstwa | Warunek | Status |
+| Warstwa | Warunek | Źródło |
 |---|---|---|
-| UI | do uzupełnienia | `do uzupełnienia` |
-| Walidacja frontend | do uzupełnienia | `do uzupełnienia` |
-| API/backend | do uzupełnienia | `do uzupełnienia` |
-| Baza/integracja | do uzupełnienia | `do uzupełnienia` |
+| UI | `imageUrl` niepuste i niepasujące do `http` albo `https`, albo powyżej 500 znaków | `product-form.component.ts/html` |
+| Backend | `ImageUrl` max 500 i absolutny URL `http` lub `https` | `CreateProductRequestValidator` |
+| DB | `Products.ImageUrl` max 500, `NULL` dozwolone | `CatalogInventoryDbContext` |
+
+Komunikat UI: `Image URL must be valid and max 500 chars`.
 
 ## Testy
 
-- [Macierz testów ekranu](../TC-008_TESTY/TC-008__INDEX.md)
-- Dane wywołujące błąd: do uzupełnienia.
-- Oczekiwany komunikat: do uzupełnienia.
+| Test | Dane | Oczekiwany rezultat |
+|---|---|---|
+| `TC-008-0002` | `TD-008-0008`: puste, `https://cdn.example.test/product.png`, `ftp://bad`, 501 znaków | puste i HTTPS przechodzą, błędny schemat i nadmiar długości blokują zapis |
 
 ## Linki
 
-- [Indeks błędów](ERR-008__INDEX.md)
-- [Pola ekranu](../P-008_POLA/P-008__INDEX.md)
-- [Akcje ekranu](../A-008_AKCJE/A-008__INDEX.md)
+- [P-008-0008 Image URL](../P-008_POLA/P-008-0008__imageurl.md)
+- [A-008-0001 Submit](../A-008_AKCJE/A-008-0001__submit.md)

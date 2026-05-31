@@ -1,54 +1,14 @@
-# P-008-0005 openingStock
+# P-008-0005 Opening stock
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
+| Obszar | Opis |
 |---|---|
-| ID pola | `P-008-0005` |
-| Ekran | [E-008](../E-008__README.md) |
-| Nazwa wykryta | `openingStock` |
-| Typ detekcji | `formControlName` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Pola
-
-Do uzupełnienia.
-
-## Wymagalność I Walidacje
-
-| Właściwość | Wartość | Źródło |
-|---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-008](../ERR-008_BLEDY/ERR-008__INDEX.md) | do uzupełnienia |
-
-## Mapowanie Danych
-
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
-
-## Dane Do Testów
-
-- [TD dla pola](../TD-008_DANE_TESTOWE/TD-008-0005__openingstock.md)
-- Zakres danych poprawnych: do uzupełnienia.
-- Zakres danych błędnych: do uzupełnienia.
-
-## Linki
-
-- [Indeks pól](P-008__INDEX.md)
-- [Akcje ekranu](../A-008_AKCJE/A-008__INDEX.md)
-- [Ślad ekranu](../E-008__LINKI.md)
+| Typ UI | input number, widoczne tylko w create |
+| Wymagalność | required |
+| Walidacje | Angular/backend: `>= 0`; domena rzuca błąd dla wartości ujemnej |
+| API/DTO | `CreateProductRequest.openingStock` |
+| Tabela SQL | `Products`; `StockTransactions` dla create: `brak w kodzie` |
+| Kolumna SQL | `Products.TotalStock`, int, zapis `W`; `ReservedStock` pozostaje domyślne `0` |
+| Dane Do Test | `TD-008-0005`: `0`, `100`, `-1` |
+| Błędy | [ERR-008-0005](../ERR-008_BLEDY/ERR-008-0005__non-negative-integer-required.md) |

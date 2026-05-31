@@ -1,54 +1,14 @@
-# P-008-0003 unitPrice
+# P-008-0003 Unit price
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
+| Obszar | Opis |
 |---|---|
-| ID pola | `P-008-0003` |
-| Ekran | [E-008](../E-008__README.md) |
-| Nazwa wykryta | `unitPrice` |
-| Typ detekcji | `formControlName` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Pola
-
-Do uzupełnienia.
-
-## Wymagalność I Walidacje
-
-| Właściwość | Wartość | Źródło |
-|---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-008](../ERR-008_BLEDY/ERR-008__INDEX.md) | do uzupełnienia |
-
-## Mapowanie Danych
-
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
-
-## Dane Do Testów
-
-- [TD dla pola](../TD-008_DANE_TESTOWE/TD-008-0003__unitprice.md)
-- Zakres danych poprawnych: do uzupełnienia.
-- Zakres danych błędnych: do uzupełnienia.
-
-## Linki
-
-- [Indeks pól](P-008__INDEX.md)
-- [Akcje ekranu](../A-008_AKCJE/A-008__INDEX.md)
-- [Ślad ekranu](../E-008__LINKI.md)
+| Typ UI | input number, step `0.01` |
+| Wymagalność | required |
+| Walidacje | Angular: min `0.01`; backend: `GreaterThan(0m)` |
+| API/DTO | `CreateProductRequest.unitPrice` |
+| Tabela SQL | `Products` |
+| Kolumna SQL | `UnitPrice`, precision 18,2, zapis `W` |
+| Dane Do Test | `TD-008-0003`: `12500.50`, `0`, `-1` |
+| Błędy | [ERR-008-0003](../ERR-008_BLEDY/ERR-008-0003__positive-price-required.md) |

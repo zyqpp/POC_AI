@@ -1,28 +1,12 @@
-# TD-008-0004 Dane Testowe Dla P-008-0004
+# TD-008-0004 Dane Testowe Dla Minimalnej Ilości
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie walidacji i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID danych testowych | `TD-008-0004` |
-| Pole | [P-008-0004](../P-008_POLA/P-008-0004__minorderqty.md) |
-| Ekran | [E-008](../E-008__README.md) |
-| Status faktu | `do uzupełnienia` |
-
-## Dane Poprawne
-
-| Przypadek | Wartość | Cel |
+| Typ | Wartość | Oczekiwany rezultat |
 |---|---|---|
-| poprawny minimalny | do uzupełnienia | test walidacji minimalnej |
-| poprawny typowy | do uzupełnienia | test ścieżki użytkownika |
-| poprawny graniczny | do uzupełnienia | test wartości brzegowej |
+| poprawne minimalne | `1` | zapis do `Products.MinOrderQty` |
+| poprawne typowe | `24` | zapis do `Products.MinOrderQty` |
+| zero | `0` | [ERR-008-0004](../ERR-008_BLEDY/ERR-008-0004__positive-integer-required.md) |
+| ujemne | `-1` | [ERR-008-0004](../ERR-008_BLEDY/ERR-008-0004__positive-integer-required.md) |
 
-## Dane Niepoprawne
-
-| Przypadek | Wartość | Oczekiwany błąd |
-|---|---|---|
-| puste | do uzupełnienia | do uzupełnienia |
-| zły format | do uzupełnienia | do uzupełnienia |
-| poza zakresem | do uzupełnienia | do uzupełnienia |
+Powiązane testy: `TC-008-0001`, `TC-008-0002`.

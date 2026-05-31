@@ -1,28 +1,12 @@
-# TD-008-0007 Dane Testowe Dla P-008-0007
+# TD-008-0007 Dane Testowe Dla Opisu
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie walidacji i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID danych testowych | `TD-008-0007` |
-| Pole | [P-008-0007](../P-008_POLA/P-008-0007__description.md) |
-| Ekran | [E-008](../E-008__README.md) |
-| Status faktu | `do uzupełnienia` |
-
-## Dane Poprawne
-
-| Przypadek | Wartość | Cel |
+| Typ | Wartość | Oczekiwany rezultat |
 |---|---|---|
-| poprawny minimalny | do uzupełnienia | test walidacji minimalnej |
-| poprawny typowy | do uzupełnienia | test ścieżki użytkownika |
-| poprawny graniczny | do uzupełnienia | test wartości brzegowej |
+| poprawne typowe | `Industrial pump for automated warehouse flow.` | zapis do `Products.Description` |
+| graniczne | 2000 znaków | walidacja przechodzi |
+| puste | pusty string | [ERR-008-0009](../ERR-008_BLEDY/ERR-008-0009__description-is-required-max-2000-chars.md) |
+| za długie | 2001 znaków | [ERR-008-0009](../ERR-008_BLEDY/ERR-008-0009__description-is-required-max-2000-chars.md) |
 
-## Dane Niepoprawne
-
-| Przypadek | Wartość | Oczekiwany błąd |
-|---|---|---|
-| puste | do uzupełnienia | do uzupełnienia |
-| zły format | do uzupełnienia | do uzupełnienia |
-| poza zakresem | do uzupełnienia | do uzupełnienia |
+Powiązane testy: `TC-008-0001`, `TC-008-0002`.

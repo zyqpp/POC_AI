@@ -1,6 +1,6 @@
-# A-008-0002 navigate /products
+# A-008-0002 Anuluj I Wróć Do Listy Produktów
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu.
+Status: `potwierdzone`.
 
 ## Identyfikacja
 
@@ -8,32 +8,32 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu
 |---|---|
 | ID akcji | `A-008-0002` |
 | Ekran | [E-008](../E-008__README.md) |
-| Nazwa wykryta | `navigate /products` |
-| Typ detekcji | `routerLink` |
+| Trigger UI | link `Cancel` w nagłówku i stopce formularza |
+| Route docelowy | `/products` |
 | Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
 
 ## Opis Akcji
 
-Do uzupełnienia.
+Akcja opuszcza formularz tworzenia produktu i przechodzi do listy produktów. Nie wywołuje API i nie zapisuje częściowo wprowadzonych danych.
 
 ## Ślad Techniczny
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Element UI | do uzupełnienia | `do uzupełnienia` |
-| Metoda komponentu | do uzupełnienia | `do uzupełnienia` |
-| Serwis frontend | do uzupełnienia | `do uzupełnienia` |
-| Endpoint API | do uzupełnienia | `do uzupełnienia` |
-| Komenda/zapytanie | do uzupełnienia | `do uzupełnienia` |
-| Walidacje | do uzupełnienia | `do uzupełnienia` |
-| Skutek w bazie | do uzupełnienia | `do uzupełnienia` |
+| Element UI | dwa linki `routerLink="/products"` | `potwierdzone` |
+| Metoda komponentu | brak metody TS | `potwierdzone` |
+| Serwis frontend | brak | `potwierdzone` |
+| Endpoint API | brak | `potwierdzone` |
+| Walidacje | brak, bo akcja nie submituje formularza | `potwierdzone` |
+| Skutek w bazie | brak zapisu do `Products`, `OutboxMessages`, `StockTransactions` | `potwierdzone` |
 
 ## Testy
 
-- [Macierz testów ekranu](../TC-008_TESTY/TC-008__INDEX.md)
-- Dane wejściowe: do uzupełnienia.
-- Oczekiwany rezultat: do uzupełnienia.
+| Test | Dane | Oczekiwany rezultat |
+|---|---|---|
+| `TC-008-0006` | rozpoczęty formularz z danymi lokalnymi | przejście do `/products`, brak requestu `POST /catalog/api/products` |
+
+`TC-008-0006` jest wymaganiem testowym dodanym w indeksie [TC-008](../TC-008_TESTY/TC-008__INDEX.md); test automatyczny ma status `brak w kodzie`.
 
 ## Linki
 

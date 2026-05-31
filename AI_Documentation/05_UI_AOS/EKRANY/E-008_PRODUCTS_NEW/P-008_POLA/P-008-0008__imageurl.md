@@ -1,54 +1,14 @@
-# P-008-0008 imageUrl
+# P-008-0008 Image URL
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
+| Obszar | Opis |
 |---|---|
-| ID pola | `P-008-0008` |
-| Ekran | [E-008](../E-008__README.md) |
-| Nazwa wykryta | `imageUrl` |
-| Typ detekcji | `formControlName` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Pola
-
-Do uzupełnienia.
-
-## Wymagalność I Walidacje
-
-| Właściwość | Wartość | Źródło |
-|---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/catalog/product-form/product-form.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-008](../ERR-008_BLEDY/ERR-008__INDEX.md) | do uzupełnienia |
-
-## Mapowanie Danych
-
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
-
-## Dane Do Testów
-
-- [TD dla pola](../TD-008_DANE_TESTOWE/TD-008-0008__imageurl.md)
-- Zakres danych poprawnych: do uzupełnienia.
-- Zakres danych błędnych: do uzupełnienia.
-
-## Linki
-
-- [Indeks pól](P-008__INDEX.md)
-- [Akcje ekranu](../A-008_AKCJE/A-008__INDEX.md)
-- [Ślad ekranu](../E-008__LINKI.md)
+| Typ UI | input url |
+| Wymagalność | optional |
+| Walidacje | Angular: max 500 i regex pusty/http/https; backend: max 500 i absolutny URL http/https |
+| API/DTO | `CreateProductRequest.imageUrl` |
+| Tabela SQL | `Products` |
+| Kolumna SQL | `ImageUrl`, max 500, `NULL`, zapis `W` |
+| Dane Do Test | `TD-008-0008`: pusty, `https://...`, `ftp://...`, >500 znaków |
+| Błędy | [ERR-008-0010](../ERR-008_BLEDY/ERR-008-0010__image-url-must-be-valid-and-max-500-chars.md) |
