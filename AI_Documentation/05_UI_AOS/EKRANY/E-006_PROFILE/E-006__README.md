@@ -1,6 +1,6 @@
-# E-006 ProfileComponent
+# E-006 Profil Użytkownika
 
-Status: `szkielet`; źródło startowe: routing i komponent Angular.
+Status: `potwierdzone` dla śladu front -> API -> IdentityAuth DB -> testy.
 
 ## Identyfikacja
 
@@ -9,12 +9,23 @@ Status: `szkielet`; źródło startowe: routing i komponent Angular.
 | ID ekranu | `E-006` |
 | Route | `/profile` |
 | Komponent | `ProfileComponent` |
-| Guardy | `brak guardów w route` |
-| Role frontendu | `brak ról w route` |
+| Guardy | `authGuard` dziedziczony z shell route w `app.routes.ts` |
+| Role frontendu | brak listy ról na route; dostęp dla każdego zalogowanego użytkownika |
 | Źródło route | `supply-chain-frontend/src/app/app.routes.ts` |
 | Źródło komponentu | `supply-chain-frontend/src/app/features/profile/profile.component.ts` |
 | Źródło template | `supply-chain-frontend/src/app/features/profile/profile.component.html` |
-| Status faktów | `do uzupełnienia` |
+| Serwis Angular | `UsersApiService.getProfile()` w `supply-chain-frontend/src/app/core/api/auth-api.service.ts` |
+| Endpoint | `GET /identity/api/users/profile` |
+| Backend | `services/IdentityAuth/IdentityAuth.API/Controllers/UsersController.cs` |
+| Proces | [PROC-006-0001 Profil użytkownika](../../../../06_PROCESY/PROC-006_PROFILE.md) |
+| API | [API_PROFILE](../../../../04_API/API_PROFILE.md) |
+| Model danych | [MODEL_DANYCH_PROFILE](../../../../03_MODEL_DANYCH/MODEL_DANYCH_PROFILE.md) |
+| Role | [ROLE_PROFILE](../../../../07_ROLE_I_UPRAWNIENIA/ROLE_PROFILE.md) |
+| Testy | [MACIERZ_TESTOW_PROFILE](../../../../08_TESTY/MACIERZ_TESTOW_PROFILE.md) |
+
+## Cel Ekranu
+
+Ekran pokazuje dane aktualnie zalogowanego użytkownika pobrane z tokenu i bazy `IdentityAuth`. Dla roli `Dealer` pokazuje dodatkowo dane dealera: limit kredytowy, nazwę firmy, GST i flagę interstate.
 
 ## Dokumenty Atomowe
 
@@ -25,6 +36,21 @@ Status: `szkielet`; źródło startowe: routing i komponent Angular.
 - [Testy](TC-006_TESTY/TC-006__INDEX.md)
 - [Linki śladu](E-006__LINKI.md)
 
-## Zasada Uzupełniania
+## Ślad End-To-End
 
-Każde pole `P-006-....` musi docelowo mieć opis wymagalności, walidacji, źródła danych, mapowania do API/DTO, encji, tabeli SQL, kolumny SQL oraz danych do automatycznych testów. Brak informacji należy oznaczać jako `do uzupełnienia`, `brak w kodzie` albo `wniosek z analizy`.
+| Krok | Fakt | Źródło | Status |
+|---|---|---|---|
+| Wejście | Route `/profile` jest dzieckiem shell route chronionego `authGuard`. | `app.routes.ts` | `potwierdzone` |
+| Front | `ngOnInit()` wywołuje `usersApi.getProfile()`. | `profile.component.ts` | `potwierdzone` |
+| API Angular | `UsersApiService.getProfile()` robi `GET /identity/api/users/profile`. | `auth-api.service.ts` | `potwierdzone` |
+| Backend | `UsersController.GetProfile()` wymaga `[Authorize]` i odczytuje user id z claim `sub` albo `NameIdentifier`. | `UsersController.cs` | `potwierdzone` |
+| Aplikacja | `GetProfileQuery` trafia do `IdentityAuthService.GetProfileAsync`. | `IdentityAuthService.cs` | `potwierdzone` |
+| Baza | Dane pochodzą z `Users` oraz opcjonalnie `DealerProfiles`. | `IdentityAuthDbContext.cs`, `User.cs`, `DealerProfile.cs` | `potwierdzone` |
+| Testy | Istnieją testy domenowe `UserTests`, ale brak testów API/component dla profilu. | `tests/IdentityAuth.Domain.Tests/UnitTest1.cs`, `supply-chain-frontend/src/app/smoke.spec.ts` | `potwierdzone` |
+
+## Luki I Ryzyka
+
+| ID | Luka | Wpływ | Następny krok |
+|---|---|---|---|
+| `GAP-E-006-001` | Brak testu komponentu Angular dla loading/success/error. | Regresja UI profilu może przejść niezauważona. | Dodać test komponentu lub e2e po zmianie trybu pracy na implementacyjny. |
+| `GAP-E-006-002` | Brak testu API `GET /api/users/profile`. | Nie ma automatycznej kontroli claim parsing i odpowiedzi 401/404. | Dodać test integracyjny IdentityAuth API. |
