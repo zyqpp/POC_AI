@@ -1,0 +1,295 @@
+﻿{
+    "generatedAtUtc":  "2026-05-31T01:59:26.2874395Z",
+    "dbContextCount":  6,
+    "contexts":  [
+                     {
+                         "dbContext":  "CatalogInventoryDbContext",
+                         "source":  "services/CatalogInventory/CatalogInventory.Infrastructure/Persistence/CatalogInventoryDbContext.cs",
+                         "dbSets":  [
+                                        {
+                                            "entity":  "Product",
+                                            "dbSet":  "Products"
+                                        },
+                                        {
+                                            "entity":  "Category",
+                                            "dbSet":  "Categories"
+                                        },
+                                        {
+                                            "entity":  "StockTransaction",
+                                            "dbSet":  "StockTransactions"
+                                        },
+                                        {
+                                            "entity":  "StockSubscription",
+                                            "dbSet":  "StockSubscriptions"
+                                        },
+                                        {
+                                            "entity":  "OutboxMessage",
+                                            "dbSet":  "OutboxMessages"
+                                        }
+                                    ],
+                         "tables":  [
+                                        "OutboxMessages",
+                                        "Products",
+                                        "Categories",
+                                        "StockTransactions",
+                                        "StockSubscriptions"
+                                    ],
+                         "indexes":  [
+                                         {
+                                             "expression":  "x =\u003e x.Sku",
+                                             "isUnique":  true
+                                         },
+                                         {
+                                             "expression":  "x =\u003e new { x.DealerId, x.ProductId }",
+                                             "isUnique":  true
+                                         }
+                                     ]
+                     },
+                     {
+                         "dbContext":  "IdentityAuthDbContext",
+                         "source":  "services/IdentityAuth/IdentityAuth.Infrastructure/Persistence/IdentityAuthDbContext.cs",
+                         "dbSets":  [
+                                        {
+                                            "entity":  "User",
+                                            "dbSet":  "Users"
+                                        },
+                                        {
+                                            "entity":  "DealerProfile",
+                                            "dbSet":  "DealerProfiles"
+                                        },
+                                        {
+                                            "entity":  "RefreshToken",
+                                            "dbSet":  "RefreshTokens"
+                                        },
+                                        {
+                                            "entity":  "OtpRecord",
+                                            "dbSet":  "OtpRecords"
+                                        },
+                                        {
+                                            "entity":  "OutboxMessage",
+                                            "dbSet":  "OutboxMessages"
+                                        }
+                                    ],
+                         "tables":  [
+                                        "OutboxMessages",
+                                        "Users",
+                                        "DealerProfiles",
+                                        "RefreshTokens",
+                                        "OtpRecords"
+                                    ],
+                         "indexes":  [
+                                         {
+                                             "expression":  "x =\u003e x.Email",
+                                             "isUnique":  true
+                                         },
+                                         {
+                                             "expression":  "x =\u003e new { x.Role, x.Status, x.CreatedAtUtc }",
+                                             "isUnique":  false
+                                         },
+                                         {
+                                             "expression":  "x =\u003e x.GstNumber",
+                                             "isUnique":  true
+                                         },
+                                         {
+                                             "expression":  "x =\u003e x.TokenHash",
+                                             "isUnique":  true
+                                         }
+                                     ]
+                     },
+                     {
+                         "dbContext":  "LogisticsTrackingDbContext",
+                         "source":  "services/LogisticsTracking/LogisticsTracking.Infrastructure/Persistence/LogisticsTrackingDbContext.cs",
+                         "dbSets":  [
+                                        {
+                                            "entity":  "Shipment",
+                                            "dbSet":  "Shipments"
+                                        },
+                                        {
+                                            "entity":  "ShipmentEvent",
+                                            "dbSet":  "ShipmentEvents"
+                                        },
+                                        {
+                                            "entity":  "ShipmentOpsState",
+                                            "dbSet":  "ShipmentOpsStates"
+                                        },
+                                        {
+                                            "entity":  "OutboxMessage",
+                                            "dbSet":  "OutboxMessages"
+                                        }
+                                    ],
+                         "tables":  [
+                                        "Shipments",
+                                        "ShipmentEvents",
+                                        "ShipmentOpsStates",
+                                        "OutboxMessages"
+                                    ],
+                         "indexes":  [
+                                         {
+                                             "expression":  "x =\u003e x.ShipmentNumber",
+                                             "isUnique":  true
+                                         },
+                                         {
+                                             "expression":  "x =\u003e new { x.DealerId, x.CreatedAtUtc }",
+                                             "isUnique":  false
+                                         },
+                                         {
+                                             "expression":  "x =\u003e new { x.AssignedAgentId, x.CreatedAtUtc }",
+                                             "isUnique":  false
+                                         },
+                                         {
+                                             "expression":  "x =\u003e x.CreatedAtUtc",
+                                             "isUnique":  false
+                                         }
+                                     ]
+                     },
+                     {
+                         "dbContext":  "NotificationDbContext",
+                         "source":  "services/Notification/Notification.Infrastructure/Persistence/NotificationDbContext.cs",
+                         "dbSets":  [
+                                        {
+                                            "entity":  "NotificationMessage",
+                                            "dbSet":  "Notifications"
+                                        },
+                                        {
+                                            "entity":  "OutboxMessage",
+                                            "dbSet":  "OutboxMessages"
+                                        }
+                                    ],
+                         "tables":  [
+                                        "Notifications",
+                                        "OutboxMessages"
+                                    ],
+                         "indexes":  [
+                                         {
+                                             "expression":  "x =\u003e x.RecipientUserId",
+                                             "isUnique":  false
+                                         },
+                                         {
+                                             "expression":  "x =\u003e x.CreatedAtUtc",
+                                             "isUnique":  false
+                                         },
+                                         {
+                                             "expression":  "x =\u003e new { x.RecipientUserId, x.CreatedAtUtc }",
+                                             "isUnique":  false
+                                         }
+                                     ]
+                     },
+                     {
+                         "dbContext":  "OrderDbContext",
+                         "source":  "services/Order/Order.Infrastructure/Persistence/OrderDbContext.cs",
+                         "dbSets":  [
+                                        {
+                                            "entity":  "OrderAggregate",
+                                            "dbSet":  "Orders"
+                                        },
+                                        {
+                                            "entity":  "OrderLine",
+                                            "dbSet":  "OrderLines"
+                                        },
+                                        {
+                                            "entity":  "OrderStatusHistory",
+                                            "dbSet":  "OrderStatusHistories"
+                                        },
+                                        {
+                                            "entity":  "ReturnRequest",
+                                            "dbSet":  "ReturnRequests"
+                                        },
+                                        {
+                                            "entity":  "OrderSagaStateEntity",
+                                            "dbSet":  "OrderSagaStates"
+                                        },
+                                        {
+                                            "entity":  "OutboxMessage",
+                                            "dbSet":  "OutboxMessages"
+                                        }
+                                    ],
+                         "tables":  [
+                                        "OutboxMessages",
+                                        "Orders",
+                                        "OrderLines",
+                                        "OrderStatusHistory",
+                                        "ReturnRequests",
+                                        "OrderSagaStates"
+                                    ],
+                         "indexes":  [
+                                         {
+                                             "expression":  "x =\u003e x.OrderNumber",
+                                             "isUnique":  true
+                                         },
+                                         {
+                                             "expression":  "x =\u003e new { x.DealerId, x.PlacedAtUtc }",
+                                             "isUnique":  false
+                                         },
+                                         {
+                                             "expression":  "x =\u003e new { x.Status, x.PlacedAtUtc }",
+                                             "isUnique":  false
+                                         }
+                                     ]
+                     },
+                     {
+                         "dbContext":  "PaymentInvoiceDbContext",
+                         "source":  "services/PaymentInvoice/PaymentInvoice.Infrastructure/Persistence/PaymentInvoiceDbContext.cs",
+                         "dbSets":  [
+                                        {
+                                            "entity":  "DealerCreditAccount",
+                                            "dbSet":  "DealerCreditAccounts"
+                                        },
+                                        {
+                                            "entity":  "Invoice",
+                                            "dbSet":  "Invoices"
+                                        },
+                                        {
+                                            "entity":  "InvoiceLine",
+                                            "dbSet":  "InvoiceLines"
+                                        },
+                                        {
+                                            "entity":  "InvoiceWorkflowState",
+                                            "dbSet":  "InvoiceWorkflowStates"
+                                        },
+                                        {
+                                            "entity":  "InvoiceWorkflowActivity",
+                                            "dbSet":  "InvoiceWorkflowActivities"
+                                        },
+                                        {
+                                            "entity":  "PaymentRecord",
+                                            "dbSet":  "PaymentRecords"
+                                        },
+                                        {
+                                            "entity":  "OutboxMessage",
+                                            "dbSet":  "OutboxMessages"
+                                        }
+                                    ],
+                         "tables":  [
+                                        "DealerCreditAccounts",
+                                        "Invoices",
+                                        "InvoiceLines",
+                                        "InvoiceWorkflowStates",
+                                        "InvoiceWorkflowActivities",
+                                        "PaymentRecords",
+                                        "OutboxMessages"
+                                    ],
+                         "indexes":  [
+                                         {
+                                             "expression":  "x =\u003e x.DealerId",
+                                             "isUnique":  true
+                                         },
+                                         {
+                                             "expression":  "x =\u003e x.InvoiceNumber",
+                                             "isUnique":  true
+                                         },
+                                         {
+                                             "expression":  "x =\u003e x.IdempotencyKey",
+                                             "isUnique":  true
+                                         },
+                                         {
+                                             "expression":  "x =\u003e new { x.DealerId, x.CreatedAtUtc }",
+                                             "isUnique":  false
+                                         },
+                                         {
+                                             "expression":  "x =\u003e new { x.InvoiceId, x.CreatedAtUtc }",
+                                             "isUnique":  false
+                                         }
+                                     ]
+                     }
+                 ]
+}

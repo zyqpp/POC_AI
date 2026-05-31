@@ -1,0 +1,1035 @@
+﻿{
+    "generatedAtUtc":  "2026-05-31T01:59:26.4645019Z",
+    "controllerCount":  13,
+    "controllers":  [
+                        {
+                            "controller":  "InternalInventoryController",
+                            "baseRoute":  "api/internal/inventory",
+                            "classRoles":  [
+
+                                           ],
+                            "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/InternalInventoryController.cs",
+                            "endpoints":  [
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "soft-lock",
+                                                  "fullRoute":  "api/internal/inventory/soft-lock",
+                                                  "roles":  [
+                                                                "PublicOrCustom"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/InternalInventoryController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "hard-deduct",
+                                                  "fullRoute":  "api/internal/inventory/hard-deduct",
+                                                  "roles":  [
+                                                                "PublicOrCustom"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/InternalInventoryController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "release-soft-lock",
+                                                  "fullRoute":  "api/internal/inventory/release-soft-lock",
+                                                  "roles":  [
+                                                                "PublicOrCustom"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/InternalInventoryController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "restock",
+                                                  "fullRoute":  "api/internal/inventory/restock",
+                                                  "roles":  [
+                                                                "PublicOrCustom"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/InternalInventoryController.cs"
+                                              }
+                                          ]
+                        },
+                        {
+                            "controller":  "InventoryController",
+                            "baseRoute":  "api/inventory",
+                            "classRoles":  [
+                                               "Authenticated"
+                                           ],
+                            "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/InventoryController.cs",
+                            "endpoints":  [
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "soft-lock",
+                                                  "fullRoute":  "api/inventory/soft-lock",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Dealer",
+                                                                "OrderService"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/InventoryController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "hard-deduct",
+                                                  "fullRoute":  "api/inventory/hard-deduct",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/InventoryController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "release-soft-lock",
+                                                  "fullRoute":  "api/inventory/release-soft-lock",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "OrderService"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/InventoryController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "subscriptions",
+                                                  "fullRoute":  "api/inventory/subscriptions",
+                                                  "roles":  [
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/InventoryController.cs"
+                                              },
+                                              {
+                                                  "method":  "DELETE",
+                                                  "route":  "subscriptions",
+                                                  "fullRoute":  "api/inventory/subscriptions",
+                                                  "roles":  [
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/InventoryController.cs"
+                                              }
+                                          ]
+                        },
+                        {
+                            "controller":  "ProductsController",
+                            "baseRoute":  "api/products",
+                            "classRoles":  [
+
+                                           ],
+                            "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/ProductsController.cs",
+                            "endpoints":  [
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "",
+                                                  "fullRoute":  "api/products",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/ProductsController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{id:guid}",
+                                                  "fullRoute":  "api/products/{id:guid}",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/ProductsController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{id:guid}/deactivate",
+                                                  "fullRoute":  "api/products/{id:guid}/deactivate",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/ProductsController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "{id:guid}/restock",
+                                                  "fullRoute":  "api/products/{id:guid}/restock",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Warehouse"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/ProductsController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "",
+                                                  "fullRoute":  "api/products",
+                                                  "roles":  [
+                                                                "PublicOrCustom"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/ProductsController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "categories",
+                                                  "fullRoute":  "api/products/categories",
+                                                  "roles":  [
+                                                                "PublicOrCustom"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/ProductsController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "{id:guid}",
+                                                  "fullRoute":  "api/products/{id:guid}",
+                                                  "roles":  [
+                                                                "PublicOrCustom"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/ProductsController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "search",
+                                                  "fullRoute":  "api/products/search",
+                                                  "roles":  [
+                                                                "PublicOrCustom"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/ProductsController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "{id:guid}/stock",
+                                                  "fullRoute":  "api/products/{id:guid}/stock",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Warehouse"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/ProductsController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "{id:guid}/reviews",
+                                                  "fullRoute":  "api/products/{id:guid}/reviews",
+                                                  "roles":  [
+                                                                "PublicOrCustom"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/ProductsController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "{id:guid}/reviews",
+                                                  "fullRoute":  "api/products/{id:guid}/reviews",
+                                                  "roles":  [
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/ProductsController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "reviews/{reviewId:guid}/approve",
+                                                  "fullRoute":  "api/products/reviews/{reviewId:guid}/approve",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/ProductsController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "reviews/{reviewId:guid}/reject",
+                                                  "fullRoute":  "api/products/reviews/{reviewId:guid}/reject",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/CatalogInventory/CatalogInventory.API/Controllers/ProductsController.cs"
+                                              }
+                                          ]
+                        },
+                        {
+                            "controller":  "AdminDealersController",
+                            "baseRoute":  "api/admin/dealers",
+                            "classRoles":  [
+                                               "Admin"
+                                           ],
+                            "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AdminDealersController.cs",
+                            "endpoints":  [
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "",
+                                                  "fullRoute":  "api/admin/dealers",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AdminDealersController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "{id:guid}",
+                                                  "fullRoute":  "api/admin/dealers/{id:guid}",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AdminDealersController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{id:guid}/approve",
+                                                  "fullRoute":  "api/admin/dealers/{id:guid}/approve",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AdminDealersController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{id:guid}/reject",
+                                                  "fullRoute":  "api/admin/dealers/{id:guid}/reject",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AdminDealersController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{id:guid}/credit-limit",
+                                                  "fullRoute":  "api/admin/dealers/{id:guid}/credit-limit",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AdminDealersController.cs"
+                                              }
+                                          ]
+                        },
+                        {
+                            "controller":  "AdminUsersController",
+                            "baseRoute":  "api/admin/users",
+                            "classRoles":  [
+                                               "Authenticated"
+                                           ],
+                            "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AdminUsersController.cs",
+                            "endpoints":  [
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "agents",
+                                                  "fullRoute":  "api/admin/users/agents",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Logistics"
+                                                            ],
+                                                  "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AdminUsersController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "agents",
+                                                  "fullRoute":  "api/admin/users/agents",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AdminUsersController.cs"
+                                              }
+                                          ]
+                        },
+                        {
+                            "controller":  "AuthController",
+                            "baseRoute":  "api/auth",
+                            "classRoles":  [
+
+                                           ],
+                            "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AuthController.cs",
+                            "endpoints":  [
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "register",
+                                                  "fullRoute":  "api/auth/register",
+                                                  "roles":  [
+                                                                "PublicOrCustom"
+                                                            ],
+                                                  "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AuthController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "login",
+                                                  "fullRoute":  "api/auth/login",
+                                                  "roles":  [
+                                                                "PublicOrCustom"
+                                                            ],
+                                                  "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AuthController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "refresh",
+                                                  "fullRoute":  "api/auth/refresh",
+                                                  "roles":  [
+                                                                "PublicOrCustom"
+                                                            ],
+                                                  "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AuthController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "forgot-password",
+                                                  "fullRoute":  "api/auth/forgot-password",
+                                                  "roles":  [
+                                                                "PublicOrCustom"
+                                                            ],
+                                                  "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AuthController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "reset-password",
+                                                  "fullRoute":  "api/auth/reset-password",
+                                                  "roles":  [
+                                                                "PublicOrCustom"
+                                                            ],
+                                                  "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AuthController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "change-password",
+                                                  "fullRoute":  "api/auth/change-password",
+                                                  "roles":  [
+                                                                "Authenticated"
+                                                            ],
+                                                  "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AuthController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "logout",
+                                                  "fullRoute":  "api/auth/logout",
+                                                  "roles":  [
+                                                                "Authenticated"
+                                                            ],
+                                                  "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/AuthController.cs"
+                                              }
+                                          ]
+                        },
+                        {
+                            "controller":  "InternalUsersController",
+                            "baseRoute":  "api/internal/users",
+                            "classRoles":  [
+
+                                           ],
+                            "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/InternalUsersController.cs",
+                            "endpoints":  [
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "{id:guid}/contact",
+                                                  "fullRoute":  "api/internal/users/{id:guid}/contact",
+                                                  "roles":  [
+                                                                "PublicOrCustom"
+                                                            ],
+                                                  "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/InternalUsersController.cs"
+                                              }
+                                          ]
+                        },
+                        {
+                            "controller":  "UsersController",
+                            "baseRoute":  "api/users",
+                            "classRoles":  [
+                                               "Authenticated"
+                                           ],
+                            "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/UsersController.cs",
+                            "endpoints":  [
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "profile",
+                                                  "fullRoute":  "api/users/profile",
+                                                  "roles":  [
+                                                                "Authenticated"
+                                                            ],
+                                                  "source":  "services/IdentityAuth/IdentityAuth.API/Controllers/UsersController.cs"
+                                              }
+                                          ]
+                        },
+                        {
+                            "controller":  "ShipmentsController",
+                            "baseRoute":  "api/logistics/shipments",
+                            "classRoles":  [
+                                               "Authenticated"
+                                           ],
+                            "source":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs",
+                            "endpoints":  [
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "",
+                                                  "fullRoute":  "api/logistics/shipments",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Logistics"
+                                                            ],
+                                                  "source":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "{shipmentId:guid}",
+                                                  "fullRoute":  "api/logistics/shipments/{shipmentId:guid}",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Logistics",
+                                                                "Agent",
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "my",
+                                                  "fullRoute":  "api/logistics/shipments/my",
+                                                  "roles":  [
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "",
+                                                  "fullRoute":  "api/logistics/shipments",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Logistics"
+                                                            ],
+                                                  "source":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "assigned",
+                                                  "fullRoute":  "api/logistics/shipments/assigned",
+                                                  "roles":  [
+                                                                "Agent"
+                                                            ],
+                                                  "source":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{shipmentId:guid}/assign-agent",
+                                                  "fullRoute":  "api/logistics/shipments/{shipmentId:guid}/assign-agent",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Logistics"
+                                                            ],
+                                                  "source":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{shipmentId:guid}/assignment/accept",
+                                                  "fullRoute":  "api/logistics/shipments/{shipmentId:guid}/assignment/accept",
+                                                  "roles":  [
+                                                                "Agent"
+                                                            ],
+                                                  "source":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{shipmentId:guid}/assignment/reject",
+                                                  "fullRoute":  "api/logistics/shipments/{shipmentId:guid}/assignment/reject",
+                                                  "roles":  [
+                                                                "Agent"
+                                                            ],
+                                                  "source":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{shipmentId:guid}/agent-rating",
+                                                  "fullRoute":  "api/logistics/shipments/{shipmentId:guid}/agent-rating",
+                                                  "roles":  [
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{shipmentId:guid}/assign-vehicle",
+                                                  "fullRoute":  "api/logistics/shipments/{shipmentId:guid}/assign-vehicle",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Logistics"
+                                                            ],
+                                                  "source":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{shipmentId:guid}/status",
+                                                  "fullRoute":  "api/logistics/shipments/{shipmentId:guid}/status",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Logistics",
+                                                                "Agent"
+                                                            ],
+                                                  "source":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "{shipmentId:guid}/ops-state",
+                                                  "fullRoute":  "api/logistics/shipments/{shipmentId:guid}/ops-state",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Logistics",
+                                                                "Agent",
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "ops-states/batch",
+                                                  "fullRoute":  "api/logistics/shipments/ops-states/batch",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Logistics",
+                                                                "Agent",
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{shipmentId:guid}/ops-state",
+                                                  "fullRoute":  "api/logistics/shipments/{shipmentId:guid}/ops-state",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Logistics"
+                                                            ],
+                                                  "source":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "chatbot/ask",
+                                                  "fullRoute":  "api/logistics/shipments/chatbot/ask",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Logistics",
+                                                                "Agent",
+                                                                "Dealer",
+                                                                "Warehouse"
+                                                            ],
+                                                  "source":  "services/LogisticsTracking/LogisticsTracking.API/Controllers/ShipmentsController.cs"
+                                              }
+                                          ]
+                        },
+                        {
+                            "controller":  "NotificationsController",
+                            "baseRoute":  "api/notifications",
+                            "classRoles":  [
+                                               "Authenticated"
+                                           ],
+                            "source":  "services/Notification/Notification.API/Controllers/NotificationsController.cs",
+                            "endpoints":  [
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "manual",
+                                                  "fullRoute":  "api/notifications/manual",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/Notification/Notification.API/Controllers/NotificationsController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "ingest",
+                                                  "fullRoute":  "api/notifications/ingest",
+                                                  "roles":  [
+                                                                "Authenticated"
+                                                            ],
+                                                  "source":  "services/Notification/Notification.API/Controllers/NotificationsController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "my",
+                                                  "fullRoute":  "api/notifications/my",
+                                                  "roles":  [
+                                                                "Authenticated"
+                                                            ],
+                                                  "source":  "services/Notification/Notification.API/Controllers/NotificationsController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "",
+                                                  "fullRoute":  "api/notifications",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/Notification/Notification.API/Controllers/NotificationsController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "{notificationId:guid}",
+                                                  "fullRoute":  "api/notifications/{notificationId:guid}",
+                                                  "roles":  [
+                                                                "Authenticated"
+                                                            ],
+                                                  "source":  "services/Notification/Notification.API/Controllers/NotificationsController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{notificationId:guid}/sent",
+                                                  "fullRoute":  "api/notifications/{notificationId:guid}/sent",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/Notification/Notification.API/Controllers/NotificationsController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{notificationId:guid}/failed",
+                                                  "fullRoute":  "api/notifications/{notificationId:guid}/failed",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/Notification/Notification.API/Controllers/NotificationsController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{notificationId:guid}/read",
+                                                  "fullRoute":  "api/notifications/{notificationId:guid}/read",
+                                                  "roles":  [
+                                                                "Authenticated"
+                                                            ],
+                                                  "source":  "services/Notification/Notification.API/Controllers/NotificationsController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{notificationId:guid}/unread",
+                                                  "fullRoute":  "api/notifications/{notificationId:guid}/unread",
+                                                  "roles":  [
+                                                                "Authenticated"
+                                                            ],
+                                                  "source":  "services/Notification/Notification.API/Controllers/NotificationsController.cs"
+                                              }
+                                          ]
+                        },
+                        {
+                            "controller":  "AdminOrdersController",
+                            "baseRoute":  "api/admin/orders",
+                            "classRoles":  [
+                                               "Admin",
+                                               "Warehouse",
+                                               "Logistics"
+                                           ],
+                            "source":  "services/Order/Order.API/Controllers/AdminOrdersController.cs",
+                            "endpoints":  [
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "",
+                                                  "fullRoute":  "api/admin/orders",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Warehouse",
+                                                                "Logistics"
+                                                            ],
+                                                  "source":  "services/Order/Order.API/Controllers/AdminOrdersController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "analytics",
+                                                  "fullRoute":  "api/admin/orders/analytics",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Warehouse",
+                                                                "Logistics"
+                                                            ],
+                                                  "source":  "services/Order/Order.API/Controllers/AdminOrdersController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "bulk-status",
+                                                  "fullRoute":  "api/admin/orders/bulk-status",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Logistics"
+                                                            ],
+                                                  "source":  "services/Order/Order.API/Controllers/AdminOrdersController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{id:guid}/approve-hold",
+                                                  "fullRoute":  "api/admin/orders/{id:guid}/approve-hold",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/Order/Order.API/Controllers/AdminOrdersController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{id:guid}/reject-hold",
+                                                  "fullRoute":  "api/admin/orders/{id:guid}/reject-hold",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/Order/Order.API/Controllers/AdminOrdersController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{id:guid}/approve-return",
+                                                  "fullRoute":  "api/admin/orders/{id:guid}/approve-return",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/Order/Order.API/Controllers/AdminOrdersController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{id:guid}/reject-return",
+                                                  "fullRoute":  "api/admin/orders/{id:guid}/reject-return",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/Order/Order.API/Controllers/AdminOrdersController.cs"
+                                              }
+                                          ]
+                        },
+                        {
+                            "controller":  "OrdersController",
+                            "baseRoute":  "api/orders",
+                            "classRoles":  [
+                                               "Authenticated"
+                                           ],
+                            "source":  "services/Order/Order.API/Controllers/OrdersController.cs",
+                            "endpoints":  [
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "",
+                                                  "fullRoute":  "api/orders",
+                                                  "roles":  [
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/Order/Order.API/Controllers/OrdersController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "my",
+                                                  "fullRoute":  "api/orders/my",
+                                                  "roles":  [
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/Order/Order.API/Controllers/OrdersController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "{id:guid}",
+                                                  "fullRoute":  "api/orders/{id:guid}",
+                                                  "roles":  [
+                                                                "Authenticated"
+                                                            ],
+                                                  "source":  "services/Order/Order.API/Controllers/OrdersController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "{id:guid}/saga",
+                                                  "fullRoute":  "api/orders/{id:guid}/saga",
+                                                  "roles":  [
+                                                                "Authenticated"
+                                                            ],
+                                                  "source":  "services/Order/Order.API/Controllers/OrdersController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "{id:guid}/status",
+                                                  "fullRoute":  "api/orders/{id:guid}/status",
+                                                  "roles":  [
+                                                                "Authenticated"
+                                                            ],
+                                                  "source":  "services/Order/Order.API/Controllers/OrdersController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "{id:guid}/cancel",
+                                                  "fullRoute":  "api/orders/{id:guid}/cancel",
+                                                  "roles":  [
+                                                                "Dealer",
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/Order/Order.API/Controllers/OrdersController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "{id:guid}/returns",
+                                                  "fullRoute":  "api/orders/{id:guid}/returns",
+                                                  "roles":  [
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/Order/Order.API/Controllers/OrdersController.cs"
+                                              }
+                                          ]
+                        },
+                        {
+                            "controller":  "PaymentController",
+                            "baseRoute":  "api/payment",
+                            "classRoles":  [
+                                               "Authenticated"
+                                           ],
+                            "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs",
+                            "endpoints":  [
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "gateway/orders",
+                                                  "fullRoute":  "api/payment/gateway/orders",
+                                                  "roles":  [
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "gateway/verify",
+                                                  "fullRoute":  "api/payment/gateway/verify",
+                                                  "roles":  [
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "dealers/{dealerId:guid}/account",
+                                                  "fullRoute":  "api/payment/dealers/{dealerId:guid}/account",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "dealers/{dealerId:guid}/credit-check",
+                                                  "fullRoute":  "api/payment/dealers/{dealerId:guid}/credit-check",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "internal/dealers/{dealerId:guid}/credit-check",
+                                                  "fullRoute":  "api/payment/internal/dealers/{dealerId:guid}/credit-check",
+                                                  "roles":  [
+                                                                "Authenticated"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "dealers/{dealerId:guid}/credit-limit",
+                                                  "fullRoute":  "api/payment/dealers/{dealerId:guid}/credit-limit",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "internal/dealers/{dealerId:guid}/credit-limit",
+                                                  "fullRoute":  "api/payment/internal/dealers/{dealerId:guid}/credit-limit",
+                                                  "roles":  [
+                                                                "Authenticated"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "dealers/{dealerId:guid}/settlements",
+                                                  "fullRoute":  "api/payment/dealers/{dealerId:guid}/settlements",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "internal/dealers/{dealerId:guid}/settlements",
+                                                  "fullRoute":  "api/payment/internal/dealers/{dealerId:guid}/settlements",
+                                                  "roles":  [
+                                                                "Authenticated"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "internal/dealers/{dealerId:guid}/outstanding",
+                                                  "fullRoute":  "api/payment/internal/dealers/{dealerId:guid}/outstanding",
+                                                  "roles":  [
+                                                                "Authenticated"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "invoices",
+                                                  "fullRoute":  "api/payment/invoices",
+                                                  "roles":  [
+                                                                "Admin"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "invoices/{invoiceId:guid}",
+                                                  "fullRoute":  "api/payment/invoices/{invoiceId:guid}",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "dealers/{dealerId:guid}/invoices",
+                                                  "fullRoute":  "api/payment/dealers/{dealerId:guid}/invoices",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "invoices/{invoiceId:guid}/workflow",
+                                                  "fullRoute":  "api/payment/invoices/{invoiceId:guid}/workflow",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "dealers/{dealerId:guid}/invoice-workflows",
+                                                  "fullRoute":  "api/payment/dealers/{dealerId:guid}/invoice-workflows",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "PUT",
+                                                  "route":  "invoices/{invoiceId:guid}/workflow",
+                                                  "fullRoute":  "api/payment/invoices/{invoiceId:guid}/workflow",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "invoices/{invoiceId:guid}/workflow-activities",
+                                                  "fullRoute":  "api/payment/invoices/{invoiceId:guid}/workflow-activities",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "POST",
+                                                  "route":  "invoices/{invoiceId:guid}/workflow-activities",
+                                                  "fullRoute":  "api/payment/invoices/{invoiceId:guid}/workflow-activities",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              },
+                                              {
+                                                  "method":  "GET",
+                                                  "route":  "invoices/{invoiceId:guid}/download",
+                                                  "fullRoute":  "api/payment/invoices/{invoiceId:guid}/download",
+                                                  "roles":  [
+                                                                "Admin",
+                                                                "Dealer"
+                                                            ],
+                                                  "source":  "services/PaymentInvoice/PaymentInvoice.API/Controllers/PaymentController.cs"
+                                              }
+                                          ]
+                        }
+                    ]
+}

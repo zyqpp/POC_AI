@@ -1,0 +1,4 @@
+interface:
+  display_name: "ef-data-model-documenter"
+  short_description: "Project documentation helper"
+  default_prompt: "Use this skill for project documentation from source code."

@@ -1,0 +1,7 @@
+# 03 MODEL DANYCH
+
+## Dokumenty
+
+- `BAZY_I_KONTEKSTY.md` - bazy danych, DbContexty, tabele i główne kolumny.
+- `RELACJE.md` - relacje fizyczne i logiczne między obszarami.
+

@@ -1,0 +1,336 @@
+﻿{
+    "generatedAtUtc":  "2026-05-31T01:59:26.2947088Z",
+    "source":  "G:\\Projekty informatyczne\\Gotowe aplikacje\\B2B-supply-chain\\supply-chain-frontend\\src\\app\\app.routes.ts",
+    "routeCount":  26,
+    "routes":  [
+                   {
+                       "path":  "",
+                       "component":  null,
+                       "importPath":  null,
+                       "roles":  [
+
+                                 ],
+                       "canActivate":  [
+
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "login",
+                       "component":  "LoginComponent",
+                       "importPath":  "./features/auth/login/login.component",
+                       "roles":  [
+
+                                 ],
+                       "canActivate":  [
+
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "register",
+                       "component":  "RegisterComponent",
+                       "importPath":  "./features/auth/register/register.component",
+                       "roles":  [
+
+                                 ],
+                       "canActivate":  [
+
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "forgot-password",
+                       "component":  "ForgotPasswordComponent",
+                       "importPath":  "./features/auth/forgot-password/forgot-password.component",
+                       "roles":  [
+
+                                 ],
+                       "canActivate":  [
+
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "unauthorized",
+                       "component":  "UnauthorizedComponent",
+                       "importPath":  "./features/auth/unauthorized/unauthorized.component",
+                       "roles":  [
+
+                                 ],
+                       "canActivate":  [
+
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "",
+                       "component":  "AppShellComponent",
+                       "importPath":  "./shared/components/app-shell/app-shell.component",
+                       "roles":  [
+
+                                 ],
+                       "canActivate":  [
+                                           "authGuard"
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "dashboard",
+                       "component":  "DashboardComponent",
+                       "importPath":  "./features/dashboard/dashboard.component",
+                       "roles":  [
+
+                                 ],
+                       "canActivate":  [
+
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "profile",
+                       "component":  "ProfileComponent",
+                       "importPath":  "./features/profile/profile.component",
+                       "roles":  [
+
+                                 ],
+                       "canActivate":  [
+
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "products",
+                       "component":  "ProductListComponent",
+                       "importPath":  "./features/catalog/product-list/product-list.component",
+                       "roles":  [
+
+                                 ],
+                       "canActivate":  [
+
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "products/new",
+                       "component":  "ProductFormComponent",
+                       "importPath":  "./features/catalog/product-form/product-form.component",
+                       "roles":  [
+                                     "Admin"
+                                 ],
+                       "canActivate":  [
+                                           "roleGuard"
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "products/:id",
+                       "component":  "ProductDetailComponent",
+                       "importPath":  "./features/catalog/product-detail/product-detail.component",
+                       "roles":  [
+
+                                 ],
+                       "canActivate":  [
+
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "products/:id/edit",
+                       "component":  "ProductFormComponent",
+                       "importPath":  "./features/catalog/product-form/product-form.component",
+                       "roles":  [
+                                     "Admin"
+                                 ],
+                       "canActivate":  [
+                                           "roleGuard"
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "cart",
+                       "component":  "CartComponent",
+                       "importPath":  "./features/cart/cart.component",
+                       "roles":  [
+                                     "Dealer"
+                                 ],
+                       "canActivate":  [
+                                           "roleGuard"
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "checkout",
+                       "component":  "CheckoutComponent",
+                       "importPath":  "./features/cart/checkout/checkout.component",
+                       "roles":  [
+                                     "Dealer"
+                                 ],
+                       "canActivate":  [
+                                           "roleGuard"
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "orders",
+                       "component":  "OrderListComponent",
+                       "importPath":  "./features/orders/order-list/order-list.component",
+                       "roles":  [
+                                     "Admin",
+                                     "Dealer",
+                                     "Warehouse",
+                                     "Logistics"
+                                 ],
+                       "canActivate":  [
+                                           "roleGuard"
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "orders/:id/tracking",
+                       "component":  "OrderTrackingComponent",
+                       "importPath":  "./features/orders/order-tracking/order-tracking.component",
+                       "roles":  [
+                                     "Admin",
+                                     "Dealer",
+                                     "Logistics",
+                                     "Agent"
+                                 ],
+                       "canActivate":  [
+                                           "roleGuard"
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "orders/:id",
+                       "component":  "OrderDetailComponent",
+                       "importPath":  "./features/orders/order-detail/order-detail.component",
+                       "roles":  [
+                                     "Admin",
+                                     "Dealer",
+                                     "Warehouse",
+                                     "Logistics"
+                                 ],
+                       "canActivate":  [
+                                           "roleGuard"
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "shipments",
+                       "component":  "ShipmentListComponent",
+                       "importPath":  "./features/logistics/shipment-list/shipment-list.component",
+                       "roles":  [
+                                     "Admin",
+                                     "Logistics",
+                                     "Agent",
+                                     "Dealer"
+                                 ],
+                       "canActivate":  [
+                                           "roleGuard"
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "shipments/:id",
+                       "component":  "ShipmentDetailComponent",
+                       "importPath":  "./features/logistics/shipment-detail/shipment-detail.component",
+                       "roles":  [
+                                     "Admin",
+                                     "Logistics",
+                                     "Agent",
+                                     "Dealer"
+                                 ],
+                       "canActivate":  [
+                                           "roleGuard"
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "invoices",
+                       "component":  "InvoiceListComponent",
+                       "importPath":  "./features/payments/invoice-list/invoice-list.component",
+                       "roles":  [
+                                     "Admin",
+                                     "Dealer"
+                                 ],
+                       "canActivate":  [
+                                           "roleGuard"
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "invoices/:id",
+                       "component":  "InvoiceDetailComponent",
+                       "importPath":  "./features/payments/invoice-detail/invoice-detail.component",
+                       "roles":  [
+                                     "Admin",
+                                     "Dealer"
+                                 ],
+                       "canActivate":  [
+                                           "roleGuard"
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "notifications",
+                       "component":  "NotificationListComponent",
+                       "importPath":  "./features/notifications/notification-list/notification-list.component",
+                       "roles":  [
+
+                                 ],
+                       "canActivate":  [
+
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "admin/dealers",
+                       "component":  "DealerListComponent",
+                       "importPath":  "./features/admin/dealer-list/dealer-list.component",
+                       "roles":  [
+                                     "Admin"
+                                 ],
+                       "canActivate":  [
+                                           "roleGuard"
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "admin/agents/create",
+                       "component":  "AgentCreateComponent",
+                       "importPath":  "./features/admin/agent-create/agent-create.component",
+                       "roles":  [
+                                     "Admin"
+                                 ],
+                       "canActivate":  [
+                                           "roleGuard"
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "admin/dealers/:id",
+                       "component":  "DealerDetailComponent",
+                       "importPath":  "./features/admin/dealer-detail/dealer-detail.component",
+                       "roles":  [
+                                     "Admin"
+                                 ],
+                       "canActivate":  [
+                                           "roleGuard"
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   },
+                   {
+                       "path":  "**",
+                       "component":  null,
+                       "importPath":  null,
+                       "roles":  [
+
+                                 ],
+                       "canActivate":  [
+
+                                       ],
+                       "source":  "supply-chain-frontend/src/app/app.routes.ts"
+                   }
+               ]
+}

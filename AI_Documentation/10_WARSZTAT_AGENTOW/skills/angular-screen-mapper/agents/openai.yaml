@@ -1,0 +1,4 @@
+interface:
+  display_name: "angular-screen-mapper"
+  short_description: "Project documentation helper"
+  default_prompt: "Use this skill for project documentation from source code."
