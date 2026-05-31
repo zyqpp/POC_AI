@@ -1,6 +1,6 @@
-# E-007 ProductListComponent
+# E-007 Lista Produktów
 
-Status: `szkielet`; źródło startowe: routing i komponent Angular.
+Status: `potwierdzone` dla śladu UI -> Catalog API -> CatalogInventory DB -> testy.
 
 ## Identyfikacja
 
@@ -9,12 +9,32 @@ Status: `szkielet`; źródło startowe: routing i komponent Angular.
 | ID ekranu | `E-007` |
 | Route | `/products` |
 | Komponent | `ProductListComponent` |
-| Guardy | `brak guardów w route` |
-| Role frontendu | `brak ról w route` |
-| Źródło route | `supply-chain-frontend/src/app/app.routes.ts` |
+| Guardy | `authGuard` dziedziczony z shell route |
+| Role frontendu | brak roleGuard na route; UI rozróżnia `Admin` i `Dealer` |
 | Źródło komponentu | `supply-chain-frontend/src/app/features/catalog/product-list/product-list.component.ts` |
 | Źródło template | `supply-chain-frontend/src/app/features/catalog/product-list/product-list.component.html` |
-| Status faktów | `do uzupełnienia` |
+| Serwis Angular | `CatalogApiService`, `CartStore`, `ToastService` |
+| API | [API_CATALOG](../../../../04_API/API_CATALOG.md) |
+| Model danych | [MODEL_DANYCH_CATALOG](../../../../03_MODEL_DANYCH/MODEL_DANYCH_CATALOG.md) |
+| Proces | [PROC-007_PRODUCTS](../../../../06_PROCESY/PROC-007_PRODUCTS.md) |
+| Role | [ROLE_CATALOG](../../../../07_ROLE_I_UPRAWNIENIA/ROLE_CATALOG.md) |
+| Testy | [MACIERZ_TESTOW_CATALOG](../../../../08_TESTY/MACIERZ_TESTOW_CATALOG.md) |
+
+## Cel Ekranu
+
+Ekran pozwala przeglądać katalog produktów, filtrować po kategorii i stanie magazynowym, sortować listę, wyszukiwać po nazwie lub SKU oraz przejść do szczegółu produktu. Dla `Admin` pokazuje akcję utworzenia produktu, a dla `Dealer` akcję szybkiego dodania do koszyka.
+
+## Ślad End-To-End
+
+| Krok | Fakt | Źródło | Status |
+|---|---|---|---|
+| Wejście | Route `/products` jest chroniony tylko przez shell `authGuard`. | `app.routes.ts` | `potwierdzone` |
+| Ładowanie | `ngOnInit()` pobiera kategorie i pierwszą stronę produktów. | `product-list.component.ts` | `potwierdzone` |
+| Kategorie | `CatalogApiService.getCategories()` -> `GET /catalog/api/products/categories`. | `catalog-api.service.ts`, `ProductsController.cs` | `potwierdzone` |
+| Lista | `CatalogApiService.getProducts(page, 20, includeInactive)` -> `GET /catalog/api/products`. | `catalog-api.service.ts`, `ProductsController.cs` | `potwierdzone` |
+| Search | `search$` z debounce 300 ms używa `GET /catalog/api/products/search?q=...`. | `product-list.component.ts` | `potwierdzone` |
+| Quick add | UI pobiera pełny produkt przez `GET /catalog/api/products/{id}` i zapisuje pozycję w `CartStore`. | `product-list.component.ts` | `potwierdzone` |
+| DB | Lista czyta `Products` i `Categories`; quick add nie zapisuje DB. | `CatalogInventoryDbContext.cs` | `potwierdzone` |
 
 ## Dokumenty Atomowe
 
@@ -25,6 +45,9 @@ Status: `szkielet`; źródło startowe: routing i komponent Angular.
 - [Testy](TC-007_TESTY/TC-007__INDEX.md)
 - [Linki śladu](E-007__LINKI.md)
 
-## Zasada Uzupełniania
+## Luki I Ryzyka
 
-Każde pole `P-007-....` musi docelowo mieć opis wymagalności, walidacji, źródła danych, mapowania do API/DTO, encji, tabeli SQL, kolumny SQL oraz danych do automatycznych testów. Brak informacji należy oznaczać jako `do uzupełnienia`, `brak w kodzie` albo `wniosek z analizy`.
+| ID | Luka | Wpływ | Następny krok |
+|---|---|---|---|
+| `GAP-E-007-001` | Brak testu komponentu dla filtrów, sortowania i debounce search. | Regresja listy produktów może przejść niezauważona. | Dodać component/e2e testy katalogu. |
+| `GAP-E-007-002` | `CartStore` zapisuje koszyk lokalnie po stronie frontendu; quick add nie ma śladu DB do momentu checkout. | Dokumentacja musi jasno oddzielić katalog od procesu zamówienia. | Powiązać z `E-011_CART` i `E-012_CHECKOUT`. |

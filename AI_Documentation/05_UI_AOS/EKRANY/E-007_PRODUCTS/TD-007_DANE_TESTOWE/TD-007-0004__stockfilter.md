@@ -1,28 +1,10 @@
-# TD-007-0004 Dane Testowe Dla P-007-0004
+# TD-007-0004 Stock filter
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie walidacji i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID danych testowych | `TD-007-0004` |
-| Pole | [P-007-0004](../P-007_POLA/P-007-0004__stockfilter.md) |
-| Ekran | [E-007](../E-007__README.md) |
-| Status faktu | `do uzupełnienia` |
-
-## Dane Poprawne
-
-| Przypadek | Wartość | Cel |
-|---|---|---|
-| poprawny minimalny | do uzupełnienia | test walidacji minimalnej |
-| poprawny typowy | do uzupełnienia | test ścieżki użytkownika |
-| poprawny graniczny | do uzupełnienia | test wartości brzegowej |
-
-## Dane Niepoprawne
-
-| Przypadek | Wartość | Oczekiwany błąd |
-|---|---|---|
-| puste | do uzupełnienia | do uzupełnienia |
-| zły format | do uzupełnienia | do uzupełnienia |
-| poza zakresem | do uzupełnienia | do uzupełnienia |
+| Produkt | `IsActive` | `TotalStock` | `ReservedStock` | Oczekiwany badge |
+|---|---|---|---|---|
+| aktywny dostępny | `true` | `100` | `10` | `90 in stock` |
+| low stock | `true` | `8` | `0` | `Low: 8` |
+| out of stock | `true` | `0` | `0` | `Out of stock` |
+| inactive | `false` | `20` | `0` | `Inactive` |

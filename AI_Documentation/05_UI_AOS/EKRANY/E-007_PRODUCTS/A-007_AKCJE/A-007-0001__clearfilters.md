@@ -1,42 +1,14 @@
-# A-007-0001 clearFilters
+# A-007-0001 Reset filtrów
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
+| Obszar | Opis |
 |---|---|
-| ID akcji | `A-007-0001` |
-| Ekran | [E-007](../E-007__README.md) |
-| Nazwa wykryta | `clearFilters` |
-| Typ detekcji | `click` |
-| Źródło | `supply-chain-frontend/src/app/features/catalog/product-list/product-list.component.html` |
-| Status faktu | `do uzupełnienia` |
-
-## Opis Akcji
-
-Do uzupełnienia.
-
-## Ślad Techniczny
-
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Element UI | do uzupełnienia | `do uzupełnienia` |
-| Metoda komponentu | do uzupełnienia | `do uzupełnienia` |
-| Serwis frontend | do uzupełnienia | `do uzupełnienia` |
-| Endpoint API | do uzupełnienia | `do uzupełnienia` |
-| Komenda/zapytanie | do uzupełnienia | `do uzupełnienia` |
-| Walidacje | do uzupełnienia | `do uzupełnienia` |
-| Skutek w bazie | do uzupełnienia | `do uzupełnienia` |
-
-## Testy
-
-- [Macierz testów ekranu](../TC-007_TESTY/TC-007__INDEX.md)
-- Dane wejściowe: do uzupełnienia.
-- Oczekiwany rezultat: do uzupełnienia.
-
-## Linki
-
-- [Indeks akcji](A-007__INDEX.md)
-- [Pola ekranu](../P-007_POLA/P-007__INDEX.md)
-- [Ślad ekranu](../E-007__LINKI.md)
+| Trigger | przycisk `Reset Filters` |
+| Handler | `clearFilters()` |
+| Wejście | `searchQuery`, `parentCategoryFilter`, `childCategoryFilter`, `stockFilter`, `sortBy` |
+| API | `GET /catalog/api/products?page=1&size=20&includeInactive=...` |
+| Dane | odczyt `Products`, `Categories`; brak zapisu DB |
+| Role | wszyscy zalogowani; `includeInactive` tylko gdy `isAdmin()` |
+| Błędy | [ERR-007-0003](../ERR-007_BLEDY/ERR-007-0003__products-load-failed.md) |
+| Testy | `TC-007-0003` |

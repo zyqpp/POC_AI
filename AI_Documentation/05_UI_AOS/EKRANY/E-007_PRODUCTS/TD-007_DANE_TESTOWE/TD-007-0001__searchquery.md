@@ -1,28 +1,11 @@
-# TD-007-0001 Dane Testowe Dla P-007-0001
+# TD-007-0001 Search query
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie walidacji i bazy.
+Status: `potwierdzone`.
 
-## Identyfikacja
-
-| Atrybut | Wartość |
-|---|---|
-| ID danych testowych | `TD-007-0001` |
-| Pole | [P-007-0001](../P-007_POLA/P-007-0001__searchquery.md) |
-| Ekran | [E-007](../E-007__README.md) |
-| Status faktu | `do uzupełnienia` |
-
-## Dane Poprawne
-
-| Przypadek | Wartość | Cel |
+| Wariant | Wartość | Oczekiwany wynik |
 |---|---|---|
-| poprawny minimalny | do uzupełnienia | test walidacji minimalnej |
-| poprawny typowy | do uzupełnienia | test ścieżki użytkownika |
-| poprawny graniczny | do uzupełnienia | test wartości brzegowej |
+| puste | `` | `GET /products` i stronicowanie |
+| nazwa | `pump` | `GET /products/search?q=pump` |
+| SKU | `SKU-001` | search po SKU |
 
-## Dane Niepoprawne
-
-| Przypadek | Wartość | Oczekiwany błąd |
-|---|---|---|
-| puste | do uzupełnienia | do uzupełnienia |
-| zły format | do uzupełnienia | do uzupełnienia |
-| poza zakresem | do uzupełnienia | do uzupełnienia |
+DB seed: co najmniej dwa aktywne rekordy `Products` z różnymi `Name` i `Sku`.
