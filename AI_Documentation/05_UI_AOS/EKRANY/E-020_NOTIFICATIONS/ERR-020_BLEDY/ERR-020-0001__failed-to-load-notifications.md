@@ -1,0 +1,39 @@
+# ERR-020-0001 Failed to load notifications
+
+Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i obsługi błędów.
+
+## Identyfikacja
+
+| Atrybut | Wartość |
+|---|---|
+| ID błędu | `ERR-020-0001` |
+| Ekran | [E-020](../E-020__README.md) |
+| Nazwa wykryta | `Failed to load notifications` |
+| Typ detekcji | `toast.error` |
+| Źródło | `supply-chain-frontend/src/app/features/notifications/notification-list/notification-list.component.ts` |
+| Status faktu | `do uzupełnienia` |
+
+## Opis Błędu
+
+Do uzupełnienia.
+
+## Warunki Wystąpienia
+
+| Warstwa | Warunek | Status |
+|---|---|---|
+| UI | do uzupełnienia | `do uzupełnienia` |
+| Walidacja frontend | do uzupełnienia | `do uzupełnienia` |
+| API/backend | do uzupełnienia | `do uzupełnienia` |
+| Baza/integracja | do uzupełnienia | `do uzupełnienia` |
+
+## Testy
+
+- [Macierz testów ekranu](../TC-020_TESTY/TC-020__INDEX.md)
+- Dane wywołujące błąd: do uzupełnienia.
+- Oczekiwany komunikat: do uzupełnienia.
+
+## Linki
+
+- [Indeks błędów](ERR-020__INDEX.md)
+- [Pola ekranu](../P-020_POLA/P-020__INDEX.md)
+- [Akcje ekranu](../A-020_AKCJE/A-020__INDEX.md)

@@ -29,6 +29,7 @@ $requiredFiles = @(
     'AI_DATABASE_STRUCTURE.md',
     '00_START\CHECKLISTA_JAKOSCI_AOS.md',
     '00_START\PLAN_POPRAWY_DOKUMENTACJI.md',
+    '00_START\STANDARD_ATOMOWEJ_DOKUMENTACJI.md',
     '03_MODEL_DANYCH\MODEL_DANYCH_ORDER_DETAIL.md',
     '03_MODEL_DANYCH\MODEL_DANYCH_SHIPMENT_DETAIL.md',
     '04_API\API_ORDER_DETAIL.md',
@@ -43,6 +44,7 @@ $requiredFiles = @(
     '07_ROLE_I_UPRAWNIENIA\ROLE_SHIPMENT_DETAIL.md',
     '08_TESTY\MACIERZ_TESTOW_ORDER_DETAIL.md',
     '08_TESTY\MACIERZ_TESTOW_SHIPMENT_DETAIL.md',
+    '05_UI_AOS\EKRANY\E-000__INDEKS_EKRANOW.md',
     '10_WARSZTAT_AGENTOW\fakty\AI_AOS_TRACE_FACTS.json',
     '10_WARSZTAT_AGENTOW\fakty\AI_AOS_TRACE_REPORT.md'
 )
@@ -85,6 +87,10 @@ foreach ($file in $activeDocs) {
 
     if ($relative -notmatch '^AI_Documentation/AOS_Template/' -and $text -match '<[^>\r\n]+>') {
         $errors.Add("Placeholder-like token in $relative") | Out-Null
+    }
+
+    if ($relative -notmatch '^AI_Documentation/10_WARSZTAT_AGENTOW/templates/' -and $text -match '\{\{[^}\r\n]+\}\}') {
+        $errors.Add("Unresolved template token in $relative") | Out-Null
     }
 }
 
@@ -147,6 +153,72 @@ if ($aosFiles.Count -eq 0) {
         foreach ($section in $requiredAosSections) {
             if ($aosText -notmatch [regex]::Escape($section)) {
                 $errors.Add("AOS missing section '$section': $relative") | Out-Null
+            }
+        }
+    }
+}
+
+$screenRoot = Join-Path $docRoot '05_UI_AOS\EKRANY'
+if (-not (Test-Path -LiteralPath $screenRoot)) {
+    $errors.Add("Missing atomic frontend screen directory: 05_UI_AOS/EKRANY") | Out-Null
+} else {
+    $screenDirs = @(Get-ChildItem -LiteralPath $screenRoot -Directory | Where-Object { $_.Name -match '^E-\d{3}_' })
+    if ($screenDirs.Count -eq 0) {
+        $errors.Add("No atomic frontend screen directories found in 05_UI_AOS/EKRANY") | Out-Null
+    }
+
+    $routesJson = Join-Path $docRoot '10_WARSZTAT_AGENTOW\fakty\angular-routes.json'
+    if (Test-Path -LiteralPath $routesJson) {
+        try {
+            $routeFacts = Get-Content -LiteralPath $routesJson -Raw -Encoding UTF8 | ConvertFrom-Json
+            $screenRoutes = @($routeFacts.routes | Where-Object {
+                    $null -ne $_.component `
+                        -and -not [string]::IsNullOrWhiteSpace($_.path) `
+                        -and $_.path -ne '**' `
+                        -and $_.component -ne 'AppShellComponent'
+                })
+            if ($screenDirs.Count -ne $screenRoutes.Count) {
+                $errors.Add("Atomic screen count mismatch. Directories: $($screenDirs.Count), Angular routes: $($screenRoutes.Count)") | Out-Null
+            }
+        } catch {
+            $errors.Add("Cannot parse angular-routes.json for atomic screen count") | Out-Null
+        }
+    }
+
+    foreach ($screenDir in $screenDirs) {
+        if ($screenDir.Name -notmatch '^(E-(\d{3}))_') {
+            $errors.Add("Invalid atomic screen directory name: $($screenDir.Name)") | Out-Null
+            continue
+        }
+
+        $screenId = $matches[1]
+        $number = $matches[2]
+        $relativeDir = $screenDir.FullName.Substring($ProjectRoot.Length + 1).Replace('\', '/')
+        $requiredScreenFiles = @(
+            "$screenId`__README.md",
+            "$screenId`__LINKI.md",
+            "P-$number`_POLA\P-$number`__INDEX.md",
+            "A-$number`_AKCJE\A-$number`__INDEX.md",
+            "ERR-$number`_BLEDY\ERR-$number`__INDEX.md",
+            "TD-$number`_DANE_TESTOWE\TD-$number`__INDEX.md",
+            "TC-$number`_TESTY\TC-$number`__INDEX.md"
+        )
+
+        foreach ($screenFile in $requiredScreenFiles) {
+            $path = Join-Path $screenDir.FullName $screenFile
+            if (-not (Test-Path -LiteralPath $path)) {
+                $errors.Add("Missing atomic screen file: $relativeDir/$($screenFile.Replace('\', '/'))") | Out-Null
+            }
+        }
+
+        $fieldFiles = @(Get-ChildItem -LiteralPath (Join-Path $screenDir.FullName "P-$number`_POLA") -File -Filter "P-$number-*.md" -ErrorAction SilentlyContinue)
+        foreach ($fieldFile in $fieldFiles) {
+            $fieldText = Get-Content -LiteralPath $fieldFile.FullName -Raw -Encoding UTF8
+            $fieldRelative = $fieldFile.FullName.Substring($ProjectRoot.Length + 1).Replace('\', '/')
+            foreach ($requiredTerm in @('Wymagal', 'Kolumna SQL', 'Dane Do Test')) {
+                if ($fieldText -notmatch [regex]::Escape($requiredTerm)) {
+                    $errors.Add("Atomic field missing section '$requiredTerm': $fieldRelative") | Out-Null
+                }
             }
         }
     }

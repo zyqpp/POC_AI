@@ -1,0 +1,54 @@
+# P-022-0004 temporaryPassword
+
+Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+
+## Identyfikacja
+
+| Atrybut | Wartość |
+|---|---|
+| ID pola | `P-022-0004` |
+| Ekran | [E-022](../E-022__README.md) |
+| Nazwa wykryta | `temporaryPassword` |
+| Typ detekcji | `[(ngModel)]` |
+| Źródło | `supply-chain-frontend/src/app/features/admin/agent-create/agent-create.component.html` |
+| Status faktu | `do uzupełnienia` |
+
+## Opis Pola
+
+Do uzupełnienia.
+
+## Wymagalność I Walidacje
+
+| Właściwość | Wartość | Źródło |
+|---|---|---|
+| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
+| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/admin/agent-create/agent-create.component.html` |
+| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
+| Komunikaty błędów | [ERR-022](../ERR-022_BLEDY/ERR-022__INDEX.md) | do uzupełnienia |
+
+## Mapowanie Danych
+
+| Warstwa | Artefakt | Status |
+|---|---|---|
+| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
+| Serwis API | do uzupełnienia | `do uzupełnienia` |
+| Endpoint | do uzupełnienia | `do uzupełnienia` |
+| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
+| Encja/model | do uzupełnienia | `do uzupełnienia` |
+| DbContext | do uzupełnienia | `do uzupełnienia` |
+| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
+| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
+| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
+| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+
+## Dane Do Testów
+
+- [TD dla pola](../TD-022_DANE_TESTOWE/TD-022-0004__temporarypassword.md)
+- Zakres danych poprawnych: do uzupełnienia.
+- Zakres danych błędnych: do uzupełnienia.
+
+## Linki
+
+- [Indeks pól](P-022__INDEX.md)
+- [Akcje ekranu](../A-022_AKCJE/A-022__INDEX.md)
+- [Ślad ekranu](../E-022__LINKI.md)

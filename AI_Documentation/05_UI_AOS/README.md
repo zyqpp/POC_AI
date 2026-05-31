@@ -2,9 +2,16 @@
 
 ## Dokumenty
 
-- `MAPA_EKRANOW.md` - route'y Angular, komponenty, role i powiązane API.
-- `AOS_CHECKOUT.md` - pierwszy pełny wzorzec AOS dla route'u `/checkout`.
-- `AOS_ORDER_DETAIL.md` - drugi pełny pion AOS dla route'u `/orders/:id`.
-- `AOS_SHIPMENT_DETAIL.md` - pełny pion AOS dla `/shipments/:id` i kontekstu `/orders/:id/tracking`.
+- [E-000 Indeks Ekranów](EKRANY/E-000__INDEKS_EKRANOW.md) - zagnieżdżony katalog ekranów wygenerowany z routingu Angular.
+- `EKRANY/E-.../E-...__README.md` - opis konkretnego ekranu.
+- `EKRANY/E-.../P-..._POLA/` - atomowe dokumenty pól UI.
+- `EKRANY/E-.../A-..._AKCJE/` - atomowe dokumenty akcji UI.
+- `EKRANY/E-.../ERR-..._BLEDY/` - atomowe dokumenty błędów i komunikatów.
+- `EKRANY/E-.../TD-..._DANE_TESTOWE/` - dane do testów automatycznych per pole.
+- `EKRANY/E-.../TC-..._TESTY/` - przypadki testowe ekranu.
+- `MAPA_EKRANOW.md` - dotychczasowa mapa route'ów Angular, komponentów, ról i powiązanych API.
+- `AOS_CHECKOUT.md`, `AOS_ORDER_DETAIL.md`, `AOS_SHIPMENT_DETAIL.md` - starsze agregaty referencyjne z pierwszych pionów; nie zastępują dokumentów atomowych.
 
-Docelowo każdy route otrzyma osobny AOS z pełnym śladem: route -> komponent -> pola/akcje -> serwis API -> endpoint -> logika -> baza -> testy. Format `AOS_CHECKOUT.md` jest wzorcem dla kolejnych opisów.
+## Zasada
+
+Docelowy opis ekranu jest rozdrobniony i linkowalny. Każde pole, akcja i błąd mają osobny identyfikator oraz osobny plik. Brakujące mapowanie do API, procesu, bazy i testów oznacza się jawnie jako `do uzupełnienia`, a nie pomija.

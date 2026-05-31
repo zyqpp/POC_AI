@@ -1,0 +1,54 @@
+# P-016-0005 s.shipmentNumber
+
+Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+
+## Identyfikacja
+
+| Atrybut | Wartość |
+|---|---|
+| ID pola | `P-016-0005` |
+| Ekran | [E-016](../E-016__README.md) |
+| Nazwa wykryta | `s.shipmentNumber` |
+| Typ detekcji | `interpolation` |
+| Źródło | `supply-chain-frontend/src/app/features/logistics/shipment-list/shipment-list.component.html` |
+| Status faktu | `do uzupełnienia` |
+
+## Opis Pola
+
+Do uzupełnienia.
+
+## Wymagalność I Walidacje
+
+| Właściwość | Wartość | Źródło |
+|---|---|---|
+| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
+| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/logistics/shipment-list/shipment-list.component.html` |
+| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
+| Komunikaty błędów | [ERR-016](../ERR-016_BLEDY/ERR-016__INDEX.md) | do uzupełnienia |
+
+## Mapowanie Danych
+
+| Warstwa | Artefakt | Status |
+|---|---|---|
+| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
+| Serwis API | do uzupełnienia | `do uzupełnienia` |
+| Endpoint | do uzupełnienia | `do uzupełnienia` |
+| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
+| Encja/model | do uzupełnienia | `do uzupełnienia` |
+| DbContext | do uzupełnienia | `do uzupełnienia` |
+| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
+| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
+| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
+| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+
+## Dane Do Testów
+
+- [TD dla pola](../TD-016_DANE_TESTOWE/TD-016-0005__s-shipmentnumber.md)
+- Zakres danych poprawnych: do uzupełnienia.
+- Zakres danych błędnych: do uzupełnienia.
+
+## Linki
+
+- [Indeks pól](P-016__INDEX.md)
+- [Akcje ekranu](../A-016_AKCJE/A-016__INDEX.md)
+- [Ślad ekranu](../E-016__LINKI.md)

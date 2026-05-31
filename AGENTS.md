@@ -22,6 +22,9 @@
 - Minimalny ślad faktów to: `ekran -> pole/przycisk -> akcja -> frontend -> API -> proces -> walidacje -> encja/model -> baza danych -> schemat -> tabela SQL -> kolumna SQL -> odczyt/zapis danych -> relacje -> testy -> kod`.
 - Każda teza techniczna musi mieć źródło w kodzie albo status: `potwierdzone`, `do potwierdzenia`, `brak w kodzie`, `wniosek z analizy`.
 - Dla pól widocznych na ekranie zawsze próbuj ustalić konkretną tabelę SQL i kolumnę SQL. Jeżeli pole jest wyliczane albo nie jest zapisywane, zapisz to jawnie.
+- Dokumentacja ekranu ma być atomowa: ekran ma katalog `E-001_*`, pojedyncze pola mają pliki `P-001-0001__*.md`, akcje `A-001-0001__*.md`, błędy `ERR-001-0001__*.md`, dane testowe `TD-001-*`, a przypadki testowe `TC-001-*`.
+- Nie wystarczy tabela zbiorcza pól. Każde istotne pole widoczne lub edytowalne w UI musi mieć osobny opis: widoczność, wymagalność, walidacje, źródło frontendu, DTO/API, encję, tabelę, kolumnę SQL, R/W, dane testowe i linki do akcji oraz błędów.
+- Jeżeli opis pola albo akcji nie ma jeszcze ustalonego API lub mapowania DB, zostaw jawny status `do uzupełnienia` albo `brak w kodzie` w dokumencie atomowym; nie ukrywaj braku w opisie zbiorczym.
 - Luki, ryzyka i niespójności zapisuj w dokumentacji. Nie poprawiaj kodu aplikacji w ramach pracy dokumentacyjnej.
 
 ## Dokumentacja Bazy Danych
@@ -35,6 +38,7 @@
 ## Automatyzacja pracy AOS
 
 - Do generowania szkieletu AOS używaj `AI_Agent_scripts/New-AosScaffold.ps1`.
+- Do generowania zagnieżdżonej struktury ekranów frontendu używaj `AI_Agent_scripts/New-FrontendScreenScaffold.ps1`.
 - Do zbierania faktów technicznych, kontraktów, mapowania endpointów, DTO i tabel SQL używaj `AI_Agent_scripts/Export-AosTraceFacts.ps1`.
 - Wyniki automatycznych analiz traktuj jako punkt startowy. Każdy ważny wniosek potwierdź w kodzie źródłowym przed wpisaniem go jako fakt w AOS.
 - Skrypty PowerShell zawierające polskie znaki zapisuj jako UTF-8 z BOM, bo Windows PowerShell 5.1 inaczej może wygenerować dokumenty z uszkodzonymi znakami.

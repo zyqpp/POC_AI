@@ -30,6 +30,17 @@ Każdy AOS musi zawierać ślad:
 | Testy | test istniejący, brakujący test, typ testu, priorytet | luka testowa ma wpływ i kryterium zamknięcia |
 | Ryzyka | rozjazdy UI/backend, transakcyjność, dane niepersistowane, brak testów | każde ryzyko ma status i dowód |
 
+## Bramka Atomowa
+
+| Element | Wymaganie | Bramka |
+|---|---|---|
+| Ekran | ma identyfikator `E-001`, katalog `05_UI_AOS/EKRANY/E-001_*` i plik `E-001__README.md` | route, komponent, role i linki są w jednym miejscu |
+| Pole | ma osobny plik `P-{screen}-{seq}__*.md` | opisuje wymagalność, widoczność, walidacje, mapowanie DTO/API/DB albo jawny status braku |
+| Akcja | ma osobny plik `A-{screen}-{seq}__*.md` | opisuje handler, role, wejście, API, proces, dane, błędy i testy |
+| Błąd | ma osobny plik `ERR-{screen}-{seq}__*.md` | opisuje warunek, komunikat, warstwę, status HTTP lub brak API oraz test |
+| Dane testowe | mają osobny indeks `TD-{screen}__INDEX.md` i docelowe rekordy `TD-{screen}-{seq}` | wskazują preconditions, poprawne, graniczne i błędne wartości |
+| Test | ma indeks `TC-{screen}__INDEX.md` i docelowe przypadki `TC-{screen}-{seq}` | każdy test linkuje do pola, akcji albo błędu |
+
 ## Zakaz Źródeł
 
 `AI_Documentation/_archive/**` może być wspomniane tylko jako archiwum historyczne. Nie wolno używać go jako źródła faktów dla aktywnej dokumentacji.
