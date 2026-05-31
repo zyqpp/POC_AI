@@ -73,3 +73,18 @@ Doprowadzić aktywną dokumentację do standardu AOS: każdy kluczowy ekran i pr
 ## Aktualny Następny Krok
 
 Realizowany jest pion `/orders/:id` jako drugi pełny wzorzec po `/checkout`. Najważniejsze ryzyko do opisania: UI pozwala `Warehouse` rozpocząć zmianę statusu do `ReadyForDispatch`, ale `OrdersController.CanManageOrderStatus` dopuszcza tylko `Admin` i `Logistics`; `OrderService.CanRoleManageOrderStatus` zawiera już `Warehouse`. To jest luka zgodności warstw, nie poprawka kodu w tym kroku.
+
+## Aktualizacja Po Pionie Shipment Detail
+
+Status na 2026-05-31: pion `/shipments/:id` oraz kontekst `/orders/:id/tracking` został opracowany jako kolejny obszar po `/orders/:id`.
+
+Dodane artefakty:
+
+- `05_UI_AOS/AOS_SHIPMENT_DETAIL.md`
+- `04_API/API_SHIPMENT_DETAIL.md`
+- `03_MODEL_DANYCH/MODEL_DANYCH_SHIPMENT_DETAIL.md`
+- `06_PROCESY/SHIPMENT_DETAIL_LIFECYCLE.md`
+- `07_ROLE_I_UPRAWNIENIA/ROLE_SHIPMENT_DETAIL.md`
+- `08_TESTY/MACIERZ_TESTOW_SHIPMENT_DETAIL.md`
+
+Najważniejsze wykryte ryzyka: nieaktualny skrypt `scripts/migrations/LogisticsTracking.sql`, podejrzane podwójne dodanie kolumn `AssignmentDecision*` w migracjach EF, delivery attempts zapisane tylko w `localStorage`, brak backendowego endpointu tracking po `orderId`, maskowanie błędów `ops-state` w `ShipmentOpsQueueService`.

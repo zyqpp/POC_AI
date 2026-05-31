@@ -46,3 +46,9 @@ powershell -ExecutionPolicy Bypass -File AI_Agent_scripts\Test-Podejscie2Documen
 | `fakty/ef-model.json` | DbContext, DbSet, tabele | aktywny |
 | `fakty/AI_AOS_TRACE_FACTS.json` | pełny snapshot trace | aktywny |
 | `fakty/AI_AOS_TRACE_REPORT.md` | raport czytelny dla agenta | aktywny |
+
+## Ostatnie Użycie
+
+| Data | Obszar | Narzędzia | Wynik |
+|---|---|---|---|
+| 2026-05-31 | `/shipments/:id` i `/orders/:id/tracking` | `New-AosScaffold.ps1 -DryRun`, `Export-Podejscie2AngularRoutes.ps1`, `Export-Podejscie2DotnetApi.ps1`, `Export-Podejscie2EfModel.ps1`, `Export-AosTraceFacts.ps1`, `Test-Podejscie2DocumentationQuality.ps1` | powstał pełny pion AOS/API/model/proces/role/testy dla shipment detail; quality gate przeszedł |

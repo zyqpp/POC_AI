@@ -1,7 +1,7 @@
 ﻿# Aktywna Struktura Bazy Danych
 
 Status: `potwierdzone` jako aktywny indeks dokumentacji bazy.
-Zakres pełnych pionów: checkout, utworzenie zamówienia i szczegół zamówienia `/orders/:id`.
+Zakres pełnych pionów: checkout, utworzenie zamówienia, szczegół zamówienia `/orders/:id`, shipment detail `/shipments/:id` i tracking `/orders/:id/tracking`.
 Źródła główne: `services/**/Infrastructure/Persistence/*DbContext.cs`, encje domenowe, migracje EF, `AI_Documentation/10_WARSZTAT_AGENTOW/fakty/AI_AOS_TRACE_REPORT.md`.
 
 ## Zasada Użycia
@@ -45,6 +45,20 @@ Ten plik jest aktywnym punktem wejścia wymaganym przez `AGENTS.md`. Szczegóło
 | Outbox order | `OutboxMessages` w Order DB | `MessageId`, `EventType`, `Payload`, `Status`, `Error` | zapis `Order{Status}`, `OrderCancelled`, `ReturnRequested`, `ReturnApproved`, `ReturnRejected` | potwierdzone |
 | Notatki operacyjne | brak tabeli | brak kolumn SQL | localStorage `scp.order-ops-notes.v1` | potwierdzone |
 
+## Model Danych Shipment Detail I Tracking
+
+| Obszar | Tabela | Kolumny krytyczne | R/W w `/shipments/:id` i `/orders/:id/tracking` | Status |
+|---|---|---|---|---|
+| Nagłówek shipmentu | `Shipments` | `ShipmentId`, `OrderId`, `DealerId`, `ShipmentNumber`, `Status`, `CreatedAtUtc`, `DeliveredAtUtc` | odczyt szczegółu i trackingu; zapis statusu i delivery timestamp | potwierdzone |
+| Adres dostawy | `Shipments` | `DeliveryAddress`, `City`, `State`, `PostalCode` | odczyt UI | potwierdzone |
+| Assignment agenta | `Shipments` | `AssignedAgentId`, `AssignmentDecisionStatus`, `AssignmentDecisionReason`, `AssignmentDecisionAtUtc` | odczyt i zapis assign/accept/reject | potwierdzone |
+| Pojazd | `Shipments` | `VehicleNumber` | odczyt i zapis assign vehicle | potwierdzone |
+| Ocena agenta | `Shipments` | `DeliveryAgentRating`, `DeliveryAgentRatingComment`, `DeliveryAgentRatedAtUtc`, `DeliveryAgentRatedByUserId` | odczyt i zapis ratingu po delivered | potwierdzone |
+| Timeline shipmentu | `ShipmentEvents` | `ShipmentEventId`, `ShipmentId`, `Status`, `Note`, `UpdatedByUserId`, `UpdatedByRole`, `CreatedAtUtc` | odczyt i zapis przy akcjach domenowych | potwierdzone |
+| Handover i retry | `ShipmentOpsStates` | `ShipmentId`, `HandoverState`, `HandoverExceptionReason`, `RetryRequired`, `RetryCount`, `RetryReason`, `NextRetryAtUtc`, `LastRetryScheduledAtUtc`, `UpdatedAtUtc` | odczyt i zapis ops-state | potwierdzone |
+| Outbox logistics | `OutboxMessages` w Logistics DB | `MessageId`, `EventType`, `Payload`, `Status`, `RetryCount`, `Error` | zapis eventów shipment lifecycle | potwierdzone |
+| Próby doręczenia | brak tabeli SQL | brak kolumn SQL | localStorage `scp.shipment-delivery-attempts.v1` | potwierdzone jako local-only |
+
 ## Relacje
 
 | Relacja | Typ | Status | Źródło |
@@ -56,6 +70,11 @@ Ten plik jest aktywnym punktem wejścia wymaganym przez `AGENTS.md`. Szczegóło
 | `OrderLines.ProductId -> CatalogInventory.Products.ProductId` | logiczna między bazami | wniosek z analizy | brak fizycznego FK między mikroserwisami |
 | `DealerCreditAccounts.DealerId -> IdentityAuth.Users.UserId` | logiczna między bazami | wniosek z analizy | brak fizycznego FK między mikroserwisami |
 | `PaymentRecords.OrderId -> Orders.OrderId` | logiczna między bazami; dla gateway verify obecnie `Guid.Empty` | potwierdzone jako ryzyko | `PaymentInvoiceService` |
+| `ShipmentEvents.ShipmentId -> Shipments.ShipmentId` | fizyczna FK w Logistics DB, cascade | potwierdzone | `LogisticsTrackingDbContext` |
+| `ShipmentOpsStates.ShipmentId -> Shipments.ShipmentId` | fizyczna FK 1:1 w Logistics DB, cascade | potwierdzone | `LogisticsTrackingDbContext` |
+| `Shipments.OrderId -> Orders.OrderId` | logiczna między bazami | wniosek z analizy | brak fizycznego FK między mikroserwisami |
+| `Shipments.DealerId -> IdentityAuth.Users.UserId` | logiczna między bazami | wniosek z analizy | brak fizycznego FK między mikroserwisami |
+| `Shipments.AssignedAgentId -> IdentityAuth.Users.UserId` | logiczna między bazami | wniosek z analizy | brak fizycznego FK i brak backendowej weryfikacji aktywnego Agenta |
 
 ## Rozbieżności Do Kontroli
 
@@ -63,3 +82,5 @@ Ten plik jest aktywnym punktem wejścia wymaganym przez `AGENTS.md`. Szczegóło
 |---|---|---|---|
 | P1 | Skrypt wdrożeniowy `scripts/migrations/Order.sql` tworzy tabele order, outbox, lines, status history i return, ale nie zawiera `OrderSagaStates`; EF migracja `AddOrderSagaState` tę tabelę tworzy. | `scripts/migrations/Order.sql:17`, `scripts/migrations/Order.sql:54`, `scripts/migrations/Order.sql:90`, `20260403105135_AddOrderSagaState.cs:14` | potwierdzone |
 | P1 | Backendowy `OrderDto` zawiera `Saga`, ale TypeScript `OrderDto` jej nie deklaruje. | `OrderDtos.cs:93-106`, `order.models.ts:85-98` | potwierdzone |
+| P0 | Skrypt `scripts/migrations/LogisticsTracking.sql` kończy się na initial create i nie zawiera aktualnych kolumn/tabel EF: `VehicleNumber`, assignment decision, rating agenta, `ShipmentOpsStates`. | `scripts/migrations/LogisticsTracking.sql:14-92`, `LogisticsTrackingDbContextModelSnapshot.cs:79`, `LogisticsTrackingDbContextModelSnapshot.cs:194` | potwierdzone |
+| P0 | Migracje EF `20260411063723_SyncPendingModelChanges` i `20260411123000_AddShipmentAssignmentDecision` dodają te same kolumny `AssignmentDecision*`. | pliki migracji EF LogisticsTracking | potwierdzone |
