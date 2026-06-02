@@ -16,7 +16,7 @@ Status: `szkielet`; dokument służy jako centralna nawigacja dla ekranu.
 | Obszar | Link | Status |
 |---|---|---|
 | API | do uzupełnienia po analizie `04_API` | `do uzupełnienia` |
-| Proces | do uzupełnienia po analizie `06_PROCESY` | `do uzupełnienia` |
+| Proces | [PROC-001_AUTH.md](../../../06_PROCESY/PROC-001_AUTH.md) | `do uzupełnienia` |
 | Role | do uzupełnienia po analizie `07_ROLE_I_UPRAWNIENIA` | `do uzupełnienia` |
 | Model danych | do uzupełnienia po analizie `03_MODEL_DANYCH` | `do uzupełnienia` |
 | Testy automatyczne | do uzupełnienia po analizie `08_TESTY` | `do uzupełnienia` |

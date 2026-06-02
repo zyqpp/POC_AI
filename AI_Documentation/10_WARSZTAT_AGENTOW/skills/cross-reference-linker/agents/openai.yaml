@@ -1,0 +1,4 @@
+interface:
+  display_name: "cross-reference-linker"
+  short_description: "Fill cross-document links in AOS documentation"
+  default_prompt: "Use this skill to fill in cross-references, links, and associations between AOS documentation files."

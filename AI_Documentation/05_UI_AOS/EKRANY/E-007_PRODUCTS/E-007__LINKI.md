@@ -26,8 +26,8 @@ Status: `potwierdzone`.
 | Błędy | [ERR-007_BLEDY/ERR-007__INDEX.md](ERR-007_BLEDY/ERR-007__INDEX.md) |
 | Dane testowe | [TD-007_DANE_TESTOWE/TD-007__INDEX.md](TD-007_DANE_TESTOWE/TD-007__INDEX.md) |
 | Testy | [TC-007_TESTY/TC-007__INDEX.md](TC-007_TESTY/TC-007__INDEX.md) |
-| API | [../../../04_API/API_CATALOG.md](../../../04_API/API_CATALOG.md) |
-| Model danych | [../../../03_MODEL_DANYCH/MODEL_DANYCH_CATALOG.md](../../../03_MODEL_DANYCH/MODEL_DANYCH_CATALOG.md) |
-| Proces | [../../../06_PROCESY/PROC-007_PRODUCTS.md](../../../06_PROCESY/PROC-007_PRODUCTS.md) |
-| Role | [../../../07_ROLE_I_UPRAWNIENIA/ROLE_CATALOG.md](../../../07_ROLE_I_UPRAWNIENIA/ROLE_CATALOG.md) |
+| API | [API_CATALOG.md](../../../04_API/API_CATALOG.md) |
+| Model danych | [MODEL_DANYCH_CATALOG.md](../../../03_MODEL_DANYCH/MODEL_DANYCH_CATALOG.md) |
+| Proces | [PROC-007_PRODUCTS.md](../../../06_PROCESY/PROC-007_PRODUCTS.md) |
+| Role | [ROLE_CATALOG.md](../../../07_ROLE_I_UPRAWNIENIA/ROLE_CATALOG.md) |
 | Testy przekrojowe | [../../../08_TESTY/MACIERZ_TESTOW_CATALOG.md](../../../08_TESTY/MACIERZ_TESTOW_CATALOG.md) |

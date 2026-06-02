@@ -1,0 +1,1241 @@
+{
+    "generatedAtUtc":  "2026-06-02T20:43:46Z",
+    "scriptName":  "Invoke-DocumentationAudit.ps1",
+    "scriptVersion":  "audit_v1",
+    "gitHead":  "22c4172",
+    "disclaimer":  "Wyniki są heurystyczne. Parser statyczny nie zastępuje ręcznej weryfikacji w kodzie.",
+    "screenCoverage":  {
+                           "screens":  [
+                                           {
+                                               "screenId":  "E-001",
+                                               "directoryName":  "E-001_LOGIN",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "wniosek z analizy",
+                                               "fieldCount":  2,
+                                               "actionCount":  4,
+                                               "tcCount":  0,
+                                               "completionLevel":  "kompletny"
+                                           },
+                                           {
+                                               "screenId":  "E-002",
+                                               "directoryName":  "E-002_REGISTER",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "wniosek z analizy",
+                                               "fieldCount":  12,
+                                               "actionCount":  2,
+                                               "tcCount":  0,
+                                               "completionLevel":  "kompletny"
+                                           },
+                                           {
+                                               "screenId":  "E-003",
+                                               "directoryName":  "E-003_FORGOT_PASSWORD",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "szkielet",
+                                               "fieldCount":  3,
+                                               "actionCount":  4,
+                                               "tcCount":  0,
+                                               "completionLevel":  "szkielet"
+                                           },
+                                           {
+                                               "screenId":  "E-004",
+                                               "directoryName":  "E-004_UNAUTHORIZED",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "szkielet",
+                                               "fieldCount":  0,
+                                               "actionCount":  0,
+                                               "tcCount":  0,
+                                               "completionLevel":  "szkielet"
+                                           },
+                                           {
+                                               "screenId":  "E-005",
+                                               "directoryName":  "E-005_DASHBOARD",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "wniosek z analizy",
+                                               "fieldCount":  29,
+                                               "actionCount":  13,
+                                               "tcCount":  0,
+                                               "completionLevel":  "kompletny"
+                                           },
+                                           {
+                                               "screenId":  "E-006",
+                                               "directoryName":  "E-006_PROFILE",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "potwierdzone",
+                                               "fieldCount":  10,
+                                               "actionCount":  2,
+                                               "tcCount":  0,
+                                               "completionLevel":  "kompletny"
+                                           },
+                                           {
+                                               "screenId":  "E-007",
+                                               "directoryName":  "E-007_PRODUCTS",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "potwierdzone",
+                                               "fieldCount":  12,
+                                               "actionCount":  6,
+                                               "tcCount":  0,
+                                               "completionLevel":  "kompletny"
+                                           },
+                                           {
+                                               "screenId":  "E-008",
+                                               "directoryName":  "E-008_PRODUCTS_NEW",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "potwierdzone",
+                                               "fieldCount":  11,
+                                               "actionCount":  3,
+                                               "tcCount":  0,
+                                               "completionLevel":  "kompletny"
+                                           },
+                                           {
+                                               "screenId":  "E-009",
+                                               "directoryName":  "E-009_PRODUCTS_ID",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "potwierdzone",
+                                               "fieldCount":  21,
+                                               "actionCount":  14,
+                                               "tcCount":  0,
+                                               "completionLevel":  "kompletny"
+                                           },
+                                           {
+                                               "screenId":  "E-010",
+                                               "directoryName":  "E-010_PRODUCTS_ID_EDIT",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "potwierdzone",
+                                               "fieldCount":  11,
+                                               "actionCount":  3,
+                                               "tcCount":  0,
+                                               "completionLevel":  "kompletny"
+                                           },
+                                           {
+                                               "screenId":  "E-011",
+                                               "directoryName":  "E-011_CART",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "wniosek z analizy",
+                                               "fieldCount":  7,
+                                               "actionCount":  8,
+                                               "tcCount":  0,
+                                               "completionLevel":  "kompletny"
+                                           },
+                                           {
+                                               "screenId":  "E-012",
+                                               "directoryName":  "E-012_CHECKOUT",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "szkielet",
+                                               "fieldCount":  6,
+                                               "actionCount":  2,
+                                               "tcCount":  1,
+                                               "completionLevel":  "szkielet"
+                                           },
+                                           {
+                                               "screenId":  "E-013",
+                                               "directoryName":  "E-013_ORDERS",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "szkielet",
+                                               "fieldCount":  21,
+                                               "actionCount":  9,
+                                               "tcCount":  0,
+                                               "completionLevel":  "szkielet"
+                                           },
+                                           {
+                                               "screenId":  "E-014",
+                                               "directoryName":  "E-014_ORDERS_ID_TRACKING",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "szkielet",
+                                               "fieldCount":  18,
+                                               "actionCount":  7,
+                                               "tcCount":  0,
+                                               "completionLevel":  "szkielet"
+                                           },
+                                           {
+                                               "screenId":  "E-015",
+                                               "directoryName":  "E-015_ORDERS_ID",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "szkielet",
+                                               "fieldCount":  18,
+                                               "actionCount":  19,
+                                               "tcCount":  1,
+                                               "completionLevel":  "szkielet"
+                                           },
+                                           {
+                                               "screenId":  "E-016",
+                                               "directoryName":  "E-016_SHIPMENTS",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "szkielet",
+                                               "fieldCount":  9,
+                                               "actionCount":  0,
+                                               "tcCount":  0,
+                                               "completionLevel":  "szkielet"
+                                           },
+                                           {
+                                               "screenId":  "E-017",
+                                               "directoryName":  "E-017_SHIPMENTS_ID",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "szkielet",
+                                               "fieldCount":  32,
+                                               "actionCount":  32,
+                                               "tcCount":  1,
+                                               "completionLevel":  "szkielet"
+                                           },
+                                           {
+                                               "screenId":  "E-018",
+                                               "directoryName":  "E-018_INVOICES",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "szkielet",
+                                               "fieldCount":  16,
+                                               "actionCount":  13,
+                                               "tcCount":  0,
+                                               "completionLevel":  "szkielet"
+                                           },
+                                           {
+                                               "screenId":  "E-019",
+                                               "directoryName":  "E-019_INVOICES_ID",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "szkielet",
+                                               "fieldCount":  13,
+                                               "actionCount":  8,
+                                               "tcCount":  0,
+                                               "completionLevel":  "szkielet"
+                                           },
+                                           {
+                                               "screenId":  "E-020",
+                                               "directoryName":  "E-020_NOTIFICATIONS",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "szkielet",
+                                               "fieldCount":  18,
+                                               "actionCount":  15,
+                                               "tcCount":  0,
+                                               "completionLevel":  "szkielet"
+                                           },
+                                           {
+                                               "screenId":  "E-021",
+                                               "directoryName":  "E-021_ADMIN_DEALERS",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "szkielet",
+                                               "fieldCount":  8,
+                                               "actionCount":  2,
+                                               "tcCount":  0,
+                                               "completionLevel":  "szkielet"
+                                           },
+                                           {
+                                               "screenId":  "E-022",
+                                               "directoryName":  "E-022_ADMIN_AGENTS_CREATE",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "szkielet",
+                                               "fieldCount":  4,
+                                               "actionCount":  2,
+                                               "tcCount":  0,
+                                               "completionLevel":  "szkielet"
+                                           },
+                                           {
+                                               "screenId":  "E-023",
+                                               "directoryName":  "E-023_ADMIN_DEALERS_ID",
+                                               "hasRequiredStructure":  true,
+                                               "readmeStatus":  "szkielet",
+                                               "fieldCount":  5,
+                                               "actionCount":  10,
+                                               "tcCount":  0,
+                                               "completionLevel":  "szkielet"
+                                           }
+                                       ],
+                           "screensSkeleton":  [
+                                                   "E-003",
+                                                   "E-004",
+                                                   "E-012",
+                                                   "E-013",
+                                                   "E-014",
+                                                   "E-015",
+                                                   "E-016",
+                                                   "E-017",
+                                                   "E-018",
+                                                   "E-019",
+                                                   "E-020",
+                                                   "E-021",
+                                                   "E-022",
+                                                   "E-023"
+                                               ],
+                           "screensComplete":  9,
+                           "totalScreenDirs":  23,
+                           "totalAngularRoutes":  23
+                       },
+    "processCoverage":  {
+                            "processesComplete":  6,
+                            "processesPartial":  9,
+                            "processes":  [
+                                              {
+                                                  "fileName":  "CHECKOUT_E2E.md",
+                                                  "fileType":  "e2e",
+                                                  "hasCel":  false,
+                                                  "hasOpis":  false,
+                                                  "hasKroki":  true,
+                                                  "hasBledy":  true,
+                                                  "screenRefs":  0,
+                                                  "apiRefs":  5,
+                                                  "completionLevel":  "częściowy"
+                                              },
+                                              {
+                                                  "fileName":  "ORDER_DETAIL_LIFECYCLE.md",
+                                                  "fileType":  "e2e",
+                                                  "hasCel":  false,
+                                                  "hasOpis":  false,
+                                                  "hasKroki":  true,
+                                                  "hasBledy":  false,
+                                                  "screenRefs":  0,
+                                                  "apiRefs":  5,
+                                                  "completionLevel":  "szkielet"
+                                              },
+                                              {
+                                                  "fileName":  "PROC-001_AUTH.md",
+                                                  "fileType":  "proc",
+                                                  "hasCel":  true,
+                                                  "hasOpis":  true,
+                                                  "hasKroki":  true,
+                                                  "hasBledy":  true,
+                                                  "screenRefs":  9,
+                                                  "apiRefs":  6,
+                                                  "completionLevel":  [
+                                                                          "kompletny",
+                                                                          "częściowy"
+                                                                      ]
+                                              },
+                                              {
+                                                  "fileName":  "PROC-006_PROFILE.md",
+                                                  "fileType":  "proc",
+                                                  "hasCel":  true,
+                                                  "hasOpis":  true,
+                                                  "hasKroki":  true,
+                                                  "hasBledy":  true,
+                                                  "screenRefs":  0,
+                                                  "apiRefs":  1,
+                                                  "completionLevel":  [
+                                                                          "kompletny",
+                                                                          "częściowy"
+                                                                      ]
+                                              },
+                                              {
+                                                  "fileName":  "PROC-007_PRODUCTS.md",
+                                                  "fileType":  "proc",
+                                                  "hasCel":  true,
+                                                  "hasOpis":  true,
+                                                  "hasKroki":  true,
+                                                  "hasBledy":  true,
+                                                  "screenRefs":  1,
+                                                  "apiRefs":  0,
+                                                  "completionLevel":  [
+                                                                          "kompletny",
+                                                                          "częściowy"
+                                                                      ]
+                                              },
+                                              {
+                                                  "fileName":  "PROC-008_PRODUCTS_NEW.md",
+                                                  "fileType":  "proc",
+                                                  "hasCel":  true,
+                                                  "hasOpis":  true,
+                                                  "hasKroki":  true,
+                                                  "hasBledy":  true,
+                                                  "screenRefs":  9,
+                                                  "apiRefs":  2,
+                                                  "completionLevel":  [
+                                                                          "kompletny",
+                                                                          "częściowy"
+                                                                      ]
+                                              },
+                                              {
+                                                  "fileName":  "PROC-009_PRODUCTS_ID.md",
+                                                  "fileType":  "proc",
+                                                  "hasCel":  true,
+                                                  "hasOpis":  true,
+                                                  "hasKroki":  true,
+                                                  "hasBledy":  true,
+                                                  "screenRefs":  10,
+                                                  "apiRefs":  5,
+                                                  "completionLevel":  [
+                                                                          "kompletny",
+                                                                          "częściowy"
+                                                                      ]
+                                              },
+                                              {
+                                                  "fileName":  "PROC-010_PRODUCTS_ID_EDIT.md",
+                                                  "fileType":  "proc",
+                                                  "hasCel":  true,
+                                                  "hasOpis":  false,
+                                                  "hasKroki":  true,
+                                                  "hasBledy":  true,
+                                                  "screenRefs":  7,
+                                                  "apiRefs":  6,
+                                                  "completionLevel":  "częściowy"
+                                              },
+                                              {
+                                                  "fileName":  "PROC-011_CART.md",
+                                                  "fileType":  "proc",
+                                                  "hasCel":  true,
+                                                  "hasOpis":  true,
+                                                  "hasKroki":  true,
+                                                  "hasBledy":  true,
+                                                  "screenRefs":  8,
+                                                  "apiRefs":  1,
+                                                  "completionLevel":  [
+                                                                          "kompletny",
+                                                                          "częściowy"
+                                                                      ]
+                                              },
+                                              {
+                                                  "fileName":  "SHIPMENT_DETAIL_LIFECYCLE.md",
+                                                  "fileType":  "e2e",
+                                                  "hasCel":  false,
+                                                  "hasOpis":  false,
+                                                  "hasKroki":  true,
+                                                  "hasBledy":  true,
+                                                  "screenRefs":  0,
+                                                  "apiRefs":  2,
+                                                  "completionLevel":  "częściowy"
+                                              }
+                                          ],
+                            "processesSkeleton":  1,
+                            "totalProcessFiles":  10
+                        },
+    "algorithmCoverage":  {
+                              "documentedValidators":  31,
+                              "documentedHandlers":  87,
+                              "undocumentedValidators":  [
+                                                             "StockSubscriptionRequestValidator",
+                                                             "CreateShipmentRequestValidator",
+                                                             "BulkUpdateOrderStatusRequestValidator",
+                                                             "GenerateInvoiceRequestValidator",
+                                                             "AddOutstandingRequestValidator"
+                                                         ],
+                              "undocumentedHandlers":  [
+
+                                                       ],
+                              "handlers":  [
+                                               {
+                                                   "handlerClass":  "CreateProductCommandHandler",
+                                                   "requestType":  "CreateProductCommand",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Commands/CatalogCommands.cs",
+                                                   "baseNameForSearch":  "CreateProductCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "UpdateProductCommandHandler",
+                                                   "requestType":  "CreateProductCommand",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Commands/CatalogCommands.cs",
+                                                   "baseNameForSearch":  "UpdateProductCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "DeactivateProductCommandHandler",
+                                                   "requestType":  "CreateProductCommand",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Commands/CatalogCommands.cs",
+                                                   "baseNameForSearch":  "DeactivateProductCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "RestockProductCommandHandler",
+                                                   "requestType":  "CreateProductCommand",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Commands/CatalogCommands.cs",
+                                                   "baseNameForSearch":  "RestockProductCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "SoftLockStockCommandHandler",
+                                                   "requestType":  "CreateProductCommand",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Commands/CatalogCommands.cs",
+                                                   "baseNameForSearch":  "SoftLockStockCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "HardDeductStockCommandHandler",
+                                                   "requestType":  "CreateProductCommand",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Commands/CatalogCommands.cs",
+                                                   "baseNameForSearch":  "HardDeductStockCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "ReleaseSoftLockCommandHandler",
+                                                   "requestType":  "CreateProductCommand",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Commands/CatalogCommands.cs",
+                                                   "baseNameForSearch":  "ReleaseSoftLockCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "SubscribeStockCommandHandler",
+                                                   "requestType":  "CreateProductCommand",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Commands/CatalogCommands.cs",
+                                                   "baseNameForSearch":  "SubscribeStockCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "UnsubscribeStockCommandHandler",
+                                                   "requestType":  "CreateProductCommand",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Commands/CatalogCommands.cs",
+                                                   "baseNameForSearch":  "UnsubscribeStockCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "CreateProductReviewCommandHandler",
+                                                   "requestType":  "CreateProductCommand",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Commands/CatalogCommands.cs",
+                                                   "baseNameForSearch":  "CreateProductReviewCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "ApproveProductReviewCommandHandler",
+                                                   "requestType":  "CreateProductCommand",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Commands/CatalogCommands.cs",
+                                                   "baseNameForSearch":  "ApproveProductReviewCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "RejectProductReviewCommandHandler",
+                                                   "requestType":  "CreateProductCommand",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Commands/CatalogCommands.cs",
+                                                   "baseNameForSearch":  "RejectProductReviewCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetCategoriesQueryHandler",
+                                                   "requestType":  "GetCategoriesQuery",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Queries/CatalogQueries.cs",
+                                                   "baseNameForSearch":  "GetCategoriesQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetProductListQueryHandler",
+                                                   "requestType":  "GetCategoriesQuery",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Queries/CatalogQueries.cs",
+                                                   "baseNameForSearch":  "GetProductListQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetProductDetailQueryHandler",
+                                                   "requestType":  "GetCategoriesQuery",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Queries/CatalogQueries.cs",
+                                                   "baseNameForSearch":  "GetProductDetailQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "SearchProductsQueryHandler",
+                                                   "requestType":  "GetCategoriesQuery",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Queries/CatalogQueries.cs",
+                                                   "baseNameForSearch":  "SearchProductsQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetStockLevelQueryHandler",
+                                                   "requestType":  "GetCategoriesQuery",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Queries/CatalogQueries.cs",
+                                                   "baseNameForSearch":  "GetStockLevelQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetProductReviewsQueryHandler",
+                                                   "requestType":  "GetCategoriesQuery",
+                                                   "file":  "services/CatalogInventory/CatalogInventory.Application/Features/Catalog/Queries/CatalogQueries.cs",
+                                                   "baseNameForSearch":  "GetProductReviewsQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "RegisterDealerCommandHandler",
+                                                   "requestType":  "RegisterDealerCommand",
+                                                   "file":  "services/IdentityAuth/IdentityAuth.Application/Features/Auth/Commands/IdentityAuthCommands.cs",
+                                                   "baseNameForSearch":  "RegisterDealerCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "CreateAgentCommandHandler",
+                                                   "requestType":  "RegisterDealerCommand",
+                                                   "file":  "services/IdentityAuth/IdentityAuth.Application/Features/Auth/Commands/IdentityAuthCommands.cs",
+                                                   "baseNameForSearch":  "CreateAgentCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "LoginCommandHandler",
+                                                   "requestType":  "RegisterDealerCommand",
+                                                   "file":  "services/IdentityAuth/IdentityAuth.Application/Features/Auth/Commands/IdentityAuthCommands.cs",
+                                                   "baseNameForSearch":  "LoginCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "RefreshTokenCommandHandler",
+                                                   "requestType":  "RegisterDealerCommand",
+                                                   "file":  "services/IdentityAuth/IdentityAuth.Application/Features/Auth/Commands/IdentityAuthCommands.cs",
+                                                   "baseNameForSearch":  "RefreshTokenCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "ForgotPasswordCommandHandler",
+                                                   "requestType":  "RegisterDealerCommand",
+                                                   "file":  "services/IdentityAuth/IdentityAuth.Application/Features/Auth/Commands/IdentityAuthCommands.cs",
+                                                   "baseNameForSearch":  "ForgotPasswordCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "ResetPasswordCommandHandler",
+                                                   "requestType":  "RegisterDealerCommand",
+                                                   "file":  "services/IdentityAuth/IdentityAuth.Application/Features/Auth/Commands/IdentityAuthCommands.cs",
+                                                   "baseNameForSearch":  "ResetPasswordCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "ChangePasswordCommandHandler",
+                                                   "requestType":  "RegisterDealerCommand",
+                                                   "file":  "services/IdentityAuth/IdentityAuth.Application/Features/Auth/Commands/IdentityAuthCommands.cs",
+                                                   "baseNameForSearch":  "ChangePasswordCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "LogoutCommandHandler",
+                                                   "requestType":  "RegisterDealerCommand",
+                                                   "file":  "services/IdentityAuth/IdentityAuth.Application/Features/Auth/Commands/IdentityAuthCommands.cs",
+                                                   "baseNameForSearch":  "LogoutCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "ApproveDealerCommandHandler",
+                                                   "requestType":  "RegisterDealerCommand",
+                                                   "file":  "services/IdentityAuth/IdentityAuth.Application/Features/Auth/Commands/IdentityAuthCommands.cs",
+                                                   "baseNameForSearch":  "ApproveDealerCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "RejectDealerCommandHandler",
+                                                   "requestType":  "RegisterDealerCommand",
+                                                   "file":  "services/IdentityAuth/IdentityAuth.Application/Features/Auth/Commands/IdentityAuthCommands.cs",
+                                                   "baseNameForSearch":  "RejectDealerCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "UpdateCreditLimitCommandHandler",
+                                                   "requestType":  "RegisterDealerCommand",
+                                                   "file":  "services/IdentityAuth/IdentityAuth.Application/Features/Auth/Commands/IdentityAuthCommands.cs",
+                                                   "baseNameForSearch":  "UpdateCreditLimitCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetAgentsQueryHandler",
+                                                   "requestType":  "GetAgentsQuery",
+                                                   "file":  "services/IdentityAuth/IdentityAuth.Application/Features/Auth/Queries/IdentityAuthQueries.cs",
+                                                   "baseNameForSearch":  "GetAgentsQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetDealersQueryHandler",
+                                                   "requestType":  "GetAgentsQuery",
+                                                   "file":  "services/IdentityAuth/IdentityAuth.Application/Features/Auth/Queries/IdentityAuthQueries.cs",
+                                                   "baseNameForSearch":  "GetDealersQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetDealerByIdQueryHandler",
+                                                   "requestType":  "GetAgentsQuery",
+                                                   "file":  "services/IdentityAuth/IdentityAuth.Application/Features/Auth/Queries/IdentityAuthQueries.cs",
+                                                   "baseNameForSearch":  "GetDealerByIdQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetProfileQueryHandler",
+                                                   "requestType":  "GetAgentsQuery",
+                                                   "file":  "services/IdentityAuth/IdentityAuth.Application/Features/Auth/Queries/IdentityAuthQueries.cs",
+                                                   "baseNameForSearch":  "GetProfileQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetInternalUserContactQueryHandler",
+                                                   "requestType":  "GetAgentsQuery",
+                                                   "file":  "services/IdentityAuth/IdentityAuth.Application/Features/Auth/Queries/IdentityAuthQueries.cs",
+                                                   "baseNameForSearch":  "GetInternalUserContactQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "CreateShipmentCommandHandler",
+                                                   "requestType":  "CreateShipmentCommand",
+                                                   "file":  "services/LogisticsTracking/LogisticsTracking.Application/Features/Shipments/Commands/ShipmentCommands.cs",
+                                                   "baseNameForSearch":  "CreateShipmentCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "AssignAgentCommandHandler",
+                                                   "requestType":  "CreateShipmentCommand",
+                                                   "file":  "services/LogisticsTracking/LogisticsTracking.Application/Features/Shipments/Commands/ShipmentCommands.cs",
+                                                   "baseNameForSearch":  "AssignAgentCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "AcceptAssignmentCommandHandler",
+                                                   "requestType":  "CreateShipmentCommand",
+                                                   "file":  "services/LogisticsTracking/LogisticsTracking.Application/Features/Shipments/Commands/ShipmentCommands.cs",
+                                                   "baseNameForSearch":  "AcceptAssignmentCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "RejectAssignmentCommandHandler",
+                                                   "requestType":  "CreateShipmentCommand",
+                                                   "file":  "services/LogisticsTracking/LogisticsTracking.Application/Features/Shipments/Commands/ShipmentCommands.cs",
+                                                   "baseNameForSearch":  "RejectAssignmentCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "RateDeliveryAgentCommandHandler",
+                                                   "requestType":  "CreateShipmentCommand",
+                                                   "file":  "services/LogisticsTracking/LogisticsTracking.Application/Features/Shipments/Commands/ShipmentCommands.cs",
+                                                   "baseNameForSearch":  "RateDeliveryAgentCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "AssignVehicleCommandHandler",
+                                                   "requestType":  "CreateShipmentCommand",
+                                                   "file":  "services/LogisticsTracking/LogisticsTracking.Application/Features/Shipments/Commands/ShipmentCommands.cs",
+                                                   "baseNameForSearch":  "AssignVehicleCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "UpdateShipmentStatusCommandHandler",
+                                                   "requestType":  "CreateShipmentCommand",
+                                                   "file":  "services/LogisticsTracking/LogisticsTracking.Application/Features/Shipments/Commands/ShipmentCommands.cs",
+                                                   "baseNameForSearch":  "UpdateShipmentStatusCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "UpsertShipmentOpsStateCommandHandler",
+                                                   "requestType":  "CreateShipmentCommand",
+                                                   "file":  "services/LogisticsTracking/LogisticsTracking.Application/Features/Shipments/Commands/ShipmentCommands.cs",
+                                                   "baseNameForSearch":  "UpsertShipmentOpsStateCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetShipmentQueryHandler",
+                                                   "requestType":  "GetShipmentQuery",
+                                                   "file":  "services/LogisticsTracking/LogisticsTracking.Application/Features/Shipments/Queries/ShipmentQueries.cs",
+                                                   "baseNameForSearch":  "GetShipmentQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetDealerShipmentsQueryHandler",
+                                                   "requestType":  "GetShipmentQuery",
+                                                   "file":  "services/LogisticsTracking/LogisticsTracking.Application/Features/Shipments/Queries/ShipmentQueries.cs",
+                                                   "baseNameForSearch":  "GetDealerShipmentsQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetAgentShipmentsQueryHandler",
+                                                   "requestType":  "GetShipmentQuery",
+                                                   "file":  "services/LogisticsTracking/LogisticsTracking.Application/Features/Shipments/Queries/ShipmentQueries.cs",
+                                                   "baseNameForSearch":  "GetAgentShipmentsQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetAllShipmentsQueryHandler",
+                                                   "requestType":  "GetShipmentQuery",
+                                                   "file":  "services/LogisticsTracking/LogisticsTracking.Application/Features/Shipments/Queries/ShipmentQueries.cs",
+                                                   "baseNameForSearch":  "GetAllShipmentsQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetShipmentOpsStateQueryHandler",
+                                                   "requestType":  "GetShipmentQuery",
+                                                   "file":  "services/LogisticsTracking/LogisticsTracking.Application/Features/Shipments/Queries/ShipmentQueries.cs",
+                                                   "baseNameForSearch":  "GetShipmentOpsStateQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetShipmentOpsStatesQueryHandler",
+                                                   "requestType":  "GetShipmentQuery",
+                                                   "file":  "services/LogisticsTracking/LogisticsTracking.Application/Features/Shipments/Queries/ShipmentQueries.cs",
+                                                   "baseNameForSearch":  "GetShipmentOpsStatesQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "AskLogisticsChatbotQueryHandler",
+                                                   "requestType":  "GetShipmentQuery",
+                                                   "file":  "services/LogisticsTracking/LogisticsTracking.Application/Features/Shipments/Queries/ShipmentQueries.cs",
+                                                   "baseNameForSearch":  "AskLogisticsChatbotQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "CreateManualNotificationCommandHandler",
+                                                   "requestType":  "CreateManualNotificationCommand",
+                                                   "file":  "services/Notification/Notification.Application/Features/Notifications/Commands/NotificationCommands.cs",
+                                                   "baseNameForSearch":  "CreateManualNotificationCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "IngestIntegrationEventCommandHandler",
+                                                   "requestType":  "CreateManualNotificationCommand",
+                                                   "file":  "services/Notification/Notification.Application/Features/Notifications/Commands/NotificationCommands.cs",
+                                                   "baseNameForSearch":  "IngestIntegrationEventCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "MarkNotificationSentCommandHandler",
+                                                   "requestType":  "CreateManualNotificationCommand",
+                                                   "file":  "services/Notification/Notification.Application/Features/Notifications/Commands/NotificationCommands.cs",
+                                                   "baseNameForSearch":  "MarkNotificationSentCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "MarkNotificationFailedCommandHandler",
+                                                   "requestType":  "CreateManualNotificationCommand",
+                                                   "file":  "services/Notification/Notification.Application/Features/Notifications/Commands/NotificationCommands.cs",
+                                                   "baseNameForSearch":  "MarkNotificationFailedCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "MarkNotificationReadCommandHandler",
+                                                   "requestType":  "CreateManualNotificationCommand",
+                                                   "file":  "services/Notification/Notification.Application/Features/Notifications/Commands/NotificationCommands.cs",
+                                                   "baseNameForSearch":  "MarkNotificationReadCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "MarkNotificationUnreadCommandHandler",
+                                                   "requestType":  "CreateManualNotificationCommand",
+                                                   "file":  "services/Notification/Notification.Application/Features/Notifications/Commands/NotificationCommands.cs",
+                                                   "baseNameForSearch":  "MarkNotificationUnreadCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetNotificationByIdQueryHandler",
+                                                   "requestType":  "GetNotificationByIdQuery",
+                                                   "file":  "services/Notification/Notification.Application/Features/Notifications/Queries/NotificationQueries.cs",
+                                                   "baseNameForSearch":  "GetNotificationByIdQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetNotificationsByRecipientQueryHandler",
+                                                   "requestType":  "GetNotificationByIdQuery",
+                                                   "file":  "services/Notification/Notification.Application/Features/Notifications/Queries/NotificationQueries.cs",
+                                                   "baseNameForSearch":  "GetNotificationsByRecipientQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetAllNotificationsQueryHandler",
+                                                   "requestType":  "GetNotificationByIdQuery",
+                                                   "file":  "services/Notification/Notification.Application/Features/Notifications/Queries/NotificationQueries.cs",
+                                                   "baseNameForSearch":  "GetAllNotificationsQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "CreateOrderCommandHandler",
+                                                   "requestType":  "CreateOrderCommand",
+                                                   "file":  "services/Order/Order.Application/Features/Orders/Commands/OrderCommands.cs",
+                                                   "baseNameForSearch":  "CreateOrderCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "UpdateOrderStatusCommandHandler",
+                                                   "requestType":  "CreateOrderCommand",
+                                                   "file":  "services/Order/Order.Application/Features/Orders/Commands/OrderCommands.cs",
+                                                   "baseNameForSearch":  "UpdateOrderStatusCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "BulkUpdateOrderStatusCommandHandler",
+                                                   "requestType":  "CreateOrderCommand",
+                                                   "file":  "services/Order/Order.Application/Features/Orders/Commands/OrderCommands.cs",
+                                                   "baseNameForSearch":  "BulkUpdateOrderStatusCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "CancelOrderCommandHandler",
+                                                   "requestType":  "CreateOrderCommand",
+                                                   "file":  "services/Order/Order.Application/Features/Orders/Commands/OrderCommands.cs",
+                                                   "baseNameForSearch":  "CancelOrderCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "ApproveOnHoldCommandHandler",
+                                                   "requestType":  "CreateOrderCommand",
+                                                   "file":  "services/Order/Order.Application/Features/Orders/Commands/OrderCommands.cs",
+                                                   "baseNameForSearch":  "ApproveOnHoldCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "RejectOnHoldCommandHandler",
+                                                   "requestType":  "CreateOrderCommand",
+                                                   "file":  "services/Order/Order.Application/Features/Orders/Commands/OrderCommands.cs",
+                                                   "baseNameForSearch":  "RejectOnHoldCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "RequestReturnCommandHandler",
+                                                   "requestType":  "CreateOrderCommand",
+                                                   "file":  "services/Order/Order.Application/Features/Orders/Commands/OrderCommands.cs",
+                                                   "baseNameForSearch":  "RequestReturnCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "ApproveReturnCommandHandler",
+                                                   "requestType":  "CreateOrderCommand",
+                                                   "file":  "services/Order/Order.Application/Features/Orders/Commands/OrderCommands.cs",
+                                                   "baseNameForSearch":  "ApproveReturnCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "RejectReturnCommandHandler",
+                                                   "requestType":  "CreateOrderCommand",
+                                                   "file":  "services/Order/Order.Application/Features/Orders/Commands/OrderCommands.cs",
+                                                   "baseNameForSearch":  "RejectReturnCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetOrderQueryHandler",
+                                                   "requestType":  "GetOrderQuery",
+                                                   "file":  "services/Order/Order.Application/Features/Orders/Queries/OrderQueries.cs",
+                                                   "baseNameForSearch":  "GetOrderQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetDealerOrdersQueryHandler",
+                                                   "requestType":  "GetOrderQuery",
+                                                   "file":  "services/Order/Order.Application/Features/Orders/Queries/OrderQueries.cs",
+                                                   "baseNameForSearch":  "GetDealerOrdersQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetAllOrdersQueryHandler",
+                                                   "requestType":  "GetOrderQuery",
+                                                   "file":  "services/Order/Order.Application/Features/Orders/Queries/OrderQueries.cs",
+                                                   "baseNameForSearch":  "GetAllOrdersQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetOrderAnalyticsQueryHandler",
+                                                   "requestType":  "GetOrderQuery",
+                                                   "file":  "services/Order/Order.Application/Features/Orders/Queries/OrderQueries.cs",
+                                                   "baseNameForSearch":  "GetOrderAnalyticsQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "EnsureDealerAccountCommandHandler",
+                                                   "requestType":  "EnsureDealerAccountCommand",
+                                                   "file":  "services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Commands/PaymentCommands.cs",
+                                                   "baseNameForSearch":  "EnsureDealerAccountCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "UpdateCreditLimitCommandHandler",
+                                                   "requestType":  "EnsureDealerAccountCommand",
+                                                   "file":  "services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Commands/PaymentCommands.cs",
+                                                   "baseNameForSearch":  "UpdateCreditLimitCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GenerateInvoiceCommandHandler",
+                                                   "requestType":  "EnsureDealerAccountCommand",
+                                                   "file":  "services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Commands/PaymentCommands.cs",
+                                                   "baseNameForSearch":  "GenerateInvoiceCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "SettleOutstandingCommandHandler",
+                                                   "requestType":  "EnsureDealerAccountCommand",
+                                                   "file":  "services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Commands/PaymentCommands.cs",
+                                                   "baseNameForSearch":  "SettleOutstandingCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "AddOutstandingCommandHandler",
+                                                   "requestType":  "EnsureDealerAccountCommand",
+                                                   "file":  "services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Commands/PaymentCommands.cs",
+                                                   "baseNameForSearch":  "AddOutstandingCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "CreateGatewayOrderCommandHandler",
+                                                   "requestType":  "EnsureDealerAccountCommand",
+                                                   "file":  "services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Commands/PaymentCommands.cs",
+                                                   "baseNameForSearch":  "CreateGatewayOrderCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "VerifyGatewayPaymentCommandHandler",
+                                                   "requestType":  "EnsureDealerAccountCommand",
+                                                   "file":  "services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Commands/PaymentCommands.cs",
+                                                   "baseNameForSearch":  "VerifyGatewayPaymentCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "UpsertInvoiceWorkflowCommandHandler",
+                                                   "requestType":  "EnsureDealerAccountCommand",
+                                                   "file":  "services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Commands/PaymentCommands.cs",
+                                                   "baseNameForSearch":  "UpsertInvoiceWorkflowCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "AddInvoiceWorkflowActivityCommandHandler",
+                                                   "requestType":  "EnsureDealerAccountCommand",
+                                                   "file":  "services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Commands/PaymentCommands.cs",
+                                                   "baseNameForSearch":  "AddInvoiceWorkflowActivityCommand",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "CheckCreditQueryHandler",
+                                                   "requestType":  "CheckCreditQuery",
+                                                   "file":  "services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Queries/PaymentQueries.cs",
+                                                   "baseNameForSearch":  "CheckCreditQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetInvoiceQueryHandler",
+                                                   "requestType":  "CheckCreditQuery",
+                                                   "file":  "services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Queries/PaymentQueries.cs",
+                                                   "baseNameForSearch":  "GetInvoiceQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetDealerInvoicesQueryHandler",
+                                                   "requestType":  "CheckCreditQuery",
+                                                   "file":  "services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Queries/PaymentQueries.cs",
+                                                   "baseNameForSearch":  "GetDealerInvoicesQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetInvoicePdfPathQueryHandler",
+                                                   "requestType":  "CheckCreditQuery",
+                                                   "file":  "services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Queries/PaymentQueries.cs",
+                                                   "baseNameForSearch":  "GetInvoicePdfPathQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetInvoiceWorkflowQueryHandler",
+                                                   "requestType":  "CheckCreditQuery",
+                                                   "file":  "services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Queries/PaymentQueries.cs",
+                                                   "baseNameForSearch":  "GetInvoiceWorkflowQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetDealerInvoiceWorkflowsQueryHandler",
+                                                   "requestType":  "CheckCreditQuery",
+                                                   "file":  "services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Queries/PaymentQueries.cs",
+                                                   "baseNameForSearch":  "GetDealerInvoiceWorkflowsQuery",
+                                                   "appearsInDocumentation":  true
+                                               },
+                                               {
+                                                   "handlerClass":  "GetInvoiceWorkflowActivitiesQueryHandler",
+                                                   "requestType":  "CheckCreditQuery",
+                                                   "file":  "services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Queries/PaymentQueries.cs",
+                                                   "baseNameForSearch":  "GetInvoiceWorkflowActivitiesQuery",
+                                                   "appearsInDocumentation":  true
+                                               }
+                                           ],
+                              "totalHandlers":  87,
+                              "totalValidators":  36,
+                              "validators":  [
+                                                 {
+                                                     "validatorClass":  "CreateProductRequestValidator",
+                                                     "file":  "services/CatalogInventory/CatalogInventory.Application/Validation/CatalogValidators.cs",
+                                                     "baseNameForSearch":  "CreateProductRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "UpdateProductRequestValidator",
+                                                     "file":  "services/CatalogInventory/CatalogInventory.Application/Validation/CatalogValidators.cs",
+                                                     "baseNameForSearch":  "UpdateProductRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "RestockProductRequestValidator",
+                                                     "file":  "services/CatalogInventory/CatalogInventory.Application/Validation/CatalogValidators.cs",
+                                                     "baseNameForSearch":  "RestockProductRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "SoftLockStockRequestValidator",
+                                                     "file":  "services/CatalogInventory/CatalogInventory.Application/Validation/CatalogValidators.cs",
+                                                     "baseNameForSearch":  "SoftLockStockRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "HardDeductStockRequestValidator",
+                                                     "file":  "services/CatalogInventory/CatalogInventory.Application/Validation/CatalogValidators.cs",
+                                                     "baseNameForSearch":  "HardDeductStockRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "StockSubscriptionRequestValidator",
+                                                     "file":  "services/CatalogInventory/CatalogInventory.Application/Validation/CatalogValidators.cs",
+                                                     "baseNameForSearch":  "StockSubscriptionRequest",
+                                                     "appearsInDocumentation":  false
+                                                 },
+                                                 {
+                                                     "validatorClass":  "CreateProductReviewRequestValidator",
+                                                     "file":  "services/CatalogInventory/CatalogInventory.Application/Validation/CatalogValidators.cs",
+                                                     "baseNameForSearch":  "CreateProductReviewRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "ModerateProductReviewRequestValidator",
+                                                     "file":  "services/CatalogInventory/CatalogInventory.Application/Validation/CatalogValidators.cs",
+                                                     "baseNameForSearch":  "ModerateProductReviewRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "RegisterDealerRequestValidator",
+                                                     "file":  "services/IdentityAuth/IdentityAuth.Application/Validation/AuthValidators.cs",
+                                                     "baseNameForSearch":  "RegisterDealerRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "LoginRequestValidator",
+                                                     "file":  "services/IdentityAuth/IdentityAuth.Application/Validation/AuthValidators.cs",
+                                                     "baseNameForSearch":  "LoginRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "CreateAgentRequestValidator",
+                                                     "file":  "services/IdentityAuth/IdentityAuth.Application/Validation/AuthValidators.cs",
+                                                     "baseNameForSearch":  "CreateAgentRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "ResetPasswordRequestValidator",
+                                                     "file":  "services/IdentityAuth/IdentityAuth.Application/Validation/AuthValidators.cs",
+                                                     "baseNameForSearch":  "ResetPasswordRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "ChangePasswordRequestValidator",
+                                                     "file":  "services/IdentityAuth/IdentityAuth.Application/Validation/AuthValidators.cs",
+                                                     "baseNameForSearch":  "ChangePasswordRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "RejectDealerRequestValidator",
+                                                     "file":  "services/IdentityAuth/IdentityAuth.Application/Validation/AuthValidators.cs",
+                                                     "baseNameForSearch":  "RejectDealerRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "UpdateCreditLimitRequestValidator",
+                                                     "file":  "services/IdentityAuth/IdentityAuth.Application/Validation/AuthValidators.cs",
+                                                     "baseNameForSearch":  "UpdateCreditLimitRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "CreateShipmentRequestValidator",
+                                                     "file":  "services/LogisticsTracking/LogisticsTracking.Application/Validation/LogisticsValidators.cs",
+                                                     "baseNameForSearch":  "CreateShipmentRequest",
+                                                     "appearsInDocumentation":  false
+                                                 },
+                                                 {
+                                                     "validatorClass":  "AssignAgentRequestValidator",
+                                                     "file":  "services/LogisticsTracking/LogisticsTracking.Application/Validation/LogisticsValidators.cs",
+                                                     "baseNameForSearch":  "AssignAgentRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "AssignVehicleRequestValidator",
+                                                     "file":  "services/LogisticsTracking/LogisticsTracking.Application/Validation/LogisticsValidators.cs",
+                                                     "baseNameForSearch":  "AssignVehicleRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "RejectAssignmentRequestValidator",
+                                                     "file":  "services/LogisticsTracking/LogisticsTracking.Application/Validation/LogisticsValidators.cs",
+                                                     "baseNameForSearch":  "RejectAssignmentRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "RateDeliveryAgentRequestValidator",
+                                                     "file":  "services/LogisticsTracking/LogisticsTracking.Application/Validation/LogisticsValidators.cs",
+                                                     "baseNameForSearch":  "RateDeliveryAgentRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "UpdateShipmentStatusRequestValidator",
+                                                     "file":  "services/LogisticsTracking/LogisticsTracking.Application/Validation/LogisticsValidators.cs",
+                                                     "baseNameForSearch":  "UpdateShipmentStatusRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "CreateManualNotificationRequestValidator",
+                                                     "file":  "services/Notification/Notification.Application/Validation/NotificationValidators.cs",
+                                                     "baseNameForSearch":  "CreateManualNotificationRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "IngestIntegrationEventRequestValidator",
+                                                     "file":  "services/Notification/Notification.Application/Validation/NotificationValidators.cs",
+                                                     "baseNameForSearch":  "IngestIntegrationEventRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "MarkNotificationFailedRequestValidator",
+                                                     "file":  "services/Notification/Notification.Application/Validation/NotificationValidators.cs",
+                                                     "baseNameForSearch":  "MarkNotificationFailedRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "CreateOrderRequestValidator",
+                                                     "file":  "services/Order/Order.Application/Validation/OrderValidators.cs",
+                                                     "baseNameForSearch":  "CreateOrderRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "CancelOrderRequestValidator",
+                                                     "file":  "services/Order/Order.Application/Validation/OrderValidators.cs",
+                                                     "baseNameForSearch":  "CancelOrderRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "UpdateOrderStatusRequestValidator",
+                                                     "file":  "services/Order/Order.Application/Validation/OrderValidators.cs",
+                                                     "baseNameForSearch":  "UpdateOrderStatusRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "BulkUpdateOrderStatusRequestValidator",
+                                                     "file":  "services/Order/Order.Application/Validation/OrderValidators.cs",
+                                                     "baseNameForSearch":  "BulkUpdateOrderStatusRequest",
+                                                     "appearsInDocumentation":  false
+                                                 },
+                                                 {
+                                                     "validatorClass":  "ReturnRequestValidator",
+                                                     "file":  "services/Order/Order.Application/Validation/OrderValidators.cs",
+                                                     "baseNameForSearch":  "ReturnRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "AdminDecisionRequestValidator",
+                                                     "file":  "services/Order/Order.Application/Validation/OrderValidators.cs",
+                                                     "baseNameForSearch":  "AdminDecisionRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "UpdateCreditLimitRequestValidator",
+                                                     "file":  "services/PaymentInvoice/PaymentInvoice.Application/Validation/PaymentValidators.cs",
+                                                     "baseNameForSearch":  "UpdateCreditLimitRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "GenerateInvoiceRequestValidator",
+                                                     "file":  "services/PaymentInvoice/PaymentInvoice.Application/Validation/PaymentValidators.cs",
+                                                     "baseNameForSearch":  "GenerateInvoiceRequest",
+                                                     "appearsInDocumentation":  false
+                                                 },
+                                                 {
+                                                     "validatorClass":  "SettleOutstandingRequestValidator",
+                                                     "file":  "services/PaymentInvoice/PaymentInvoice.Application/Validation/PaymentValidators.cs",
+                                                     "baseNameForSearch":  "SettleOutstandingRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "AddOutstandingRequestValidator",
+                                                     "file":  "services/PaymentInvoice/PaymentInvoice.Application/Validation/PaymentValidators.cs",
+                                                     "baseNameForSearch":  "AddOutstandingRequest",
+                                                     "appearsInDocumentation":  false
+                                                 },
+                                                 {
+                                                     "validatorClass":  "CreateGatewayOrderRequestValidator",
+                                                     "file":  "services/PaymentInvoice/PaymentInvoice.Application/Validation/PaymentValidators.cs",
+                                                     "baseNameForSearch":  "CreateGatewayOrderRequest",
+                                                     "appearsInDocumentation":  true
+                                                 },
+                                                 {
+                                                     "validatorClass":  "VerifyGatewayPaymentRequestValidator",
+                                                     "file":  "services/PaymentInvoice/PaymentInvoice.Application/Validation/PaymentValidators.cs",
+                                                     "baseNameForSearch":  "VerifyGatewayPaymentRequest",
+                                                     "appearsInDocumentation":  true
+                                                 }
+                                             ]
+                          }
+}

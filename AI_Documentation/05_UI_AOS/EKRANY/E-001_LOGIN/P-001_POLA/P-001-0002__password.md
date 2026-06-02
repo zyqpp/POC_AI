@@ -1,6 +1,6 @@
 # P-001-0002 password
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 
 ## Identyfikacja
 
@@ -15,31 +15,31 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co zbiera:** hasło użytkownika. **Źródło danych:** formularz reaktywny Angular → `LoginRequest.Password` → weryfikacja BCrypt hash z kolumny `Users.PasswordHash` w backendzie. **Kiedy widoczne:** zawsze. **Format:** tekst (maskowany — `type="password"`); toggle podglądu hasła przez akcję `showPwd.update` (sygnał `showPwd`). Walidator: `Validators.required` (brak walidacji siły — to rola backendu). **Tryb:** tylko zapis — hasło nigdy nie jest odczytywane z bazy na frontend.
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/auth/login/login.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
+| Wymagane | tak | `Validators.required` w `login.component.ts` |
+| Typ UI | `input[type=password]` / `formControlName="password"` (toggle showPwd zmienia type) | `supply-chain-frontend/src/app/features/auth/login/login.component.html` |
+| Reguły walidacji | required (brak walidacji siły po stronie frontendu przy logowaniu) | `Validators.required` w `login.component.ts` |
 | Komunikaty błędów | [ERR-001](../ERR-001_BLEDY/ERR-001__INDEX.md) | do uzupełnienia |
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `form.controls.password` (ReactiveForm) | `potwierdzone` |
+| Serwis API | `AuthApiService.login({email, password})` | `potwierdzone` |
+| Endpoint | `POST /identity/api/auth/login` | `potwierdzone` |
+| DTO/kontrakt | `LoginRequest.Password` (string, plaintext w HTTPS) | `wniosek z analizy` |
+| Encja/model | `User.PasswordHash` (BCrypt) | `wniosek z analizy` |
+| DbContext | `IdentityAuthDbContext` | `wniosek z analizy` |
+| Schemat SQL | `dbo` | `do uzupełnienia` |
+| Tabela SQL | `Users` | `wniosek z analizy` |
+| Kolumna SQL | `PasswordHash` | `wniosek z analizy` |
+| Odczyt/zapis | tylko porównanie hash — hasło nie jest przechowywane w plain text | `potwierdzone` |
 
 ## Dane Do Testów
 

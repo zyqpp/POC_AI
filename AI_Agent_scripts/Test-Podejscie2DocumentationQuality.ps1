@@ -142,7 +142,10 @@ $expectedSkills = @(
     'api-inventory-from-dotnet',
     'ef-data-model-documenter',
     'angular-screen-mapper',
-    'documentation-quality-gate'
+    'documentation-quality-gate',
+    'documentation-quality-audit',
+    'process-documenter',
+    'cross-reference-linker'
 )
 
 foreach ($skill in $expectedSkills) {

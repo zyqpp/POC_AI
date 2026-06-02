@@ -1,0 +1,4 @@
+interface:
+  display_name: "process-documenter"
+  short_description: "Document business process flows"
+  default_prompt: "Use this skill to complete or create PROC-NNN business process documentation files."

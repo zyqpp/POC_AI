@@ -2,6 +2,10 @@
 
 Status: `potwierdzone` dla śladu `UI -> API -> proces -> DB -> testy`.
 
+## Cel
+
+Użytkownik (Dealer, Admin, Warehouse) przegląda szczegóły produktu: opis, cenę, dostępność, kategorie. Dealer może dodać produkt do lokalnego koszyka. Admin może dezaktywować produkt lub wykonać restock (oba zmieniają bazę). Dealer może dodać recenzję (bez trwałości SQL — ryzyko zidentyfikowane). Proces łączy operacje tylko-do-odczytu (widok) z operacjami zapisu (dezaktywacja, restock).
+
 ## Identyfikacja
 
 | Atrybut | Wartość |
@@ -42,3 +46,12 @@ Status: `potwierdzone` dla śladu `UI -> API -> proces -> DB -> testy`.
 | `TC-009-0004` | Dealer dodaje do `CartStore` albo dostaje właściwy toast |
 | `TC-009-0005` | restock aktualizuje `Products`, `StockTransactions`, `OutboxMessages` |
 | `TC-009-0010` | approve/reject review działa, a brak trwałości SQL jest opisany jako ryzyko |
+
+## Błędy Procesu
+
+| ID | Warunek | HTTP | Akcja kompensująca | Status |
+|---|---|---|---|---|
+| `ERR-PROC-009-001` | Produkt nie istnieje (usunięty) | 404 | komponent pokazuje "Product not found"; przycisk powrotu do listy | `wniosek z analizy` |
+| `ERR-PROC-009-002` | Brak uprawnień do dezaktywacji | 403 | przycisk nie pojawia się dla roli Dealer; 403 z backendu jeśli próba bezpośrednia | `potwierdzone` |
+| `ERR-PROC-009-003` | Restock z ilością ≤ 0 | 400 | walidator frontend blokuje; backend zwraca 400 | `potwierdzone` |
+| `ERR-PROC-009-004` | Produkt już nieaktywny (dezaktywacja ponowna) | 400 | backend zwraca błąd domenowy; brak rollbacku potrzebny | `wniosek z analizy` |

@@ -15,7 +15,7 @@ Status: `szkielet`; dokument służy jako centralna nawigacja dla ekranu.
 
 | Obszar | Link | Status |
 |---|---|---|
-| API | do uzupełnienia po analizie `04_API` | `do uzupełnienia` |
+| API | [API_ORDER_DETAIL.md](../../../04_API/API_ORDER_DETAIL.md) | `do uzupełnienia` |
 | Proces | do uzupełnienia po analizie `06_PROCESY` | `do uzupełnienia` |
 | Role | do uzupełnienia po analizie `07_ROLE_I_UPRAWNIENIA` | `do uzupełnienia` |
 | Model danych | do uzupełnienia po analizie `03_MODEL_DANYCH` | `do uzupełnienia` |

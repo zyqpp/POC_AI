@@ -16,13 +16,30 @@ Status: `szkielet`; źródło startowe: routing i komponent Angular.
 | Źródło template | `{{TEMPLATE_SOURCE}}` |
 | Status faktów | `do uzupełnienia` |
 
+## Kluczowe Pliki Kodu
+
+| Rola | Ścieżka |
+|---|---|
+| Komponent Angular | `{{COMPONENT_SOURCE}}` |
+| Template HTML | `{{TEMPLATE_SOURCE}}` |
+| Serwis API frontend | do uzupełnienia |
+| Kontroler .NET | do uzupełnienia |
+| Handler MediatR | do uzupełnienia |
+| Encja domenowa | do uzupełnienia |
+
 ## Cel Ekranu
 
-Do uzupełnienia na podstawie template Angular, komponentu, serwisów API i procesu biznesowego.
+_Co robi ten ekran — jedno zdanie._
+
+Główne funkcje:
+- funkcja 1
+- funkcja 2
+
+Powiązany proces: [do uzupełnienia — link do 06_PROCESY]
 
 ## Widok
 
-Każdy ekran musi mieć widok rozpisany jako prosty wireframe z kresek. Layout ma pokazywać sekcje, główne pola, przyciski, stany warunkowe i miejsca list/tabel/modali.
+Wireframe pokazuje sekcje, główne pola, przyciski, stany warunkowe i miejsca list/tabel/modali.
 
 ```text
 +----------------------------------------------------------------------------+
@@ -40,6 +57,21 @@ Każdy ekran musi mieć widok rozpisany jako prosty wireframe z kresek. Layout m
 | [stany: loading / empty / error / modal, jeśli występują]                  |
 +----------------------------------------------------------------------------+
 ```
+
+## Główne Wywołania API
+
+| Metoda | Endpoint | Cel | DTO Odpowiedzi |
+|---|---|---|---|
+| do uzupełnienia | do uzupełnienia | do uzupełnienia | do uzupełnienia |
+
+## Stany Ekranu
+
+| Stan | Warunek | Zachowanie UI |
+|---|---|---|
+| Ładowanie | żądanie w toku | spinner / skeleton loader |
+| Pusty | brak danych | komunikat / pusta lista |
+| Błąd HTTP | status ≥ 400 | komunikat błędu |
+| Normalny | dane załadowane | pełny widok |
 
 ## Dokumenty Atomowe
 

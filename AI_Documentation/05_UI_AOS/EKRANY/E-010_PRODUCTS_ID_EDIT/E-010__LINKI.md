@@ -21,7 +21,7 @@ Status: `potwierdzone`.
 | API katalogu | [API_CATALOG](../../../04_API/API_CATALOG.md) |
 | Model danych katalogu | [MODEL_DANYCH_CATALOG](../../../03_MODEL_DANYCH/MODEL_DANYCH_CATALOG.md) |
 | Proces E2E | [PROC-010_PRODUCTS_ID_EDIT](../../../06_PROCESY/PROC-010_PRODUCTS_ID_EDIT.md) |
-| Role | [ROLE_CATALOG](../../../07_ROLE_I_UPRAWNIENIA/ROLE_CATALOG.md) |
+| Role | [ROLE_CATALOG.md](../../../07_ROLE_I_UPRAWNIENIA/ROLE_CATALOG.md) |
 | Testy | [MACIERZ_TESTOW_CATALOG](../../../08_TESTY/MACIERZ_TESTOW_CATALOG.md) |
 
 ## Źródła Kodu

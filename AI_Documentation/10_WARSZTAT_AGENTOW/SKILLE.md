@@ -9,6 +9,9 @@
 | `ef-data-model-documenter` | dokumentowanie modelu danych EF Core | `skills/ef-data-model-documenter/SKILL.md` |
 | `angular-screen-mapper` | mapowanie routingu, komponentów i serwisów Angular | `skills/angular-screen-mapper/SKILL.md` |
 | `documentation-quality-gate` | kontrola jakości dokumentacji projektowej | `skills/documentation-quality-gate/SKILL.md` |
+| `documentation-quality-audit` | kompleksowy audyt pokrycia i jakości dokumentacji projektowej (ekrany, procesy, algorytmy) | `skills/documentation-quality-audit/SKILL.md` |
+| `process-documenter` | uzupełnia i tworzy pliki PROC-NNN dla procesów biznesowych ekranów | `skills/process-documenter/SKILL.md` |
+| `cross-reference-linker` | uzupełnia powiązania między dokumentami AOS (LINKI.md, Kluczowe Pliki Kodu, linki PROC↔E-NNN) | `skills/cross-reference-linker/SKILL.md` |
 
 ## Instalacja globalna
 

@@ -13,6 +13,8 @@ Zasada: wyniki skryptów są punktem startowym. Każdy ważny fakt wpisany do do
 | `AI_Agent_scripts/Export-Podejscie2EfModel.ps1` | wyciąga `DbContext`, `DbSet`, `ToTable` i indeksy | `AI_Documentation/10_WARSZTAT_AGENTOW/fakty/ef-model.json` | nie zastępuje pełnej analizy encji i migracji | aktywny |
 | `AI_Agent_scripts/Export-AosTraceFacts.ps1` | buduje szeroki trace UI -> API -> handler -> EF i raport luk | `AI_Documentation/10_WARSZTAT_AGENTOW/fakty/AI_AOS_TRACE_FACTS.json`, `AI_AOS_TRACE_REPORT.md` | heurystyczne dopasowania, relacje kandydackie wymagają review | aktywny |
 | `AI_Agent_scripts/Test-Podejscie2DocumentationQuality.ps1` | bramka jakości dokumentacji | raport w konsoli | rozdziela błędy blokujące od ostrzeżeń nawigacyjnych i merytorycznych; waliduje tylko aktywne artefakty | aktywny |
+| `AI_Agent_scripts/Invoke-DocumentationAudit.ps1` | heurystyczny audyt pokrycia dokumentacji: ekrany, procesy, handlery MediatR i walidatory | `AI_Documentation/10_WARSZTAT_AGENTOW/fakty/documentation-audit.json`, `fakty/DOCUMENTATION_AUDIT_REPORT.md` | parser statyczny + wyszukiwanie tekstowe; wyniki heurystyczne, wymagają oceny AI | aktywny |
+| `AI_Agent_scripts/Invoke-UpdateDocumentationLinks.ps1` | mechaniczne odnajdywanie i aktualizacja linków między dokumentami AOS (LINKI.md) | aktualizacja `05_UI_AOS/EKRANY/E-NNN/E-NNN__LINKI.md` | dopasowanie po ID i nazwie pliku; semantyczne powiązania wymagają skilla `cross-reference-linker` | aktywny |
 | `AI_Agent_scripts/Update-DocsTreePages.ps1` | regeneruje helpery `NAV_FOLDER_TREE.md` i `NAV_FILES_BY_FOLDER.md` | `AI_Documentation/NAV_FOLDER_TREE.md`, `AI_Documentation/NAV_FILES_BY_FOLDER.md` | pomija archiwum, `AOS_Template` i katalogi template'ów; nie zastępuje ręcznej oceny punktów wejścia | aktywny |
 
 ## Skrypty Ograniczone
@@ -59,6 +61,8 @@ powershell -ExecutionPolicy Bypass -File AI_Agent_scripts\New-FrontendScreenScaf
 | `fakty/ef-model.json` | DbContext, DbSet, tabele | aktywny |
 | `fakty/AI_AOS_TRACE_FACTS.json` | pełny snapshot trace | aktywny |
 | `fakty/AI_AOS_TRACE_REPORT.md` | raport czytelny dla agenta | aktywny |
+| `fakty/documentation-audit.json` | dane pokrycia audytu (ekrany, procesy, algorytmy) | aktywny |
+| `fakty/DOCUMENTATION_AUDIT_REPORT.md` | heurystyczny raport audytu dokumentacji | aktywny |
 
 ## Ograniczenia `Export-AosTraceFacts.ps1`
 

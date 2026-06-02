@@ -15,7 +15,10 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i obsług
 
 ## Opis Błędu
 
-Do uzupełnienia.
+**Kod HTTP:** do uzupełnienia (np. `400`, `403`, `404`, `422`, `500`)  
+**Kod domenowy / klucz i18n:** do uzupełnienia (np. `ORDER_NOT_FOUND`)  
+**Komunikat dla użytkownika:** do uzupełnienia — tekst widoczny w UI  
+**Co ląduje w logu serwera:** do uzupełnienia — techniczny opis wyjątku lub walidacji
 
 ## Warunki Wystąpienia
 
@@ -25,6 +28,15 @@ Do uzupełnienia.
 | Walidacja frontend | do uzupełnienia | `do uzupełnienia` |
 | API/backend | do uzupełnienia | `do uzupełnienia` |
 | Baza/integracja | do uzupełnienia | `do uzupełnienia` |
+
+## Obsługa w Kodzie
+
+| Warstwa | Plik | Fragment |
+|---|---|---|
+| Walidator frontend | `{{ERROR_SOURCE}}` | do uzupełnienia |
+| Serwis HTTP | do uzupełnienia | np. `catchError(...)` |
+| Backend validator | do uzupełnienia | np. `AbstractValidator<T>` |
+| Exception handler | do uzupełnienia | np. `ProblemDetails` |
 
 ## Testy
 

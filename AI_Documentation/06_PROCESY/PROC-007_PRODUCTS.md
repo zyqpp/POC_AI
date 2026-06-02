@@ -2,6 +2,10 @@
 
 Status: `potwierdzone`.
 
+## Cel
+
+Dealer i Admin przeglądają katalog produktów z możliwością wyszukiwania, filtrowania po kategorii, dostępności i sortowania. Dealer może szybko dodać produkt do koszyka lokalnego (CartStore, bez zapisu DB). Admin widzi dodatkowe opcje zarządzania. Proces jest tylko do odczytu po stronie bazy danych — koszyk istnieje wyłącznie w pamięci przeglądarki.
+
 ## Przepływy
 
 | ID | Przepływ | Ślad |
@@ -14,3 +18,11 @@ Status: `potwierdzone`.
 ## Granice Procesu
 
 `E-007` nie tworzy zamówienia. Koszyk jest stanem frontendowym; zapis biznesowy zaczyna się dopiero w procesie checkout.
+
+## Błędy Procesu
+
+| ID | Warunek | HTTP | Akcja kompensująca | Status |
+|---|---|---|---|---|
+| `ERR-PROC-007-001` | Backend katalog niedostępny przy ładowaniu listy | 503 | komponent pokazuje pusty stan z komunikatem błędu | `wniosek z analizy` |
+| `ERR-PROC-007-002` | Brak produktów pasujących do wyszukiwania | — | komponent pokazuje "No products found"; brak błędu HTTP | `potwierdzone` |
+| `ERR-PROC-007-003` | Błąd pobierania kategorii | 503 | filtry kategorii nie działają; lista produktów może się załadować | `wniosek z analizy` |

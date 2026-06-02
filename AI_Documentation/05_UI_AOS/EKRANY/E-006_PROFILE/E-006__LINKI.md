@@ -27,8 +27,8 @@ Status: `potwierdzone`.
 | Błędy | [ERR-006_BLEDY/ERR-006__INDEX.md](ERR-006_BLEDY/ERR-006__INDEX.md) |
 | Dane testowe | [TD-006_DANE_TESTOWE/TD-006__INDEX.md](TD-006_DANE_TESTOWE/TD-006__INDEX.md) |
 | Testy | [TC-006_TESTY/TC-006__INDEX.md](TC-006_TESTY/TC-006__INDEX.md) |
-| API | [../../../04_API/API_PROFILE.md](../../../04_API/API_PROFILE.md) |
-| Model danych | [../../../03_MODEL_DANYCH/MODEL_DANYCH_PROFILE.md](../../../03_MODEL_DANYCH/MODEL_DANYCH_PROFILE.md) |
+| API | [API_PROFILE.md](../../../04_API/API_PROFILE.md) |
+| Model danych | [MODEL_DANYCH_PROFILE.md](../../../03_MODEL_DANYCH/MODEL_DANYCH_PROFILE.md) |
 | Proces | [../../../06_PROCESY/PROC-006_PROFILE.md](../../../06_PROCESY/PROC-006_PROFILE.md) |
-| Role | [../../../07_ROLE_I_UPRAWNIENIA/ROLE_PROFILE.md](../../../07_ROLE_I_UPRAWNIENIA/ROLE_PROFILE.md) |
+| Role | [ROLE_PROFILE.md](../../../07_ROLE_I_UPRAWNIENIA/ROLE_PROFILE.md) |
 | Testy przekrojowe | [../../../08_TESTY/MACIERZ_TESTOW_PROFILE.md](../../../08_TESTY/MACIERZ_TESTOW_PROFILE.md) |

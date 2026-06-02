@@ -25,3 +25,42 @@
 | Migracje EF | `scripts/apply-migrations.ps1` | `scripts/**` | potwierdzone |
 | Testy .NET JUnit | `scripts/run-dotnet-junit-tests.ps1` | `scripts/**` | potwierdzone |
 
+## Backend w Dockerze
+
+Wariant kontenerowy uruchamia gateway, sześć API, SQL Server, Redis, RabbitMQ i Mailpit bez lokalnego SDK `.NET 10`.
+
+| Element | Adres hosta | Uwagi |
+|---|---|---|
+| Gateway Ocelot | `http://localhost:5000` | jedyny publiczny punkt wejścia backendu |
+| SQL Server dev | `localhost:14333` | baza lokalna w kontenerze, hasło z `.env.example` |
+| Redis | `localhost:6380` | port techniczny |
+| RabbitMQ Management | `http://localhost:15672` | domyślnie `guest` / `guest` |
+| Mailpit UI | `http://localhost:8025` | poczta developerska |
+
+Mikroserwisy API nie są wystawiane na hosta. Gateway komunikuje się z nimi po nazwach usług Dockera i porcie `8080`.
+
+### Komendy
+
+| Cel | Komenda |
+|---|---|
+| Walidacja Compose | `docker compose --env-file .env.example config` |
+| Build obrazów | `docker compose --env-file .env.example build` |
+| Start infrastruktury | `docker compose --env-file .env.example up -d sqlserver redis rabbitmq mailpit` |
+| Migracje EF | `docker compose --env-file .env.example run --rm migration-runner` albo `.\scripts\docker-migrate.ps1` |
+| Start backendu | `docker compose --env-file .env.example up -d` albo `.\scripts\docker-up.ps1` |
+| Start backendu z buildem | `.\scripts\docker-up.ps1 -Build` |
+| Logi | `.\scripts\docker-logs.ps1 -Follow` albo `.\scripts\docker-logs.ps1 -Service ocelot-gateway -Follow` |
+| Stop | `.\scripts\docker-down.ps1` |
+
+### Wynik weryfikacji 2026-06-02
+
+| Test | Wynik |
+|---|---|
+| `docker compose --env-file .env.example config` | przeszedł |
+| `docker compose --env-file .env.example build` | przeszedł; obrazy gatewaya, 6 API i migratora zbudowane na `.NET 10` w kontenerze |
+| `docker compose --env-file .env.example run --rm migration-runner` | przeszedł; migracje wykonane dla 6 DbContextów |
+| Frontend `http://127.0.0.1:4200` | `HTTP 200` |
+| Gateway root `http://localhost:5000` | `HTTP 404`, oczekiwane, bo brak trasy root w Ocelot |
+| Trasy gateway do downstreamów | `HTTP 503`; wymaga diagnostyki logów `ocelot-gateway` i API po stronie Compose |
+
+Status: konteneryzacja i migrator są przygotowane, ale pełna akceptacja backendu przez gateway wymaga domknięcia błędu `503`.

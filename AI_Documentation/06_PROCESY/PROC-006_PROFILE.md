@@ -2,6 +2,10 @@
 
 Status: `potwierdzone`.
 
+## Cel
+
+Użytkownik przegląda dane swojego profilu (imię, email, telefon, rola). Dealer dodatkowo widzi dane firmy (NIP, adres, limit kredytowy). Ekran jest tylko do odczytu — zmiana danych odbywa się przez osobny flow zmiany hasła. Proces kończy się wyrenderowaniem pól `P-006` bez zapisu do bazy.
+
 ## Przepływ
 
 | Krok | Warstwa | Operacja | Artefakt |
@@ -18,3 +22,11 @@ Status: `potwierdzone`.
 ## Braki Testowe
 
 Brak testu e2e lub component testu dla pełnego przepływu. Istnieją tylko testy domenowe `UserTests`, które częściowo potwierdzają tworzenie dealera i zmianę statusu.
+
+## Błędy Procesu
+
+| ID | Warunek | HTTP | Akcja kompensująca | Status |
+|---|---|---|---|---|
+| `ERR-PROC-006-001` | Token JWT wygasł lub nieważny | 401 | authGuard przekierowuje na `/login`; token odświeżany przez interceptor | `potwierdzone` |
+| `ERR-PROC-006-002` | Backend niedostępny | 503 | komponent pokazuje komunikat błędu; brak danych profilu | `wniosek z analizy` |
+| `ERR-PROC-006-003` | Użytkownik nie znaleziony (usunięty) | 404 | komponent pokazuje komunikat błędu | `do uzupełnienia` |

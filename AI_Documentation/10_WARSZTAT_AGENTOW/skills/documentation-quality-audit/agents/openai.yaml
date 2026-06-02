@@ -1,0 +1,4 @@
+interface:
+  display_name: "documentation-quality-audit"
+  short_description: "Audit documentation coverage and quality"
+  default_prompt: "Use this skill to audit project documentation quality: screen coverage, process gaps, and undocumented algorithms."

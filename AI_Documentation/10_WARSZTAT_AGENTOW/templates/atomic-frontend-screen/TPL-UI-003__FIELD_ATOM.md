@@ -15,9 +15,20 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** do uzupełnienia.  
+**Źródło danych:** `[DTO.pole]` → `[Tabela.kolumna]`  
+**Kiedy widoczne:** zawsze / [warunek roli lub stanu]  
+**Format / maska:** do uzupełnienia (np. `dd.MM.yyyy`, waluta z 2 miejscami po przecinku)
 
-## Wymagalność I Walidacje
+## Widoczność i Warunki
+
+| Warunek | Zachowanie |
+|---|---|
+| rola użytkownika | do uzupełnienia |
+| stan ekranu | do uzupełnienia |
+| wartość innego pola | do uzupełnienia |
+
+## Wymagalność i Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
@@ -28,18 +39,23 @@ Do uzupełnienia.
 
 ## Mapowanie Danych
 
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Warstwa | Artefakt | Przykład | Status |
+|---|---|---|---|
+| Frontend model/form | do uzupełnienia | `fieldName` | `do uzupełnienia` |
+| Serwis API | do uzupełnienia | `ApiService.get()` | `do uzupełnienia` |
+| Endpoint | do uzupełnienia | `GET /api/...` | `do uzupełnienia` |
+| DTO/kontrakt | do uzupełnienia | `public string Pole { get; }` | `do uzupełnienia` |
+| Encja/model | do uzupełnienia | `public string Pole { get; set; }` | `do uzupełnienia` |
+| DbContext | do uzupełnienia | `DbSet<Encja>` | `do uzupełnienia` |
+| Tabela SQL | do uzupełnienia | `NazwaTabeli` | `do uzupełnienia` |
+| Kolumna SQL | do uzupełnienia | `NazwaKolumny` | `do uzupełnienia` |
+| Odczyt/zapis | do uzupełnienia | `SELECT` / `INSERT` | `do uzupełnienia` |
+
+## Fragment Kodu
+
+```typescript
+// {{FIELD_SOURCE}} — do uzupełnienia: wklej powiązany fragment TS lub HTML
+```
 
 ## Dane Do Testów
 

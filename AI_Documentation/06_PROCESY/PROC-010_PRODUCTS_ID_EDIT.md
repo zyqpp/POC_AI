@@ -69,6 +69,15 @@ UpdateProductCommand -> CatalogInventoryService.UpdateProductAsync
 | `Image URL` | `UpdateProductRequest.ImageUrl` | `Products.ImageUrl` | `R/W` |
 | `Active` | `UpdateProductRequest.IsActive` | `Products.IsActive` | `R/W` |
 
+## Błędy Procesu
+
+| ID | Warunek | HTTP | Akcja kompensująca | Status |
+|---|---|---|---|---|
+| `ERR-PROC-010-001` | Produkt nie istnieje (404 przy ładowaniu) | 404 | komponent pokazuje komunikat błędu; powrót do listy | `do uzupełnienia` |
+| `ERR-PROC-010-002` | Brak uprawnień (nie Admin) | 403 | `roleGuard` blokuje route; backend zwraca 403 | `potwierdzone` |
+| `ERR-PROC-010-003` | Nieistniejąca kategoria w update | 422 | `UpdateProductRequestValidator` odrzuca; toast z komunikatem | `wniosek z analizy` |
+| `ERR-PROC-010-004` | Backend niedostępny przy zapisie | 503 | zapis nie dochodzi; dane formularza nadal w UI; brak rollbacku | `wniosek z analizy` |
+
 ## Luki
 
 | ID | Luka | Kryterium zamknięcia |

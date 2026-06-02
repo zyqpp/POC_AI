@@ -2,6 +2,10 @@
 
 Status: `potwierdzone` dla śladu `UI -> API -> proces -> DB -> testy`.
 
+## Cel
+
+Administrator tworzy nowy produkt w katalogu. Proces zbiera dane formularza (SKU, nazwa, opis, cena, kategoria, ilość początkowa, URL obrazka), waliduje je po stronie frontendu i backendu, zapisuje rekord `Products` i emituje zdarzenie `ProductCreated` przez outbox. Po sukcesie system unieważnia cache katalogowy i przekierowuje admina na szczegół nowego produktu.
+
 ## Identyfikacja
 
 | Atrybut | Wartość |
