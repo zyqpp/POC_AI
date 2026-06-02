@@ -17,6 +17,6 @@ Status: `szkielet`; dokument służy jako centralna nawigacja dla ekranu.
 |---|---|---|
 | API | [API_ORDER_DETAIL.md](../../../04_API/API_ORDER_DETAIL.md) | `do uzupełnienia` |
 | Proces | [ORDER_DETAIL_LIFECYCLE.md](../../../06_PROCESY/ORDER_DETAIL_LIFECYCLE.md) | `do uzupełnienia` |
-| Role | do uzupełnienia po analizie `07_ROLE_I_UPRAWNIENIA` | `do uzupełnienia` |
+| Role | [ROLE_ORDERS.md](../../../07_ROLE_I_UPRAWNIENIA/ROLE_ORDERS.md) | `do uzupełnienia` |
 | Model danych | [MODEL_DANYCH_ORDER_DETAIL.md](../../../03_MODEL_DANYCH/MODEL_DANYCH_ORDER_DETAIL.md) | `do uzupełnienia` |
 | Testy automatyczne | do uzupełnienia po analizie `08_TESTY` | `do uzupełnienia` |

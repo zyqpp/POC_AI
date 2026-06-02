@@ -17,6 +17,6 @@ Status: `szkielet`; dokument służy jako centralna nawigacja dla ekranu.
 |---|---|---|
 | API | [API_CHECKOUT.md](../../../04_API/API_CHECKOUT.md) | `do uzupełnienia` |
 | Proces | do uzupełnienia po analizie `06_PROCESY` | `do uzupełnienia` |
-| Role | do uzupełnienia po analizie `07_ROLE_I_UPRAWNIENIA` | `do uzupełnienia` |
+| Role | [ROLE_ORDERS.md](../../../07_ROLE_I_UPRAWNIENIA/ROLE_ORDERS.md) | `do uzupełnienia` |
 | Model danych | [MODEL_DANYCH_CHECKOUT.md](../../../03_MODEL_DANYCH/MODEL_DANYCH_CHECKOUT.md) | `do uzupełnienia` |
 | Testy automatyczne | do uzupełnienia po analizie `08_TESTY` | `do uzupełnienia` |

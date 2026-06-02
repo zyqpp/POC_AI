@@ -1,8 +1,8 @@
 {
-    "generatedAtUtc":  "2026-06-02T21:16:30Z",
+    "generatedAtUtc":  "2026-06-02T21:43:07Z",
     "scriptName":  "Invoke-DocumentationAudit.ps1",
     "scriptVersion":  "audit_v1",
-    "gitHead":  "4a50a12",
+    "gitHead":  "6a30dc8",
     "disclaimer":  "Wyniki są heurystyczne. Parser statyczny nie zastępuje ręcznej weryfikacji w kodzie.",
     "screenCoverage":  {
                            "screens":  [
@@ -13,7 +13,7 @@
                                                "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  2,
                                                "actionCount":  4,
-                                               "tcCount":  0,
+                                               "tcCount":  5,
                                                "completionLevel":  "kompletny"
                                            },
                                            {
@@ -23,7 +23,7 @@
                                                "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  12,
                                                "actionCount":  2,
-                                               "tcCount":  0,
+                                               "tcCount":  4,
                                                "completionLevel":  "kompletny"
                                            },
                                            {
@@ -73,7 +73,7 @@
                                                "readmeStatus":  "potwierdzone",
                                                "fieldCount":  12,
                                                "actionCount":  6,
-                                               "tcCount":  0,
+                                               "tcCount":  4,
                                                "completionLevel":  "kompletny"
                                            },
                                            {
@@ -113,18 +113,18 @@
                                                "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  7,
                                                "actionCount":  8,
-                                               "tcCount":  0,
+                                               "tcCount":  3,
                                                "completionLevel":  "kompletny"
                                            },
                                            {
                                                "screenId":  "E-012",
                                                "directoryName":  "E-012_CHECKOUT",
                                                "hasRequiredStructure":  true,
-                                               "readmeStatus":  "szkielet",
+                                               "readmeStatus":  "potwierdzone",
                                                "fieldCount":  6,
                                                "actionCount":  2,
                                                "tcCount":  1,
-                                               "completionLevel":  "szkielet"
+                                               "completionLevel":  "kompletny"
                                            },
                                            {
                                                "screenId":  "E-013",
@@ -150,11 +150,11 @@
                                                "screenId":  "E-015",
                                                "directoryName":  "E-015_ORDERS_ID",
                                                "hasRequiredStructure":  true,
-                                               "readmeStatus":  "szkielet",
+                                               "readmeStatus":  "potwierdzone",
                                                "fieldCount":  18,
                                                "actionCount":  19,
                                                "tcCount":  1,
-                                               "completionLevel":  "szkielet"
+                                               "completionLevel":  "kompletny"
                                            },
                                            {
                                                "screenId":  "E-016",
@@ -170,11 +170,11 @@
                                                "screenId":  "E-017",
                                                "directoryName":  "E-017_SHIPMENTS_ID",
                                                "hasRequiredStructure":  true,
-                                               "readmeStatus":  "szkielet",
+                                               "readmeStatus":  "potwierdzone",
                                                "fieldCount":  32,
                                                "actionCount":  32,
                                                "tcCount":  1,
-                                               "completionLevel":  "szkielet"
+                                               "completionLevel":  "kompletny"
                                            },
                                            {
                                                "screenId":  "E-018",
@@ -213,7 +213,7 @@
                                                "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  8,
                                                "actionCount":  2,
-                                               "tcCount":  0,
+                                               "tcCount":  4,
                                                "completionLevel":  "kompletny"
                                            },
                                            {
@@ -223,7 +223,7 @@
                                                "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  4,
                                                "actionCount":  2,
-                                               "tcCount":  0,
+                                               "tcCount":  3,
                                                "completionLevel":  "kompletny"
                                            },
                                            {
@@ -238,37 +238,38 @@
                                            }
                                        ],
                            "screensSkeleton":  [
-                                                   "E-012",
-                                                   "E-015",
-                                                   "E-017"
+
                                                ],
-                           "screensComplete":  20,
+                           "screensComplete":  23,
                            "totalScreenDirs":  23,
                            "totalAngularRoutes":  23
                        },
     "processCoverage":  {
-                            "processesComplete":  6,
+                            "processesComplete":  8,
                             "processesPartial":  10,
                             "processes":  [
                                               {
                                                   "fileName":  "CHECKOUT_E2E.md",
                                                   "fileType":  "e2e",
                                                   "hasCel":  true,
-                                                  "hasOpis":  false,
+                                                  "hasOpis":  true,
                                                   "hasKroki":  true,
                                                   "hasBledy":  true,
                                                   "screenRefs":  0,
                                                   "apiRefs":  5,
-                                                  "completionLevel":  "częściowy"
+                                                  "completionLevel":  [
+                                                                          "kompletny",
+                                                                          "częściowy"
+                                                                      ]
                                               },
                                               {
                                                   "fileName":  "ORDER_DETAIL_LIFECYCLE.md",
                                                   "fileType":  "e2e",
                                                   "hasCel":  true,
-                                                  "hasOpis":  false,
+                                                  "hasOpis":  true,
                                                   "hasKroki":  true,
                                                   "hasBledy":  false,
-                                                  "screenRefs":  3,
+                                                  "screenRefs":  4,
                                                   "apiRefs":  10,
                                                   "completionLevel":  "częściowy"
                                               },
@@ -371,22 +372,25 @@
                                                   "fileName":  "SHIPMENT_DETAIL_LIFECYCLE.md",
                                                   "fileType":  "e2e",
                                                   "hasCel":  true,
-                                                  "hasOpis":  false,
+                                                  "hasOpis":  true,
                                                   "hasKroki":  true,
                                                   "hasBledy":  true,
-                                                  "screenRefs":  3,
+                                                  "screenRefs":  4,
                                                   "apiRefs":  3,
-                                                  "completionLevel":  "częściowy"
+                                                  "completionLevel":  [
+                                                                          "kompletny",
+                                                                          "częściowy"
+                                                                      ]
                                               }
                                           ],
                             "processesSkeleton":  0,
                             "totalProcessFiles":  10
                         },
     "algorithmCoverage":  {
-                              "documentedValidators":  36,
+                              "documentedValidators":  35,
                               "documentedHandlers":  87,
                               "undocumentedValidators":  [
-
+                                                             "StockSubscriptionRequestValidator"
                                                          ],
                               "undocumentedHandlers":  [
 
@@ -1039,7 +1043,7 @@
                                                      "validatorClass":  "StockSubscriptionRequestValidator",
                                                      "file":  "services/CatalogInventory/CatalogInventory.Application/Validation/CatalogValidators.cs",
                                                      "baseNameForSearch":  "StockSubscriptionRequest",
-                                                     "appearsInDocumentation":  true
+                                                     "appearsInDocumentation":  false
                                                  },
                                                  {
                                                      "validatorClass":  "CreateProductReviewRequestValidator",
