@@ -5,6 +5,10 @@ Powiązany AOS: `AI_Documentation/05_UI_AOS/AOS_ORDER_DETAIL.md`.
 
 ## Cel
 
+## Opis
+
+Cykl życia zamówienia po jego utworzeniu: od statusu Pending przez Processing, Shipped, Delivered do Cancelled lub Returned — wszystkie zmiany statusu dostępne z ekranu E-015.
+
 Opisuje cykl życia zamówienia po jego utworzeniu: od statusu `Pending` przez `Processing`, `Shipped`, `Delivered` do `Cancelled`/`Returned`. Dokument pokrywa wszystkie akcje zmiany statusu widoczne na ekranie [E-015_ORDERS_ID](../05_UI_AOS/EKRANY/E-015_ORDERS_ID/E-015__README.md): approve, reject, cancel, return, credit hold.
 
 ## Zakres

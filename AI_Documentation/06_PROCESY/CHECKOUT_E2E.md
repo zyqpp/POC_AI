@@ -1,9 +1,13 @@
-﻿# Proces End-To-End: Checkout
+# Proces End-To-End: Checkout
 
 Status: `potwierdzone` dla ścieżek kodowych, `do potwierdzenia` dla decyzji biznesowych w ryzykach.
 Powiązany AOS: `AI_Documentation/05_UI_AOS/AOS_CHECKOUT.md`.
 
 ## Cel
+
+## Opis
+
+Przepływ pełnego cyklu zakupowego od koszyka do potwierdzenia zamówienia — walidacja kredytu, blokada stocku, zapis zamówienia, inicjacja płatności i outbox do notyfikacji.
 
 Dealer finalizuje zakup z koszyka. Proces weryfikuje limity kredytowe (PrePaid/COD), blokuje stock (`InventoryService.SoftLockStockAsync`), tworzy rekord `Orders`, inicjuje płatność przez `PaymentInvoice` i wysyła powiadomienia przez outbox. Kluczowe ryzyko: brak kompensacji przy błędzie po zapisie zamówienia a przed potwierdzeniem płatności.
 

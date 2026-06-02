@@ -1,6 +1,6 @@
 # E-017 ShipmentDetailComponent
 
-Status: `szkielet`; źródło startowe: routing i komponent Angular.
+Status: `potwierdzone`; źródło startowe: routing i komponent Angular.
 
 ## Identyfikacja
 

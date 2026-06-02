@@ -5,6 +5,10 @@ Zakres: `/shipments/:id`, `/orders/:id/tracking`, assignment, pojazd, statusy, o
 
 ## Cel
 
+## Opis
+
+Cykl życia wysyłki po przypisaniu do agenta: od Assigned przez PickedUp, InTransit, Delivered do Failed lub Returned — wszystkie operacje dostępne z ekranu E-017.
+
 Opisuje cykl życia wysyłki po jej przypisaniu do agenta: od statusu `Assigned` przez `PickedUp`, `InTransit`, `Delivered` do `Failed`/`Returned`. Dokument pokrywa operacje widoczne na ekranie [E-017_SHIPMENTS_ID](../05_UI_AOS/EKRANY/E-017_SHIPMENTS_ID/E-017__README.md): assign agent, update ops-state, record attempt, complete delivery.
 
 ## Proces Główny: Odczyt Shipment Detail
