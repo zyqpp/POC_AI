@@ -13,6 +13,10 @@ Status: `potwierdzone` dla logiki frontendowej; `brak w kodzie` dla trwałości 
 | API | brak dedykowanego endpointu koszyka; checkout używa `POST /order/api/orders` |
 | Model danych | przejście do [CHECKOUT_E2E](CHECKOUT_E2E.md) |
 
+## Opis
+
+Dealer zarządza koszykiem wyłącznie przez `CartStore` Angular service — dane są serializowane do localStorage pod kluczem `sc_cart`; żadne żądania HTTP nie są wysyłane; koszyk trwa do kliknięcia 'Proceed to Checkout' które inicjuje `CHECKOUT_E2E`.
+
 ## Cel
 
 Koszyk jest stanem wyłącznie frontendowym — przechowywany w localStorage pod kluczem `sc_cart` przez `CartStore` (Angular service). Użytkownik dodaje produkty z listy (`E-007`) lub szczegółu (`E-009`), edytuje ilości, usuwa pozycje. Proces kończy się przejściem do checkout (`E-012`), gdzie koszyk jest finalizowany i tworzony jest rekord zamówienia w DB. Koszyk NIE ma trwałości serwera — utrata localStorage = utrata koszyka.
@@ -59,3 +63,13 @@ Koszyk jest stanem wyłącznie frontendowym — przechowywany w localStorage pod
 | `GAP-PROC-011-001` | Brak walidacji dostępności stocku w koszyku przed checkout | `brak w kodzie` |
 | `GAP-PROC-011-002` | Brak persistencji serwera koszyka — utrata przy wyczyszczeniu localStorage | `brak w kodzie` |
 | `GAP-PROC-011-003` | Brak synchronizacji koszyka między kartami przeglądarki | `brak w kodzie` |
+
+## Powiązane Dokumenty
+
+| Typ | Plik | Opis powiązania |
+|---|---|---|
+| Ekran | [E-011_CART](../05_UI_AOS/EKRANY/E-011_CART/E-011__README.md) | główny ekran koszyka |
+| Ekran | [E-012_CHECKOUT](../05_UI_AOS/EKRANY/E-012_CHECKOUT/E-012__README.md) | ekran checkout — następny krok po koszyku |
+| API | brak | koszyk działa wyłącznie przez localStorage; brak dedykowanych endpointów |
+| Role | [ROLE_CHECKOUT](../07_ROLE_I_UPRAWNIENIA/ROLE_CHECKOUT.md) | macierz uprawnień dealera w kontekście zakupu |
+| Proces | [CHECKOUT_E2E](CHECKOUT_E2E.md) | powiązany proces finalizacji zamówienia |

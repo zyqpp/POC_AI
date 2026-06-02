@@ -2,6 +2,10 @@
 
 Status: `potwierdzone` dla śladu `UI -> API -> proces -> DB -> testy`.
 
+## Opis
+
+Administrator wypełnia formularz i wysyła `POST /catalog/api/products` do `ProductsController.Create`, który waliduje DTO przez `CreateProductRequestValidator`, wywołuje `CreateProductCommandHandler` zapisujący `Products` i `OutboxMessages(ProductCreated)`, unieważnia cache i przekierowuje do szczegółu.
+
 ## Cel
 
 Administrator tworzy nowy produkt w katalogu. Proces zbiera dane formularza (SKU, nazwa, opis, cena, kategoria, ilość początkowa, URL obrazka), waliduje je po stronie frontendu i backendu, zapisuje rekord `Products` i emituje zdarzenie `ProductCreated` przez outbox. Po sukcesie system unieważnia cache katalogowy i przekierowuje admina na szczegół nowego produktu.
@@ -71,3 +75,13 @@ Administrator tworzy nowy produkt w katalogu. Proces zbiera dane formularza (SKU
 | `GAP-PROC-008-001` | Brak testu integracyjnego procesu create. | `brak w kodzie` |
 | `GAP-PROC-008-002` | Brak komunikatu UI dla błędu API po submit. | `brak w kodzie` |
 | `GAP-PROC-008-003` | Brak `StockTransactions` dla `OpeningStock`. | `brak w kodzie` |
+
+## Powiązane Dokumenty
+
+| Typ | Plik | Opis powiązania |
+|---|---|---|
+| Ekran | [E-008_PRODUCTS_NEW](../05_UI_AOS/EKRANY/E-008_PRODUCTS_NEW/E-008__README.md) | formularz tworzenia produktu |
+| API | [API_CATALOG](../04_API/API_CATALOG.md) | endpoint POST /catalog/api/products |
+| Role | [ROLE_CATALOG](../07_ROLE_I_UPRAWNIENIA/ROLE_CATALOG.md) | macierz uprawnień — tylko Admin |
+| Model | [MODEL_DANYCH_CATALOG](../03_MODEL_DANYCH/MODEL_DANYCH_CATALOG.md) | encje Products, Categories, OutboxMessages |
+| Testy | [MACIERZ_TESTOW_CATALOG](../08_TESTY/MACIERZ_TESTOW_CATALOG.md) | przypadki testowe tworzenia produktu |

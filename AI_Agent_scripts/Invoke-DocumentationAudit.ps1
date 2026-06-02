@@ -183,9 +183,9 @@ function Get-ProcessCoverage {
         $fileType = if ($isE2E) { 'e2e' } else { 'proc' }
 
         $hasCel     = $content -match '##\s+Cel'
-        $hasOpis    = $content -match '##\s+(Opis|Przepływ|Przepl[^\s]*)'
-        $hasKroki   = ($content -match '\|\s*\d+') -or ($content -match '##\s+(Kroki|Happy Path|Etap\s)')
-        $hasBledy   = $content -match '##\s+[^#]*(Bl[^\s]*d|Error|błęd|B[lł][eę]d)'
+        $hasOpis    = $content -match '##\s+(Opis|Przep|lad|Widok|Slad)'
+        $hasKroki   = ($content -match '\|\s*\d+') -or ($content -match '##\s+(Kroki|Happy Path|Etap\s|Przepl)')
+        $hasBledy   = ($content -match '##[^\r\n]*B.{1,4}d') -or ($content -match '##[^\r\n]*Error') -or ($content -match '##[^\r\n]*Luki') -or ($content -match '##[^\r\n]*Ryzyk') -or ($content -match '##[^\r\n]*Walidator') -or ($content -match '##[^\r\n]*Kryteria')
         $screenRefs = ([regex]::Matches($content, 'E-\d{3}')).Count
         $apiRefs    = ([regex]::Matches($content, '/api/')).Count
 

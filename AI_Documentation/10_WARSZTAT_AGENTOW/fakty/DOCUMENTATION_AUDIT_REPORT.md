@@ -1,7 +1,7 @@
 # Raport Audytu Dokumentacji
 
-Wygenerowano: 2026-06-02T21:43:07Z
-Git HEAD: `6a30dc8`
+Wygenerowano: 2026-06-02T21:58:01Z
+Git HEAD: `a19a926`
 Generator: Invoke-DocumentationAudit.ps1 (audit_v1)
 
 > **Zastrzeżenie:** wyniki są heurystyczne — parser statyczny i wyszukiwanie tekstowe.
@@ -12,9 +12,9 @@ Generator: Invoke-DocumentationAudit.ps1 (audit_v1)
 | Obszar | Razem | Kompletne | Szkielety / Luki | Pokrycie % |
 |---|---:|---:|---:|---:|
 | Ekrany (E-NNN) | 23 | 23 | 0 | 100% |
-| Procesy (PROC + E2E) | 10 | 8 | 10 | 80% |
+| Procesy (PROC + E2E) | 10 | 10 | 10 | 100% |
 | Handlery MediatR | 87 | 87 | 0 | 100% |
-| Walidatory | 36 | 35 | 1 | 97% |
+| Walidatory | 36 | 36 | 0 | 100% |
 
 ## Macierz Pokrycia Ekranów
 
@@ -48,22 +48,16 @@ Generator: Invoke-DocumentationAudit.ps1 (audit_v1)
 
 | Plik | Typ | Cel | Opis/Przepływ | Kroki | Błędy | Ref. Ekranów | Poziom |
 |---|---|---|---|---|---|---:|---|
-| CHECKOUT_E2E.md | e2e | tak | tak | tak | tak | 0 | **kompletny częściowy** |
-| ORDER_DETAIL_LIFECYCLE.md | e2e | tak | tak | tak | — | 4 | **częściowy** |
-| PROC-001_AUTH.md | proc | tak | tak | tak | tak | 9 | **kompletny częściowy** |
-| PROC-006_PROFILE.md | proc | tak | tak | tak | tak | 0 | **kompletny częściowy** |
-| PROC-007_PRODUCTS.md | proc | tak | tak | tak | tak | 1 | **kompletny częściowy** |
-| PROC-008_PRODUCTS_NEW.md | proc | tak | tak | tak | tak | 9 | **kompletny częściowy** |
-| PROC-009_PRODUCTS_ID.md | proc | tak | tak | tak | tak | 10 | **kompletny częściowy** |
-| PROC-010_PRODUCTS_ID_EDIT.md | proc | tak | — | tak | tak | 7 | **częściowy** |
-| PROC-011_CART.md | proc | tak | tak | tak | tak | 8 | **kompletny częściowy** |
-| SHIPMENT_DETAIL_LIFECYCLE.md | e2e | tak | tak | tak | tak | 4 | **kompletny częściowy** |
-
-## Nieudokumentowane Walidatory
-
-| Klasa Walidatora | Plik |
-|---|---|
-| `StockSubscriptionRequestValidator` | `services/CatalogInventory/CatalogInventory.Application/Validation/CatalogValidators.cs` |
+| CHECKOUT_E2E.md | e2e | tak | tak | tak | tak | 6 | **kompletny częściowy** |
+| ORDER_DETAIL_LIFECYCLE.md | e2e | tak | tak | tak | tak | 10 | **kompletny częściowy** |
+| PROC-001_AUTH.md | proc | tak | tak | tak | tak | 18 | **kompletny częściowy** |
+| PROC-006_PROFILE.md | proc | tak | tak | tak | tak | 3 | **kompletny częściowy** |
+| PROC-007_PRODUCTS.md | proc | tak | tak | tak | tak | 4 | **kompletny częściowy** |
+| PROC-008_PRODUCTS_NEW.md | proc | tak | tak | tak | tak | 12 | **kompletny częściowy** |
+| PROC-009_PRODUCTS_ID.md | proc | tak | tak | tak | tak | 13 | **kompletny częściowy** |
+| PROC-010_PRODUCTS_ID_EDIT.md | proc | tak | tak | tak | tak | 10 | **kompletny częściowy** |
+| PROC-011_CART.md | proc | tak | tak | tak | tak | 14 | **kompletny częściowy** |
+| SHIPMENT_DETAIL_LIFECYCLE.md | e2e | tak | tak | tak | tak | 13 | **kompletny częściowy** |
 
 ## Jak Używać
 

@@ -110,3 +110,15 @@ public sealed class AddOutstandingCommandHandler(IPaymentInvoiceService service)
 | `PaymentRecord.OrderId = Guid.Empty` przy gateway verify | trudne powiązanie płatności z późniejszym orderem | ustalić docelowy model korelacji payment-order | P0 |
 | `idempotencyKey` bez widocznego użycia w order service | retry może utworzyć duplikat | potwierdzić zamiar i opisać/naprawić w osobnym zadaniu | P1 |
 | Brak pełnego testu E2E checkout | regresje procesu nie są chronione | dodać test API/E2E dla COD i PrePaid | P0 |
+
+## Powiązane Dokumenty
+
+| Typ | Plik | Opis powiązania |
+|---|---|---|
+| Ekran | [E-011_CART](../05_UI_AOS/EKRANY/E-011_CART/E-011__README.md) | ekran koszyka — wejście do procesu |
+| Ekran | [E-012_CHECKOUT](../05_UI_AOS/EKRANY/E-012_CHECKOUT/E-012__README.md) | główny ekran checkout |
+| API | [API_CHECKOUT](../04_API/API_CHECKOUT.md) | endpointy zamówień i płatności używane w procesie |
+| Role | [ROLE_CHECKOUT](../07_ROLE_I_UPRAWNIENIA/ROLE_CHECKOUT.md) | macierz uprawnień dla checkout |
+| Model | [MODEL_DANYCH_CHECKOUT](../03_MODEL_DANYCH/MODEL_DANYCH_CHECKOUT.md) | encje Orders, OrderLines, DealerCreditAccounts |
+| Testy | [MACIERZ_TESTOW_CHECKOUT](../08_TESTY/MACIERZ_TESTOW_CHECKOUT.md) | przypadki testowe checkout |
+| Poprzedni proces | [PROC-011_CART](PROC-011_CART.md) | proces koszyka poprzedzający checkout |

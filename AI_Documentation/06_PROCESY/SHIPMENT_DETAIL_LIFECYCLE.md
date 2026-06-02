@@ -133,3 +133,17 @@ Plik: `services/LogisticsTracking/LogisticsTracking.Application/Validation/Logis
 | Każde pole UI ma tabelę/kolumnę albo jawny brak kolumny | spełnione |
 | Proces pokazuje UI -> API -> logika -> DB -> outbox/testy | spełnione |
 | Luki są jawne i nie są naprawiane w kodzie | spełnione |
+
+## Powiązane Dokumenty
+
+| Typ | Plik | Opis powiązania |
+|---|---|---|
+| Ekran | [E-017_SHIPMENTS_ID](../05_UI_AOS/EKRANY/E-017_SHIPMENTS_ID/E-017__README.md) | główny ekran szczegółu wysyłki |
+| Ekran | [E-016_SHIPMENTS](../05_UI_AOS/EKRANY/E-016_SHIPMENTS/E-016__README.md) | lista wysyłek — kontekst nawigacji |
+| Ekran | [E-014_ORDERS_ID_TRACKING](../05_UI_AOS/EKRANY/E-014_ORDERS_ID_TRACKING/E-014__README.md) | śledzenie zamówienia z perspektywy klienta |
+| API | [API_SHIPMENT_DETAIL](../04_API/API_SHIPMENT_DETAIL.md) | endpointy cyklu życia wysyłki |
+| API | [API_LOGISTICS](../04_API/API_LOGISTICS.md) | endpointy logistyczne używane w procesie |
+| Role | [ROLE_SHIPMENT_DETAIL](../07_ROLE_I_UPRAWNIENIA/ROLE_SHIPMENT_DETAIL.md) | macierz uprawnień dla szczegółu wysyłki |
+| Role | [ROLE_LOGISTICS](../07_ROLE_I_UPRAWNIENIA/ROLE_LOGISTICS.md) | macierz uprawnień dla modułu logistyki |
+| Model | [MODEL_DANYCH_SHIPMENT_DETAIL](../03_MODEL_DANYCH/MODEL_DANYCH_SHIPMENT_DETAIL.md) | encje Shipments, ShipmentEvents, ShipmentOpsStates |
+| Testy | [MACIERZ_TESTOW_SHIPMENT_DETAIL](../08_TESTY/MACIERZ_TESTOW_SHIPMENT_DETAIL.md) | przypadki testowe lifecycle wysyłki |

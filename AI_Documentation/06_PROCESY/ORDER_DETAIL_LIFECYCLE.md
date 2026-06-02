@@ -124,3 +124,16 @@ Kluczowe ograniczenia: anulowanie wymaga powodu (max 400 znaków); bulk status: 
 | P0 | `Warehouse` update status niespójny między UI, kontrolerem i serwisem. | Jedna spójna reguła w UI/backend oraz test. |
 | P1 | Local ops notes bez backendu. | Decyzja produktowa: local-only albo endpoint/tabela audytu. |
 | P1 | `OrderDto.Saga` nieobecne w TS modelu. | TS model i UI albo dokumentowana rezygnacja z pokazywania sagi. |
+
+## Powiązane Dokumenty
+
+| Typ | Plik | Opis powiązania |
+|---|---|---|
+| Ekran | [E-015_ORDERS_ID](../05_UI_AOS/EKRANY/E-015_ORDERS_ID/E-015__README.md) | główny ekran szczegółu zamówienia |
+| Ekran | [E-013_ORDERS](../05_UI_AOS/EKRANY/E-013_ORDERS/E-013__README.md) | lista zamówień — kontekst nawigacji |
+| API | [API_ORDER_DETAIL](../04_API/API_ORDER_DETAIL.md) | endpointy cyklu życia zamówienia |
+| Role | [ROLE_ORDER_DETAIL](../07_ROLE_I_UPRAWNIENIA/ROLE_ORDER_DETAIL.md) | macierz uprawnień dla szczegółu zamówienia |
+| Role | [ROLE_ORDERS](../07_ROLE_I_UPRAWNIENIA/ROLE_ORDERS.md) | macierz uprawnień dla listy zamówień |
+| Model | [MODEL_DANYCH_ORDER_DETAIL](../03_MODEL_DANYCH/MODEL_DANYCH_ORDER_DETAIL.md) | encje Orders, OrderLines, OrderStatusHistory, ReturnRequests |
+| Testy | [MACIERZ_TESTOW_ORDER_DETAIL](../08_TESTY/MACIERZ_TESTOW_ORDER_DETAIL.md) | przypadki testowe lifecycle zamówienia |
+| Testy | [MACIERZ_TESTOW_ORDERS](../08_TESTY/MACIERZ_TESTOW_ORDERS.md) | przypadki testowe listy zamówień |

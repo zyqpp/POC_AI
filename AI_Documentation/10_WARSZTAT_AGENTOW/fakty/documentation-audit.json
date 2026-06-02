@@ -1,8 +1,8 @@
 {
-    "generatedAtUtc":  "2026-06-02T21:43:07Z",
+    "generatedAtUtc":  "2026-06-02T21:58:01Z",
     "scriptName":  "Invoke-DocumentationAudit.ps1",
     "scriptVersion":  "audit_v1",
-    "gitHead":  "6a30dc8",
+    "gitHead":  "a19a926",
     "disclaimer":  "Wyniki są heurystyczne. Parser statyczny nie zastępuje ręcznej weryfikacji w kodzie.",
     "screenCoverage":  {
                            "screens":  [
@@ -245,7 +245,7 @@
                            "totalAngularRoutes":  23
                        },
     "processCoverage":  {
-                            "processesComplete":  8,
+                            "processesComplete":  10,
                             "processesPartial":  10,
                             "processes":  [
                                               {
@@ -255,7 +255,7 @@
                                                   "hasOpis":  true,
                                                   "hasKroki":  true,
                                                   "hasBledy":  true,
-                                                  "screenRefs":  0,
+                                                  "screenRefs":  6,
                                                   "apiRefs":  5,
                                                   "completionLevel":  [
                                                                           "kompletny",
@@ -268,10 +268,13 @@
                                                   "hasCel":  true,
                                                   "hasOpis":  true,
                                                   "hasKroki":  true,
-                                                  "hasBledy":  false,
-                                                  "screenRefs":  4,
+                                                  "hasBledy":  true,
+                                                  "screenRefs":  10,
                                                   "apiRefs":  10,
-                                                  "completionLevel":  "częściowy"
+                                                  "completionLevel":  [
+                                                                          "kompletny",
+                                                                          "częściowy"
+                                                                      ]
                                               },
                                               {
                                                   "fileName":  "PROC-001_AUTH.md",
@@ -280,7 +283,7 @@
                                                   "hasOpis":  true,
                                                   "hasKroki":  true,
                                                   "hasBledy":  true,
-                                                  "screenRefs":  9,
+                                                  "screenRefs":  18,
                                                   "apiRefs":  7,
                                                   "completionLevel":  [
                                                                           "kompletny",
@@ -294,8 +297,8 @@
                                                   "hasOpis":  true,
                                                   "hasKroki":  true,
                                                   "hasBledy":  true,
-                                                  "screenRefs":  0,
-                                                  "apiRefs":  1,
+                                                  "screenRefs":  3,
+                                                  "apiRefs":  2,
                                                   "completionLevel":  [
                                                                           "kompletny",
                                                                           "częściowy"
@@ -308,8 +311,8 @@
                                                   "hasOpis":  true,
                                                   "hasKroki":  true,
                                                   "hasBledy":  true,
-                                                  "screenRefs":  1,
-                                                  "apiRefs":  0,
+                                                  "screenRefs":  4,
+                                                  "apiRefs":  1,
                                                   "completionLevel":  [
                                                                           "kompletny",
                                                                           "częściowy"
@@ -322,8 +325,8 @@
                                                   "hasOpis":  true,
                                                   "hasKroki":  true,
                                                   "hasBledy":  true,
-                                                  "screenRefs":  9,
-                                                  "apiRefs":  2,
+                                                  "screenRefs":  12,
+                                                  "apiRefs":  4,
                                                   "completionLevel":  [
                                                                           "kompletny",
                                                                           "częściowy"
@@ -336,8 +339,8 @@
                                                   "hasOpis":  true,
                                                   "hasKroki":  true,
                                                   "hasBledy":  true,
-                                                  "screenRefs":  10,
-                                                  "apiRefs":  5,
+                                                  "screenRefs":  13,
+                                                  "apiRefs":  6,
                                                   "completionLevel":  [
                                                                           "kompletny",
                                                                           "częściowy"
@@ -347,12 +350,15 @@
                                                   "fileName":  "PROC-010_PRODUCTS_ID_EDIT.md",
                                                   "fileType":  "proc",
                                                   "hasCel":  true,
-                                                  "hasOpis":  false,
+                                                  "hasOpis":  true,
                                                   "hasKroki":  true,
                                                   "hasBledy":  true,
-                                                  "screenRefs":  7,
-                                                  "apiRefs":  6,
-                                                  "completionLevel":  "częściowy"
+                                                  "screenRefs":  10,
+                                                  "apiRefs":  8,
+                                                  "completionLevel":  [
+                                                                          "kompletny",
+                                                                          "częściowy"
+                                                                      ]
                                               },
                                               {
                                                   "fileName":  "PROC-011_CART.md",
@@ -361,7 +367,7 @@
                                                   "hasOpis":  true,
                                                   "hasKroki":  true,
                                                   "hasBledy":  true,
-                                                  "screenRefs":  8,
+                                                  "screenRefs":  14,
                                                   "apiRefs":  1,
                                                   "completionLevel":  [
                                                                           "kompletny",
@@ -375,7 +381,7 @@
                                                   "hasOpis":  true,
                                                   "hasKroki":  true,
                                                   "hasBledy":  true,
-                                                  "screenRefs":  4,
+                                                  "screenRefs":  13,
                                                   "apiRefs":  3,
                                                   "completionLevel":  [
                                                                           "kompletny",
@@ -387,10 +393,10 @@
                             "totalProcessFiles":  10
                         },
     "algorithmCoverage":  {
-                              "documentedValidators":  35,
+                              "documentedValidators":  36,
                               "documentedHandlers":  87,
                               "undocumentedValidators":  [
-                                                             "StockSubscriptionRequestValidator"
+
                                                          ],
                               "undocumentedHandlers":  [
 
@@ -1043,7 +1049,7 @@
                                                      "validatorClass":  "StockSubscriptionRequestValidator",
                                                      "file":  "services/CatalogInventory/CatalogInventory.Application/Validation/CatalogValidators.cs",
                                                      "baseNameForSearch":  "StockSubscriptionRequest",
-                                                     "appearsInDocumentation":  false
+                                                     "appearsInDocumentation":  true
                                                  },
                                                  {
                                                      "validatorClass":  "CreateProductReviewRequestValidator",

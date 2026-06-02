@@ -2,6 +2,10 @@
 
 Status: `potwierdzone` dla śladu `UI -> API -> proces -> DB -> testy`.
 
+## Opis
+
+Użytkownik otwiera stronę produktu; komponent wywołuje `GET /catalog/api/products/{id}` (odczyt `Products`); opcjonalnie Dealer dodaje do `CartStore` (localStorage), Admin dezaktywuje `IsActive=false` lub wykonuje restock `TotalStock+=qty` z wpisem `StockTransactions`.
+
 ## Cel
 
 Użytkownik (Dealer, Admin, Warehouse) przegląda szczegóły produktu: opis, cenę, dostępność, kategorie. Dealer może dodać produkt do lokalnego koszyka. Admin może dezaktywować produkt lub wykonać restock (oba zmieniają bazę). Dealer może dodać recenzję (bez trwałości SQL — ryzyko zidentyfikowane). Proces łączy operacje tylko-do-odczytu (widok) z operacjami zapisu (dezaktywacja, restock).
@@ -55,3 +59,13 @@ Użytkownik (Dealer, Admin, Warehouse) przegląda szczegóły produktu: opis, ce
 | `ERR-PROC-009-002` | Brak uprawnień do dezaktywacji | 403 | przycisk nie pojawia się dla roli Dealer; 403 z backendu jeśli próba bezpośrednia | `potwierdzone` |
 | `ERR-PROC-009-003` | Restock z ilością ≤ 0 | 400 | walidator frontend blokuje; backend zwraca 400 | `potwierdzone` |
 | `ERR-PROC-009-004` | Produkt już nieaktywny (dezaktywacja ponowna) | 400 | backend zwraca błąd domenowy; brak rollbacku potrzebny | `wniosek z analizy` |
+
+## Powiązane Dokumenty
+
+| Typ | Plik | Opis powiązania |
+|---|---|---|
+| Ekran | [E-009_PRODUCTS_ID](../05_UI_AOS/EKRANY/E-009_PRODUCTS_ID/E-009__README.md) | ekran szczegółu produktu |
+| API | [API_CATALOG](../04_API/API_CATALOG.md) | endpointy GET/PUT/POST dla produktu |
+| Role | [ROLE_CATALOG](../07_ROLE_I_UPRAWNIENIA/ROLE_CATALOG.md) | macierz uprawnień — Admin, Dealer, Warehouse |
+| Model | [MODEL_DANYCH_CATALOG](../03_MODEL_DANYCH/MODEL_DANYCH_CATALOG.md) | encje Products, StockTransactions |
+| Testy | [MACIERZ_TESTOW_CATALOG](../08_TESTY/MACIERZ_TESTOW_CATALOG.md) | przypadki testowe szczegółu produktu |

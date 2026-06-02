@@ -15,6 +15,10 @@ Status: `potwierdzone` dla śladu `UI -> API -> proces -> DB`.
 | Model danych | [MODEL_DANYCH_IDENTITY](../03_MODEL_DANYCH/MODEL_DANYCH_IDENTITY.md) |
 | Testy | [MACIERZ_TESTOW_IDENTITY](../08_TESTY/MACIERZ_TESTOW_IDENTITY.md) |
 
+## Opis
+
+Użytkownik wysyła dane uwierzytelniające do `AuthController`, który weryfikuje hash BCrypt w tabeli `Users`, generuje JWT AccessToken (15 min) i RefreshToken (7 dni) zapisywany w `RefreshTokens`, po czym frontend przechowuje tokeny w localStorage.
+
 ## Cel
 
 Proces obejmuje wszystkie operacje związane z tożsamością użytkownika: logowanie (JWT + Refresh Token), rejestrację dealera (oczekuje na approval admina), odzyskiwanie hasła przez OTP/link, wylogowanie i cichą odnowę tokena. Proces jest krytyczny dla bezpieczeństwa — każda ścieżka musi kończyć się jasnym stanem sesji (zalogowany / wylogowany / oczekujący).
@@ -135,3 +139,14 @@ Wszystkie walidatory znajdują się w `services/IdentityAuth/IdentityAuth.Applic
 | `GAP-PROC-001-003` | Brak testu E2E dla pełnego flow login → refresh → logout | `brak w kodzie` |
 | `GAP-PROC-001-004` | `ChangePasswordRequestValidator` — brak ekranu AOS dla zmiany hasła przez zalogowanego użytkownika; zmiana hasła odbywa się przez `/forgot-password` (OTP flow) | `wniosek z analizy` |
 | `GAP-PROC-001-005` | `CreateAgentRequestValidator` — brak ekranu E-AOS dla tworzenia agenta; akcja dostępna przez Admin panel | `do uzupełnienia` |
+
+## Powiązane Dokumenty
+
+| Typ | Plik | Opis powiązania |
+|---|---|---|
+| Ekran | [E-001_LOGIN](../05_UI_AOS/EKRANY/E-001_LOGIN/E-001__README.md) | ekran logowania |
+| Ekran | [E-002_REGISTER](../05_UI_AOS/EKRANY/E-002_REGISTER/E-002__README.md) | ekran rejestracji dealera |
+| Ekran | [E-003_FORGOT_PASSWORD](../05_UI_AOS/EKRANY/E-003_FORGOT_PASSWORD/E-003__README.md) | ekran odzyskiwania hasła |
+| API | [API_IDENTITY](../04_API/API_IDENTITY.md) | endpointy auth i users używane w procesie |
+| Role | [ROLE_IDENTITY](../07_ROLE_I_UPRAWNIENIA/ROLE_IDENTITY.md) | macierz uprawnień dla modułu tożsamości |
+| Testy | [MACIERZ_TESTOW_IDENTITY](../08_TESTY/MACIERZ_TESTOW_IDENTITY.md) | przypadki testowe dla uwierzytelniania |

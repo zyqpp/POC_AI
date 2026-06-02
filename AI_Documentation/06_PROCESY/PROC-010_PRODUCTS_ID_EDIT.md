@@ -2,6 +2,10 @@
 
 Status: `potwierdzone` dla procesu `E-010_PRODUCTS_ID_EDIT`.
 
+## Opis
+
+Administrator ładuje dane produktu (GET), edytuje pola z wyjątkiem SKU i stocku, a następnie wysyła `PUT /catalog/api/products/{id}` → `UpdateProductCommandHandler` aktualizujący `Products` i emitujący `ProductUpdated` przez outbox.
+
 ## Cel
 
 Administrator zmienia dane istniejącego produktu bez zmiany SKU i bez zmiany stocku początkowego. Proces kończy się aktualizacją rekordu `Products`, utworzeniem komunikatu outbox `ProductUpdated`, unieważnieniem cache i przejściem na szczegół produktu.
@@ -84,3 +88,13 @@ UpdateProductCommand -> CatalogInventoryService.UpdateProductAsync
 |---|---|---|
 | `GAP-PROC-010-001` | Brak widocznego komunikatu dla błędu update i 404. | Test komponentu/API potwierdza komunikat błędu dla `404` i walidacji API. |
 | `GAP-PROC-010-002` | Brak testów update produktu. | Dodać test domenowy `Product.Update`, test walidatora, test API auth i test komponentu. |
+
+## Powiązane Dokumenty
+
+| Typ | Plik | Opis powiązania |
+|---|---|---|
+| Ekran | [E-010_PRODUCTS_ID_EDIT](../05_UI_AOS/EKRANY/E-010_PRODUCTS_ID_EDIT/E-010__README.md) | formularz edycji produktu |
+| API | [API_CATALOG](../04_API/API_CATALOG.md) | endpoint PUT /catalog/api/products/{id} |
+| Role | [ROLE_CATALOG](../07_ROLE_I_UPRAWNIENIA/ROLE_CATALOG.md) | macierz uprawnień — tylko Admin |
+| Model | [MODEL_DANYCH_CATALOG](../03_MODEL_DANYCH/MODEL_DANYCH_CATALOG.md) | encje Products, OutboxMessages |
+| Testy | [MACIERZ_TESTOW_CATALOG](../08_TESTY/MACIERZ_TESTOW_CATALOG.md) | przypadki testowe edycji produktu |
