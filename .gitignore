@@ -48,3 +48,7 @@ artifacts/
 *.tmp
 *.bak
 *.swp
+.venv/
+site/
+site-tech/
+site-user/

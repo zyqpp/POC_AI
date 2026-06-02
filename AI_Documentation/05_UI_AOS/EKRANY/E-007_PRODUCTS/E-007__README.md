@@ -14,11 +14,11 @@ Status: `potwierdzone` dla śladu UI -> Catalog API -> CatalogInventory DB -> te
 | Źródło komponentu | `supply-chain-frontend/src/app/features/catalog/product-list/product-list.component.ts` |
 | Źródło template | `supply-chain-frontend/src/app/features/catalog/product-list/product-list.component.html` |
 | Serwis Angular | `CatalogApiService`, `CartStore`, `ToastService` |
-| API | [API_CATALOG](../../../../04_API/API_CATALOG.md) |
-| Model danych | [MODEL_DANYCH_CATALOG](../../../../03_MODEL_DANYCH/MODEL_DANYCH_CATALOG.md) |
-| Proces | [PROC-007_PRODUCTS](../../../../06_PROCESY/PROC-007_PRODUCTS.md) |
-| Role | [ROLE_CATALOG](../../../../07_ROLE_I_UPRAWNIENIA/ROLE_CATALOG.md) |
-| Testy | [MACIERZ_TESTOW_CATALOG](../../../../08_TESTY/MACIERZ_TESTOW_CATALOG.md) |
+| API | [API_CATALOG](../../../04_API/API_CATALOG.md) |
+| Model danych | [MODEL_DANYCH_CATALOG](../../../03_MODEL_DANYCH/MODEL_DANYCH_CATALOG.md) |
+| Proces | [PROC-007_PRODUCTS](../../../06_PROCESY/PROC-007_PRODUCTS.md) |
+| Role | [ROLE_CATALOG](../../../07_ROLE_I_UPRAWNIENIA/ROLE_CATALOG.md) |
+| Testy | [MACIERZ_TESTOW_CATALOG](../../../08_TESTY/MACIERZ_TESTOW_CATALOG.md) |
 
 ## Cel Ekranu
 

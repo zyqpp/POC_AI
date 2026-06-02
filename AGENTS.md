@@ -42,3 +42,71 @@
 - Do zbierania faktów technicznych, kontraktów, mapowania endpointów, DTO i tabel SQL używaj `AI_Agent_scripts/Export-AosTraceFacts.ps1`.
 - Wyniki automatycznych analiz traktuj jako punkt startowy. Każdy ważny wniosek potwierdź w kodzie źródłowym przed wpisaniem go jako fakt w AOS.
 - Skrypty PowerShell zawierające polskie znaki zapisuj jako UTF-8 z BOM, bo Windows PowerShell 5.1 inaczej może wygenerować dokumenty z uszkodzonymi znakami.
+
+# Instrukcje dla agentów Codexa — dokumentacja MkDocs
+
+## Cel
+
+Repozytorium zawiera dokumentację Markdown utrzymywaną razem z kodem aplikacji. Dokumentacja ma być prezentowana przez dwa osobne portale MkDocs / Material for MkDocs:
+
+1. dokumentacja techniczna,
+2. dokumentacja użytkownika.
+
+## Zasady pracy
+
+- Nie usuwaj istniejących plików dokumentacji bez wyraźnego powodu.
+- Nie przenoś dokumentacji bez zgody użytkownika.
+- Nie nadpisuj istniejących plików `.md`.
+- Zmiany mają być małe, jawne i możliwe do przejrzenia w diffie.
+- Wszystkie ścieżki w `nav` muszą być zgodne z realną strukturą katalogów.
+- Preferuj dwa pliki konfiguracyjne:
+  - `mkdocs-tech.yml`
+  - `mkdocs-user.yml`
+- Preferuj osobne katalogi build:
+  - `site-tech/`
+  - `site-user/`
+- Do lokalnego podglądu używaj `mkdocs serve`.
+- Do publikacji używaj `mkdocs build` i statycznego hostingu.
+- Nie wystawiaj `mkdocs serve` jako produkcyjnego serwera www.
+
+## Porty lokalne
+
+- W tym repo domyślnie używaj `127.0.0.1:8100` dla portalu technicznego i `127.0.0.1:8101` dla portalu użytkownika.
+- Przed uruchomieniem sprawdzaj zajętość portów. Jeżeli są zajęte, wybierz inną wolną parę (np. `8010/8011`).
+
+## Standard techniczny
+
+- Python dependencies dla dokumentacji trzymaj w `requirements-docs.txt`.
+- Wirtualne środowisko lokalne: `.venv`.
+- Pliki wygenerowane przez MkDocs ignoruj w `.gitignore`.
+- Na start użyj `mkdocs-material==9.*`.
+- Użyj języka polskiego w motywie Material.
+- Włącz wyszukiwarkę.
+- Włącz podstawowe rozszerzenia Markdown:
+  - admonition
+  - tables
+  - toc
+  - pymdownx.details
+  - pymdownx.superfences
+
+## Portale
+
+Portal techniczny:
+- konfiguracja: `mkdocs-tech.yml`
+- źródło: `AI_Documentation`
+- wynik build: `site-tech/`
+
+Portal użytkownika:
+- status: obecnie brak osobnej dokumentacji użytkownika.
+- konfiguracja: `mkdocs-user.yml` (nieaktywne)
+- źródło: brak (nieaktywne)
+- wynik build: `site-user/` (nieaktywne)
+
+## Kryteria akceptacji
+
+- `python -m mkdocs serve -f mkdocs-tech.yml -a 127.0.0.1:8100` uruchamia dokumentację techniczną lokalnie.
+- `python -m mkdocs serve -f mkdocs-user.yml -a 127.0.0.1:8101` uruchamia dokumentację użytkownika lokalnie.
+- `python -m mkdocs build -f mkdocs-tech.yml` buduje `site-tech/`.
+- `python -m mkdocs build -f mkdocs-user.yml` buduje `site-user/`.
+- Menu odpowiada realnym plikom Markdown.
+- Nie ma błędów brakujących ścieżek w `nav`.

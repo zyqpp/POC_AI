@@ -12,7 +12,8 @@ Zasada: wyniki skryptów są punktem startowym. Każdy ważny fakt wpisany do do
 | `AI_Agent_scripts/Export-Podejscie2DotnetApi.ps1` | wyciąga kontrolery, base route, metody HTTP i role | `AI_Documentation/10_WARSZTAT_AGENTOW/fakty/dotnet-api.json` | role i statusy wymagają potwierdzenia w kontrolerach | aktywny |
 | `AI_Agent_scripts/Export-Podejscie2EfModel.ps1` | wyciąga `DbContext`, `DbSet`, `ToTable` i indeksy | `AI_Documentation/10_WARSZTAT_AGENTOW/fakty/ef-model.json` | nie zastępuje pełnej analizy encji i migracji | aktywny |
 | `AI_Agent_scripts/Export-AosTraceFacts.ps1` | buduje szeroki trace UI -> API -> handler -> EF i raport luk | `AI_Documentation/10_WARSZTAT_AGENTOW/fakty/AI_AOS_TRACE_FACTS.json`, `AI_AOS_TRACE_REPORT.md` | heurystyczne dopasowania, relacje kandydackie wymagają review | aktywny |
-| `AI_Agent_scripts/Test-Podejscie2DocumentationQuality.ps1` | bramka jakości dokumentacji | raport w konsoli | kontroluje strukturę, trace facts, template'y, wszystkie aktywne `05_UI_AOS/AOS_*.md` i placeholdery poza template'ami; nie zastępuje review | aktywny |
+| `AI_Agent_scripts/Test-Podejscie2DocumentationQuality.ps1` | bramka jakości dokumentacji | raport w konsoli | rozdziela błędy blokujące od ostrzeżeń nawigacyjnych i merytorycznych; waliduje tylko aktywne artefakty | aktywny |
+| `AI_Agent_scripts/Update-DocsTreePages.ps1` | regeneruje helpery `NAV_FOLDER_TREE.md` i `NAV_FILES_BY_FOLDER.md` | `AI_Documentation/NAV_FOLDER_TREE.md`, `AI_Documentation/NAV_FILES_BY_FOLDER.md` | pomija archiwum, `AOS_Template` i katalogi template'ów; nie zastępuje ręcznej oceny punktów wejścia | aktywny |
 
 ## Skrypty Ograniczone
 
@@ -29,7 +30,7 @@ Zasada: wyniki skryptów są punktem startowym. Każdy ważny fakt wpisany do do
 3. Wybierz ekran albo proces.
 4. Potwierdź route, komponent, endpoint, DTO, handler, usługę, encje i tabele w kodzie.
 5. Dopiero wtedy wpisz fakt do AOS ze statusem.
-6. Luki wpisuj jako `brak w kodzie`, `do potwierdzenia`, `do uzupełnienia` albo ryzyko.
+6. Luki wpisuj jako `do uzupełnienia`, `brak w kodzie`, `do potwierdzenia`, `wniosek z analizy` albo ryzyko.
 
 ## Komenda Walidacji
 
@@ -58,6 +59,24 @@ powershell -ExecutionPolicy Bypass -File AI_Agent_scripts\New-FrontendScreenScaf
 | `fakty/ef-model.json` | DbContext, DbSet, tabele | aktywny |
 | `fakty/AI_AOS_TRACE_FACTS.json` | pełny snapshot trace | aktywny |
 | `fakty/AI_AOS_TRACE_REPORT.md` | raport czytelny dla agenta | aktywny |
+
+## Ograniczenia `Export-AosTraceFacts.ps1`
+
+`Export-AosTraceFacts.ps1` jest narzędziem heurystycznym, a nie źródłem prawdy. Jego wynik należy traktować jako listę tropów do weryfikacji, nie jako finalny audyt.
+
+Najważniejsze ograniczenia:
+
+- Dopasowania są oparte na nazwach, wzorcach i konwencjach, więc mogą pominąć przepływy ukryte za aliasami, wrapperami, factory methods, reflection albo dynamicznym routingiem.
+- Relacje między UI, API, handlerami i EF są częściowo kandydackie; wymagają potwierdzenia w źródłach, a nie tylko w raporcie.
+- Narzędzie nie rozstrzyga jakości semantycznej. Może wskazać powiązanie, ale nie potwierdzi, że mapowanie jest kompletne, poprawne biznesowo i pokryte testami.
+- Zmiana nazwy komponentu, DTO, endpointu albo handlera może obniżyć trafność bez wygenerowania twardego błędu.
+- Nie zastępuje ręcznego sprawdzenia `app.routes.ts`, kontrolerów, serwisów, encji, `DbContext`, migracji i dokumentacji atomowej ekranów.
+
+W praktyce:
+
+1. Uruchom `Export-AosTraceFacts.ps1`.
+2. Potwierdź fakty w kodzie i w dokumentach źródłowych.
+3. Traktuj raport luk jako backlog do review, a nie jako zamknięty dowód kompletności.
 
 ## Ostatnie Użycie
 

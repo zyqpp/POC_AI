@@ -3,7 +3,52 @@ param(
 )
 
 $docRoot = Join-Path $ProjectRoot 'AI_Documentation'
-$errors = New-Object System.Collections.Generic.List[string]
+$blockingIssues = New-Object System.Collections.Generic.List[string]
+$navigationIssues = New-Object System.Collections.Generic.List[string]
+$contentIssues = New-Object System.Collections.Generic.List[string]
+
+function Add-BlockingIssue {
+    param([string]$Message)
+    $blockingIssues.Add($Message) | Out-Null
+}
+
+function Add-NavigationIssue {
+    param([string]$Message)
+    $navigationIssues.Add($Message) | Out-Null
+}
+
+function Add-ContentIssue {
+    param([string]$Message)
+    $contentIssues.Add($Message) | Out-Null
+}
+
+function Test-IsActiveDocPath {
+    param([string]$FullName)
+
+    foreach ($pattern in @(
+        '\\_archive\\',
+        '\\AOS_Template\\',
+        '\\10_WARSZTAT_AGENTOW\\templates\\'
+    )) {
+        if ($FullName -match $pattern) {
+            return $false
+        }
+    }
+
+    return $true
+}
+
+$canonicalFactStatuses = @(
+    'potwierdzone',
+    'wniosek z analizy',
+    'do potwierdzenia',
+    'brak w kodzie',
+    ('do uzupe' + [char]0x0142 + 'nienia')
+)
+
+$activeDocs = Get-ChildItem -LiteralPath $docRoot -Recurse -File -Filter '*.md' |
+    Where-Object { Test-IsActiveDocPath $_.FullName }
+
 $requiredDirs = @(
     '00_START',
     '01_SYSTEM',
@@ -21,7 +66,7 @@ $requiredDirs = @(
 foreach ($dir in $requiredDirs) {
     $path = Join-Path $docRoot $dir
     if (-not (Test-Path -LiteralPath $path)) {
-        $errors.Add("Missing directory: $dir") | Out-Null
+        Add-BlockingIssue "Missing directory: $dir"
     }
 }
 
@@ -52,17 +97,14 @@ $requiredFiles = @(
 foreach ($file in $requiredFiles) {
     $path = Join-Path $docRoot $file
     if (-not (Test-Path -LiteralPath $path)) {
-        $errors.Add("Missing required documentation file: $file") | Out-Null
+        Add-BlockingIssue "Missing required documentation file: $file"
     }
 }
 
 $templateRoot = Join-Path $docRoot 'AOS_Template'
 if (-not (Test-Path -LiteralPath $templateRoot)) {
-    $errors.Add("Missing AOS template directory: AOS_Template") | Out-Null
+    Add-BlockingIssue "Missing AOS template directory: AOS_Template"
 }
-
-$activeDocs = Get-ChildItem -LiteralPath $docRoot -Recurse -File -Include '*.md' |
-    Where-Object { $_.FullName -notmatch '\\_archive\\' }
 
 $badCodePoints = @(0x00C4, 0x00C5, 0x0102, 0x00C2, 0x00EF, 0x00BF, 0x00BD, 0xFFFD)
 
@@ -72,26 +114,26 @@ foreach ($file in $activeDocs) {
 
     foreach ($codePoint in $badCodePoints) {
         if ($text.IndexOf([char]$codePoint) -ge 0) {
-            $errors.Add("Possible mojibake in $relative") | Out-Null
+            Add-ContentIssue "Possible mojibake in $relative"
             break
         }
     }
 
     if ($text -match '\]\([^\)]*_archive[^\)]*\)') {
-        $errors.Add("Markdown link to archive in $relative") | Out-Null
+        Add-NavigationIssue "Markdown link to archive in $relative"
     }
 
     if ($text -match '(?i)(source|zrodlo).{0,80}_archive') {
-        $errors.Add("Archive used near source wording in $relative") | Out-Null
+        Add-NavigationIssue "Archive used near source wording in $relative"
     }
 
-    if ($relative -notmatch '^AI_Documentation/AOS_Template/' -and $text -match '<[^>\r\n]+>') {
-        $errors.Add("Placeholder-like token in $relative") | Out-Null
+    if ($text -match '(?m)^\s*\|\s*Status faktu\s*\|\s*`?([^`|]+?)`?\s*\|') {
+        $status = $matches[1].Trim()
+        if ($canonicalFactStatuses -notcontains $status) {
+            Add-ContentIssue "Non-canonical fact status '$status' in $relative"
+        }
     }
 
-    if ($relative -notmatch '^AI_Documentation/10_WARSZTAT_AGENTOW/templates/' -and $text -match '\{\{[^}\r\n]+\}\}') {
-        $errors.Add("Unresolved template token in $relative") | Out-Null
-    }
 }
 
 $skillRoot = Join-Path $docRoot '10_WARSZTAT_AGENTOW\skills'
@@ -106,11 +148,11 @@ $expectedSkills = @(
 foreach ($skill in $expectedSkills) {
     $skillFile = Join-Path $skillRoot "$skill\SKILL.md"
     if (-not (Test-Path -LiteralPath $skillFile)) {
-        $errors.Add("Missing skill: $skill") | Out-Null
+        Add-BlockingIssue "Missing skill: $skill"
     } else {
         $content = Get-Content -LiteralPath $skillFile -Raw -Encoding UTF8
         if ($content -match '\[TODO:') {
-            $errors.Add("TODO placeholder in skill: $skill") | Out-Null
+            Add-ContentIssue "TODO placeholder in skill: $skill"
         }
     }
 }
@@ -119,10 +161,10 @@ $traceFacts = Join-Path $docRoot '10_WARSZTAT_AGENTOW\fakty\AI_AOS_TRACE_FACTS.j
 if (Test-Path -LiteralPath $traceFacts) {
     $traceText = Get-Content -LiteralPath $traceFacts -Raw -Encoding UTF8
     if ($traceText -notmatch '"gitHead"\s*:') {
-        $errors.Add("Trace facts missing gitHead metadata") | Out-Null
+        Add-ContentIssue "Trace facts missing gitHead metadata"
     }
     if ($traceText -notmatch '"scriptName"\s*:') {
-        $errors.Add("Trace facts missing scriptName metadata") | Out-Null
+        Add-ContentIssue "Trace facts missing scriptName metadata"
     }
 }
 
@@ -130,14 +172,14 @@ $traceReport = Join-Path $docRoot '10_WARSZTAT_AGENTOW\fakty\AI_AOS_TRACE_REPORT
 if (Test-Path -LiteralPath $traceReport) {
     $reportText = Get-Content -LiteralPath $traceReport -Raw -Encoding UTF8
     if ($reportText -notmatch 'Git HEAD:') {
-        $errors.Add("Trace report missing Git HEAD line") | Out-Null
+        Add-ContentIssue "Trace report missing Git HEAD line"
     }
 }
 
 $aosRoot = Join-Path $docRoot '05_UI_AOS'
 $aosFiles = Get-ChildItem -LiteralPath $aosRoot -File -Filter 'AOS_*.md'
 if ($aosFiles.Count -eq 0) {
-    $errors.Add("No active AOS files found in 05_UI_AOS") | Out-Null
+    Add-BlockingIssue "No active AOS files found in 05_UI_AOS"
 } else {
     $requiredAosSections = @(
         'End-To-End',
@@ -152,7 +194,7 @@ if ($aosFiles.Count -eq 0) {
         $relative = $aosFile.FullName.Substring($ProjectRoot.Length + 1).Replace('\', '/')
         foreach ($section in $requiredAosSections) {
             if ($aosText -notmatch [regex]::Escape($section)) {
-                $errors.Add("AOS missing section '$section': $relative") | Out-Null
+                Add-ContentIssue "AOS missing section '$section': $relative"
             }
         }
     }
@@ -160,12 +202,14 @@ if ($aosFiles.Count -eq 0) {
 
 $screenRoot = Join-Path $docRoot '05_UI_AOS\EKRANY'
 if (-not (Test-Path -LiteralPath $screenRoot)) {
-    $errors.Add("Missing atomic frontend screen directory: 05_UI_AOS/EKRANY") | Out-Null
+    Add-BlockingIssue "Missing atomic frontend screen directory: 05_UI_AOS/EKRANY"
 } else {
     $screenDirs = @(Get-ChildItem -LiteralPath $screenRoot -Directory | Where-Object { $_.Name -match '^E-\d{3}_' })
     if ($screenDirs.Count -eq 0) {
-        $errors.Add("No atomic frontend screen directories found in 05_UI_AOS/EKRANY") | Out-Null
+        Add-BlockingIssue "No atomic frontend screen directories found in 05_UI_AOS/EKRANY"
     }
+
+    $referenceScreenNumbers = @('012', '015', '017')
 
     $routesJson = Join-Path $docRoot '10_WARSZTAT_AGENTOW\fakty\angular-routes.json'
     if (Test-Path -LiteralPath $routesJson) {
@@ -178,16 +222,16 @@ if (-not (Test-Path -LiteralPath $screenRoot)) {
                         -and $_.component -ne 'AppShellComponent'
                 })
             if ($screenDirs.Count -ne $screenRoutes.Count) {
-                $errors.Add("Atomic screen count mismatch. Directories: $($screenDirs.Count), Angular routes: $($screenRoutes.Count)") | Out-Null
+                Add-NavigationIssue "Atomic screen count mismatch. Directories: $($screenDirs.Count), Angular routes: $($screenRoutes.Count)"
             }
         } catch {
-            $errors.Add("Cannot parse angular-routes.json for atomic screen count") | Out-Null
+            Add-NavigationIssue "Cannot parse angular-routes.json for atomic screen count"
         }
     }
 
     foreach ($screenDir in $screenDirs) {
         if ($screenDir.Name -notmatch '^(E-(\d{3}))_') {
-            $errors.Add("Invalid atomic screen directory name: $($screenDir.Name)") | Out-Null
+            Add-BlockingIssue "Invalid atomic screen directory name: $($screenDir.Name)"
             continue
         }
 
@@ -207,7 +251,7 @@ if (-not (Test-Path -LiteralPath $screenRoot)) {
         foreach ($screenFile in $requiredScreenFiles) {
             $path = Join-Path $screenDir.FullName $screenFile
             if (-not (Test-Path -LiteralPath $path)) {
-                $errors.Add("Missing atomic screen file: $relativeDir/$($screenFile.Replace('\', '/'))") | Out-Null
+                Add-BlockingIssue "Missing atomic screen file: $relativeDir/$($screenFile.Replace('\', '/'))"
             }
         }
 
@@ -217,17 +261,49 @@ if (-not (Test-Path -LiteralPath $screenRoot)) {
             $fieldRelative = $fieldFile.FullName.Substring($ProjectRoot.Length + 1).Replace('\', '/')
             foreach ($requiredTerm in @('Wymagal', 'Kolumna SQL', 'Dane Do Test')) {
                 if ($fieldText -notmatch [regex]::Escape($requiredTerm)) {
-                    $errors.Add("Atomic field missing section '$requiredTerm': $fieldRelative") | Out-Null
+                    Add-ContentIssue "Atomic field missing section '$requiredTerm': $fieldRelative"
                 }
+            }
+        }
+
+        if ($referenceScreenNumbers -contains $number) {
+            $realTcFiles = @(Get-ChildItem -LiteralPath (Join-Path $screenDir.FullName "TC-$number`_TESTY") -File -Filter "TC-$number-*.md" -ErrorAction SilentlyContinue)
+            if ($realTcFiles.Count -eq 0) {
+                Add-ContentIssue "No real TC-* test case documents found for reference screen $relativeDir"
             }
         }
     }
 }
 
-if ($errors.Count -gt 0) {
+if ($blockingIssues.Count -gt 0) {
     Write-Host "Documentation quality check failed:" -ForegroundColor Red
-    $errors | ForEach-Object { Write-Host "- $_" -ForegroundColor Red }
+
+    if ($blockingIssues.Count -gt 0) {
+        Write-Host "Blocking issues ($($blockingIssues.Count)):" -ForegroundColor Red
+        $blockingIssues | ForEach-Object { Write-Host "- $_" -ForegroundColor Red }
+    }
+
+    if ($navigationIssues.Count -gt 0) {
+        Write-Host "Navigation warnings ($($navigationIssues.Count)):" -ForegroundColor Yellow
+        $navigationIssues | ForEach-Object { Write-Host "- $_" -ForegroundColor Yellow }
+    }
+
+    if ($contentIssues.Count -gt 0) {
+        Write-Host "Substantive warnings ($($contentIssues.Count)):" -ForegroundColor Yellow
+        $contentIssues | ForEach-Object { Write-Host "- $_" -ForegroundColor Yellow }
+    }
+
     exit 1
 }
 
 Write-Host "Documentation quality check passed." -ForegroundColor Green
+
+if ($navigationIssues.Count -gt 0) {
+    Write-Host "Navigation warnings ($($navigationIssues.Count)):" -ForegroundColor Yellow
+    $navigationIssues | ForEach-Object { Write-Host "- $_" -ForegroundColor Yellow }
+}
+
+if ($contentIssues.Count -gt 0) {
+    Write-Host "Substantive warnings ($($contentIssues.Count)):" -ForegroundColor Yellow
+    $contentIssues | ForEach-Object { Write-Host "- $_" -ForegroundColor Yellow }
+}

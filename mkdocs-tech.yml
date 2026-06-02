@@ -1,0 +1,140 @@
+﻿site_name: Dokumentacja techniczna
+site_description: Dokumentacja techniczna systemu B2B Supply Chain
+site_author: Zespol projektowy
+
+docs_dir: AI_Documentation
+site_dir: site-tech
+repo_url: https://github.com/zyqpp/POC_AI
+edit_uri: edit/POC_AI_podejscie_3/AI_Documentation/
+exclude_docs: |
+  _archive/**
+  AOS_Template/**
+  10_WARSZTAT_AGENTOW/templates/**
+
+validation:
+  omitted_files: ignore
+
+theme:
+  name: material
+  language: pl
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - toc.follow
+    - content.action.edit
+
+extra_css:
+  - assets/stylesheets/portal-layout.css
+
+plugins:
+  - search
+
+nav:
+  - Start:
+      - README: README.md
+      - AI Database Structure: AI_DATABASE_STRUCTURE.md
+  - 00 Start:
+      - Wprowadzenie: 00_START/README.md
+      - Cel i zakres: 00_START/CEL_I_ZAKRES.md
+      - Źródła prawdy: 00_START/ZRODLA_PRAWDY.md
+      - Kolejność pracy: 00_START/KOLEJNOSC_PRACY.md
+      - Checklista jakości AOS: 00_START/CHECKLISTA_JAKOSCI_AOS.md
+      - Standard dokumentacji atomowej: 00_START/STANDARD_ATOMOWEJ_DOKUMENTACJI.md
+      - Plan poprawy dokumentacji: 00_START/PLAN_POPRAWY_DOKUMENTACJI.md
+  - 01 System:
+      - Przegląd: 01_SYSTEM/README.md
+      - Mapa systemu: 01_SYSTEM/MAPA_SYSTEMU.md
+      - Moduły: 01_SYSTEM/MODULY.md
+      - Uruchomienie: 01_SYSTEM/URUCHOMIENIE.md
+  - 02 Architektura:
+      - Przegląd: 02_ARCHITEKTURA/README.md
+      - Architektura: 02_ARCHITEKTURA/ARCHITEKTURA.md
+      - Integracje: 02_ARCHITEKTURA/INTEGRACJE.md
+  - 03 Model danych:
+      - Przegląd: 03_MODEL_DANYCH/README.md
+      - Bazy i konteksty: 03_MODEL_DANYCH/BAZY_I_KONTEKSTY.md
+      - Relacje: 03_MODEL_DANYCH/RELACJE.md
+      - Checkout: 03_MODEL_DANYCH/MODEL_DANYCH_CHECKOUT.md
+      - Order detail: 03_MODEL_DANYCH/MODEL_DANYCH_ORDER_DETAIL.md
+      - Shipment detail: 03_MODEL_DANYCH/MODEL_DANYCH_SHIPMENT_DETAIL.md
+      - Catalog: 03_MODEL_DANYCH/MODEL_DANYCH_CATALOG.md
+      - Profile: 03_MODEL_DANYCH/MODEL_DANYCH_PROFILE.md
+  - 04 API:
+      - Przegląd: 04_API/README.md
+      - Endpointy: 04_API/ENDPOINTY.md
+      - Checkout: 04_API/API_CHECKOUT.md
+      - Order detail: 04_API/API_ORDER_DETAIL.md
+      - Shipment detail: 04_API/API_SHIPMENT_DETAIL.md
+      - Catalog: 04_API/API_CATALOG.md
+      - Profile: 04_API/API_PROFILE.md
+  - 05 UI AOS:
+      - Przegląd: 05_UI_AOS/README.md
+      - Mapa ekranów: 05_UI_AOS/MAPA_EKRANOW.md
+      - AOS Checkout: 05_UI_AOS/AOS_CHECKOUT.md
+      - AOS Order detail: 05_UI_AOS/AOS_ORDER_DETAIL.md
+      - AOS Shipment detail: 05_UI_AOS/AOS_SHIPMENT_DETAIL.md
+      - AOS Catalog: 05_UI_AOS/AOS_CATALOG.md
+      - AOS Profile: 05_UI_AOS/AOS_PROFILE.md
+      - E-006 Profil: 05_UI_AOS/EKRANY/E-006_PROFILE/E-006__README.md
+      - E-007 Produkty: 05_UI_AOS/EKRANY/E-007_PRODUCTS/E-007__README.md
+      - E-008 Tworzenie produktu: 05_UI_AOS/EKRANY/E-008_PRODUCTS_NEW/E-008__README.md
+      - E-009 Szczegół produktu: 05_UI_AOS/EKRANY/E-009_PRODUCTS_ID/E-009__README.md
+  - 06 Procesy:
+      - Przegląd: 06_PROCESY/README.md
+      - Procesy end-to-end: 06_PROCESY/PROCESY_END_TO_END.md
+      - Checkout E2E: 06_PROCESY/CHECKOUT_E2E.md
+      - Order detail lifecycle: 06_PROCESY/ORDER_DETAIL_LIFECYCLE.md
+      - Shipment detail lifecycle: 06_PROCESY/SHIPMENT_DETAIL_LIFECYCLE.md
+      - Profil: 06_PROCESY/PROC-006_PROFILE.md
+      - Produkty: 06_PROCESY/PROC-007_PRODUCTS.md
+      - Nowy produkt: 06_PROCESY/PROC-008_PRODUCTS_NEW.md
+      - Produkt detail: 06_PROCESY/PROC-009_PRODUCTS_ID.md
+      - Edycja produktu: 06_PROCESY/PROC-010_PRODUCTS_ID_EDIT.md
+  - 07 Role i uprawnienia:
+      - Macierz dostępu: 07_ROLE_I_UPRAWNIENIA/MACIERZ_DOSTEPU.md
+      - Checkout: 07_ROLE_I_UPRAWNIENIA/ROLE_CHECKOUT.md
+      - Order detail: 07_ROLE_I_UPRAWNIENIA/ROLE_ORDER_DETAIL.md
+      - Shipment detail: 07_ROLE_I_UPRAWNIENIA/ROLE_SHIPMENT_DETAIL.md
+      - Catalog: 07_ROLE_I_UPRAWNIENIA/ROLE_CATALOG.md
+      - Profile: 07_ROLE_I_UPRAWNIENIA/ROLE_PROFILE.md
+  - 08 Testy:
+      - Przegląd: 08_TESTY/README.md
+      - Testy i luki: 08_TESTY/TESTY_I_LUKI.md
+      - Checkout: 08_TESTY/MACIERZ_TESTOW_CHECKOUT.md
+      - Order detail: 08_TESTY/MACIERZ_TESTOW_ORDER_DETAIL.md
+      - Shipment detail: 08_TESTY/MACIERZ_TESTOW_SHIPMENT_DETAIL.md
+      - Catalog: 08_TESTY/MACIERZ_TESTOW_CATALOG.md
+      - Profile: 08_TESTY/MACIERZ_TESTOW_PROFILE.md
+  - 09 Ryzyka:
+      - README: 09_RYZYKA_I_REKOMENDACJE/README.md
+      - Ryzyka: 09_RYZYKA_I_REKOMENDACJE/RYZYKA.md
+  - 10 Warsztat agentów:
+      - Przegląd: 10_WARSZTAT_AGENTOW/README.md
+      - Narzędzia: 10_WARSZTAT_AGENTOW/NARZEDZIA.md
+      - Fakty trace: 10_WARSZTAT_AGENTOW/fakty/AI_AOS_TRACE_REPORT.md
+  - 99 Audyt dokumentacji:
+      - Audyt 2026-06-02: 99_AUDYT_DOKUMENTACJI/AUDYT_DOKUMENTACJI_2026-06-02.md
+      - Plan 2026-06-02: 99_AUDYT_DOKUMENTACJI/PLAN_NAPRAWCZY_2026-06-02.md
+      - Audyt 2026-05-31: 99_AUDYT_DOKUMENTACJI/AUDYT_DOKUMENTACJI_2026-05-31.md
+      - Plan 2026-05-31: 99_AUDYT_DOKUMENTACJI/PLAN_NAPRAWCZY_2026-05-31.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - plantuml_markdown:
+      format: svg

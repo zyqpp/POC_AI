@@ -16,11 +16,11 @@ Status: `potwierdzone` dla śladu UI -> API -> CatalogInventory DB -> testy.
 | API | `POST /catalog/api/products`, `GET /catalog/api/products/categories` |
 | Backend | `ProductsController.Create`, `CatalogInventoryService.CreateProductAsync` |
 | Model danych | `Products`, `Categories`, `OutboxMessages`; `StockTransactions` przy create: `brak w kodzie` |
-| Dokument API | [API_CATALOG](../../../../04_API/API_CATALOG.md) |
-| Model danych | [MODEL_DANYCH_CATALOG](../../../../03_MODEL_DANYCH/MODEL_DANYCH_CATALOG.md) |
-| Proces | [PROC-008_PRODUCTS_NEW](../../../../06_PROCESY/PROC-008_PRODUCTS_NEW.md) |
-| Role | [ROLE_CATALOG](../../../../07_ROLE_I_UPRAWNIENIA/ROLE_CATALOG.md) |
-| Testy | [MACIERZ_TESTOW_CATALOG](../../../../08_TESTY/MACIERZ_TESTOW_CATALOG.md) |
+| Dokument API | [API_CATALOG](../../../04_API/API_CATALOG.md) |
+| Model danych | [MODEL_DANYCH_CATALOG](../../../03_MODEL_DANYCH/MODEL_DANYCH_CATALOG.md) |
+| Proces | [PROC-008_PRODUCTS_NEW](../../../06_PROCESY/PROC-008_PRODUCTS_NEW.md) |
+| Role | [ROLE_CATALOG](../../../07_ROLE_I_UPRAWNIENIA/ROLE_CATALOG.md) |
+| Testy | [MACIERZ_TESTOW_CATALOG](../../../08_TESTY/MACIERZ_TESTOW_CATALOG.md) |
 
 ## Cel Ekranu
 

@@ -24,5 +24,5 @@ Status: `potwierdzone`.
 | Błędy | [ERR-008_BLEDY/ERR-008__INDEX.md](ERR-008_BLEDY/ERR-008__INDEX.md) |
 | Dane testowe | [TD-008_DANE_TESTOWE/TD-008__INDEX.md](TD-008_DANE_TESTOWE/TD-008__INDEX.md) |
 | Testy | [TC-008_TESTY/TC-008__INDEX.md](TC-008_TESTY/TC-008__INDEX.md) |
-| API | [../../../../04_API/API_CATALOG.md](../../../../04_API/API_CATALOG.md) |
-| Proces | [../../../../06_PROCESY/PROC-008_PRODUCTS_NEW.md](../../../../06_PROCESY/PROC-008_PRODUCTS_NEW.md) |
+| API | [../../../04_API/API_CATALOG.md](../../../04_API/API_CATALOG.md) |
+| Proces | [../../../06_PROCESY/PROC-008_PRODUCTS_NEW.md](../../../06_PROCESY/PROC-008_PRODUCTS_NEW.md) |

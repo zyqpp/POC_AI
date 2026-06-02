@@ -1,0 +1,28 @@
+﻿/* Niezalezny scroll dla drzewa po lewej i TOC po prawej */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary .md-sidebar__scrollwrap,
+  .md-sidebar--secondary .md-sidebar__scrollwrap {
+    max-height: calc(100vh - 4.8rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #4f5bd5 #dfe3ff;
+  }
+
+  .md-sidebar--primary .md-sidebar__scrollwrap::-webkit-scrollbar,
+  .md-sidebar--secondary .md-sidebar__scrollwrap::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .md-sidebar--primary .md-sidebar__scrollwrap::-webkit-scrollbar-track,
+  .md-sidebar--secondary .md-sidebar__scrollwrap::-webkit-scrollbar-track {
+    background: #dfe3ff;
+    border-radius: 999px;
+  }
+
+  .md-sidebar--primary .md-sidebar__scrollwrap::-webkit-scrollbar-thumb,
+  .md-sidebar--secondary .md-sidebar__scrollwrap::-webkit-scrollbar-thumb {
+    background: #4f5bd5;
+    border-radius: 999px;
+    border: 2px solid #dfe3ff;
+  }
+}

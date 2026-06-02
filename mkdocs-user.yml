@@ -1,0 +1,88 @@
+﻿site_name: Dokumentacja użytkownika
+site_description: Dokumentacja użytkowa i AOS systemu B2B Supply Chain
+site_author: Zespół projektowy
+
+docs_dir: AI_Documentation
+site_dir: site-user
+repo_url: https://github.com/zyqpp/POC_AI
+edit_uri: edit/POC_AI_podejscie_3/AI_Documentation/
+exclude_docs: |
+  _archive/**
+  AOS_Template/**
+  NAV_FILES_BY_FOLDER.md
+  NAV_FOLDER_TREE.md
+  01_SYSTEM/**
+  02_ARCHITEKTURA/**
+  09_RYZYKA_I_REKOMENDACJE/**
+  10_WARSZTAT_AGENTOW/**
+  99_AUDYT_DOKUMENTACJI/**
+
+validation:
+  omitted_files: ignore
+
+theme:
+  name: material
+  language: pl
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - toc.follow
+    - content.action.edit
+
+extra_css:
+  - assets/stylesheets/portal-layout.css
+
+plugins:
+  - search
+
+nav:
+  - Start:
+      - Przegląd: README.md
+      - Dokumentacja użytkowa i AOS: 05_UI_AOS/README.md
+  - Ekrany i AOS:
+      - Mapa ekranów: 05_UI_AOS/MAPA_EKRANOW.md
+      - Profil: 05_UI_AOS/AOS_PROFILE.md
+      - Katalog: 05_UI_AOS/AOS_CATALOG.md
+      - Checkout: 05_UI_AOS/AOS_CHECKOUT.md
+      - Szczegóły zamówienia: 05_UI_AOS/AOS_ORDER_DETAIL.md
+      - Szczegóły shipmentu: 05_UI_AOS/AOS_SHIPMENT_DETAIL.md
+  - Procesy użytkownika:
+      - Przegląd procesów: 06_PROCESY/README.md
+      - Procesy end-to-end: 06_PROCESY/PROCESY_END_TO_END.md
+      - Checkout E2E: 06_PROCESY/CHECKOUT_E2E.md
+      - Order detail lifecycle: 06_PROCESY/ORDER_DETAIL_LIFECYCLE.md
+      - Shipment detail lifecycle: 06_PROCESY/SHIPMENT_DETAIL_LIFECYCLE.md
+      - Profil: 06_PROCESY/PROC-006_PROFILE.md
+      - Produkty: 06_PROCESY/PROC-007_PRODUCTS.md
+      - Nowy produkt: 06_PROCESY/PROC-008_PRODUCTS_NEW.md
+      - Produkt detail: 06_PROCESY/PROC-009_PRODUCTS_ID.md
+      - Edycja produktu: 06_PROCESY/PROC-010_PRODUCTS_ID_EDIT.md
+  - Role i dostępy:
+      - Macierz dostępu: 07_ROLE_I_UPRAWNIENIA/MACIERZ_DOSTEPU.md
+      - Checkout: 07_ROLE_I_UPRAWNIENIA/ROLE_CHECKOUT.md
+      - Order detail: 07_ROLE_I_UPRAWNIENIA/ROLE_ORDER_DETAIL.md
+      - Shipment detail: 07_ROLE_I_UPRAWNIENIA/ROLE_SHIPMENT_DETAIL.md
+      - Katalog: 07_ROLE_I_UPRAWNIENIA/ROLE_CATALOG.md
+      - Profil: 07_ROLE_I_UPRAWNIENIA/ROLE_PROFILE.md
+  - Testy akceptacyjne:
+      - Przegląd: 08_TESTY/README.md
+      - Luki testowe: 08_TESTY/TESTY_I_LUKI.md
+      - Testy Checkout: 08_TESTY/MACIERZ_TESTOW_CHECKOUT.md
+      - Testy Order detail: 08_TESTY/MACIERZ_TESTOW_ORDER_DETAIL.md
+      - Testy Shipment detail: 08_TESTY/MACIERZ_TESTOW_SHIPMENT_DETAIL.md
+      - Testy Catalog: 08_TESTY/MACIERZ_TESTOW_CATALOG.md
+      - Testy Profile: 08_TESTY/MACIERZ_TESTOW_PROFILE.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences

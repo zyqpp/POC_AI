@@ -17,11 +17,11 @@ Status: `potwierdzone` dla śladu front -> API -> IdentityAuth DB -> testy.
 | Serwis Angular | `UsersApiService.getProfile()` w `supply-chain-frontend/src/app/core/api/auth-api.service.ts` |
 | Endpoint | `GET /identity/api/users/profile` |
 | Backend | `services/IdentityAuth/IdentityAuth.API/Controllers/UsersController.cs` |
-| Proces | [PROC-006-0001 Profil użytkownika](../../../../06_PROCESY/PROC-006_PROFILE.md) |
-| API | [API_PROFILE](../../../../04_API/API_PROFILE.md) |
-| Model danych | [MODEL_DANYCH_PROFILE](../../../../03_MODEL_DANYCH/MODEL_DANYCH_PROFILE.md) |
-| Role | [ROLE_PROFILE](../../../../07_ROLE_I_UPRAWNIENIA/ROLE_PROFILE.md) |
-| Testy | [MACIERZ_TESTOW_PROFILE](../../../../08_TESTY/MACIERZ_TESTOW_PROFILE.md) |
+| Proces | [PROC-006-0001 Profil użytkownika](../../../06_PROCESY/PROC-006_PROFILE.md) |
+| API | [API_PROFILE](../../../04_API/API_PROFILE.md) |
+| Model danych | [MODEL_DANYCH_PROFILE](../../../03_MODEL_DANYCH/MODEL_DANYCH_PROFILE.md) |
+| Role | [ROLE_PROFILE](../../../07_ROLE_I_UPRAWNIENIA/ROLE_PROFILE.md) |
+| Testy | [MACIERZ_TESTOW_PROFILE](../../../08_TESTY/MACIERZ_TESTOW_PROFILE.md) |
 
 ## Cel Ekranu
 
