@@ -1,6 +1,6 @@
 # A-014 Akcje UI
 
-Status: `szkielet`; indeks akcji wykrytych automatycznie z template Angular.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i LogisticsApiService.
 
 | ID akcji | Nazwa | Typ detekcji | Źródło | Dokument |
 |---|---|---|---|---|

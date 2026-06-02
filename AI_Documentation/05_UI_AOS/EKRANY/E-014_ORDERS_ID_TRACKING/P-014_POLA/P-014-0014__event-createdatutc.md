@@ -1,6 +1,6 @@
-# P-014-0014 event.createdAtUtc
+﻿# P-014-0014 event.createdAtUtc
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i ShipmentDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `event.createdAtUtc` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-tracking/order-tracking.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Timestamp zdarzenia trackingowego (ShipmentEvent).
+**Źródło danych:** ShipmentEventDto.createdAtUtc → ShipmentEvents.CreatedAtUtc  
+**Kiedy widoczne:** W liście zdarzeń wybranego shipmentu.
+**Format:** ISO 8601 UTC; wyświetlany przez 	oLocaleString.
 
 ## Wymagalność I Walidacje
 
@@ -28,18 +31,14 @@ Do uzupełnienia.
 
 ## Mapowanie Danych
 
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Warstwa | Artefakt | Przykład | Status |
+|---|---|---|---|
+| Frontend model/form | ShipmentEventDto.createdAtUtc | `createdAtUtc: string` | `wniosek z analizy` |
+| Endpoint | LogisticsApiService | `GET /logistics/api/logistics/shipments/...` | `potwierdzone` |
+| DTO/kontrakt | ShipmentEventDto | `public string CreatedAtUtc { get; }` | `wniosek z analizy` |
+| Tabela SQL | ShipmentEvents | `ShipmentEvents` | `wniosek z analizy` |
+| Kolumna SQL | CreatedAtUtc | `CreatedAtUtc` | `wniosek z analizy` |
+| Odczyt/zapis | Odczyt | `SELECT` | `wniosek z analizy` |
 
 ## Dane Do Testów
 

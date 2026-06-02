@@ -1,6 +1,6 @@
 # P-013-0004 searchQuery
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `searchQuery` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Pole tekstowe wyszukiwania. Filtruje listę zamówień po stronie klienta (Angular) po `orderNumber` i `orderId` (case-insensitive, contains).  
+**Źródło danych:** Brak — lokalna operacja `applyClientFilters()` na załadowanej stronie danych.  
+**Kiedy widoczne:** Zawsze.  
+**Format:** Text input; wartość pusta = brak filtrowania.
 
 ## Wymagalność I Walidacje
 
@@ -28,18 +31,14 @@ Do uzupełnienia.
 
 ## Mapowanie Danych
 
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Warstwa | Artefakt | Przykład | Status |
+|---|---|---|---|
+| Frontend model/form | `OrderListComponent.searchQuery` | `searchQuery: string` | `wniosek z analizy` |
+| Endpoint | Brak — filtr kliencki | n/d | `potwierdzone` |
+| DTO/kontrakt | `OrderListItemDto.orderNumber`, `orderId` | `public string OrderNumber { get; }` | `wniosek z analizy` |
+| Tabela SQL | `Orders` | `Orders` | `wniosek z analizy` |
+| Kolumna SQL | `OrderNumber`, `OrderId` | `OrderNumber`, `OrderId` | `wniosek z analizy` |
+| Odczyt/zapis | Odczyt (filtr kliencki) | `includes()` w TS | `potwierdzone` |
 
 ## Dane Do Testów
 

@@ -1,6 +1,6 @@
-# P-016-0002 slaFilter
+﻿# P-016-0002 slaFilter
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i ShipmentDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `slaFilter` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/logistics/shipment-list/shipment-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Filtr SLA state shipmentu (kliencki). Opcje: ll, on-track, t-risk, delayed, exception. Porównuje ShipmentEtaService.getEtaInfo(s).slaState.
+**Źródło danych:** Lokalny ShipmentEtaService.
+**Kiedy widoczne:** Zawsze.
+**Format:** Dropdown.
 
 ## Wymagalność I Walidacje
 

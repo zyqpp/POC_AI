@@ -17,3 +17,20 @@ Status: `potwierdzone`.
 | Kolumna SQL | `BusinessName`, max 180, `NOT NULL`, odczyt `R` |
 | Dane Do Test | `TD-006-0002` |
 | Testy | `TC-006-0002` |
+
+## Opis Pola
+
+Pole wyświetlające nazwę firmy (business name) dealera. Widoczne wyłącznie dla roli `Dealer`. Nazwa firmy jest podawana podczas rejestracji dealera i nie może być zmieniana z poziomu profilu.
+
+## Mapowanie Danych
+
+| Warstwa | Artefakt | Status |
+|---|---|---|
+| Frontend | `profile.component.html` — binding `profile()!.dealerBusinessName` | `potwierdzone` |
+| DTO | `UserProfileDto.dealerBusinessName` (`string`) | `potwierdzone` |
+| Endpoint | `GET /identity/api/users/profile` → `UsersController.GetProfile()` | `potwierdzone` |
+| Encja | `DealerProfile.BusinessName` | `potwierdzone` |
+| DbContext | `IdentityAuthDbContext.DealerProfiles` | `potwierdzone` |
+| Tabela SQL | `DealerProfiles` | `potwierdzone` |
+| Kolumna SQL | `BusinessName`, max 180, `NOT NULL` | `potwierdzone` |
+| Odczyt/zapis | R (tylko odczyt na profilu) | `potwierdzone` |

@@ -1,6 +1,6 @@
 # P-013-0001 bulkStatus
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i OrderApiService.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `bulkStatus` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Pole wyboru docelowego statusu w operacji masowej zmiany statusu zamówień (bulk status update). Renderowane jako `<select>` z opcjami z `ORDER_STATUS_LABELS`. Admin widzi wszystkie statusy; Logistics — tylko statusy zdefiniowane w `LOGISTICS_MANAGED_ORDER_STATUSES`.  
+**Źródło danych:** Lokalny enum `OrderStatus` — lista opcji budowana w `bulkStatusOptions()` w komponencie; wartość wysyłana jako `BulkUpdateOrderStatusRequest.newStatus` do `POST /orders/api/admin/orders/bulk-status`.  
+**Kiedy widoczne:** Tylko dla roli Admin lub Logistics (`isStatusManager() === true`).  
+**Format:** Dropdown z etykietami tekstowymi statusów (np. "Processing", "Delivered").
 
 ## Wymagalność I Walidacje
 
@@ -28,18 +31,14 @@ Do uzupełnienia.
 
 ## Mapowanie Danych
 
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Warstwa | Artefakt | Przykład | Status |
+|---|---|---|---|
+| Frontend model/form | `OrderListComponent.bulkStatus` | `bulkStatus: OrderStatus \| null` | `wniosek z analizy` |
+| Endpoint | `AdminOrderApiService.bulkUpdateStatus` | `POST /orders/api/admin/orders/bulk-status` | `potwierdzone` |
+| DTO/kontrakt | `BulkUpdateOrderStatusRequest` | `public OrderStatus NewStatus { get; }` | `wniosek z analizy` |
+| Tabela SQL | `Orders` | `Orders` | `wniosek z analizy` |
+| Kolumna SQL | `Status` | `Status` | `wniosek z analizy` |
+| Odczyt/zapis | Zapis (bulk update) | `UPDATE Orders SET Status = ...` | `wniosek z analizy` |
 
 ## Dane Do Testów
 

@@ -1,6 +1,6 @@
-# P-013-0019 step.label
+﻿# P-013-0019 step.label
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `step.label` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Etykieta kroku w pasku pipeline statusu (analogicznie do P-013-0010 s.label — używane w innym kontekście iteracji). Pochodzi z pipelineSteps(o.status).
+**Źródło danych:** Lokalny enum + pipelineSteps().
+**Kiedy widoczne:** W każdym wierszu tabeli.
+**Format:** Ciąg znaków.
 
 ## Wymagalność I Walidacje
 

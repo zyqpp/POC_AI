@@ -1,6 +1,6 @@
-# P-013-0009 isSelected(o.orderId)
+﻿# P-013-0009 isSelected(o.orderId)
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `isSelected(o.orderId)` |
 | Typ detekcji | `[checked]` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Stan checkboxa per wiersz zamówienia. isSelected(o.orderId) sprawdza czy orderId jest w selectedOrderIds.
+**Źródło danych:** Lokalny state komponentu (selectedOrderIds signal).
+**Kiedy widoczne:** W każdym wierszu tabeli.
+**Format:** Boolean (checked/unchecked).
 
 ## Wymagalność I Walidacje
 

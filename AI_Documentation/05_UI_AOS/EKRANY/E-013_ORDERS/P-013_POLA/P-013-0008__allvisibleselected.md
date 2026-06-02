@@ -1,6 +1,6 @@
-# P-013-0008 allVisibleSelected()
+﻿# P-013-0008 allVisibleSelected()
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `allVisibleSelected()` |
 | Typ detekcji | `[checked]` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Stan checkboxa nagłówka tabeli — zaznaczenie wszystkich widocznych zamówień na stronie. Metoda llVisibleSelected() zwraca true gdy wszystkie orders() są w selectedOrderIds.
+**Źródło danych:** Lokalny state komponentu.
+**Kiedy widoczne:** Zawsze (w nagłówku tabeli).
+**Format:** Boolean (checked/unchecked).
 
 ## Wymagalność I Walidacje
 

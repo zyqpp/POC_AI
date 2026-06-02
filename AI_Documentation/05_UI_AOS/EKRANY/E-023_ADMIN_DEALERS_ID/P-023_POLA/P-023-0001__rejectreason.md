@@ -1,6 +1,6 @@
 # P-023-0001 rejectReason
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`
 
 ## Identyfikacja
 
@@ -11,35 +11,42 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `rejectReason` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/admin/dealer-detail/dealer-detail.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Powód odrzucenia rejestracji dealera. Pole tekstowe w dialogu "Reject Dealer". Wymagane przed wysłaniem akcji `reject`. Backend waliduje: `NotEmpty().MaximumLength(400)`.
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/admin/dealer-detail/dealer-detail.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-023](../ERR-023_BLEDY/ERR-023__INDEX.md) | do uzupełnienia |
+| Wymagane | tak — backend: `NotEmpty()` | `potwierdzone` |
+| Typ UI | `textarea` lub `input[type=text]` z `[(ngModel)]="rejectReason"` w dialogu | `wniosek z analizy` |
+| Reguły walidacji (backend) | `NotEmpty().MaximumLength(400)` — `RejectDealerRequestValidator` w `AuthValidators.cs` | `potwierdzone` |
+| Komunikaty błędów | [ERR-023](../ERR-023_BLEDY/ERR-023__INDEX.md) | błąd z API przy pustym powodzie |
+
+## Walidator Backend
+
+Plik: `services/IdentityAuth/IdentityAuth.Application/Validation/AuthValidators.cs`
+```csharp
+RuleFor(x => x.Reason).NotEmpty().MaximumLength(400);
+```
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `DealerDetailComponent.rejectReason: string` | `wniosek z analizy` |
+| Serwis API | `AdminApiService.rejectDealer(id, {reason: rejectReason})` | `wniosek z analizy` |
+| Endpoint | `PUT /identity/api/admin/dealers/{id}/reject` | `wniosek z analizy` |
+| DTO/kontrakt | `RejectDealerRequest` w `supply-chain-frontend/src/app/core/models/auth.models.ts` | `wniosek z analizy` |
+| Encja/model | `DealerProfile.RejectionReason` lub `User.RejectionReason` (szacowane) | `wniosek z analizy` |
+| DbContext | `do uzupełnienia` | `do uzupełnienia` |
+| Schemat SQL | `do uzupełnienia` | `do uzupełnienia` |
+| Tabela SQL | `DealerProfiles` lub `Users` (szacowane) | `wniosek z analizy` |
+| Kolumna SQL | `RejectionReason` (szacowane) | `wniosek z analizy` |
+| Odczyt/zapis | zapis (PUT) | `wniosek z analizy` |
 
 ## Dane Do Testów
 

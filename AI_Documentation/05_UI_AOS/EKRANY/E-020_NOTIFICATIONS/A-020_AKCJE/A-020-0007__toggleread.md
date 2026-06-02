@@ -11,23 +11,24 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu
 | Nazwa wykryta | `toggleRead` |
 | Typ detekcji | `click` |
 | Źródło | `supply-chain-frontend/src/app/features/notifications/notification-list/notification-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Akcji
 
-Do uzupełnienia.
+Przełącza stan przeczytania pojedynczego powiadomienia. Gdy `markRead=true` → wysyła `PUT .../read`; gdy `markRead=false` → wysyła `PUT .../unread`. Po sukcesie aktualizuje lokalny `readMap` signal i ponownie aplikuje filtry (`applyFilter()`). Po błędzie pokazuje toast z odpowiednim komunikatem.
 
 ## Ślad Techniczny
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Element UI | do uzupełnienia | `do uzupełnienia` |
-| Metoda komponentu | do uzupełnienia | `do uzupełnienia` |
-| Serwis frontend | do uzupełnienia | `do uzupełnienia` |
-| Endpoint API | do uzupełnienia | `do uzupełnienia` |
-| Komenda/zapytanie | do uzupełnienia | `do uzupełnienia` |
-| Walidacje | do uzupełnienia | `do uzupełnienia` |
-| Skutek w bazie | do uzupełnienia | `do uzupełnienia` |
+| Element UI | Przycisk/checkbox przy każdym wierszu powiadomienia | `wniosek z analizy` |
+| Metoda komponentu | `toggleRead(notificationId, markRead)` w `notification-list.component.ts` | `wniosek z analizy` |
+| Serwis frontend | `NotificationApiService.markRead(id)` lub `NotificationApiService.markUnread(id)` | `wniosek z analizy` |
+| Endpoint API (read) | `PUT /notifications/api/notifications/{id}/read` | `wniosek z analizy` |
+| Endpoint API (unread) | `PUT /notifications/api/notifications/{id}/unread` | `wniosek z analizy` |
+| Komenda/zapytanie | Backend handler w `Notification.Application` | `wniosek z analizy` |
+| Walidacje | Brak — request bez body; błąd HTTP powoduje toast | `wniosek z analizy` |
+| Skutek w bazie | UPDATE `Notifications.IsRead = true/false` dla danego `notificationId` | `wniosek z analizy` |
 
 ## Testy
 

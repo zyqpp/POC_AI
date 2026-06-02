@@ -1,6 +1,6 @@
 # P-023-0003 settleAmount
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`
 
 ## Identyfikacja
 
@@ -11,35 +11,35 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `settleAmount` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/admin/dealer-detail/dealer-detail.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Kwota rozliczenia należności dealera. Pole edytowalne w dialogu "Settle Outstanding". Wysyłana do `POST /payments/api/payment/dealers/{id}/settlements` jako `{amount, referenceNo}`. Backend waliduje: `Amount > 0`.
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/admin/dealer-detail/dealer-detail.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-023](../ERR-023_BLEDY/ERR-023__INDEX.md) | do uzupełnienia |
+| Wymagane | tak | `wniosek z analizy` |
+| Typ UI | `input[type=number]` z `[(ngModel)]="settleAmount"` | `wniosek z analizy` |
+| Reguły walidacji (backend) | `Amount.GreaterThan(0m)` — `SettleOutstandingRequestValidator` w `PaymentValidators.cs` | `potwierdzone` |
+| Komunikaty błędów | [ERR-023](../ERR-023_BLEDY/ERR-023__INDEX.md) | błąd z API przy kwocie <= 0 |
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `DealerDetailComponent.settleAmount: number` | `wniosek z analizy` |
+| Serwis API | `PaymentApiService.settleOutstanding(dealerId, {amount: settleAmount, referenceNo: settleRef})` | `wniosek z analizy` |
+| Endpoint | `POST /payments/api/payment/dealers/{id}/settlements` | `wniosek z analizy` |
+| DTO/kontrakt | `SettleOutstandingRequest` | `wniosek z analizy` |
+| Encja/model | `DealerCreditAccount.CurrentOutstanding` (zmniejszane o kwotę) | `wniosek z analizy` |
+| DbContext | `do uzupełnienia` | `do uzupełnienia` |
+| Schemat SQL | `do uzupełnienia` | `do uzupełnienia` |
+| Tabela SQL | `DealerCreditAccounts` (szacowane) | `wniosek z analizy` |
+| Kolumna SQL | `CurrentOutstanding` (szacowane) | `wniosek z analizy` |
+| Odczyt/zapis | zapis (POST) | `wniosek z analizy` |
 
 ## Dane Do Testów
 

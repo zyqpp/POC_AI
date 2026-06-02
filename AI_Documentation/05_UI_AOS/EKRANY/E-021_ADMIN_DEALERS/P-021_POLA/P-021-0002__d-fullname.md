@@ -1,6 +1,6 @@
 # P-021-0002 d.fullName
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`
 
 ## Identyfikacja
 
@@ -11,35 +11,35 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `d.fullName` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/admin/dealer-list/dealer-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Imię i nazwisko dealera (właściciela konta). Wyświetlane w kolumnie tabeli listy dealerów jako identyfikator osoby. Pochodzi z profilu użytkownika zarejestrowanego jako dealer.
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/admin/dealer-list/dealer-list.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-021](../ERR-021_BLEDY/ERR-021__INDEX.md) | do uzupełnienia |
+| Wymagane | tak — rejestracja: `NotEmpty().MaximumLength(120)` | `potwierdzone` |
+| Typ UI | tekst tylko do odczytu (interpolacja w td) | `wniosek z analizy` |
+| Reguły walidacji | brak walidacji UI przy odczycie | `wniosek z analizy` |
+| Komunikaty błędów | [ERR-021](../ERR-021_BLEDY/ERR-021__INDEX.md) | nie dotyczy |
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `DealerSummaryDto.fullName: string` | `wniosek z analizy` |
+| Serwis API | `AdminApiService.getDealers()` | `wniosek z analizy` |
+| Endpoint | `GET /identity/api/admin/dealers` | `wniosek z analizy` |
+| DTO/kontrakt | `DealerSummaryDto` w `supply-chain-frontend/src/app/core/models/auth.models.ts` | `wniosek z analizy` |
+| Encja/model | `User.FullName` (szacowane) | `wniosek z analizy` |
+| DbContext | `do uzupełnienia` | `do uzupełnienia` |
+| Schemat SQL | `do uzupełnienia` | `do uzupełnienia` |
+| Tabela SQL | `Users` (szacowane) | `wniosek z analizy` |
+| Kolumna SQL | `FullName` (szacowane) | `wniosek z analizy` |
+| Odczyt/zapis | odczyt | `wniosek z analizy` |
 
 ## Dane Do Testów
 

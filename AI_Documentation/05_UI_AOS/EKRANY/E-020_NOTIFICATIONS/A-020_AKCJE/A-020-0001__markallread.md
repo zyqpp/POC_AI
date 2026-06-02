@@ -11,23 +11,23 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu
 | Nazwa wykryta | `markAllRead` |
 | Typ detekcji | `click` |
 | Źródło | `supply-chain-frontend/src/app/features/notifications/notification-list/notification-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Akcji
 
-Do uzupełnienia.
+Oznacza wszystkie nieprzeczytane powiadomienia z aktualnie przefiltrowanej listy jako przeczytane. Akcja iteruje po `filtered()` i dla każdego nieprzeczytanego wysyła osobne `PUT .../read`. Jeśli któryś request zakończy się błędem, po ukończeniu wszystkich żądań wyświetlany jest toast ostrzegawczy "Some notifications could not be marked as read". Akcja jest niedostępna gdy lista jest pusta lub gdy wszystkie są już przeczytane.
 
 ## Ślad Techniczny
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Element UI | do uzupełnienia | `do uzupełnienia` |
-| Metoda komponentu | do uzupełnienia | `do uzupełnienia` |
-| Serwis frontend | do uzupełnienia | `do uzupełnienia` |
-| Endpoint API | do uzupełnienia | `do uzupełnienia` |
-| Komenda/zapytanie | do uzupełnienia | `do uzupełnienia` |
-| Walidacje | do uzupełnienia | `do uzupełnienia` |
-| Skutek w bazie | do uzupełnienia | `do uzupełnienia` |
+| Element UI | Przycisk "Mark All Read" w nagłówku listy | `wniosek z analizy` |
+| Metoda komponentu | `markAllRead()` w `notification-list.component.ts` | `wniosek z analizy` |
+| Serwis frontend | `NotificationApiService.markRead(id)` — per każde powiadomienie | `wniosek z analizy` |
+| Endpoint API | `PUT /notifications/api/notifications/{id}/read` | `wniosek z analizy` |
+| Komenda/zapytanie | Handler w `Notification.Application` — `MarkNotificationReadCommand` | `wniosek z analizy` |
+| Walidacje | Pominięcie gdy lista pusta lub `unreadCount() === 0`; toast ostrzeżenia przy częściowym błędzie | `wniosek z analizy` |
+| Skutek w bazie | UPDATE `Notifications.IsRead = true` dla każdego oznaczonego ID | `wniosek z analizy` |
 
 ## Testy
 

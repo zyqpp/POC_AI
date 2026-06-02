@@ -90,6 +90,42 @@ Proces obejmuje wszystkie operacje związane z tożsamością użytkownika: logo
 | `ERR-PROC-001-006` | OTP wygasł (forgot-password) | 400 | komunikat "Link wygasł — wyślij ponownie" | `wniosek z analizy` |
 | `ERR-PROC-001-007` | Backend IdentityAuth niedostępny | 503 | UI pokazuje komunikat błędu; brak częściowego zapisu | `wniosek z analizy` |
 
+## Zmiana Hasła (Change Password)
+
+| Krok | Warstwa | Fakt | Status |
+|---|---|---|---|
+| 1 | UI | Formularz zmiany hasła: `currentPassword` + `newPassword` | `wniosek z analizy` |
+| 2 | API call | `POST /identity/api/auth/change-password` z `{currentPassword, newPassword}` | `wniosek z analizy` |
+| 3 | Backend | `ChangePasswordCommand` → `ChangePasswordCommandHandler` | `wniosek z analizy` |
+| 4 | Walidacja | `ChangePasswordRequestValidator`: currentPassword `NotEmpty()`; newPassword `NotEmpty().MinimumLength(8).Matches("[A-Z]").Matches("[0-9]")` | `potwierdzone` |
+| 5 | Business | Weryfikacja currentPassword (BCrypt hash check); zapis nowego hash | `wniosek z analizy` |
+| 6 | DB write | Aktualizacja `Users.PasswordHash` | `wniosek z analizy` |
+
+**Walidator backend (`ChangePasswordRequestValidator`)**
+Plik: `services/IdentityAuth/IdentityAuth.Application/Validation/AuthValidators.cs`
+```csharp
+RuleFor(x => x.CurrentPassword).NotEmpty();
+RuleFor(x => x.NewPassword)
+    .NotEmpty()
+    .MinimumLength(8)
+    .Matches("[A-Z]").WithMessage("Password must contain at least one uppercase letter.")
+    .Matches("[0-9]").WithMessage("Password must contain at least one number.");
+```
+
+## Walidatory Backendu
+
+Wszystkie walidatory znajdują się w `services/IdentityAuth/IdentityAuth.Application/Validation/AuthValidators.cs` (FluentValidation):
+
+| Walidator | Plik | Opis reguł |
+|---|---|---|
+| `LoginRequestValidator` | `AuthValidators.cs` | email format, password required | `potwierdzone` |
+| `RegisterDealerRequestValidator` | `AuthValidators.cs` | email, password (min 8, uppercase, cyfra), fullName max 120, phone Indian 10-digit, GST regex, businessName max 180, tradeLicenseNo max 80, address max 300, city/state max 100, pinCode 6 cyfr | `potwierdzone` |
+| `ResetPasswordRequestValidator` | `AuthValidators.cs` | email format, otpCode `^\d{6}$`, newPassword min 8 + uppercase + cyfra | `potwierdzone` |
+| `ChangePasswordRequestValidator` | `AuthValidators.cs` | currentPassword required, newPassword min 8 + uppercase + cyfra (używany przy zmianie hasła przez zalogowanego użytkownika — brak dedykowanego ekranu w AOS) | `wniosek z analizy` |
+| `CreateAgentRequestValidator` | `AuthValidators.cs` | email format, temporaryPassword min 8 + uppercase + cyfra, fullName max 120, phone Indian 10-digit (używany przez Admin przy tworzeniu konta agenta) | `wniosek z analizy` |
+| `RejectDealerRequestValidator` | `AuthValidators.cs` | reason max 400 (używany przy odrzuceniu rejestracji dealera przez Admin) | `wniosek z analizy` |
+| `UpdateCreditLimitRequestValidator` | `AuthValidators.cs` | creditLimit >= 0 (używany przez Admin przy aktualizacji limitu kredytowego dealera) | `wniosek z analizy` |
+
 ## Luki
 
 | ID | Luka | Status |
@@ -97,3 +133,5 @@ Proces obejmuje wszystkie operacje związane z tożsamością użytkownika: logo
 | `GAP-PROC-001-001` | Brak lockoutu konta po N błędnych próbach logowania | `brak w kodzie` |
 | `GAP-PROC-001-002` | idempotencyKey z UI przy refresh jest nieużywany przez backend | `brak w kodzie` |
 | `GAP-PROC-001-003` | Brak testu E2E dla pełnego flow login → refresh → logout | `brak w kodzie` |
+| `GAP-PROC-001-004` | `ChangePasswordRequestValidator` — brak ekranu AOS dla zmiany hasła przez zalogowanego użytkownika; zmiana hasła odbywa się przez `/forgot-password` (OTP flow) | `wniosek z analizy` |
+| `GAP-PROC-001-005` | `CreateAgentRequestValidator` — brak ekranu E-AOS dla tworzenia agenta; akcja dostępna przez Admin panel | `do uzupełnienia` |

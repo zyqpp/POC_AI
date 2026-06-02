@@ -1,6 +1,6 @@
 # P-023-0002 newCreditLimit
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`
 
 ## Identyfikacja
 
@@ -11,35 +11,42 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `newCreditLimit` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/admin/dealer-detail/dealer-detail.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Nowy limit kredytowy dealera. Pole edytowalne w dialogu "Update Credit Limit". Inicjalizowane wartością `dealer().creditLimit` przy załadowaniu strony. Wysyłane do API jako `{creditLimit: newCreditLimit}`.
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/admin/dealer-detail/dealer-detail.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-023](../ERR-023_BLEDY/ERR-023__INDEX.md) | do uzupełnienia |
+| Wymagane | tak — przy zapisaniu w dialogu | `wniosek z analizy` |
+| Typ UI | `input[type=number]` z `[(ngModel)]="newCreditLimit"` w dialogu | `wniosek z analizy` |
+| Reguły walidacji (backend) | `CreditLimit >= 0` — `UpdateCreditLimitRequestValidator` w `AuthValidators.cs` | `potwierdzone` |
+| Komunikaty błędów | [ERR-023](../ERR-023_BLEDY/ERR-023__INDEX.md) | błąd z API przy wartości ujemnej |
+
+## Walidator Backend
+
+Plik: `services/IdentityAuth/IdentityAuth.Application/Validation/AuthValidators.cs`
+```csharp
+RuleFor(x => x.CreditLimit).GreaterThanOrEqualTo(0m);
+```
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `DealerDetailComponent.newCreditLimit: number` | `wniosek z analizy` |
+| Serwis API | `AdminApiService.updateCreditLimit(id, {creditLimit: newCreditLimit})` | `wniosek z analizy` |
+| Endpoint | `PUT /identity/api/admin/dealers/{id}/credit-limit` | `wniosek z analizy` |
+| DTO/kontrakt | `UpdateCreditLimitRequest` w `supply-chain-frontend/src/app/core/models/auth.models.ts` | `wniosek z analizy` |
+| Encja/model | `DealerCreditAccount.CreditLimit` lub `DealerProfile.CreditLimit` (szacowane) | `wniosek z analizy` |
+| DbContext | `do uzupełnienia` | `do uzupełnienia` |
+| Schemat SQL | `do uzupełnienia` | `do uzupełnienia` |
+| Tabela SQL | `DealerCreditAccounts` lub `DealerProfiles` (szacowane) | `wniosek z analizy` |
+| Kolumna SQL | `CreditLimit` (szacowane) | `wniosek z analizy` |
+| Odczyt/zapis | odczyt (init) / zapis (PUT) | `wniosek z analizy` |
 
 ## Dane Do Testów
 

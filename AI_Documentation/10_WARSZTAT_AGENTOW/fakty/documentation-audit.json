@@ -1,8 +1,8 @@
 {
-    "generatedAtUtc":  "2026-06-02T20:43:46Z",
+    "generatedAtUtc":  "2026-06-02T21:16:30Z",
     "scriptName":  "Invoke-DocumentationAudit.ps1",
     "scriptVersion":  "audit_v1",
-    "gitHead":  "22c4172",
+    "gitHead":  "4a50a12",
     "disclaimer":  "Wyniki są heurystyczne. Parser statyczny nie zastępuje ręcznej weryfikacji w kodzie.",
     "screenCoverage":  {
                            "screens":  [
@@ -30,21 +30,21 @@
                                                "screenId":  "E-003",
                                                "directoryName":  "E-003_FORGOT_PASSWORD",
                                                "hasRequiredStructure":  true,
-                                               "readmeStatus":  "szkielet",
+                                               "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  3,
                                                "actionCount":  4,
                                                "tcCount":  0,
-                                               "completionLevel":  "szkielet"
+                                               "completionLevel":  "kompletny"
                                            },
                                            {
                                                "screenId":  "E-004",
                                                "directoryName":  "E-004_UNAUTHORIZED",
                                                "hasRequiredStructure":  true,
-                                               "readmeStatus":  "szkielet",
+                                               "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  0,
                                                "actionCount":  0,
                                                "tcCount":  0,
-                                               "completionLevel":  "szkielet"
+                                               "completionLevel":  "kompletny"
                                            },
                                            {
                                                "screenId":  "E-005",
@@ -60,7 +60,7 @@
                                                "screenId":  "E-006",
                                                "directoryName":  "E-006_PROFILE",
                                                "hasRequiredStructure":  true,
-                                               "readmeStatus":  "potwierdzone",
+                                               "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  10,
                                                "actionCount":  2,
                                                "tcCount":  0,
@@ -130,21 +130,21 @@
                                                "screenId":  "E-013",
                                                "directoryName":  "E-013_ORDERS",
                                                "hasRequiredStructure":  true,
-                                               "readmeStatus":  "szkielet",
+                                               "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  21,
                                                "actionCount":  9,
                                                "tcCount":  0,
-                                               "completionLevel":  "szkielet"
+                                               "completionLevel":  "kompletny"
                                            },
                                            {
                                                "screenId":  "E-014",
                                                "directoryName":  "E-014_ORDERS_ID_TRACKING",
                                                "hasRequiredStructure":  true,
-                                               "readmeStatus":  "szkielet",
+                                               "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  18,
                                                "actionCount":  7,
                                                "tcCount":  0,
-                                               "completionLevel":  "szkielet"
+                                               "completionLevel":  "kompletny"
                                            },
                                            {
                                                "screenId":  "E-015",
@@ -160,11 +160,11 @@
                                                "screenId":  "E-016",
                                                "directoryName":  "E-016_SHIPMENTS",
                                                "hasRequiredStructure":  true,
-                                               "readmeStatus":  "szkielet",
+                                               "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  9,
                                                "actionCount":  0,
                                                "tcCount":  0,
-                                               "completionLevel":  "szkielet"
+                                               "completionLevel":  "kompletny"
                                            },
                                            {
                                                "screenId":  "E-017",
@@ -180,91 +180,80 @@
                                                "screenId":  "E-018",
                                                "directoryName":  "E-018_INVOICES",
                                                "hasRequiredStructure":  true,
-                                               "readmeStatus":  "szkielet",
+                                               "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  16,
                                                "actionCount":  13,
                                                "tcCount":  0,
-                                               "completionLevel":  "szkielet"
+                                               "completionLevel":  "kompletny"
                                            },
                                            {
                                                "screenId":  "E-019",
                                                "directoryName":  "E-019_INVOICES_ID",
                                                "hasRequiredStructure":  true,
-                                               "readmeStatus":  "szkielet",
+                                               "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  13,
                                                "actionCount":  8,
                                                "tcCount":  0,
-                                               "completionLevel":  "szkielet"
+                                               "completionLevel":  "kompletny"
                                            },
                                            {
                                                "screenId":  "E-020",
                                                "directoryName":  "E-020_NOTIFICATIONS",
                                                "hasRequiredStructure":  true,
-                                               "readmeStatus":  "szkielet",
+                                               "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  18,
                                                "actionCount":  15,
                                                "tcCount":  0,
-                                               "completionLevel":  "szkielet"
+                                               "completionLevel":  "kompletny"
                                            },
                                            {
                                                "screenId":  "E-021",
                                                "directoryName":  "E-021_ADMIN_DEALERS",
                                                "hasRequiredStructure":  true,
-                                               "readmeStatus":  "szkielet",
+                                               "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  8,
                                                "actionCount":  2,
                                                "tcCount":  0,
-                                               "completionLevel":  "szkielet"
+                                               "completionLevel":  "kompletny"
                                            },
                                            {
                                                "screenId":  "E-022",
                                                "directoryName":  "E-022_ADMIN_AGENTS_CREATE",
                                                "hasRequiredStructure":  true,
-                                               "readmeStatus":  "szkielet",
+                                               "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  4,
                                                "actionCount":  2,
                                                "tcCount":  0,
-                                               "completionLevel":  "szkielet"
+                                               "completionLevel":  "kompletny"
                                            },
                                            {
                                                "screenId":  "E-023",
                                                "directoryName":  "E-023_ADMIN_DEALERS_ID",
                                                "hasRequiredStructure":  true,
-                                               "readmeStatus":  "szkielet",
+                                               "readmeStatus":  "wniosek z analizy",
                                                "fieldCount":  5,
                                                "actionCount":  10,
                                                "tcCount":  0,
-                                               "completionLevel":  "szkielet"
+                                               "completionLevel":  "kompletny"
                                            }
                                        ],
                            "screensSkeleton":  [
-                                                   "E-003",
-                                                   "E-004",
                                                    "E-012",
-                                                   "E-013",
-                                                   "E-014",
                                                    "E-015",
-                                                   "E-016",
-                                                   "E-017",
-                                                   "E-018",
-                                                   "E-019",
-                                                   "E-020",
-                                                   "E-021",
-                                                   "E-022",
-                                                   "E-023"
+                                                   "E-017"
                                                ],
-                           "screensComplete":  9,
+                           "screensComplete":  20,
                            "totalScreenDirs":  23,
                            "totalAngularRoutes":  23
                        },
     "processCoverage":  {
                             "processesComplete":  6,
-                            "processesPartial":  9,
+                            "processesPartial":  10,
                             "processes":  [
                                               {
                                                   "fileName":  "CHECKOUT_E2E.md",
                                                   "fileType":  "e2e",
-                                                  "hasCel":  false,
+                                                  "hasCel":  true,
                                                   "hasOpis":  false,
                                                   "hasKroki":  true,
                                                   "hasBledy":  true,
@@ -275,13 +264,13 @@
                                               {
                                                   "fileName":  "ORDER_DETAIL_LIFECYCLE.md",
                                                   "fileType":  "e2e",
-                                                  "hasCel":  false,
+                                                  "hasCel":  true,
                                                   "hasOpis":  false,
                                                   "hasKroki":  true,
                                                   "hasBledy":  false,
-                                                  "screenRefs":  0,
-                                                  "apiRefs":  5,
-                                                  "completionLevel":  "szkielet"
+                                                  "screenRefs":  3,
+                                                  "apiRefs":  10,
+                                                  "completionLevel":  "częściowy"
                                               },
                                               {
                                                   "fileName":  "PROC-001_AUTH.md",
@@ -291,7 +280,7 @@
                                                   "hasKroki":  true,
                                                   "hasBledy":  true,
                                                   "screenRefs":  9,
-                                                  "apiRefs":  6,
+                                                  "apiRefs":  7,
                                                   "completionLevel":  [
                                                                           "kompletny",
                                                                           "częściowy"
@@ -381,27 +370,23 @@
                                               {
                                                   "fileName":  "SHIPMENT_DETAIL_LIFECYCLE.md",
                                                   "fileType":  "e2e",
-                                                  "hasCel":  false,
+                                                  "hasCel":  true,
                                                   "hasOpis":  false,
                                                   "hasKroki":  true,
                                                   "hasBledy":  true,
-                                                  "screenRefs":  0,
-                                                  "apiRefs":  2,
+                                                  "screenRefs":  3,
+                                                  "apiRefs":  3,
                                                   "completionLevel":  "częściowy"
                                               }
                                           ],
-                            "processesSkeleton":  1,
+                            "processesSkeleton":  0,
                             "totalProcessFiles":  10
                         },
     "algorithmCoverage":  {
-                              "documentedValidators":  31,
+                              "documentedValidators":  36,
                               "documentedHandlers":  87,
                               "undocumentedValidators":  [
-                                                             "StockSubscriptionRequestValidator",
-                                                             "CreateShipmentRequestValidator",
-                                                             "BulkUpdateOrderStatusRequestValidator",
-                                                             "GenerateInvoiceRequestValidator",
-                                                             "AddOutstandingRequestValidator"
+
                                                          ],
                               "undocumentedHandlers":  [
 
@@ -1054,7 +1039,7 @@
                                                      "validatorClass":  "StockSubscriptionRequestValidator",
                                                      "file":  "services/CatalogInventory/CatalogInventory.Application/Validation/CatalogValidators.cs",
                                                      "baseNameForSearch":  "StockSubscriptionRequest",
-                                                     "appearsInDocumentation":  false
+                                                     "appearsInDocumentation":  true
                                                  },
                                                  {
                                                      "validatorClass":  "CreateProductReviewRequestValidator",
@@ -1114,7 +1099,7 @@
                                                      "validatorClass":  "CreateShipmentRequestValidator",
                                                      "file":  "services/LogisticsTracking/LogisticsTracking.Application/Validation/LogisticsValidators.cs",
                                                      "baseNameForSearch":  "CreateShipmentRequest",
-                                                     "appearsInDocumentation":  false
+                                                     "appearsInDocumentation":  true
                                                  },
                                                  {
                                                      "validatorClass":  "AssignAgentRequestValidator",
@@ -1186,7 +1171,7 @@
                                                      "validatorClass":  "BulkUpdateOrderStatusRequestValidator",
                                                      "file":  "services/Order/Order.Application/Validation/OrderValidators.cs",
                                                      "baseNameForSearch":  "BulkUpdateOrderStatusRequest",
-                                                     "appearsInDocumentation":  false
+                                                     "appearsInDocumentation":  true
                                                  },
                                                  {
                                                      "validatorClass":  "ReturnRequestValidator",
@@ -1210,7 +1195,7 @@
                                                      "validatorClass":  "GenerateInvoiceRequestValidator",
                                                      "file":  "services/PaymentInvoice/PaymentInvoice.Application/Validation/PaymentValidators.cs",
                                                      "baseNameForSearch":  "GenerateInvoiceRequest",
-                                                     "appearsInDocumentation":  false
+                                                     "appearsInDocumentation":  true
                                                  },
                                                  {
                                                      "validatorClass":  "SettleOutstandingRequestValidator",
@@ -1222,7 +1207,7 @@
                                                      "validatorClass":  "AddOutstandingRequestValidator",
                                                      "file":  "services/PaymentInvoice/PaymentInvoice.Application/Validation/PaymentValidators.cs",
                                                      "baseNameForSearch":  "AddOutstandingRequest",
-                                                     "appearsInDocumentation":  false
+                                                     "appearsInDocumentation":  true
                                                  },
                                                  {
                                                      "validatorClass":  "CreateGatewayOrderRequestValidator",

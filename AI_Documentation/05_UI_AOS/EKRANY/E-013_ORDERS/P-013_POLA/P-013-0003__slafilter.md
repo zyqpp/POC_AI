@@ -1,6 +1,6 @@
-# P-013-0003 slaFilter
+﻿# P-013-0003 slaFilter
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `slaFilter` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Filtr SLA po stronie klienta. Opcje: ll, on-track, t-risk, delayed. Porównuje wynik OrderSlaService.getSlaInfo(order).state.
+**Źródło danych:** Lokalny serwis OrderSlaService — brak odpowiednika w API.
+**Kiedy widoczne:** Zawsze.
+**Format:** Dropdown (enum ShipmentSlaState | 'all').
 
 ## Wymagalność I Walidacje
 

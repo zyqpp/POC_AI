@@ -1,6 +1,6 @@
-# P-013-0012 estimate.invalid
+﻿# P-013-0012 estimate.invalid
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `estimate.invalid` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Liczba zaznaczonych zamówień, które NIE mogą przejść do wybranego statusu bulk. 	ransitionEstimate().invalid.
+**Źródło danych:** Lokalny computed 	ransitionEstimate.
+**Kiedy widoczne:** Gdy ulkStatus !== null && selectedCount > 0.
+**Format:** Liczba całkowita.
 
 ## Wymagalność I Walidacje
 

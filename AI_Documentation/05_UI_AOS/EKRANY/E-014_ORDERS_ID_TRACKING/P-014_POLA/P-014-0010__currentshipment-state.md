@@ -1,6 +1,6 @@
-# P-014-0010 currentShipment.state
+﻿# P-014-0010 currentShipment.state
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i ShipmentDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `currentShipment.state` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-tracking/order-tracking.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Stan/województwo dostawy wybranego shipmentu.
+**Źródło danych:** ShipmentDto.state → Shipments.State  
+**Kiedy widoczne:** Gdy selectedShipment() !== null.
+**Format:** Ciąg znaków (max 100).
 
 ## Wymagalność I Walidacje
 

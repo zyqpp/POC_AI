@@ -1,6 +1,6 @@
-# A-014-0003 rejectAssignment
+﻿# A-014-0003 rejectAssignment
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,11 +11,11 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu
 | Nazwa wykryta | `rejectAssignment` |
 | Typ detekcji | `click` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-tracking/order-tracking.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Akcji
 
-Do uzupełnienia.
+Agent odrzuca przypisanie do shipmentu z obowiązkowym powodem (ssignmentResponseNote). Walidacja: pole wymagane, max 500 znaków. Skutek: AssignmentDecisionStatus = Rejected.
 
 ## Ślad Techniczny
 

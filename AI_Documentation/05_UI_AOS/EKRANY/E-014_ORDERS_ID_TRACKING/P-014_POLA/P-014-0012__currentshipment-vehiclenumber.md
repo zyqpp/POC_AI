@@ -1,6 +1,6 @@
-# P-014-0012 currentShipment.vehicleNumber
+﻿# P-014-0012 currentShipment.vehicleNumber
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i ShipmentDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `currentShipment.vehicleNumber` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-tracking/order-tracking.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Numer pojazdu przypisanego do dostawy.
+**Źródło danych:** ShipmentDto.vehicleNumber → Shipments.VehicleNumber  
+**Kiedy widoczne:** Gdy selectedShipment()?.vehicleNumber istnieje.
+**Format:** Ciąg znaków (5-32 znaki, litery/cyfry/spacje/myślniki per walidator).
 
 ## Wymagalność I Walidacje
 

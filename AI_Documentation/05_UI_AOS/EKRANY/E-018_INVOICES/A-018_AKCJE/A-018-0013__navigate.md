@@ -1,6 +1,6 @@
 # A-018-0013 navigate [
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu.
+Status: `wniosek z analizy`
 
 ## Identyfikacja
 
@@ -11,29 +11,42 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu
 | Nazwa wykryta | `navigate [` |
 | Typ detekcji | `bound-routerLink` |
 | Źródło | `supply-chain-frontend/src/app/features/payments/invoice-list/invoice-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Akcji
 
-Do uzupełnienia.
+Nawigacja do szczegółu faktury. Kliknięcie w wiersz tabeli (`[routerLink]="['/invoices', inv.invoiceId]"`) lub w przycisk "View →" w kolumnie akcji przenosi użytkownika do ekranu [E-019_INVOICES_ID](/invoices/:id).
 
 ## Ślad Techniczny
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Element UI | do uzupełnienia | `do uzupełnienia` |
-| Metoda komponentu | do uzupełnienia | `do uzupełnienia` |
-| Serwis frontend | do uzupełnienia | `do uzupełnienia` |
-| Endpoint API | do uzupełnienia | `do uzupełnienia` |
-| Komenda/zapytanie | do uzupełnienia | `do uzupełnienia` |
-| Walidacje | do uzupełnienia | `do uzupełnienia` |
-| Skutek w bazie | do uzupełnienia | `do uzupełnienia` |
+| Element UI | `<tr [routerLink]="['/invoices', inv.invoiceId]">` i `<a [routerLink]="['/invoices', inv.invoiceId]" class="btn btn-ghost btn-sm">View →</a>` | `wniosek z analizy` |
+| Metoda komponentu | brak (routerLink deklaratywny) | `wniosek z analizy` |
+| Serwis frontend | Angular Router | `wniosek z analizy` |
+| Endpoint API | brak — nawigacja kliencka | `brak w kodzie` |
+| Komenda/zapytanie | brak | `brak w kodzie` |
+| Walidacje | brak | `brak w kodzie` |
+| Skutek w bazie | brak | `brak w kodzie` |
+
+## Diagram Przepływu
+
+```mermaid
+sequenceDiagram
+    actor U as Użytkownik
+    participant L as InvoiceListComponent
+    participant R as Angular Router
+    participant D as InvoiceDetailComponent (E-019)
+    U->>L: Klik w wiersz / "View →"
+    L->>R: navigate(['/invoices', inv.invoiceId])
+    R->>D: Render /invoices/:id
+```
 
 ## Testy
 
 - [Macierz testów ekranu](../TC-018_TESTY/TC-018__INDEX.md)
-- Dane wejściowe: do uzupełnienia.
-- Oczekiwany rezultat: do uzupełnienia.
+- Dane wejściowe: `inv.invoiceId` (GUID).
+- Oczekiwany rezultat: URL zmienia się na `/invoices/{invoiceId}`, renderowany jest E-019.
 
 ## Linki
 

@@ -1,6 +1,6 @@
-# A-014-0001 refresh
+﻿# A-014-0001 refresh
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,11 +11,11 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu
 | Nazwa wykryta | `refresh` |
 | Typ detekcji | `click` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-tracking/order-tracking.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Akcji
 
-Do uzupełnienia.
+Ponowne załadowanie danych zamówienia i shipmentów. Wywołuje loadOrder() i loadShipments() równolegle. Brak parametrów.
 
 ## Ślad Techniczny
 

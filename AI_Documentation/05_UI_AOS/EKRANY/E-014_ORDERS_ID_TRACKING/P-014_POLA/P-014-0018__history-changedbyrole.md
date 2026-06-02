@@ -1,6 +1,6 @@
-# P-014-0018 history.changedByRole
+﻿# P-014-0018 history.changedByRole
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i ShipmentDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `history.changedByRole` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-tracking/order-tracking.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Rola użytkownika, który zmienił status zamówienia.
+**Źródło danych:** OrderStatusHistoryDto.changedByRole → OrderStatusHistory.ChangedByRole  
+**Kiedy widoczne:** W historii statusów zamówienia.
+**Format:** Ciąg znaków (rola).
 
 ## Wymagalność I Walidacje
 

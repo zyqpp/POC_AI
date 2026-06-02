@@ -1,6 +1,6 @@
 # P-018-0016 inv.createdAtUtc
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`
 
 ## Identyfikacja
 
@@ -11,35 +11,35 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `inv.createdAtUtc` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/payments/invoice-list/invoice-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Data wystawienia faktury w formacie UTC ISO. Wyświetlana w kolumnie "Created" w formacie `dd MMM yyyy` (Angular pipe `date:'dd MMM yyyy'`). Używana do sortowania (default sort malejący po createdAtUtc) oraz filtrowania zakresem dat (fromDate/toDate).
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/payments/invoice-list/invoice-list.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-018](../ERR-018_BLEDY/ERR-018__INDEX.md) | do uzupełnienia |
+| Wymagane | tak — pole odczytu z API | `wniosek z analizy` |
+| Typ UI | tekst tylko do odczytu (interpolacja), formatowany datą | `supply-chain-frontend/src/app/features/payments/invoice-list/invoice-list.component.html` |
+| Reguły walidacji | brak walidacji UI — pole wyświetlane | `wniosek z analizy` |
+| Komunikaty błędów | [ERR-018](../ERR-018_BLEDY/ERR-018__INDEX.md) | nie dotyczy |
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `InvoiceDto.createdAtUtc: string` (ISO 8601) | `wniosek z analizy` |
+| Serwis API | `PaymentApiService.getDealerInvoices(dealerId)` | `wniosek z analizy` |
+| Endpoint | `GET /payments/api/payment/dealers/{dealerId}/invoices` | `wniosek z analizy` |
+| DTO/kontrakt | `InvoiceDto` w `supply-chain-frontend/src/app/core/models/payment.models.ts` | `wniosek z analizy` |
+| Encja/model | `Invoice.CreatedAtUtc` w PaymentInvoice domain | `wniosek z analizy` |
+| DbContext | `do uzupełnienia` | `do uzupełnienia` |
+| Schemat SQL | `do uzupełnienia` | `do uzupełnienia` |
+| Tabela SQL | `Invoices` (szacowane) | `wniosek z analizy` |
+| Kolumna SQL | `CreatedAtUtc` (szacowane) | `wniosek z analizy` |
+| Odczyt/zapis | odczyt | `wniosek z analizy` |
 
 ## Dane Do Testów
 

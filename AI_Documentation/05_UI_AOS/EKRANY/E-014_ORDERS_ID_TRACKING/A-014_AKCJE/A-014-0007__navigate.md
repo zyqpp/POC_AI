@@ -1,6 +1,6 @@
-# A-014-0007 navigate [
+﻿# A-014-0007 navigate [
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,23 +11,32 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu
 | Nazwa wykryta | `navigate [` |
 | Typ detekcji | `bound-routerLink` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-tracking/order-tracking.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Akcji
 
-Do uzupełnienia.
+Nawigacja wsteczna do szczegółu zamówienia `/orders/:id`. Czysto nawigacyjna akcja routerLink — brak API call. Widoczna dla wszystkich ról na tym ekranie.
 
 ## Ślad Techniczny
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Element UI | do uzupełnienia | `do uzupełnienia` |
-| Metoda komponentu | do uzupełnienia | `do uzupełnienia` |
-| Serwis frontend | do uzupełnienia | `do uzupełnienia` |
-| Endpoint API | do uzupełnienia | `do uzupełnienia` |
-| Komenda/zapytanie | do uzupełnienia | `do uzupełnienia` |
-| Walidacje | do uzupełnienia | `do uzupełnienia` |
-| Skutek w bazie | do uzupełnienia | `do uzupełnienia` |
+| Element UI | Link "Back to Order" lub podobny | `wniosek z analizy` |
+| Metoda komponentu | Brak — `[routerLink]="['/orders', id()]"` | `wniosek z analizy` |
+| Serwis frontend | `RouterLink` (Angular) | `potwierdzone` |
+| Endpoint API | Brak | `potwierdzone` |
+| Komenda/zapytanie | Brak | `potwierdzone` |
+| Walidacje | Brak | `potwierdzone` |
+| Skutek w bazie | Brak | `potwierdzone` |
+
+## Diagram Przepływu
+
+```mermaid
+sequenceDiagram
+    U->>C: Klik linku nawigacyjnego
+    C->>C: RouterLink ['/orders', id()]
+    C->>U: Nawigacja do /orders/:id (E-015)
+```
 
 ## Testy
 

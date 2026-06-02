@@ -1,6 +1,6 @@
-# A-013-0005 applyBulkStatus
+﻿# A-013-0005 applyBulkStatus
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,23 +11,38 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu
 | Nazwa wykryta | `applyBulkStatus` |
 | Typ detekcji | `click` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Akcji
 
-Do uzupełnienia.
+Faktyczna masowa zmiana statusu zamówień po pozytywnym precheck. Wysyła `validateOnly: false`. Backend waliduje i stosuje zmiany. Limit: 200 orderIds na jedno żądanie (`BulkUpdateOrderStatusRequestValidator`). Po zakończeniu czyści selekcję i odświeża listę.
 
 ## Ślad Techniczny
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Element UI | do uzupełnienia | `do uzupełnienia` |
-| Metoda komponentu | do uzupełnienia | `do uzupełnienia` |
-| Serwis frontend | do uzupełnienia | `do uzupełnienia` |
-| Endpoint API | do uzupełnienia | `do uzupełnienia` |
-| Komenda/zapytanie | do uzupełnienia | `do uzupełnienia` |
-| Walidacje | do uzupełnienia | `do uzupełnienia` |
-| Skutek w bazie | do uzupełnienia | `do uzupełnienia` |
+| Element UI | Przycisk "Apply Bulk Status" | `wniosek z analizy` |
+| Metoda komponentu | `OrderListComponent.applyBulkStatus()` | `potwierdzone` |
+| Serwis frontend | `AdminOrderApiService.bulkUpdateStatus()` | `potwierdzone` |
+| Endpoint API | `POST /orders/api/admin/orders/bulk-status` | `potwierdzone` |
+| Komenda/zapytanie | `BulkUpdateOrderStatusRequest { validateOnly: false, orderIds max 200 }` | `potwierdzone` |
+| Walidacje | `canApplyBulkStatus()`: precheck aktualny, validCount>0, isStatusManager | `potwierdzone` |
+| Skutek w bazie | `UPDATE Orders SET Status = @newStatus WHERE Id IN (...)` + `OrderStatusHistory` + Outbox | `wniosek z analizy` |
+
+## Diagram Przepływu
+
+```mermaid
+sequenceDiagram
+    U->>C: Klik "Apply Bulk Status"
+    C->>C: canApplyBulkStatus() guards
+    C->>S: AdminOrderApiService.bulkUpdateStatus({validateOnly:false})
+    S->>G: POST /orders/api/admin/orders/bulk-status
+    G->>H: BulkUpdateOrderStatusRequest
+    H->>DB: UPDATE Orders SET Status + INSERT OrderStatusHistory + OutboxMessages
+    DB-->>H: wynik
+    H-->>C: BulkUpdateOrderStatusResultDto (appliedCount, failedCount)
+    C-->>U: toast.success/warning; lista przeładowana
+```
 
 ## Testy
 

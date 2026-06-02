@@ -1,6 +1,6 @@
 # P-022-0001 fullName
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`
 
 ## Identyfikacja
 
@@ -11,35 +11,43 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `fullName` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/admin/agent-create/agent-create.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Imię i nazwisko agenta dostawczego. Wyświetlane po stworzeniu konta jako identyfikator użytkownika w systemie. Pole tekstowe w formularzu tworzenia agenta.
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/admin/agent-create/agent-create.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-022](../ERR-022_BLEDY/ERR-022__INDEX.md) | do uzupełnienia |
+| Wymagane | tak — frontend sprawdza `!fullName.trim()`, backend: `NotEmpty()` | `potwierdzone` |
+| Typ UI | `input[type=text]` z `[(ngModel)]="fullName"` | `wniosek z analizy` |
+| Reguły walidacji (frontend) | `fullName.trim()` musi być niepuste; błąd "All fields are required." | `potwierdzone` |
+| Reguły walidacji (backend) | `NotEmpty().MaximumLength(120)` — `CreateAgentRequestValidator` w `AuthValidators.cs` | `potwierdzone` |
+| Komunikaty błędów | [ERR-022](../ERR-022_BLEDY/ERR-022__INDEX.md) | "All fields are required." |
+
+## Walidator Backend (CreateAgentRequestValidator)
+
+Plik: `services/IdentityAuth/IdentityAuth.Application/Validation/AuthValidators.cs`
+```csharp
+RuleFor(x => x.FullName).NotEmpty().MaximumLength(120);
+```
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `AgentCreateComponent.fullName: string` | `wniosek z analizy` |
+| Serwis API | `AdminApiService.createAgent({fullName, ...})` | `wniosek z analizy` |
+| Endpoint | `POST /identity/api/admin/users/agents` | `wniosek z analizy` |
+| DTO/kontrakt | `CreateAgentRequest` w `supply-chain-frontend/src/app/core/models/auth.models.ts` | `wniosek z analizy` |
+| Encja/model | `User.FullName` (szacowane) | `wniosek z analizy` |
+| DbContext | `do uzupełnienia` | `do uzupełnienia` |
+| Schemat SQL | `do uzupełnienia` | `do uzupełnienia` |
+| Tabela SQL | `Users` (szacowane) | `wniosek z analizy` |
+| Kolumna SQL | `FullName` (szacowane) | `wniosek z analizy` |
+| Odczyt/zapis | zapis (POST) | `wniosek z analizy` |
 
 ## Dane Do Testów
 

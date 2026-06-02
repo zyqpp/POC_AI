@@ -1,6 +1,6 @@
-# P-014-0013 currentShipment.assignmentDecisionReason
+﻿# P-014-0013 currentShipment.assignmentDecisionReason
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i ShipmentDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `currentShipment.assignmentDecisionReason` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-tracking/order-tracking.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Powód odrzucenia przypisania przez agenta.
+**Źródło danych:** ShipmentDto.assignmentDecisionReason → Shipments.AssignmentDecisionReason  
+**Kiedy widoczne:** Gdy ssignmentDecisionStatus === Rejected && assignmentDecisionReason.
+**Format:** Ciąg znaków.
 
 ## Wymagalność I Walidacje
 

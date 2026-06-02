@@ -3,6 +3,10 @@
 Status: `potwierdzone` dla przepływów z kodu; `potwierdzone jako ryzyko` dla rozjazdów localStorage, migracji i filtracji po stronie klienta.
 Zakres: `/shipments/:id`, `/orders/:id/tracking`, assignment, pojazd, statusy, ops-state, retry, handover, rating, chatbot i outbox.
 
+## Cel
+
+Opisuje cykl życia wysyłki po jej przypisaniu do agenta: od statusu `Assigned` przez `PickedUp`, `InTransit`, `Delivered` do `Failed`/`Returned`. Dokument pokrywa operacje widoczne na ekranie [E-017_SHIPMENTS_ID](../05_UI_AOS/EKRANY/E-017_SHIPMENTS_ID/E-017__README.md): assign agent, update ops-state, record attempt, complete delivery.
+
 ## Proces Główny: Odczyt Shipment Detail
 
 | Krok | Warstwa | Działanie | Dane | Status |
@@ -102,6 +106,19 @@ Zakres: `/shipments/:id`, `/orders/:id/tracking`, assignment, pojazd, statusy, o
 | `ShipmentAgentRated` | dealer rating | `AssignedAgentId`, `RecipientUserId`, rating, comment | notification do agenta | potwierdzone |
 
 Dispatcher publikuje pending outbox do exchange `supplychain.events` z routing key `logistics.{eventType.ToLowerInvariant()}`. Po sukcesie ustawia `Published`, po 5 próbach `Failed`.
+
+## Walidatory Backendu Logistyki (FluentValidation)
+
+Plik: `services/LogisticsTracking/LogisticsTracking.Application/Validation/LogisticsValidators.cs`
+
+| Walidator | Reguły | Powiązany endpoint |
+|---|---|---|
+| `CreateShipmentRequestValidator` | `OrderId`/`DealerId`: NotEmpty; `DeliveryAddress`: NotEmpty, max 500; `City`: NotEmpty, max 100; `State`: NotEmpty, max 100; `PostalCode`: NotEmpty, max 12 | `POST /logistics/api/logistics/shipments` |
+| `AssignAgentRequestValidator` | `AgentId`: NotEmpty | `PUT .../assign-agent` |
+| `AssignVehicleRequestValidator` | `VehicleNumber`: NotEmpty, min 5, max 32; regex `^[A-Za-z0-9][A-Za-z0-9\\- ]{4,31}$` (tylko litery, cyfry, spacje, myślniki) | `PUT .../assign-vehicle` |
+| `RejectAssignmentRequestValidator` | `Reason`: NotEmpty, MaximumLength(500) | `PUT .../assignment/reject` |
+| `RateDeliveryAgentRequestValidator` | `Rating`: InclusiveBetween(1, 5); `Comment`: MaximumLength(500) gdy niepuste | `PUT .../agent-rating` |
+| `UpdateShipmentStatusRequestValidator` | `Note`: NotEmpty, MaximumLength(500) | `PUT .../status` |
 
 ## Kryteria Akceptacji Dokumentacyjnej
 

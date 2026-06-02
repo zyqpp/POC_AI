@@ -1,6 +1,6 @@
-# P-013-0013 estimate.unknown
+﻿# P-013-0013 estimate.unknown
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `estimate.unknown` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Liczba zaznaczonych zamówień, dla których brak danych lokalnych (zaznaczone przez selectAllMatchingAcrossPages, ale niekoniecznie załadowane lokalnie). 	ransitionEstimate().unknown.
+**Źródło danych:** Lokalny computed.
+**Kiedy widoczne:** Gdy selectedCount > orders().length.
+**Format:** Liczba całkowita.
 
 ## Wymagalność I Walidacje
 

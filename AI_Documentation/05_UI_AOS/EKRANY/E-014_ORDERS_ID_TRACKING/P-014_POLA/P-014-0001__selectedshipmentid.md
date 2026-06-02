@@ -1,6 +1,6 @@
-# P-014-0001 selectedShipmentId()
+﻿# P-014-0001 selectedShipmentId()
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i ShipmentDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `selectedShipmentId()` |
 | Typ detekcji | `[ngModel]` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-tracking/order-tracking.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** ID aktualnie wybranego shipmentu w dropdownie selekcji. Wartość signal<string|null> aktualizowana przez onSelectShipment().
+**Źródło danych:** ShipmentDto.shipmentId z listy załadowanych shipmentów.
+**Kiedy widoczne:** Gdy shipments().length > 1 — dropdown wyboru shipmentu.
+**Format:** UUID string lub null.
 
 ## Wymagalność I Walidacje
 

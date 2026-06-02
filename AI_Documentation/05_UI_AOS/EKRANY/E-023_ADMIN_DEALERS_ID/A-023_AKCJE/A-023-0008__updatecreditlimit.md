@@ -1,6 +1,6 @@
 # A-023-0008 updateCreditLimit
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu.
+Status: `wniosek z analizy`
 
 ## Identyfikacja
 
@@ -11,29 +11,49 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu
 | Nazwa wykryta | `updateCreditLimit` |
 | Typ detekcji | `click` |
 | Źródło | `supply-chain-frontend/src/app/features/admin/dealer-detail/dealer-detail.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Akcji
 
-Do uzupełnienia.
+Zmiana limitu kredytowego dealera. Wywoływana z dialogu "Update Credit Limit". Po sukcesie przeładowuje konto kredytowe i faktury dealera. Backend waliduje: `CreditLimit >= 0`.
 
 ## Ślad Techniczny
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Element UI | do uzupełnienia | `do uzupełnienia` |
-| Metoda komponentu | do uzupełnienia | `do uzupełnienia` |
-| Serwis frontend | do uzupełnienia | `do uzupełnienia` |
-| Endpoint API | do uzupełnienia | `do uzupełnienia` |
-| Komenda/zapytanie | do uzupełnienia | `do uzupełnienia` |
-| Walidacje | do uzupełnienia | `do uzupełnienia` |
-| Skutek w bazie | do uzupełnienia | `do uzupełnienia` |
+| Element UI | Przycisk "Update" w dialogu Credit Limit (trigger: A-023-0003 `showCreditDialog.set(true)`) | `wniosek z analizy` |
+| Metoda komponentu | `DealerDetailComponent.updateCreditLimit()` | `wniosek z analizy` |
+| Serwis frontend | `AdminApiService.updateCreditLimit(dealerId, {creditLimit: newCreditLimit})` | `wniosek z analizy` |
+| Endpoint API | `PUT /identity/api/admin/dealers/{id}/credit-limit` z body `{creditLimit}` | `wniosek z analizy` |
+| Komenda/zapytanie | `UpdateCreditLimitCommand` → `UpdateCreditLimitCommandHandler` | `wniosek z analizy` |
+| Walidacje | `UpdateCreditLimitRequestValidator`: `CreditLimit >= 0` (IdentityAuth + PaymentInvoice) | `potwierdzone` |
+| Skutek w bazie | Aktualizacja `DealerCreditAccounts.CreditLimit` lub `DealerProfiles.CreditLimit` (szacowane) | `wniosek z analizy` |
+
+## Przykład HTTP
+
+```http
+PUT /identity/api/admin/dealers/{id}/credit-limit
+Content-Type: application/json
+Authorization: Bearer {token}
+
+{
+  "creditLimit": 150000.00
+}
+
+Response: 200 OK
+{
+  "dealerId": "...",
+  "creditLimit": 150000.00,
+  ...
+}
+```
 
 ## Testy
 
 - [Macierz testów ekranu](../TC-023_TESTY/TC-023__INDEX.md)
-- Dane wejściowe: do uzupełnienia.
-- Oczekiwany rezultat: do uzupełnienia.
+- Dane wejściowe: `newCreditLimit` (decimal >= 0).
+- Oczekiwany rezultat: dialog zamknięty; konto kredytowe odświeżone; toast "Credit limit updated".
+- Oczekiwany rezultat (błąd < 0): błąd walidacji z backend "GreaterThanOrEqualTo 0".
 
 ## Linki
 

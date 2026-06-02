@@ -1,6 +1,6 @@
-# P-014-0003 deliveryNote
+﻿# P-014-0003 deliveryNote
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i ShipmentDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `deliveryNote` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-tracking/order-tracking.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Notatka do zmiany statusu shipmentu (markOutForDelivery, pproveDelivery). Opcjonalna — jeśli pusta, używany domyślny tekst.
+**Źródło danych:** Brak — wejście użytkownika.
+**Kiedy widoczne:** Gdy canMarkOutForDelivery() lub canApproveDelivery().
+**Format:** Tekst (max 500 znaków — UpdateShipmentStatusRequestValidator).
 
 ## Wymagalność I Walidacje
 

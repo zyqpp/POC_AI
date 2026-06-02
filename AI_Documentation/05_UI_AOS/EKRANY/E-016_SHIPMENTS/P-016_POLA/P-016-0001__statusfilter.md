@@ -1,6 +1,6 @@
-# P-016-0001 statusFilter
+﻿# P-016-0001 statusFilter
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i ShipmentDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `statusFilter` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/logistics/shipment-list/shipment-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Filtr po statusie shipmentu (kliencki). Dropdown z wartościami ShipmentStatus enum z SHIPMENT_STATUS_LABELS.
+**Źródło danych:** Lokalny enum ShipmentStatus; wartość null = wszystkie.
+**Kiedy widoczne:** Zawsze.
+**Format:** Dropdown; domyślnie null (wszystkie statusy).
 
 ## Wymagalność I Walidacje
 

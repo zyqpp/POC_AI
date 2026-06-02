@@ -1,6 +1,6 @@
 # P-023-0005 invoice.invoiceNumber
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`
 
 ## Identyfikacja
 
@@ -11,35 +11,35 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `invoice.invoiceNumber` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/admin/dealer-detail/dealer-detail.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Numer faktury wyświetlany w tabeli faktur dealera na ekranie szczegółu. Najnowsze 5 faktur (`latestAgingInvoices()`) wyświetlane w sekcji "Invoice Aging" panelu ryzyka kredytowego. Klikalne — prowadzi do [E-019_INVOICES_ID](/invoices/:id).
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/admin/dealer-detail/dealer-detail.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-023](../ERR-023_BLEDY/ERR-023__INDEX.md) | do uzupełnienia |
+| Wymagane | tak — pole odczytu z API | `wniosek z analizy` |
+| Typ UI | tekst tylko do odczytu; link routerLink do E-019 | `wniosek z analizy` |
+| Reguły walidacji | brak walidacji UI przy odczycie | `wniosek z analizy` |
+| Komunikaty błędów | [ERR-023](../ERR-023_BLEDY/ERR-023__INDEX.md) | nie dotyczy |
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `InvoiceDto.invoiceNumber: string` | `wniosek z analizy` |
+| Serwis API | `PaymentApiService.getDealerInvoices(dealerId)` | `wniosek z analizy` |
+| Endpoint | `GET /payments/api/payment/dealers/{dealerId}/invoices` | `wniosek z analizy` |
+| DTO/kontrakt | `InvoiceDto` w `supply-chain-frontend/src/app/core/models/payment.models.ts` | `wniosek z analizy` |
+| Encja/model | `Invoice.InvoiceNumber` w PaymentInvoice domain | `wniosek z analizy` |
+| DbContext | `do uzupełnienia` | `do uzupełnienia` |
+| Schemat SQL | `do uzupełnienia` | `do uzupełnienia` |
+| Tabela SQL | `Invoices` (szacowane) | `wniosek z analizy` |
+| Kolumna SQL | `InvoiceNumber` (szacowane) | `wniosek z analizy` |
+| Odczyt/zapis | odczyt | `wniosek z analizy` |
 
 ## Dane Do Testów
 

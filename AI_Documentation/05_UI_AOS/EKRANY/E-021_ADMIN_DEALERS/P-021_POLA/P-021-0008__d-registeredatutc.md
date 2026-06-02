@@ -1,6 +1,6 @@
 # P-021-0008 d.registeredAtUtc
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`
 
 ## Identyfikacja
 
@@ -11,35 +11,35 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `d.registeredAtUtc` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/admin/dealer-list/dealer-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Data rejestracji dealera w systemie (UTC ISO). Wyświetlana w tabeli listy dealerów jako data rejestracji. Odpowiada `createdAt` z procesu rejestracji ([PROC-001_AUTH](../../../../06_PROCESY/PROC-001_AUTH.md)).
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/admin/dealer-list/dealer-list.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-021](../ERR-021_BLEDY/ERR-021__INDEX.md) | do uzupełnienia |
+| Wymagane | tak — pole odczytu z API | `wniosek z analizy` |
+| Typ UI | tekst tylko do odczytu (interpolacja), formatowany datą | `wniosek z analizy` |
+| Reguły walidacji | brak walidacji UI | `wniosek z analizy` |
+| Komunikaty błędów | [ERR-021](../ERR-021_BLEDY/ERR-021__INDEX.md) | nie dotyczy |
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `DealerSummaryDto.registeredAtUtc: string` (ISO 8601) | `wniosek z analizy` |
+| Serwis API | `AdminApiService.getDealers()` | `wniosek z analizy` |
+| Endpoint | `GET /identity/api/admin/dealers` | `wniosek z analizy` |
+| DTO/kontrakt | `DealerSummaryDto` w `supply-chain-frontend/src/app/core/models/auth.models.ts` | `wniosek z analizy` |
+| Encja/model | `User.CreatedAt` lub `DealerProfile.RegisteredAtUtc` (szacowane) | `wniosek z analizy` |
+| DbContext | `do uzupełnienia` | `do uzupełnienia` |
+| Schemat SQL | `do uzupełnienia` | `do uzupełnienia` |
+| Tabela SQL | `Users` lub `DealerProfiles` (szacowane) | `wniosek z analizy` |
+| Kolumna SQL | `RegisteredAtUtc` lub `CreatedAt` (szacowane) | `wniosek z analizy` |
+| Odczyt/zapis | odczyt | `wniosek z analizy` |
 
 ## Dane Do Testów
 

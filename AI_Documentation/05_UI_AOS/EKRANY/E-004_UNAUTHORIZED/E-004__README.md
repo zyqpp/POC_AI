@@ -1,6 +1,6 @@
 # E-004 UnauthorizedComponent
 
-Status: `szkielet`; źródło startowe: routing i komponent Angular.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i szablonu HTML.
 
 ## Identyfikacja
 
@@ -14,7 +14,37 @@ Status: `szkielet`; źródło startowe: routing i komponent Angular.
 | Źródło route | `supply-chain-frontend/src/app/app.routes.ts` |
 | Źródło komponentu | `supply-chain-frontend/src/app/features/auth/unauthorized/unauthorized.component.ts` |
 | Źródło template | `supply-chain-frontend/src/app/features/auth/unauthorized/unauthorized.component.html` |
-| Status faktów | `do uzupełnienia` |
+| Status faktów | `wniosek z analizy` |
+
+## Cel Ekranu
+
+Ekran wyświetlany gdy użytkownik próbuje uzyskać dostęp do zasobu bez odpowiednich uprawnień (403). Pokazuje komunikat "Access Denied — Your role does not grant access to this route." i przycisk powrotu do dashboardu. Nie ma wywołań API — to statyczny ekran stanu błędu.
+
+Ekran jest kierunkiem przekierowania z `roleGuard` gdy rola JWT nie pasuje do wymaganej przez route. Komponent nie posiada żadnej logiki TypeScript (pusta klasa z samym dekoratorem `@Component`) — cała treść jest statycznym HTML.
+
+## Kluczowe Pliki Kodu
+
+| Plik | Rola |
+|---|---|
+| `supply-chain-frontend/src/app/features/auth/unauthorized/unauthorized.component.ts` | Komponent Angular (brak logiki) |
+| `supply-chain-frontend/src/app/features/auth/unauthorized/unauthorized.component.html` | Statyczny szablon z komunikatem i przyciskiem powrotu |
+| `supply-chain-frontend/src/app/app.routes.ts` | Route `/unauthorized` bez guardów |
+
+## Główne Wywołania API
+
+Brak — ekran jest w pełni statyczny. Nie wykonuje żadnych wywołań HTTP.
+
+## Stany Ekranu
+
+| Stan | Opis |
+|---|---|
+| Jedyny stan | Wyświetlenie komunikatu "Access Denied" z opisem i przyciskiem `[Go to Dashboard]` (routerLink `/dashboard`) |
+
+## Akcje
+
+| Akcja | Element UI | Efekt |
+|---|---|---|
+| Go to Dashboard | `<a routerLink="/dashboard">` | Przekierowanie na `/dashboard` przez Angular Router — brak wywołania API |
 
 ## Dokumenty Atomowe
 

@@ -1,6 +1,6 @@
-# P-016-0003 opsFilter
+﻿# P-016-0003 opsFilter
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i ShipmentDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `opsFilter` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/logistics/shipment-list/shipment-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Filtr ops queue (kliencki). Opcje: ll, handover-pending, exception-queue, etry-required. Filtruje po wynikach ShipmentOpsQueueService.
+**Źródło danych:** Lokalny ShipmentOpsQueueService + ShipmentOpsStateDto.
+**Kiedy widoczne:** Zawsze.
+**Format:** Dropdown.
 
 ## Wymagalność I Walidacje
 

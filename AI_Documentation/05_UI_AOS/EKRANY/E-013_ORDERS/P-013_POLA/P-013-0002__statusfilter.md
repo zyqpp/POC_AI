@@ -1,6 +1,6 @@
 # P-013-0002 statusFilter
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i OrderApiService.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `statusFilter` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Filtr po statusie zamówienia. Dropdown z wartościami enum `OrderStatus`. Wybór powoduje przeładowanie listy z serwera (server-side filter parametrem `status`).  
+**Źródło danych:** Lokalny enum `OrderStatus`; lista opcji z `ORDER_STATUS_LABELS`. Wartość `null` = brak filtrowania.  
+**Kiedy widoczne:** Zawsze.  
+**Format:** Dropdown; domyślnie "Wszystkie statusy" (null).
 
 ## Wymagalność I Walidacje
 
@@ -28,18 +31,15 @@ Do uzupełnienia.
 
 ## Mapowanie Danych
 
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Warstwa | Artefakt | Przykład | Status |
+|---|---|---|---|
+| Frontend model/form | `OrderListComponent.statusFilter` | `statusFilter: OrderStatus \| null` | `wniosek z analizy` |
+| Endpoint (dealer) | `OrderApiService.getMyOrders` | `GET /orders/api/orders/my?status=2` | `potwierdzone` |
+| Endpoint (admin) | `AdminOrderApiService.getAllOrders` | `GET /orders/api/admin/orders?status=2` | `potwierdzone` |
+| DTO/kontrakt | `GetAllOrdersQuery.Status` | `int? Status` | `wniosek z analizy` |
+| Tabela SQL | `Orders` | `Orders` | `wniosek z analizy` |
+| Kolumna SQL | `Status` | `Status` (int enum) | `wniosek z analizy` |
+| Odczyt/zapis | Odczyt (filtr WHERE) | `WHERE Status = @status` | `wniosek z analizy` |
 
 ## Dane Do Testów
 

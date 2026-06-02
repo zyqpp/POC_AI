@@ -17,3 +17,20 @@ Status: `potwierdzone`.
 | Kolumna SQL | `GstNumber`, max 20, `NOT NULL`, indeks unikalny, odczyt `R` |
 | Dane Do Test | `TD-006-0002`; przykład `37ABCDE1234F1Z5` |
 | Testy | `TC-006-0002` |
+
+## Opis Pola
+
+Pole wyświetlające numer GST (Goods and Services Tax) dealera — identyfikator podatkowy wymagany przy rejestracji. Widoczne wyłącznie dla roli `Dealer`. Format: `^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z][1-9A-Z]Z[0-9A-Z]$` (walidowany przy rejestracji przez `RegisterDealerRequestValidator`).
+
+## Mapowanie Danych
+
+| Warstwa | Artefakt | Status |
+|---|---|---|
+| Frontend | `profile.component.html` — binding `profile()!.dealerGstNumber` | `potwierdzone` |
+| DTO | `UserProfileDto.dealerGstNumber` (`string`) | `potwierdzone` |
+| Endpoint | `GET /identity/api/users/profile` → `UsersController.GetProfile()` | `potwierdzone` |
+| Encja | `DealerProfile.GstNumber` | `potwierdzone` |
+| DbContext | `IdentityAuthDbContext.DealerProfiles` | `potwierdzone` |
+| Tabela SQL | `DealerProfiles` | `potwierdzone` |
+| Kolumna SQL | `GstNumber`, max 20, `NOT NULL`, indeks unikalny | `potwierdzone` |
+| Odczyt/zapis | R (tylko odczyt na profilu) | `potwierdzone` |

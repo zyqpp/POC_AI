@@ -1,6 +1,6 @@
 # A-013-0001 exportCsv
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,23 +11,34 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu
 | Nazwa wykryta | `exportCsv` |
 | Typ detekcji | `click` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Akcji
 
-Do uzupełnienia.
+Eksport aktualnie widocznej listy zamówień do pliku CSV. Metoda `exportCsv()` buduje CSV w pamięci z nagłówkami `Order Number, Order Id, Dealer Id, Status, Total Amount, Placed At UTC`, tworzy `Blob` i inicjuje pobranie pliku przez `<a>` element. Brak wywołania API — dane pobrane są z lokalnego sygnału `orders()`.
 
 ## Ślad Techniczny
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Element UI | do uzupełnienia | `do uzupełnienia` |
-| Metoda komponentu | do uzupełnienia | `do uzupełnienia` |
-| Serwis frontend | do uzupełnienia | `do uzupełnienia` |
-| Endpoint API | do uzupełnienia | `do uzupełnienia` |
-| Komenda/zapytanie | do uzupełnienia | `do uzupełnienia` |
-| Walidacje | do uzupełnienia | `do uzupełnienia` |
-| Skutek w bazie | do uzupełnienia | `do uzupełnienia` |
+| Element UI | Przycisk "Export CSV" | `wniosek z analizy` |
+| Metoda komponentu | `OrderListComponent.exportCsv()` | `potwierdzone` |
+| Serwis frontend | Brak — operacja czysto kliencka | `potwierdzone` |
+| Endpoint API | Brak wywołania | `potwierdzone` |
+| Komenda/zapytanie | Brak | `potwierdzone` |
+| Walidacje | Guard: `orders().length === 0` → wcześniejszy return | `potwierdzone` |
+| Skutek w bazie | Brak | `potwierdzone` |
+
+## Diagram Przepływu
+
+```mermaid
+sequenceDiagram
+    U->>C: Klik "Export CSV"
+    C->>C: exportCsv() - guard orders().length
+    C->>C: Buduje CSV string (Blob)
+    C->>U: Plik orders-export-*.csv pobierany przez przeglądarkę
+    C->>U: toast.success("Exported N order(s)")
+```
 
 ## Testy
 

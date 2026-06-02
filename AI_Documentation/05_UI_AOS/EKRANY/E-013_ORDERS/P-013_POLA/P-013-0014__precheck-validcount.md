@@ -1,6 +1,6 @@
-# P-013-0014 precheck.validCount
+﻿# P-013-0014 precheck.validCount
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `precheck.validCount` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Liczba zamówień, które można zaktualizować wg wyniku precheck z backendu. currentBulkPrecheck().validCount.
+**Źródło danych:** BulkUpdateOrderStatusResultDto.validCount z POST /orders/api/admin/orders/bulk-status (validateOnly:true).
+**Kiedy widoczne:** Po wykonaniu unBulkPrecheck().
+**Format:** Liczba całkowita.
 
 ## Wymagalność I Walidacje
 

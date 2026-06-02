@@ -1,6 +1,6 @@
 # P-018-0014 inv.gstType
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`
 
 ## Identyfikacja
 
@@ -11,35 +11,42 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `inv.gstType` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/payments/invoice-list/invoice-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Typ podatku GST dla faktury. Wyświetlany jako badge `badge-info` w kolumnie "GST Type". Używany jako kryterium filtrowania (`gstFilter`). Wartości zgodne z indyjskim systemem podatkowym.
+
+## Wartości Możliwe
+
+| Wartość | Opis |
+|---|---|
+| `IGST` | Integrated GST — handel między stanami |
+| `CGST_SGST` | Central + State GST — handel wewnątrzstanowy |
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/payments/invoice-list/invoice-list.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-018](../ERR-018_BLEDY/ERR-018__INDEX.md) | do uzupełnienia |
+| Wymagane | tak — pole odczytu z API | `wniosek z analizy` |
+| Typ UI | badge tekstowy tylko do odczytu; filtr `<select>` z opcjami All/IGST/CGST_SGST | `wniosek z analizy` |
+| Reguły walidacji | brak walidacji UI przy odczycie | `wniosek z analizy` |
+| Komunikaty błędów | [ERR-018](../ERR-018_BLEDY/ERR-018__INDEX.md) | nie dotyczy |
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `InvoiceDto.gstType: string` | `wniosek z analizy` |
+| Serwis API | `PaymentApiService.getDealerInvoices(dealerId)` | `wniosek z analizy` |
+| Endpoint | `GET /payments/api/payment/dealers/{dealerId}/invoices` | `wniosek z analizy` |
+| DTO/kontrakt | `InvoiceDto` w `supply-chain-frontend/src/app/core/models/payment.models.ts` | `wniosek z analizy` |
+| Encja/model | `Invoice.GstType` w PaymentInvoice domain | `wniosek z analizy` |
+| DbContext | `do uzupełnienia` | `do uzupełnienia` |
+| Schemat SQL | `do uzupełnienia` | `do uzupełnienia` |
+| Tabela SQL | `Invoices` (szacowane) | `wniosek z analizy` |
+| Kolumna SQL | `GstType` (szacowane, enum lub varchar) | `wniosek z analizy` |
+| Odczyt/zapis | odczyt | `wniosek z analizy` |
 
 ## Dane Do Testów
 

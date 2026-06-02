@@ -1,6 +1,6 @@
 # P-014 Pola UI
 
-Status: `szkielet`; indeks pól wykrytych automatycznie z komponentu i template Angular.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i ShipmentDto/OrderDto.
 
 | ID pola | Nazwa | Typ detekcji | Źródło | Dokument |
 |---|---|---|---|---|

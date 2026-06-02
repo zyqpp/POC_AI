@@ -1,6 +1,6 @@
 # E-006 Profil Użytkownika
 
-Status: `potwierdzone` dla śladu front -> API -> IdentityAuth DB -> testy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular, UsersApiService i IdentityAuth backend.
 
 ## Identyfikacja
 
@@ -25,7 +25,33 @@ Status: `potwierdzone` dla śladu front -> API -> IdentityAuth DB -> testy.
 
 ## Cel Ekranu
 
+Widok profilu zalogowanego użytkownika (read-only). Dealer widzi dane firmy (NIP/GST, adres, limit kredytowy). Admin i inne role widzą dane podstawowe. Zmiana hasła jest osobną akcją przez `/forgot-password`. Powiązany proces: [PROC-006_PROFILE](../../../../06_PROCESY/PROC-006_PROFILE.md)
+
 Ekran pokazuje dane aktualnie zalogowanego użytkownika pobrane z tokenu i bazy `IdentityAuth`. Dla roli `Dealer` pokazuje dodatkowo dane dealera: limit kredytowy, nazwę firmy, GST i flagę interstate.
+
+## Kluczowe Pliki Kodu
+
+| Plik | Rola |
+|---|---|
+| `supply-chain-frontend/src/app/features/profile/profile.component.ts` | Komponent Angular — `ngOnInit` wywołuje `usersApi.getProfile()` |
+| `supply-chain-frontend/src/app/features/profile/profile.component.html` | Szablon UI z sekcją User i opcjonalną sekcją Dealer details |
+| `supply-chain-frontend/src/app/core/api/auth-api.service.ts` | `UsersApiService.getProfile()` — `GET /identity/api/users/profile` |
+| `services/IdentityAuth/IdentityAuth.API/Controllers/UsersController.cs` | Endpoint `GET /api/users/profile` — wymaga `[Authorize]` |
+| `services/IdentityAuth/IdentityAuth.Application/` | `GetProfileQuery` + `GetProfileQueryHandler` (lub `IdentityAuthService.GetProfileAsync`) |
+
+## Główne Wywołania API
+
+| Metoda | URL | Odpowiedź | Uwagi |
+|---|---|---|---|
+| `GET` | `/identity/api/users/profile` | `UserProfileDto` | Wymaga Bearer token; user id pobierany z claim `sub`/`NameIdentifier` |
+
+## Stany Ekranu
+
+| Stan | Opis |
+|---|---|
+| Ładowanie | Spinner/loading state podczas trwania `GET /api/users/profile` |
+| Dane załadowane | Wyświetlenie sekcji User (fullName, email, role, status) oraz opcjonalnie sekcji Dealer details (businessName, gstNumber, isInterstate, creditLimit) |
+| Błąd 401 / token wygasł | HTTP interceptor przechwytuje 401 → silent refresh albo redirect na `/login` |
 
 ## Widok
 

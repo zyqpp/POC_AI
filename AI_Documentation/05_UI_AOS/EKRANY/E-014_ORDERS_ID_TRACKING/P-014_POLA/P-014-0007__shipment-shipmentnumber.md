@@ -1,6 +1,6 @@
-# P-014-0007 shipment.shipmentNumber
+﻿# P-014-0007 shipment.shipmentNumber
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i ShipmentDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `shipment.shipmentNumber` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-tracking/order-tracking.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Numer shipmentu w dropdownie selekcji (iteracja po shipments()).
+**Źródło danych:** ShipmentDto.shipmentNumber  
+**Kiedy widoczne:** W dropdownie gdy shipments().length > 0.
+**Format:** Ciąg znaków.
 
 ## Wymagalność I Walidacje
 

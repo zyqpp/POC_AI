@@ -3,6 +3,10 @@
 Status: `potwierdzone` na podstawie route'u, komponentu Angular, kontrolerów, serwisu aplikacyjnego, domeny i DbContext.
 Powiązany AOS: `AI_Documentation/05_UI_AOS/AOS_ORDER_DETAIL.md`.
 
+## Cel
+
+Opisuje cykl życia zamówienia po jego utworzeniu: od statusu `Pending` przez `Processing`, `Shipped`, `Delivered` do `Cancelled`/`Returned`. Dokument pokrywa wszystkie akcje zmiany statusu widoczne na ekranie [E-015_ORDERS_ID](../05_UI_AOS/EKRANY/E-015_ORDERS_ID/E-015__README.md): approve, reject, cancel, return, credit hold.
+
 ## Zakres
 
 Proces obejmuje wejście na `/orders/:id`, odczyt szczegółu zamówienia oraz akcje: zmiana statusu, anulowanie, request return, approve/reject hold, approve/reject return, notatki operacyjne i reorder.
@@ -92,6 +96,21 @@ flowchart TD
 |---|---|---|---|
 | Operations Notes & Tags | `OrderOpsNotesService.add/list/remove` | brak; `localStorage` `scp.order-ops-notes.v1` | potwierdzone |
 | Reorder Items | dla każdej linii `CatalogApiService.getProductById`, potem `CartStore.addItem` z normalizacją ilości | brak zapisu DB w tej akcji | potwierdzone |
+
+## Walidatory Backendu (FluentValidation)
+
+Plik: `services/Order/Order.Application/Validation/OrderValidators.cs`
+
+| Walidator | Reguły | Powiązany endpoint |
+|---|---|---|
+| `CancelOrderRequestValidator` | `Reason`: NotEmpty, MaximumLength(400) | `POST /orders/api/orders/{id}/cancel` |
+| `UpdateOrderStatusRequestValidator` | `NewStatus`: IsInEnum() | `PUT /orders/api/orders/{id}/status` |
+| `BulkUpdateOrderStatusRequestValidator` | `NewStatus`: IsInEnum(); `OrderIds`: NotEmpty, max 200 elementów, bez duplikatów; każdy ID NotEmpty | `POST /orders/api/admin/orders/bulk-status` |
+| `ReturnRequestValidator` | `Reason`: NotEmpty, MaximumLength(500) | `POST /orders/api/orders/{id}/returns` |
+| `AdminDecisionRequestValidator` | `Reason`: MaximumLength(400) gdy niepuste | `PUT .../approve-hold`, `.../reject-hold`, `.../approve-return`, `.../reject-return` |
+| `CreateOrderRequestValidator` | `PaymentMode`: IsInEnum; `Lines`: NotEmpty; każda linia: ProductId/ProductName(max 220)/Sku(max 60)/Quantity>0/UnitPrice>0/MinOrderQty>0 | `POST /orders/api/orders` |
+
+Kluczowe ograniczenia: anulowanie wymaga powodu (max 400 znaków); bulk status: maks. 200 zamówień w jednym żądaniu bez duplikatów.
 
 ## Krytyczne Ryzyka Procesu
 

@@ -1,6 +1,6 @@
-# P-013-0006 fromDate
+﻿# P-013-0006 fromDate
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,11 +11,15 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `fromDate` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Data początkowa zakresu filtrowania po placedAtUtc (kliencki). Porównuje 
+ew Date(order.placedAtUtc) >= from (setHours 0,0,0,0).
+**Źródło danych:** Brak — filtr kliencki.
+**Kiedy widoczne:** Zawsze.
+**Format:** Date input (ISO string YYYY-MM-DD).
 
 ## Wymagalność I Walidacje
 

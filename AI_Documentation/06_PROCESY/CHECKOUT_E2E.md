@@ -3,6 +3,10 @@
 Status: `potwierdzone` dla ścieżek kodowych, `do potwierdzenia` dla decyzji biznesowych w ryzykach.
 Powiązany AOS: `AI_Documentation/05_UI_AOS/AOS_CHECKOUT.md`.
 
+## Cel
+
+Dealer finalizuje zakup z koszyka. Proces weryfikuje limity kredytowe (PrePaid/COD), blokuje stock (`InventoryService.SoftLockStockAsync`), tworzy rekord `Orders`, inicjuje płatność przez `PaymentInvoice` i wysyła powiadomienia przez outbox. Kluczowe ryzyko: brak kompensacji przy błędzie po zapisie zamówienia a przed potwierdzeniem płatności.
+
 ## Happy Path COD
 
 | Krok | Warstwa | Działanie | Dane / efekt | Status |
@@ -55,6 +59,44 @@ Powiązany AOS: `AI_Documentation/05_UI_AOS/AOS_CHECKOUT.md`.
 | `StockSoftLocked` | soft-lock inventory | Catalog DB `OutboxMessages` | potwierdzone |
 | `OrderSagaStates.CompletedApproved` | credit approved po starcie sagi | Order DB `OrderSagaStates` | potwierdzone |
 | `OrderSagaStates.AwaitingManualApproval` | credit rejected | Order DB `OrderSagaStates` | potwierdzone |
+
+## Walidatory Backendu
+
+Pliki walidatorów powiązanych z checkoutem i płatnościami:
+
+| Walidator | Serwis | Reguły kluczowe |
+|---|---|---|
+| `CreateOrderRequestValidator` | `Order.Application/Validation/OrderValidators.cs` | paymentMode enum, lines not empty; każda linia: productId, productName max 220, sku max 60, quantity > 0, unitPrice > 0 |
+| `CreateGatewayOrderRequestValidator` | `PaymentInvoice.Application/Validation/PaymentValidators.cs` | amount > 0, currency max 10, description max 200, receipt max 80 |
+| `VerifyGatewayPaymentRequestValidator` | `PaymentInvoice.Application/Validation/PaymentValidators.cs` | gatewayOrderId/gatewayPaymentId/signature required max 80/80/200, amount > 0 |
+| `GenerateInvoiceRequestValidator` | `PaymentInvoice.Application/Validation/PaymentValidators.cs` | orderId, dealerId required; linie: productId, productName max 220, sku max 60, hsnCode max 20, quantity > 0, unitPrice > 0 |
+| `AddOutstandingRequestValidator` | `PaymentInvoice.Application/Validation/PaymentValidators.cs` | orderId required, amount > 0 |
+| `SettleOutstandingRequestValidator` | `PaymentInvoice.Application/Validation/PaymentValidators.cs` | amount > 0, referenceNo max 100 |
+| `UpdateCreditLimitRequestValidator` | `PaymentInvoice.Application/Validation/PaymentValidators.cs` | creditLimit >= 0 (drugi walidator; identyczny jest też w `IdentityAuth.Application`) |
+
+## Algorytmy Płatności
+
+### AddOutstandingCommandHandler
+
+Plik: `services/PaymentInvoice/PaymentInvoice.Application/Features/Payments/Commands/PaymentCommands.cs`
+
+```csharp
+public sealed class AddOutstandingCommandHandler(IPaymentInvoiceService service)
+    : IRequestHandler<AddOutstandingCommand, DealerCreditAccountDto?>
+{
+    public Task<DealerCreditAccountDto?> Handle(AddOutstandingCommand request, CancellationToken cancellationToken)
+        => service.AddOutstandingAsync(request.DealerId, request.Request, cancellationToken);
+}
+```
+
+**Rola w procesie**: Wywoływany w Kroku 10 Happy Path COD — po zapisaniu orderu do bazy Order DB. Zwiększa `DealerCreditAccounts.CurrentOutstanding` o kwotę zamówienia. Jest to integracja service-to-service (Order → PaymentInvoice).
+
+**Walidacja (AddOutstandingRequestValidator)**:
+- `OrderId`: `NotEmpty()` — wymagany identyfikator zamówienia
+- `Amount`: `GreaterThan(0m)` — kwota musi być dodatnia
+- `ReferenceNo`: `MaximumLength(100)` (opcjonalne pole referencji)
+
+**Ryzyko P0**: Brak transakcji rozproszonej — jeśli `AddOutstandingAsync` się nie powiedzie po zapisaniu orderu, order pozostaje zapisany ale outstanding nie jest zaktualizowany (credit utilization fałszywie zaniżona).
 
 ## Luki Procesu
 

@@ -1,6 +1,6 @@
-# P-013-0015 precheck.invalidCount
+﻿# P-013-0015 precheck.invalidCount
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `precheck.invalidCount` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Liczba zamówień odrzuconych przez precheck (nie mogą zmienić statusu). currentBulkPrecheck().invalidCount.
+**Źródło danych:** BulkUpdateOrderStatusResultDto.invalidCount z POST .../bulk-status.
+**Kiedy widoczne:** Po unBulkPrecheck().
+**Format:** Liczba całkowita.
 
 ## Wymagalność I Walidacje
 

@@ -1,6 +1,6 @@
-# P-016-0005 s.shipmentNumber
+﻿# P-016-0005 s.shipmentNumber
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i ShipmentDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `s.shipmentNumber` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/logistics/shipment-list/shipment-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Numer shipmentu wyświetlany w tabeli listy.
+**Źródło danych:** ShipmentDto.shipmentNumber → Shipments.ShipmentNumber  
+**Kiedy widoczne:** W każdym wierszu tabeli.
+**Format:** Ciąg znaków (np. SHP-2024-000123).
 
 ## Wymagalność I Walidacje
 
@@ -28,18 +31,14 @@ Do uzupełnienia.
 
 ## Mapowanie Danych
 
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Warstwa | Artefakt | Przykład | Status |
+|---|---|---|---|
+| Frontend model/form | ShipmentDto.shipmentNumber | `shipmentNumber: string` | `wniosek z analizy` |
+| Endpoint | LogisticsApiService (rola-zależny) | `GET /logistics/api/logistics/shipments[/my|/assigned]` | `potwierdzone` |
+| DTO/kontrakt | ShipmentDto | `public string ShipmentNumber { get; }` | `wniosek z analizy` |
+| Tabela SQL | Shipments | `Shipments` | `wniosek z analizy` |
+| Kolumna SQL | ShipmentNumber | `ShipmentNumber` | `wniosek z analizy` |
+| Odczyt/zapis | Odczyt | `SELECT` | `wniosek z analizy` |
 
 ## Dane Do Testów
 

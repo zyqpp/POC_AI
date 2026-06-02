@@ -1,6 +1,6 @@
-# P-014-0017 history.changedAtUtc
+﻿# P-014-0017 history.changedAtUtc
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i ShipmentDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `history.changedAtUtc` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-tracking/order-tracking.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Timestamp zmiany statusu zamówienia.
+**Źródło danych:** OrderStatusHistoryDto.changedAtUtc → OrderStatusHistory.ChangedAtUtc  
+**Kiedy widoczne:** W historii statusów zamówienia.
+**Format:** ISO 8601 UTC string.
 
 ## Wymagalność I Walidacje
 

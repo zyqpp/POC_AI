@@ -1,6 +1,6 @@
 # P-013-0018 o.dealerId
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i OrderListItemDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `o.dealerId` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Identyfikator dealera (UUID) widoczny w tabeli listy zamówień. Używany do filtrowania klientowego (`dealerQuery`) i w eksporcie CSV. Dealer nie widzi tego pola (element jest widoczny tylko dla Admin/Logistics/Warehouse).  
+**Źródło danych:** `OrderListItemDto.dealerId` → `Orders.DealerId`  
+**Kiedy widoczne:** Dla ról Admin, Logistics, Warehouse — w każdym wierszu tabeli. Dealer widzi tylko własne zamówienia, więc pole jest zbędne, ale brak warunku ukrycia w kodzie.  
+**Format:** UUID (GUID), np. `a1b2c3d4-...`.
 
 ## Wymagalność I Walidacje
 
@@ -28,18 +31,14 @@ Do uzupełnienia.
 
 ## Mapowanie Danych
 
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Warstwa | Artefakt | Przykład | Status |
+|---|---|---|---|
+| Frontend model/form | `OrderListItemDto.dealerId` | `dealerId: string` | `wniosek z analizy` |
+| Endpoint | `GET /orders/api/admin/orders` | `PagedResult<OrderListItemDto>` | `potwierdzone` |
+| DTO/kontrakt | `OrderListItemDto` | `public string DealerId { get; }` | `wniosek z analizy` |
+| Tabela SQL | `Orders` | `Orders` | `wniosek z analizy` |
+| Kolumna SQL | `DealerId` | `DealerId` (UNIQUEIDENTIFIER) | `wniosek z analizy` |
+| Odczyt/zapis | Odczyt | `SELECT DealerId FROM Orders` | `wniosek z analizy` |
 
 ## Dane Do Testów
 

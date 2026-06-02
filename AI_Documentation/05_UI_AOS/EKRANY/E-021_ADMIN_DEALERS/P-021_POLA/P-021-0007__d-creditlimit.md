@@ -1,6 +1,6 @@
 # P-021-0007 d.creditLimit
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`
 
 ## Identyfikacja
 
@@ -11,35 +11,43 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `d.creditLimit` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/admin/dealer-list/dealer-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Limit kredytowy dealera w INR. Wyświetlany w tabeli listy dealerów jako wartość numeryczna. Na ekranie szczegółu [E-023](../../E-023_ADMIN_DEALERS_ID/E-023__README.md) jest polem edytowalnym w dialogu "Update Credit Limit".
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/admin/dealer-list/dealer-list.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-021](../ERR-021_BLEDY/ERR-021__INDEX.md) | do uzupełnienia |
+| Wymagane | tak — przy aktualizacji (PUT) | `wniosek z analizy` |
+| Typ UI | tekst tylko do odczytu w liście; `input[type=number]` w dialogu edycji (E-023) | `wniosek z analizy` |
+| Reguły walidacji (backend) | `CreditLimit >= 0` — `UpdateCreditLimitRequestValidator` w `AuthValidators.cs` (IdentityAuth) i `PaymentValidators.cs` (PaymentInvoice) | `potwierdzone` |
+| Komunikaty błędów | [ERR-021](../ERR-021_BLEDY/ERR-021__INDEX.md) | `do uzupełnienia` |
+
+## Walidator Backend (UpdateCreditLimitRequestValidator)
+
+Plik: `services/IdentityAuth/IdentityAuth.Application/Validation/AuthValidators.cs`
+```csharp
+RuleFor(x => x.CreditLimit).GreaterThanOrEqualTo(0m);
+```
+Identyczna reguła w: `services/PaymentInvoice/PaymentInvoice.Application/Validation/PaymentValidators.cs`
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `DealerSummaryDto.creditLimit: number` | `wniosek z analizy` |
+| Serwis API | `AdminApiService.getDealers()` (odczyt), `AdminApiService.updateCreditLimit(id, {creditLimit})` (zapis) | `wniosek z analizy` |
+| Endpoint | `GET /identity/api/admin/dealers` (odczyt), `PUT /identity/api/admin/dealers/{id}/credit-limit` (zapis) | `wniosek z analizy` |
+| DTO/kontrakt | `DealerSummaryDto` / `UpdateCreditLimitRequest` w `supply-chain-frontend/src/app/core/models/auth.models.ts` | `wniosek z analizy` |
+| Encja/model | `DealerProfile.CreditLimit` (szacowane) | `wniosek z analizy` |
+| DbContext | `do uzupełnienia` | `do uzupełnienia` |
+| Schemat SQL | `do uzupełnienia` | `do uzupełnienia` |
+| Tabela SQL | `DealerProfiles` (szacowane) | `wniosek z analizy` |
+| Kolumna SQL | `CreditLimit` (szacowane) | `wniosek z analizy` |
+| Odczyt/zapis | odczyt (lista) / zapis (update) | `wniosek z analizy` |
 
 ## Dane Do Testów
 

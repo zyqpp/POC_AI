@@ -1,6 +1,6 @@
-# P-013-0005 dealerQuery
+﻿# P-013-0005 dealerQuery
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `dealerQuery` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Pole tekstowe filtrowania po ID dealera (klienckie, contains, case-insensitive). Dostępne tylko dla ról niebędących Dealerem.
+**Źródło danych:** OrderListItemDto.dealerId — filtr kliencki w pplyClientFilters().
+**Kiedy widoczne:** Tylko dla Admin, Logistics, Warehouse (warunek: !isDealer()).
+**Format:** Text input.
 
 ## Wymagalność I Walidacje
 

@@ -1,6 +1,6 @@
-# P-016-0007 s.deliveryAddress
+﻿# P-016-0007 s.deliveryAddress
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i ShipmentDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `s.deliveryAddress` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/logistics/shipment-list/shipment-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Adres dostawy shipmentu.
+**Źródło danych:** ShipmentDto.deliveryAddress → Shipments.DeliveryAddress  
+**Kiedy widoczne:** W każdym wierszu tabeli.
+**Format:** Ciąg znaków (max 500).
 
 ## Wymagalność I Walidacje
 
@@ -28,18 +31,14 @@ Do uzupełnienia.
 
 ## Mapowanie Danych
 
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Warstwa | Artefakt | Przykład | Status |
+|---|---|---|---|
+| Frontend model/form | ShipmentDto.deliveryAddress | `deliveryAddress: string` | `wniosek z analizy` |
+| Endpoint | LogisticsApiService (rola-zależny) | `GET /logistics/api/logistics/shipments[/my|/assigned]` | `potwierdzone` |
+| DTO/kontrakt | ShipmentDto | `public string DeliveryAddress { get; }` | `wniosek z analizy` |
+| Tabela SQL | Shipments | `Shipments` | `wniosek z analizy` |
+| Kolumna SQL | DeliveryAddress | `DeliveryAddress` | `wniosek z analizy` |
+| Odczyt/zapis | Odczyt | `SELECT` | `wniosek z analizy` |
 
 ## Dane Do Testów
 

@@ -1,6 +1,6 @@
-# A-014-0005 approveDelivery
+﻿# A-014-0005 approveDelivery
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,11 +11,11 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu
 | Nazwa wykryta | `approveDelivery` |
 | Typ detekcji | `click` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-tracking/order-tracking.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Akcji
 
-Do uzupełnienia.
+Agent potwierdza dostarczenie shipmentu — zmienia status na Delivered. Warunek: canApproveDelivery() — agent przypisany, akceptacja Accepted, status OutForDelivery/InTransit.
 
 ## Ślad Techniczny
 

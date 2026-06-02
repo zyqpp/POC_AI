@@ -1,6 +1,6 @@
 # P-022-0004 temporaryPassword
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`
 
 ## Identyfikacja
 
@@ -11,35 +11,46 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `temporaryPassword` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/admin/agent-create/agent-create.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Tymczasowe hasło startowe dla nowego agenta. Agent powinien zmienić hasło po pierwszym logowaniu (wymóg biznesowy — `do uzupełnienia`, brak mechanizmu wymuszenia w kodzie). Hasło nie jest wyświetlane po zapisaniu (input type=password).
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/admin/agent-create/agent-create.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-022](../ERR-022_BLEDY/ERR-022__INDEX.md) | do uzupełnienia |
+| Wymagane | tak — `!temporaryPassword` → błąd "All fields are required." | `potwierdzone` |
+| Typ UI | `input[type=password]` z `[(ngModel)]="temporaryPassword"` | `wniosek z analizy` |
+| Reguły walidacji (backend) | `NotEmpty().MinimumLength(8).Matches("[A-Z]").Matches("[0-9]")` — `CreateAgentRequestValidator` | `potwierdzone` |
+| Komunikaty błędów | [ERR-022](../ERR-022_BLEDY/ERR-022__INDEX.md) | "Password must contain at least one uppercase letter." / "Password must contain at least one number." |
+
+## Walidator Backend (CreateAgentRequestValidator)
+
+Plik: `services/IdentityAuth/IdentityAuth.Application/Validation/AuthValidators.cs`
+```csharp
+RuleFor(x => x.TemporaryPassword)
+    .NotEmpty()
+    .MinimumLength(8)
+    .Matches("[A-Z]").WithMessage("Password must contain at least one uppercase letter.")
+    .Matches("[0-9]").WithMessage("Password must contain at least one number.");
+```
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `AgentCreateComponent.temporaryPassword: string` | `wniosek z analizy` |
+| Serwis API | `AdminApiService.createAgent({temporaryPassword})` | `wniosek z analizy` |
+| Endpoint | `POST /identity/api/admin/users/agents` | `wniosek z analizy` |
+| DTO/kontrakt | `CreateAgentRequest.temporaryPassword` | `wniosek z analizy` |
+| Encja/model | `User.PasswordHash` (hasłowane BCrypt przed zapisem) | `wniosek z analizy` |
+| DbContext | `do uzupełnienia` | `do uzupełnienia` |
+| Schemat SQL | `do uzupełnienia` | `do uzupełnienia` |
+| Tabela SQL | `Users` (szacowane) | `wniosek z analizy` |
+| Kolumna SQL | `PasswordHash` (szacowane — nie przechowywany plaintext) | `wniosek z analizy` |
+| Odczyt/zapis | zapis (POST — hash, nie plaintext) | `wniosek z analizy` |
 
 ## Dane Do Testów
 

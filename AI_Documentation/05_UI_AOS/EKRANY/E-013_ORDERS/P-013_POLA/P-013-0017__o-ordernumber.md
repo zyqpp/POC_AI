@@ -1,6 +1,6 @@
 # P-013-0017 o.orderNumber
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i OrderListItemDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `o.orderNumber` |
 | Typ detekcji | `interpolation` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-list/order-list.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Numer zamówienia wyświetlany w tabeli listy i używany w wyszukiwaniu oraz eksporcie CSV. Czytelny identyfikator zamówienia dla użytkownika.  
+**Źródło danych:** `OrderListItemDto.orderNumber` → `Orders.OrderNumber`  
+**Kiedy widoczne:** Zawsze (w każdym wierszu tabeli).  
+**Format:** Ciąg znaków (np. `ORD-2024-001234`).
 
 ## Wymagalność I Walidacje
 
@@ -28,18 +31,14 @@ Do uzupełnienia.
 
 ## Mapowanie Danych
 
-| Warstwa | Artefakt | Status |
-|---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Warstwa | Artefakt | Przykład | Status |
+|---|---|---|---|
+| Frontend model/form | `OrderListItemDto.orderNumber` | `orderNumber: string` | `wniosek z analizy` |
+| Endpoint | `GET /orders/api/orders/my` lub `/admin/orders` | `PagedResult<OrderListItemDto>` | `potwierdzone` |
+| DTO/kontrakt | `OrderListItemDto` | `public string OrderNumber { get; }` | `wniosek z analizy` |
+| Tabela SQL | `Orders` | `Orders` | `wniosek z analizy` |
+| Kolumna SQL | `OrderNumber` | `OrderNumber` | `wniosek z analizy` |
+| Odczyt/zapis | Odczyt | `SELECT OrderNumber FROM Orders` | `wniosek z analizy` |
 
 ## Dane Do Testów
 

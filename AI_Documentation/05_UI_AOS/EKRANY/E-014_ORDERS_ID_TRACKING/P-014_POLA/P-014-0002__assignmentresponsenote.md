@@ -1,6 +1,6 @@
-# P-014-0002 assignmentResponseNote
+﻿# P-014-0002 assignmentResponseNote
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular i ShipmentDto.
 
 ## Identyfikacja
 
@@ -11,11 +11,14 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `assignmentResponseNote` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-tracking/order-tracking.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+**Co wyświetla / zbiera:** Powód odrzucenia przypisania (uzasadnienie dla ejectAssignment). Pole wymagane przy odrzuceniu.
+**Źródło danych:** Brak — wejście użytkownika (Agent).
+**Kiedy widoczne:** Gdy canRespondToAssignment() === true.
+**Format:** Tekst (max 500 znaków — RejectAssignmentRequestValidator).
 
 ## Wymagalność I Walidacje
 

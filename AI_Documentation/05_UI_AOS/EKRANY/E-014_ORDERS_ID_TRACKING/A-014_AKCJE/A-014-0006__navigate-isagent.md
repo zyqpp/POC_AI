@@ -1,6 +1,6 @@
-# A-014-0006 navigate isAgent() ?
+﻿# A-014-0006 navigate isAgent() ?
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu.
+Status: `wniosek z analizy`; uzupełnione na podstawie analizy komponentu Angular.
 
 ## Identyfikacja
 
@@ -11,11 +11,11 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i procesu
 | Nazwa wykryta | `navigate isAgent() ?` |
 | Typ detekcji | `bound-routerLink` |
 | Źródło | `supply-chain-frontend/src/app/features/orders/order-tracking/order-tracking.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Akcji
 
-Do uzupełnienia.
+Nawigacja warunkowa zależna od roli: Agent jest przekierowywany do /shipments/:shipmentId, inne role do /orders/:id. Czysta nawigacja routerLink.
 
 ## Ślad Techniczny
 

@@ -1,6 +1,6 @@
 # P-022-0003 phoneNumber
 
-Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
+Status: `wniosek z analizy`
 
 ## Identyfikacja
 
@@ -11,35 +11,36 @@ Status: `szkielet`; wymagane ręczne uzupełnienie po analizie UI, API i bazy.
 | Nazwa wykryta | `phoneNumber` |
 | Typ detekcji | `[(ngModel)]` |
 | Źródło | `supply-chain-frontend/src/app/features/admin/agent-create/agent-create.component.html` |
-| Status faktu | `do uzupełnienia` |
+| Status faktu | `wniosek z analizy` |
 
 ## Opis Pola
 
-Do uzupełnienia.
+Numer telefonu komórkowego agenta. Format: 10-cyfrowy indyjski numer mobilny (pierwsza cyfra 6-9). Frontend normalizuje numer: akceptuje `9182683257`, `09182683257`, `919182683257` — wszystkie konwertowane do `9182683257`. Backend waliduje pattern `^[6-9][0-9]{9}$`.
 
 ## Wymagalność I Walidacje
 
 | Właściwość | Wartość | Źródło |
 |---|---|---|
-| Wymagane | do uzupełnienia | brak pełnej analizy formularza |
-| Typ UI | do uzupełnienia | `supply-chain-frontend/src/app/features/admin/agent-create/agent-create.component.html` |
-| Reguły walidacji | do uzupełnienia | brak pełnej analizy walidatorów |
-| Komunikaty błędów | [ERR-022](../ERR-022_BLEDY/ERR-022__INDEX.md) | do uzupełnienia |
+| Wymagane | tak — `!this.phoneNumber.trim()` → błąd "All fields are required." | `potwierdzone` |
+| Typ UI | `input[type=tel]` z `[(ngModel)]="phoneNumber"` | `wniosek z analizy` |
+| Reguły walidacji (frontend) | `normalizeIndianMobile()` — akceptuje format z 0, 91, lub czysty 10-cyfrowy | `potwierdzone` |
+| Reguły walidacji (backend) | `NotEmpty().Matches("^[6-9][0-9]{9}$")` — `CreateAgentRequestValidator` | `potwierdzone` |
+| Komunikaty błędów | [ERR-022](../ERR-022_BLEDY/ERR-022__INDEX.md) | "Phone number must be a valid Indian mobile number (example: 9182683257)." |
 
 ## Mapowanie Danych
 
 | Warstwa | Artefakt | Status |
 |---|---|---|
-| Frontend model/form | do uzupełnienia | `do uzupełnienia` |
-| Serwis API | do uzupełnienia | `do uzupełnienia` |
-| Endpoint | do uzupełnienia | `do uzupełnienia` |
-| DTO/kontrakt | do uzupełnienia | `do uzupełnienia` |
-| Encja/model | do uzupełnienia | `do uzupełnienia` |
-| DbContext | do uzupełnienia | `do uzupełnienia` |
-| Schemat SQL | do uzupełnienia | `do uzupełnienia` |
-| Tabela SQL | do uzupełnienia | `do uzupełnienia` |
-| Kolumna SQL | do uzupełnienia | `do uzupełnienia` |
-| Odczyt/zapis | do uzupełnienia | `do uzupełnienia` |
+| Frontend model/form | `AgentCreateComponent.phoneNumber: string` (surowy input) | `wniosek z analizy` |
+| Serwis API | `AdminApiService.createAgent({phoneNumber: normalizedPhoneNumber})` | `wniosek z analizy` |
+| Endpoint | `POST /identity/api/admin/users/agents` | `wniosek z analizy` |
+| DTO/kontrakt | `CreateAgentRequest.phoneNumber` | `wniosek z analizy` |
+| Encja/model | `User.PhoneNumber` (szacowane) | `wniosek z analizy` |
+| DbContext | `do uzupełnienia` | `do uzupełnienia` |
+| Schemat SQL | `do uzupełnienia` | `do uzupełnienia` |
+| Tabela SQL | `Users` (szacowane) | `wniosek z analizy` |
+| Kolumna SQL | `PhoneNumber` (szacowane) | `wniosek z analizy` |
+| Odczyt/zapis | zapis (POST) | `wniosek z analizy` |
 
 ## Dane Do Testów
 
